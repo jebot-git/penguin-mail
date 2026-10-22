@@ -10,7 +10,13 @@ The original GTK frontend and its source documentation remain in `app/` and
 Use Rust 1.98 or newer, CMake, Ninja, a C++17 compiler, the suite's patched
 FLTK 1.4.5, Fontconfig, GIO, Wayland client headers, X11 and wayland-scanner.
 No GTK, libadwaita or WebKit development packages are needed for the native
-binaries. From this repository:
+binaries.
+
+POP3 uses the platform TLS library with TLS 1.2 as its minimum and normal
+certificate and hostname verification. Linux builds also need OpenSSL headers.
+This supports providers whose TLS 1.2 servers require RSA cipher suites.
+
+From this repository:
 
 ```sh
 python3 fltk/build.py --prefix ../_toolkit
@@ -28,7 +34,8 @@ existing instance through D-Bus. Demo and real stores have separate bus names.
 The build helper can find this workspace's existing private Rust toolchain
 when the system compiler is too old. A fresh machine should put Rust 1.98+
 on PATH. The runtime copy of the engine has debug sections removed; Cargo keeps its
-original executable with debug information in `target/debug`. Binutils or
+original executable in `target/release` for release builds and `target/debug`
+for Debug builds. Binutils or
 LLVM strip is required. No tools, libraries or applications are installed by the
 build helper.
 `cmake --install build-fltk --prefix <prefix>` installs both binaries, native

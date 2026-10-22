@@ -1,5 +1,5 @@
 //! A POP3 client (RFC 1939, CAPA from RFC 2449, STLS from RFC 2595, SASL
-//! PLAIN from RFC 5034) on tokio and rustls, behind [`Pop3Api`]. One
+//! PLAIN from RFC 5034) on tokio and platform TLS, behind [`Pop3Api`]. One
 //! session runs from `connect` to `quit`, as the protocol has it: message
 //! numbers hold for one session only, and `DELE` takes effect at a clean
 //! `QUIT`. TLS is required, from the first byte or after `STLS`, and the

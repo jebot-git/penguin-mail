@@ -6,13 +6,20 @@ pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig zlib)
 find_program(CARGO_EXECUTABLE cargo REQUIRED)
 find_program(PENGUIN_STRIP_EXECUTABLE NAMES strip llvm-strip REQUIRED)
 set(ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  set(ENGINE_CARGO_ARGS)
+  set(ENGINE_CARGO_DIRECTORY debug)
+else()
+  set(ENGINE_CARGO_ARGS --release)
+  set(ENGINE_CARGO_DIRECTORY release)
+endif()
 # Re-run Cargo when compiled-in OAuth configuration changes. Store only a digest.
 string(SHA256 PENGUIN_OAUTH_BUILD_KEY "$ENV{PENGUIN_MAIL_GOOGLE_CLIENT_ID}|$ENV{PENGUIN_MAIL_GOOGLE_CLIENT_SECRET}|$ENV{PENGUIN_MAIL_MICROSOFT_CLIENT_ID}")
 file(CONFIGURE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/oauth-client-build.stamp" CONTENT "@PENGUIN_OAUTH_BUILD_KEY@\n" @ONLY)
 file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS "${ENGINE_DIR}/*/src/*.rs" "${ENGINE_DIR}/*/Cargo.toml" "${CMAKE_CURRENT_SOURCE_DIR}/engine/src/*.rs" "${CMAKE_CURRENT_SOURCE_DIR}/engine/Cargo.toml")
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/penguin-mail-engine"
-  COMMAND "${CARGO_EXECUTABLE}" build --manifest-path "${ENGINE_DIR}/Cargo.toml" --locked -p penguin-mail-engine
-  COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${ENGINE_DIR}/target/debug/penguin-mail-engine" "${CMAKE_CURRENT_BINARY_DIR}/penguin-mail-engine"
+  COMMAND "${CARGO_EXECUTABLE}" build --manifest-path "${ENGINE_DIR}/Cargo.toml" --locked -p penguin-mail-engine ${ENGINE_CARGO_ARGS}
+  COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${ENGINE_DIR}/target/${ENGINE_CARGO_DIRECTORY}/penguin-mail-engine" "${CMAKE_CURRENT_BINARY_DIR}/penguin-mail-engine"
   COMMAND "${PENGUIN_STRIP_EXECUTABLE}" --strip-debug "${CMAKE_CURRENT_BINARY_DIR}/penguin-mail-engine"
   DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/oauth-client-build.stamp" ${ENGINE_SOURCES} "${ENGINE_DIR}/Cargo.lock" "${ENGINE_DIR}/Cargo.toml"
   USES_TERMINAL)

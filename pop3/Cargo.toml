@@ -10,12 +10,12 @@ publish.workspace = true
 [dependencies]
 mailrs-discover.workspace = true
 base64.workspace = true
-rustls.workspace = true
-rustls-platform-verifier.workspace = true
+native-tls.workspace = true
 thiserror.workspace = true
 tokio.workspace = true
-tokio-rustls.workspace = true
+tokio-native-tls.workspace = true
 tracing.workspace = true
 
 [dev-dependencies]
 mailrs-testmail.workspace = true
+tempfile.workspace = true

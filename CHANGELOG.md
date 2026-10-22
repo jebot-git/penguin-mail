@@ -20,6 +20,7 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### Fixed
 
+- Connect to POP3 servers that require RSA TLS 1.2 ciphers while keeping certificate and hostname checks.
 - Reload DomeD bitmap font exports and text textures when the session's font configuration changes.
 - Keep Reply, Reply All and Forward labels inside their buttons when the reading pane narrows or the desktop font changes.
 - Hide duplicate native menu bars while DomeD provides the universal menu, preserving shortcuts and restoring local menus when the host disappears.
