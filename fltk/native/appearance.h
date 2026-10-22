@@ -2,6 +2,7 @@
 #pragma once
 #include <FL/Fl_Text_Display.H>
 #include <FL/Fl.H>
+#include "bdf_font.hpp"
 #include <FL/Fl_Browser_.H>
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Group.H>
@@ -50,6 +51,7 @@ inline Fl_Font font = FL_HELVETICA;
 inline int size = 14;
 inline uint64_t font_revision = 0;
 inline std::string font_name = "sans";
+inline bdf_fonts::Face selected_font;
 inline std::deque<std::string> font_names;
 inline void style(Fl_Widget *w) {
   w->labelfont(font);
@@ -79,8 +81,6 @@ inline void style(Fl_Widget *w) {
 // Check before FLTK flushes so their first frame already uses the session font.
 inline std::vector<std::unique_ptr<Fl_Widget_Tracker>> styled_windows;
 inline void style_new_windows(void *) {
-  if (!dome())
-    return;
   styled_windows.erase(
       std::remove_if(styled_windows.begin(), styled_windows.end(),
                      [](const auto &item) { return item->deleted(); }),
@@ -99,7 +99,7 @@ inline void style_new_windows(void *) {
 }
 inline Fl_Event_Dispatch previous_dispatch = nullptr;
 inline int dispatch(int event, Fl_Window *window) {
-  if (dome() && window && event == FL_SHOW)
+  if (window && event == FL_SHOW)
     style(window);
   return previous_dispatch ? previous_dispatch(event, window)
                            : Fl::handle_(event, window);
@@ -115,35 +115,9 @@ inline void enable_menu(Fl_Menu_ &menu, const char *path, bool enabled) {
     menu.redraw();
   }
 }
-inline bool bitmap(const std::string &family, int pixels,
-                   const std::string &style = "") {
-  auto p = FcPatternCreate();
-  FcPatternAddString(p, FC_FAMILY, (FcChar8 *)family.c_str());
-  FcPatternAddDouble(p, FC_PIXEL_SIZE, pixels);
-  if (!style.empty())
-    FcPatternAddString(p, FC_STYLE, (FcChar8 *)style.c_str());
-  FcConfigSubstitute(nullptr, p, FcMatchPattern);
-  FcDefaultSubstitute(p);
-  FcResult result;
-  auto m = FcFontMatch(nullptr, p, &result);
-  FcPatternDestroy(p);
-  if (!m)
-    return false;
-  FcBool scalable = true;
-  double strike = 0;
-  FcChar8 *resolved = nullptr, *resolvedStyle = nullptr;
-  FcPatternGetBool(m, FC_SCALABLE, 0, &scalable);
-  FcPatternGetDouble(m, FC_PIXEL_SIZE, 0, &strike);
-  FcPatternGetString(m, FC_FAMILY, 0, &resolved);
-  FcPatternGetString(m, FC_STYLE, 0, &resolvedStyle);
-  bool ok =
-      (style.empty() ||
-       (resolvedStyle &&
-        FcStrCmpIgnoreCase(resolvedStyle, (FcChar8 *)style.c_str()) == 0)) &&
-      !scalable && int(strike + .5) == pixels && resolved &&
-      FcStrCmpIgnoreCase(resolved, (FcChar8 *)family.c_str()) == 0;
-  FcPatternDestroy(m);
-  return ok;
+inline bool bitmap(const std::string &family, int pixels, const std::string &style = "") {
+  try { bdf_fonts::resolve(family, style, pixels); return true; }
+  catch (const std::exception &) { return false; }
 }
 inline std::string last;
 inline std::string font_configuration_revision() {
@@ -155,13 +129,12 @@ inline std::string font_configuration_revision() {
   return std::string(file) + (error ? "" : std::to_string(modified.time_since_epoch().count()));
 }
 inline void appearance(void * = nullptr) {
-  if (dome())
-    try {
+  try {
       std::ifstream f(config());
       Json j;
-      if (f)
+      if (f && dome())
         f >> j;
-      else if (!std::filesystem::exists(config()))
+      else if (!dome() || !std::filesystem::exists(config()))
         j = {{"light", false},
              {"accent", "#6babff"},
              {"font", "Unifont / Sans-Serif"},
@@ -191,21 +164,28 @@ inline void appearance(void * = nullptr) {
         // DomeD can refresh its exported bitmap files during an existing login.
         // Resolve from the refreshed Fontconfig configuration, including faces
         // which were unavailable when this process started.
-        FcInitReinitialize();
-        if (family == "Unifont" && !bitmap(family, pixels, fontStyle) &&
-            bitmap("GNU Unifont", pixels, fontStyle))
-          family = "GNU Unifont";
-        if (pixels >= 8 && pixels <= 64 && bitmap(family, pixels, fontStyle)) {
-          font_name = family + (fontStyle.empty() ? "" : " / " + fontStyle);
-          font_names.push_back(font_name);
-          Fl::set_font(FL_FREE_FONT, font_names.back().c_str());
-          font = FL_FREE_FONT;
-          size = pixels;
-        } else {
-          font = FL_HELVETICA;
-          font_name = "sans";
-          size = 14;
+        static std::string applied_configuration;
+        auto configuration = font_configuration_revision();
+        if (configuration != applied_configuration) { FcInitReinitialize(); applied_configuration = configuration; }
+        bdf_fonts::discover(true);
+        bdf_fonts::Face selected;
+        int scale = j.value("font_scale", 1);
+        try { selected = bdf_fonts::resolve(family, fontStyle, pixels, scale); }
+        catch (const std::exception &) {
+          try { selected = bdf_fonts::resolve("Unifont", "Sans-Serif", 16, scale); }
+          catch (const std::exception &) {
+            auto available = bdf_fonts::discover();
+            if (available.empty()) throw std::runtime_error("No BDF fonts found in Fontconfig font directories");
+            selected = bdf_fonts::scaled(available.front(), scale);
+          }
         }
+        selected_font = selected;
+        font_name = selected.family + " / " + selected.style;
+        font_names.push_back(font_name);
+        Fl::set_font(FL_FREE_FONT, font_names.back().c_str());
+        font = FL_FREE_FONT;
+        size = selected.pixels;
+        setenv("DE_XR_BDF_PIXELS", std::to_string(size).c_str(), 1);
         FL_NORMAL_SIZE = size;
         ++font_revision;
         fl_message_font(font, size);
@@ -228,12 +208,16 @@ inline void poll(void *) {
 inline void init() {
   Fl::scheme("gtk+");
   Fl::visual(FL_RGB);
+  auto font_config = bdf_fonts::export_config();
+  setenv("FONTCONFIG_FILE", font_config.c_str(), 1);
+  FcInitReinitialize();
   appearance();
+  if (font != FL_FREE_FONT) throw std::runtime_error("de-xr requires an installed Unicode BDF font");
   // Always use native FLTK choosers: GTK, Zenity and KDE are optional.
   Fl::option(Fl::OPTION_FNFC_USES_GTK, false);
   Fl::option(Fl::OPTION_FNFC_USES_ZENITY, false);
   Fl::option(Fl::OPTION_FNFC_USES_KDIALOG, false);
-  if (dome()) {
+  {
     if (Fl::event_dispatch() != dispatch) {
       previous_dispatch = Fl::event_dispatch();
       Fl::event_dispatch(dispatch);

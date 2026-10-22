@@ -5,6 +5,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ## Unreleased
 
+- FLTK controls now use DomeD’s selected BDF font, native size and 1×/2× bitmap scale, including text fields and dialogs.
+
 ### New
 
 - Build a native FLTK interface for DomeD with universal menus, live appearance, a tray icon and calendar date links.
