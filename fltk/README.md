@@ -66,6 +66,10 @@ mutations are serialized. Pipe close shuts down sync and the child process.
   and X11 appmenu properties. Dialog composers export their own edit/send menus.
 - DomeD's palette, accent, bitmap font family, style and native strike apply live,
   including text readers, editors and native FLTK dialogs.
+- Fontconfig export changes reload the selected bitmap face and clear text
+  textures, including fonts added while the application is running. With an
+  updated DomeD, `dome-compositor --refresh-session-fonts` repairs older session
+  font exports without logging out.
 - Standard Ctrl shortcuts and editing commands stay in the app; Super shortcuts
   remain compositor-owned. Message and calendar lists also accept cursor keys.
 - StatusNotifierItem shares the actual command menu and unread title. Closing the
@@ -158,6 +162,7 @@ python3 fltk/tests/crypto.py build-fltk/penguin-mail-engine
 python3 fltk/tests/oauth.py build-fltk/penguin-mail-engine
 uv run --no-project --with python-xlib --with pillow python fltk/tests/ui.py
 uv run --no-project --with python-xlib --with pillow --with dbus-next python fltk/tests/menu.py
+DOME_TEST_BIN=/path/to/dome-compositor uv run --no-project --with python-xlib --with pillow python fltk/tests/appearance.py
 DOME_TEST_BIN=/path/to/dome-compositor uv run --no-project --with python-xlib --with pillow python fltk/tests/clock.py
 DOME_TEST_BIN=/path/to/dome-compositor uv run --no-project --with python-xlib --with pillow --with dbus-next python fltk/tests/notifications.py
 ```

@@ -15,7 +15,9 @@
 #include <FL/Fl_Table_Row.H>
 #include <FL/Fl_Text_Editor.H>
 #include <FL/Fl_Tile.H>
+#include <array>
 #include <chrono>
+#include <cmath>
 #include <ctime>
 #include <iomanip>
 #include <libintl.h>
@@ -112,6 +114,54 @@ struct CommandButton : Fl_Button {
       if (b->action)
         b->action();
     });
+  }
+};
+class ReaderPane : public Fl_Group {
+  void layout() {
+    if (!reader)
+      return;
+    const int available = std::max(1, w() - 24);
+    std::array<int, 3> widths{};
+    int height = 30;
+    auto previousFont = fl_font();
+    int previousSize = fl_size();
+    for (size_t i = 0; i < actions.size(); ++i) {
+      auto button = actions[i];
+      fl_font(button->labelfont(), button->labelsize());
+      widths[i] = std::min(available,
+                          std::max(80, int(std::ceil(fl_width(button->label()))) + 24));
+      int textWidth = std::max(1, widths[i] - 24), textHeight = 0;
+      fl_measure(button->label(), textWidth, textHeight, 0);
+      height = std::max(height, textHeight + 12);
+    }
+    fl_font(previousFont, previousSize);
+    int left = x() + 12, nextX = left, nextY = y() + 10;
+    // Pane resizing must not shrink actions below their translated labels.
+    for (size_t i = 0; i < actions.size(); ++i) {
+      if (nextX > left && nextX + widths[i] > left + available) {
+        nextX = left;
+        nextY += height + 8;
+      }
+      actions[i]->resize(nextX, nextY, widths[i], height);
+      nextX += widths[i] + 10;
+    }
+    int readerY = nextY + height + 14;
+    reader->resize(left, readerY, available,
+                   std::max(40, y() + h() - 110 - readerY));
+  }
+  void draw() override {
+    // Live appearance changes can change font metrics without resizing a pane.
+    layout();
+    Fl_Group::draw();
+  }
+
+public:
+  std::array<CommandButton *, 3> actions{};
+  Fl_Text_Display *reader = nullptr;
+  using Fl_Group::Fl_Group;
+  void resize(int x, int y, int w, int h) override {
+    Fl_Group::resize(x, y, w, h);
+    layout();
   }
 };
 class MessageList : public Fl_Table_Row {
@@ -1770,14 +1820,17 @@ public:
     sidebar->tooltip(_("Mailboxes"));
     list = new MessageList(190, 84, 425, 704);
     list->tooltip(_("Conversations"));
-    auto reading = new Fl_Group(615, 84, 665, 704);
-    new CommandButton(627, 94, 95, 30, _("Reply"),
+    auto reading = new ReaderPane(615, 84, 665, 704);
+    reading->actions[0] = new CommandButton(627, 94, 95, 30, _("Reply"),
                       [this] { composer("reply"); });
-    new CommandButton(732, 94, 110, 30, _("Reply All"),
+    reading->actions[1] = new CommandButton(732, 94, 110, 30, _("Reply All"),
                       [this] { composer("reply-all"); });
-    new CommandButton(852, 94, 105, 30, _("Forward"),
+    reading->actions[2] = new CommandButton(852, 94, 105, 30, _("Forward"),
                       [this] { composer("forward"); });
+    for (auto button : reading->actions)
+      button->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_WRAP | FL_ALIGN_CLIP);
     reader = new Fl_Text_Display(627, 138, 641, 540);
+    reading->reader = reader;
     reader->buffer(&readerBuffer);
     reader->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
     reader->tooltip(_("Conversation"));

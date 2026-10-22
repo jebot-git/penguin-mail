@@ -18,6 +18,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### Fixed
 
+- Reload DomeD bitmap font exports and text textures when the session's font configuration changes.
+- Keep Reply, Reply All and Forward labels inside their buttons when the reading pane narrows or the desktop font changes.
 - Hide duplicate native menu bars while DomeD provides the universal menu, preserving shortcuts and restoring local menus when the host disappears.
 
 - IMAP and POP3 accounts stay signed in while their mail server restarts or updates, and try again every few minutes instead of asking you to sign in ([#79](https://github.com/c9dev/penguin-mail/issues/79)).

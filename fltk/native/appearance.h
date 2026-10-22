@@ -16,6 +16,7 @@
 #include <FL/fl_draw.H>
 #include <algorithm>
 #include <cstdio>
+#include <cstdint>
 #include <cstdlib>
 #include <deque>
 #include <filesystem>
@@ -47,6 +48,7 @@ inline bool dome() {
 }
 inline Fl_Font font = FL_HELVETICA;
 inline int size = 14;
+inline uint64_t font_revision = 0;
 inline std::string font_name = "sans";
 inline std::deque<std::string> font_names;
 inline void style(Fl_Widget *w) {
@@ -144,6 +146,14 @@ inline bool bitmap(const std::string &family, int pixels,
   return ok;
 }
 inline std::string last;
+inline std::string font_configuration_revision() {
+  const char *file = getenv("FONTCONFIG_FILE");
+  if (!file || !*file)
+    return {};
+  std::error_code error;
+  auto modified = std::filesystem::last_write_time(file, error);
+  return std::string(file) + (error ? "" : std::to_string(modified.time_since_epoch().count()));
+}
 inline void appearance(void * = nullptr) {
   if (dome())
     try {
@@ -158,7 +168,7 @@ inline void appearance(void * = nullptr) {
              {"font_size", 16}};
       else
         return;
-      auto snapshot = j.dump();
+      auto snapshot = j.dump() + font_configuration_revision();
       if (snapshot != last) {
         bool light = j.value("light", false);
         auto accent = j.value("accent", std::string("#6babff"));
@@ -178,6 +188,10 @@ inline void appearance(void * = nullptr) {
         auto family = name.substr(0, slash);
         auto fontStyle =
             slash == std::string::npos ? std::string() : name.substr(slash + 3);
+        // DomeD can refresh its exported bitmap files during an existing login.
+        // Resolve from the refreshed Fontconfig configuration, including faces
+        // which were unavailable when this process started.
+        FcInitReinitialize();
         if (family == "Unifont" && !bitmap(family, pixels, fontStyle) &&
             bitmap("GNU Unifont", pixels, fontStyle))
           family = "GNU Unifont";
@@ -193,6 +207,7 @@ inline void appearance(void * = nullptr) {
           size = 14;
         }
         FL_NORMAL_SIZE = size;
+        ++font_revision;
         fl_message_font(font, size);
         for (auto w = Fl::first_window(); w; w = Fl::next_window(w)) {
           style(w);

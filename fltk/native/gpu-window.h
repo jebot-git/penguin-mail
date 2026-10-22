@@ -56,7 +56,7 @@ public:
       reported = true;
     }
     static std::string fontRevision;
-    auto revision = dx::font_name + std::to_string(dx::size);
+    auto revision = std::to_string(dx::font_revision);
     if (fontRevision != revision) {
       gl_texture_pile_height(512);
       fontRevision = revision;
