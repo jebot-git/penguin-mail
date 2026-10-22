@@ -124,22 +124,6 @@ msgstr ""
 "navigator. Penguin Mail este construit cu GTK și libadwaita și se potrivește "
 "cel mai bine în GNOME, dar rulează pe orice desktop Linux."
 
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:53
-msgid "gmail"
-msgstr "gmail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:54
-msgid "email"
-msgstr "e-mail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:55
-msgid "mail"
-msgstr "corespondență"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:56
-msgid "inbox"
-msgstr "mesaje primite"
-
 #: app/data/io.github.c9dev.PenguinMail.metainfo.xml:85
 msgid "All your accounts in one inbox, with a reply open"
 msgstr ""
@@ -3381,79 +3365,67 @@ msgstr "Fișiere atașate evenimentelor"
 msgid "{account} has not allowed Penguin Mail to {missing}"
 msgstr "{account} nu a permis ca Penguin Mail să {missing}"
 
-#: app/src/pgp.rs:114
+#: app/src/pgp/adapter.rs:105
 msgid "Add a recipient whose key gpg holds."
 msgstr "Adăugați un destinatar a cărui cheie se află în gpg."
 
-#: app/src/pgp.rs:123
+#: app/src/pgp/adapter.rs:114
 msgid "gpg holds no key for {addresses}."
 msgstr "gpg nu are nicio cheie pentru {addresses}."
 
-#: app/src/pgp.rs:140
+#: app/src/pgp/adapter.rs:131
 msgid "gpg holds no key for any of the addresses you send from."
 msgstr ""
 "gpg nu are nicio cheie pentru niciuna dintre adresele de pe care trimiteți."
 
-#: app/src/pgp.rs:142
+#: app/src/pgp/adapter.rs:133
 msgid "gpg holds a key for {addresses}."
 msgstr "gpg are o cheie pentru {addresses}."
 
-#: app/src/pgp.rs:146
+#: app/src/pgp/adapter.rs:137
 msgid "gpg holds a key for {addresses}, and none for {without}."
 msgstr "gpg are o cheie pentru {addresses} și niciuna pentru {without}."
 
-#: app/src/pgp.rs:250
+#: app/src/pgp/adapter.rs:241
 msgid "This computer has no gpg. Install GnuPG to read or send OpenPGP mail."
 msgstr ""
 "Acest calculator nu are gpg. Instalați GnuPG pentru a citi sau trimite "
 "corespondență OpenPGP."
 
-#: app/src/pgp.rs:253 app/src/smime.rs:258
-msgid "Could not run {program}: {reason}"
-msgstr "Nu s-a putut rula {program}: {reason}"
-
-#: app/src/pgp.rs:257 app/src/smime.rs:262
-msgid "Could not write a temporary file: {reason}"
-msgstr "Nu s-a putut scrie un fișier temporar: {reason}"
-
-#: app/src/pgp.rs:261
+#: app/src/pgp/adapter.rs:252
 msgid "This message is encrypted to a key this computer does not hold."
 msgstr ""
 "Acest mesaj este criptat pentru o cheie pe care acest calculator nu o are."
 
-#: app/src/pgp.rs:264
+#: app/src/pgp/adapter.rs:255
 msgid "gpg holds no secret key to sign as {address}."
 msgstr "gpg nu are nicio cheie secretă pentru a semna ca {address}."
 
-#: app/src/pgp.rs:268
+#: app/src/pgp/adapter.rs:259
 msgid "gpg holds no key it can encrypt to for {address}."
 msgstr "gpg nu are nicio cheie cu care să poată cripta pentru {address}."
 
-#: app/src/pgp.rs:271
+#: app/src/pgp/adapter.rs:262
 msgid "This text holds no OpenPGP block."
 msgstr "Acest text nu conține niciun bloc OpenPGP."
 
-#: app/src/pgp.rs:272
+#: app/src/pgp/adapter.rs:263
 msgid "This file holds no OpenPGP key."
 msgstr "Acest fișier nu conține nicio cheie OpenPGP."
 
-#: app/src/pgp.rs:273 app/src/smime.rs:278
-msgid "This message is too large to open."
-msgstr "Acest mesaj este prea mare pentru a fi deschis."
-
-#: app/src/pgp.rs:274
+#: app/src/pgp/adapter.rs:265
 msgid "gpg failed: {reason}"
 msgstr "gpg a eșuat: {reason}"
 
-#: app/src/protection.rs:123
+#: app/src/protection.rs:69
 msgid "{smime} {pgp}"
 msgstr "{smime} {pgp}"
 
-#: app/src/protection.rs:136
+#: app/src/protection.rs:82
 msgid "This computer has nothing to encrypt with."
 msgstr "Acest calculator nu are cu ce să cripteze."
 
-#: app/src/protection.rs:143
+#: app/src/protection.rs:89
 msgid ""
 "S/MIME names every recipient inside an encrypted message, so a blind copy "
 "would not stay blind."
@@ -3461,44 +3433,44 @@ msgstr ""
 "S/MIME numește fiecare destinatar în interiorul unui mesaj criptat, așa că o "
 "copie ascunsă nu ar rămâne ascunsă."
 
-#: app/src/protection.rs:301
+#: app/src/protection.rs:247
 msgid "Signed"
 msgstr "Semnat"
 
-#: app/src/protection.rs:302
+#: app/src/protection.rs:248
 msgid "Encrypted"
 msgstr "Criptat"
 
-#: app/src/protection.rs:303
+#: app/src/protection.rs:249
 msgid "Signed and encrypted"
 msgstr "Semnat și criptat"
 
-#: app/src/protection.rs:312
+#: app/src/protection.rs:258
 msgid "Encrypt this message to the recipients' keys"
 msgstr "Criptează acest mesaj cu cheile destinatarilor"
 
-#: app/src/protection.rs:313
+#: app/src/protection.rs:259
 msgid "Encrypt this message to the recipients' certificates"
 msgstr "Criptează acest mesaj cu certificatele destinatarilor"
 
-#: app/src/protection.rs:339
+#: app/src/protection.rs:285
 msgid "gpg holds no key and gpgsm no trusted certificate for {addresses}."
 msgstr ""
 "gpg nu are nicio cheie și gpgsm niciun certificat de încredere pentru "
 "{addresses}."
 
-#: app/src/protection.rs:347
+#: app/src/protection.rs:293
 msgid "A message goes out under one standard or the other. {pgp} {smime}"
 msgstr "Un mesaj pleacă folosind un standard sau celălalt. {pgp} {smime}"
 
-#: app/src/protection.rs:612
+#: app/src/protection/common.rs:323
 msgid ""
 "This key does not name {sender}, the address the message says it is from."
 msgstr ""
 "Această cheie nu numește {sender}, adresa de la care mesajul spune că "
 "provine."
 
-#: app/src/protection.rs:616
+#: app/src/protection/common.rs:327
 msgid ""
 "This certificate does not name {sender}, the address the message says it is "
 "from."
@@ -3506,80 +3478,80 @@ msgstr ""
 "Acest certificat nu numește {sender}, adresa de la care mesajul spune că "
 "provine."
 
-#: app/src/protection.rs:625
+#: app/src/protection/common.rs:336
 msgid "Signed by {signer}"
 msgstr "Semnat de {signer}"
 
-#: app/src/protection.rs:631
+#: app/src/protection/common.rs:342
 msgid "This message changed after it was signed"
 msgstr "Acest mesaj s-a schimbat după ce a fost semnat"
 
-#: app/src/protection.rs:633
+#: app/src/protection/common.rs:344
 msgid "The signature of {signer} does not match what arrived."
 msgstr "Semnătura lui {signer} nu corespunde cu ce a sosit."
 
-#: app/src/protection.rs:640
+#: app/src/protection/common.rs:351
 msgid "Signed by {signer}, whose key has expired"
 msgstr "Semnat de {signer}, a cărui cheie a expirat"
 
-#: app/src/protection.rs:644
+#: app/src/protection/common.rs:355
 msgid "The text is as it was written, and the key behind it ran out."
 msgstr "Textul este așa cum a fost scris, iar cheia din spatele lui a expirat."
 
-#: app/src/protection.rs:650
+#: app/src/protection/common.rs:361
 msgid "Signed by {signer}, whose certificate has run out"
 msgstr "Semnat de {signer}, al cărui certificat a expirat"
 
-#: app/src/protection.rs:654
+#: app/src/protection/common.rs:365
 msgid ""
 "The text is as it was written, and the certificate behind it has expired."
 msgstr ""
 "Textul este așa cum a fost scris, iar certificatul din spatele lui a expirat."
 
-#: app/src/protection.rs:660
+#: app/src/protection/common.rs:371
 msgid "Signed by {signer}, who took this key back"
 msgstr "Semnat de {signer}, care a retras această cheie"
 
-#: app/src/protection.rs:664
+#: app/src/protection/common.rs:375
 msgid "The owner revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Proprietarul a revocat-o, așa că nu spune nimic despre cine a scris acest "
 "mesaj."
 
-#: app/src/protection.rs:670
+#: app/src/protection/common.rs:381
 msgid "Signed by {signer}, whose certificate was taken back"
 msgstr "Semnat de {signer}, al cărui certificat a fost retras"
 
-#: app/src/protection.rs:674
+#: app/src/protection/common.rs:385
 msgid "Whoever issued it revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Emitentul l-a revocat, așa că nu spune nimic despre cine a scris acest mesaj."
 
-#: app/src/protection.rs:680
+#: app/src/protection/common.rs:391
 msgid "Signed by {signer}, and the signature has run out"
 msgstr "Semnat de {signer}, iar semnătura a expirat"
 
-#: app/src/protection.rs:684
+#: app/src/protection/common.rs:395
 msgid "It carried a date to stop being good on, and that date has passed."
 msgstr "Avea o dată de expirare, iar acea dată a trecut."
 
-#: app/src/protection.rs:689
+#: app/src/protection/common.rs:400
 msgid "Signed by a key this computer does not hold"
 msgstr "Semnat cu o cheie pe care acest calculator nu o are"
 
-#: app/src/protection.rs:691
+#: app/src/protection/common.rs:402
 msgid "Nothing here can check it. Ask gpg for key {key}."
 msgstr "Nimic de aici nu o poate verifica. Cereți gpg cheia {key}."
 
-#: app/src/protection.rs:698
+#: app/src/protection/common.rs:409
 msgid "it names"
 msgstr "numește"
 
-#: app/src/protection.rs:704
+#: app/src/protection/common.rs:415
 msgid "Signed by a certificate this computer does not hold"
 msgstr "Semnat cu un certificat pe care acest calculator nu îl are"
 
-#: app/src/protection.rs:706
+#: app/src/protection/common.rs:417
 msgid ""
 "The message carried none either, so there is nothing here to check it "
 "against."
@@ -3587,94 +3559,94 @@ msgstr ""
 "Nici mesajul nu conținea unul, așa că aici nu există nimic cu care să fie "
 "verificat."
 
-#: app/src/protection.rs:712
+#: app/src/protection/common.rs:423
 msgid "gpg could not check this signature"
 msgstr "gpg nu a putut verifica această semnătură"
 
-#: app/src/protection.rs:717
+#: app/src/protection/common.rs:428
 msgid "gpgsm could not check this signature"
 msgstr "gpgsm nu a putut verifica această semnătură"
 
-#: app/src/protection.rs:740
+#: app/src/protection/common.rs:451
 msgid "Encrypted, and signed by {signer}"
 msgstr "Criptat și semnat de {signer}"
 
-#: app/src/protection.rs:749
+#: app/src/protection/common.rs:460
 msgid "Encrypted. {what}"
 msgstr "Criptat. {what}"
 
-#: app/src/protection.rs:755
+#: app/src/protection/common.rs:466
 msgid "This message arrived encrypted"
 msgstr "Acest mesaj a sosit criptat"
 
-#: app/src/protection.rs:757
+#: app/src/protection/common.rs:468
 msgid "Nobody signed it, so it says nothing about who sent it."
 msgstr "Nu l-a semnat nimeni, așa că nu spune nimic despre cine l-a trimis."
 
-#: app/src/protection.rs:765
+#: app/src/protection/common.rs:476
 msgid "{detail} {files}"
 msgstr "{detail} {files}"
 
-#: app/src/protection.rs:779
+#: app/src/protection/common.rs:490
 msgid "This message is encrypted to a key you do not hold"
 msgstr "Acest mesaj este criptat pentru o cheie pe care nu o aveți"
 
-#: app/src/protection.rs:781
+#: app/src/protection/common.rs:492
 msgid "Whoever sent it used a key gpg has no secret half of."
 msgstr ""
 "Expeditorul a folosit o cheie a cărei jumătăți secrete nu se află în gpg."
 
-#: app/src/protection.rs:786
+#: app/src/protection/common.rs:497
 msgid "This message is encrypted to a certificate you do not hold"
 msgstr "Acest mesaj este criptat pentru un certificat pe care nu îl aveți"
 
-#: app/src/protection.rs:788
+#: app/src/protection/common.rs:499
 msgid "Whoever sent it used a certificate gpgsm has no secret key for."
 msgstr ""
 "Expeditorul a folosit un certificat pentru care gpgsm nu are cheie secretă."
 
-#: app/src/protection.rs:794
+#: app/src/protection/common.rs:505
 msgid "This message says it is OpenPGP and is not"
 msgstr "Acest mesaj pretinde că este OpenPGP, dar nu este"
 
-#: app/src/protection.rs:795
+#: app/src/protection/common.rs:506
 msgid "This message says it is S/MIME and is not"
 msgstr "Acest mesaj pretinde că este S/MIME, dar nu este"
 
-#: app/src/protection.rs:798
+#: app/src/protection/common.rs:509
 msgid "Its parts are not where a signed or encrypted message keeps them."
 msgstr ""
 "Părțile sale nu sunt acolo unde le păstrează un mesaj semnat sau criptat."
 
-#: app/src/protection.rs:803
+#: app/src/protection/common.rs:514
 msgid "This message is too large to open"
 msgstr "Acest mesaj este prea mare pentru a fi deschis"
 
-#: app/src/protection.rs:805
+#: app/src/protection/common.rs:516
 msgid "It opens to more than {size} MB, so Penguin Mail stopped reading it."
 msgstr "Deschis, depășește {size} MB, așa că Penguin Mail a oprit citirea lui."
 
-#: app/src/protection.rs:812
+#: app/src/protection/common.rs:523
 msgid "gpg could not open this message"
 msgstr "gpg nu a putut deschide acest mesaj"
 
-#: app/src/protection.rs:813
+#: app/src/protection/common.rs:524
 msgid "gpgsm could not open this message"
 msgstr "gpgsm nu a putut deschide acest mesaj"
 
-#: app/src/protection.rs:826
+#: app/src/protection/common.rs:537
 msgid "You marked this key as one not to trust."
 msgstr "Ați marcat această cheie ca nedemnă de încredere."
 
-#: app/src/protection.rs:827
+#: app/src/protection/common.rs:538
 msgid "This is one of your own keys."
 msgstr "Aceasta este una dintre cheile dumneavoastră."
 
-#: app/src/protection.rs:828
+#: app/src/protection/common.rs:539
 msgid "You have vouched for this key."
 msgstr "Ați garantat pentru această cheie."
 
-#: app/src/protection.rs:830
+#: app/src/protection/common.rs:541
 msgid ""
 "Only people you partly trust have vouched for this key, so it is not fully "
 "checked."
@@ -3682,12 +3654,12 @@ msgstr ""
 "Doar persoane în care aveți încredere parțială au garantat pentru această "
 "cheie, așa că nu este verificată complet."
 
-#: app/src/protection.rs:833
+#: app/src/protection/common.rs:544
 msgid "Nobody has vouched for this key, so it names no one."
 msgstr ""
 "Nimeni nu a garantat pentru această cheie, așa că nu identifică pe nimeni."
 
-#: app/src/protection.rs:836
+#: app/src/protection/common.rs:547
 msgid ""
 "Its certificate leads back to an authority you trust, but this computer "
 "could not check whether it was revoked."
@@ -3695,48 +3667,48 @@ msgstr ""
 "Certificatul său duce la o autoritate în care aveți încredere, dar acest "
 "calculator nu a putut verifica dacă a fost revocat."
 
-#: app/src/protection.rs:840
+#: app/src/protection/common.rs:551
 msgid "Its certificate leads back to an authority you trust."
 msgstr "Certificatul său duce la o autoritate în care aveți încredere."
 
-#: app/src/protection.rs:843
+#: app/src/protection/common.rs:554
 msgid "Its certificate leads back to nobody you trust, so it names no one."
 msgstr ""
 "Certificatul său nu duce la nimeni în care aveți încredere, așa că nu "
 "identifică pe nimeni."
 
-#: app/src/protection.rs:846
+#: app/src/protection/common.rs:557
 msgid "Nothing here says who that certificate belongs to."
 msgstr "Nimic de aici nu spune cui aparține acel certificat."
 
-#: app/src/protection.rs:882
+#: app/src/protection/common.rs:593
 msgid "key {key}"
 msgstr "cheia {key}"
 
-#: app/src/protection.rs:885
+#: app/src/protection/common.rs:596
 msgid "a key gpg would not name"
 msgstr "o cheie pe care gpg nu o numește"
 
-#: app/src/protection.rs:886
+#: app/src/protection/common.rs:597
 msgid "a certificate gpgsm would not name"
 msgstr "un certificat pe care gpgsm nu îl numește"
 
-#: app/src/protection.rs:897
+#: app/src/protection/common.rs:608
 msgid "It carries a file, kept in this window only."
 msgstr "Conține un fișier, păstrat doar în această fereastră."
 
-#: app/src/protection.rs:899
+#: app/src/protection/common.rs:610
 msgid "It carries {count} file, kept in this window only."
 msgid_plural "It carries {count} files, kept in this window only."
 msgstr[0] "Conține {count} fișier, păstrat doar în această fereastră."
 msgstr[1] "Conține {count} fișiere, păstrate doar în această fereastră."
 msgstr[2] "Conține {count} de fișiere, păstrate doar în această fereastră."
 
-#: app/src/protection.rs:930
+#: app/src/protection/common.rs:641
 msgid "{names} or {last}"
 msgstr "{names} sau {last}"
 
-#: app/src/protection.rs:942
+#: app/src/protection/common.rs:653
 msgid "{names} and {last}"
 msgstr "{names} și {last}"
 
@@ -4365,6 +4337,14 @@ msgstr ""
 "Acest calculator nu are gpgsm. Instalați GnuPG pentru a citi sau trimite "
 "mesaje S/MIME."
 
+#: app/src/smime.rs:258
+msgid "Could not run {program}: {reason}"
+msgstr "Nu s-a putut rula {program}: {reason}"
+
+#: app/src/smime.rs:262
+msgid "Could not write a temporary file: {reason}"
+msgstr "Nu s-a putut scrie un fișier temporar: {reason}"
+
 #: app/src/smime.rs:266
 msgid "This message is encrypted to a certificate this computer does not hold."
 msgstr ""
@@ -4388,6 +4368,10 @@ msgstr "Această parte nu conține date S/MIME."
 #: app/src/smime.rs:277
 msgid "This file holds no certificate."
 msgstr "Acest fișier nu conține niciun certificat."
+
+#: app/src/smime.rs:278
+msgid "This message is too large to open."
+msgstr "Acest mesaj este prea mare pentru a fi deschis."
 
 #: app/src/smime.rs:280
 msgid "That passphrase does not open this file. Nothing was imported."
@@ -11734,6 +11718,1090 @@ msgstr "Este necitit"
 msgid "Is flagged"
 msgstr "Are steguleț"
 
+#: fltk/engine/src/accounts.rs:6
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot change real accounts"
+msgstr "Modul demonstrativ nu poate adăuga conturi reale."
+
+#: fltk/engine/src/accounts.rs:116
+#, fuzzy
+#| msgid "Account options"
+msgid "Account not found"
+msgstr "Opțiunile contului"
+
+#: fltk/engine/src/accounts.rs:122
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Unknown account request"
+msgstr "Adăugați mai întâi un cont"
+
+#: fltk/engine/src/compose.rs:11
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid recipient address"
+msgstr "{recipient}, nu este o adresă"
+
+#: fltk/engine/src/compose.rs:27
+#, fuzzy
+#| msgid "Changing a contact"
+msgid "Choose a sending account"
+msgstr "Se modifică un contact"
+
+#: fltk/engine/src/compose.rs:33
+#, fuzzy
+#| msgid "No recipients"
+msgid "Enter a recipient"
+msgstr "Niciun destinatar"
+
+#: fltk/engine/src/compose.rs:37
+msgid "Subject cannot contain a line break"
+msgstr ""
+
+#: fltk/engine/src/compose.rs:56
+#, fuzzy
+#| msgid "Has an attachment"
+msgid "Invalid attachment path"
+msgstr "Are un atașament"
+
+#: fltk/engine/src/compose.rs:60 fltk/engine/src/compose.rs:67
+#: fltk/engine/src/compose.rs:85
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachments exceed 25 MB"
+msgstr "Atașamente"
+
+#: fltk/engine/src/compose.rs:72
+#, fuzzy
+#| msgid "Attachment Missing?"
+msgid "Attachment name missing"
+msgstr "Lipsește atașamentul?"
+
+#: fltk/engine/src/crypto.rs:89
+msgid "Key file exceeds 4 MB"
+msgstr ""
+
+#: fltk/engine/src/crypto.rs:97
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown OpenPGP request"
+msgstr "Expeditor necunoscut"
+
+#: fltk/engine/src/main.rs:64
+#, fuzzy
+#| msgid "Sign in again to {account}"
+msgid "Sign in again to grant permission."
+msgstr "Conectați-vă din nou la {account}"
+
+#: fltk/engine/src/main.rs:182
+#, fuzzy
+#| msgid "Sign In Again"
+msgid "Sign in again"
+msgstr "Conectare din nou"
+
+#: fltk/engine/src/main.rs:266
+#, fuzzy
+#| msgid "Account Added"
+msgid "Account required"
+msgstr "Cont adăugat"
+
+#: fltk/engine/src/main.rs:270
+#, fuzzy
+#| msgid "Show Mailboxes"
+msgid "Unknown mailbox"
+msgstr "Arată căsuțele poștale"
+
+#: fltk/engine/src/main.rs:329
+msgid "Queued message not found"
+msgstr ""
+
+#: fltk/engine/src/main.rs:358
+msgid "This message is not cached. Reconnect the account to download it."
+msgstr ""
+
+#: fltk/engine/src/main.rs:367
+msgid "Reconnect the account to read the original protected message."
+msgstr ""
+
+#: fltk/engine/src/main.rs:376
+#, fuzzy
+#| msgid "gpg could not open this message"
+msgid "OpenPGP could not open this message"
+msgstr "gpg nu a putut deschide acest mesaj"
+
+#: fltk/engine/src/main.rs:398
+msgid "Targets required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:408
+msgid "Time required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:460
+#, fuzzy
+#| msgid "That message is no longer waiting."
+msgid "This message is no longer a draft"
+msgstr "Mesajul respectiv nu mai este în așteptare."
+
+#: fltk/engine/src/main.rs:464
+#, fuzzy
+#| msgid "Save draft"
+msgid "Unreadable draft"
+msgstr "Salvează ciorna"
+
+#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#, fuzzy
+#| msgid "Forwarded message removed"
+msgid "Queued message required"
+msgstr "Mesajul redirecționat a fost eliminat"
+
+#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot add real accounts"
+msgstr "Modul demonstrativ nu poate adăuga conturi reale."
+
+#: fltk/engine/src/main.rs:575
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown provider"
+msgstr "Expeditor necunoscut"
+
+#: fltk/engine/src/main.rs:598
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Sign-in timed out"
+msgstr "Conectarea s-a oprit"
+
+#: fltk/engine/src/main.rs:608
+#, fuzzy
+#| msgid "Your email address"
+msgid "Invalid email address"
+msgstr "Adresa dumneavoastră de e-mail"
+
+#: fltk/engine/src/main.rs:700
+msgid "Enter a title and an end after the start"
+msgstr ""
+
+#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/notifications.rs:164
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown request"
+msgstr "Expeditor necunoscut"
+
+#: fltk/engine/src/notifications.rs:144
+#, fuzzy
+#| msgid "File not found"
+msgid "Event not found"
+msgstr "Fișierul nu a fost găsit"
+
+#: fltk/engine/src/oauth.rs:23
+#, fuzzy
+#| msgid "Attachments"
+msgid "OAuth client file exceeds 1 MB"
+msgstr "Atașamente"
+
+#: fltk/engine/src/oauth.rs:26
+msgid "Unreadable Google OAuth client JSON"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:32
+msgid "Choose a Google OAuth client of type Desktop app"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:38
+msgid "The Google client file has no valid client ID and secret"
+msgstr ""
+
+#: fltk/native/engine.h:47
+msgid "Mail engine disconnected"
+msgstr ""
+
+#: fltk/native/engine.h:61
+msgid "Mail engine response exceeds limit"
+msgstr ""
+
+#: fltk/native/engine.h:69
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Mail engine stopped"
+msgstr "Conectarea s-a oprit"
+
+#: fltk/native/engine.h:103 fltk/native/engine.h:107
+msgid "Cannot create engine pipe"
+msgstr ""
+
+#: fltk/native/engine.h:182
+#, fuzzy
+#| msgid "Penguin Mail {version} is available"
+msgid "Mail engine unavailable"
+msgstr "Penguin Mail {version} este disponibil"
+
+#: fltk/native/engine.h:187
+#, fuzzy
+#| msgid "Too many connections"
+msgid "Too many pending requests"
+msgstr "Prea multe conexiuni"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Month"
+msgid "Mon"
+msgstr "Lună"
+
+#: fltk/native/main.cpp:296
+msgid "Thu"
+msgstr ""
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Tuesday"
+msgid "Tue"
+msgstr "marți"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Red"
+msgid "Wed"
+msgstr "Roșu"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Friday"
+msgid "Fri"
+msgstr "vineri"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Slate"
+msgid "Sat"
+msgstr "Ardezie"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Sunday"
+msgid "Sun"
+msgstr "duminică"
+
+#: fltk/native/main.cpp:436
+msgid "The request failed."
+msgstr ""
+
+#: fltk/native/main.cpp:441
+#, fuzzy
+#| msgid "Changing a setting"
+msgid "The mail engine is starting."
+msgstr "Se modifică o setare"
+
+#: fltk/native/main.cpp:516
+#, fuzzy
+#| msgid "Undo"
+msgid "Undone"
+msgstr "Anulează"
+
+#: fltk/native/main.cpp:525
+#, fuzzy
+#| msgid "Open a conversation first"
+msgid "Select a conversation first."
+msgstr "Deschideți mai întâi o conversație"
+
+#: fltk/native/main.cpp:530
+#, fuzzy
+#| msgid "Labels changed"
+msgid "Label name"
+msgstr "Etichete modificate"
+
+#: fltk/native/main.cpp:537
+msgid "Remind at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:542 fltk/native/main.cpp:1063
+msgid "Choose a future date and time."
+msgstr ""
+
+#: fltk/native/main.cpp:547
+#, fuzzy
+#| msgid "Matching your mail…"
+msgid "Updating mail…"
+msgstr "Se potrivește corespondența…"
+
+#: fltk/native/main.cpp:549
+msgid "Mail updated. Use Undo to reverse the action."
+msgstr ""
+
+#: fltk/native/main.cpp:684
+#, fuzzy
+#| msgid "Conversation"
+msgid "conversations"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:686
+msgid "Load More is available in View."
+msgstr ""
+
+#: fltk/native/main.cpp:731
+#, fuzzy
+#| msgid "Reading a conversation"
+msgid "Loading conversation…"
+msgstr "Se citește o conversație"
+
+#: fltk/native/main.cpp:768 fltk/native/main.cpp:787
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment"
+msgstr "Atașamente"
+
+#: fltk/native/main.cpp:771
+msgid "S/MIME message. Export the original to inspect its protection."
+msgstr ""
+
+#: fltk/native/main.cpp:775
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversation loaded"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:786 fltk/native/main.cpp:1787
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Save Attachment"
+msgstr "Salvează atașamentele"
+
+#: fltk/native/main.cpp:796
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment saved"
+msgstr "Atașamente"
+
+#: fltk/native/main.cpp:809
+msgid "Select an outgoing message first."
+msgstr ""
+
+#: fltk/native/main.cpp:813
+#, fuzzy
+#| msgid "Delete This Message Forever?"
+msgid "Delete this queued message?"
+msgstr "Ștergeți definitiv acest mesaj?"
+
+#: fltk/native/main.cpp:824
+#, fuzzy
+#| msgid "Conversation"
+msgid "Export Conversation"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:832
+#, fuzzy
+#| msgid "No Conversation Selected"
+msgid "Conversation exported"
+msgstr "Nicio conversație selectată"
+
+#: fltk/native/main.cpp:872
+#, fuzzy
+#| msgid "Reminders"
+msgid "Reminder snoozed"
+msgstr "Mementouri"
+
+#: fltk/native/main.cpp:930
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Add an account before composing mail."
+msgstr "Adăugați mai întâi un cont"
+
+#: fltk/native/main.cpp:935 fltk/native/main.cpp:2069
+#, fuzzy
+#| msgid "New Message"
+msgid "Compose Message"
+msgstr "Mesaj nou"
+
+#: fltk/native/main.cpp:947
+msgid "Sign (OpenPGP)"
+msgstr ""
+
+#: fltk/native/main.cpp:948
+#, fuzzy
+#| msgid "Encrypted"
+msgid "Encrypt (OpenPGP)"
+msgstr "Criptat"
+
+#: fltk/native/main.cpp:970
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Remove Attachment"
+msgstr "Salvează atașamentele"
+
+#: fltk/native/main.cpp:980
+#, fuzzy
+#| msgid "Checking for Updates…"
+msgid "Checking local OpenPGP keys…"
+msgstr "Se caută actualizări…"
+
+#: fltk/native/main.cpp:1042
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "Semnat și criptat"
+
+#: fltk/native/main.cpp:1043
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1058
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1070
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "Trimiteți fără criptare?"
+
+#: fltk/native/main.cpp:1075
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "Se lucrează"
+
+#: fltk/native/main.cpp:1092
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1116
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1122
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1135
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "Verificat"
+
+#: fltk/native/main.cpp:1138
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "Trimite"
+
+#: fltk/native/main.cpp:1140
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "Trimite mai târziu"
+
+#: fltk/native/main.cpp:1142
+#, fuzzy
+#| msgid "Save Draft"
+msgid "File/Save Draft"
+msgstr "Salvează ciorna"
+
+#: fltk/native/main.cpp:1144
+#, fuzzy
+#| msgid "Close"
+msgid "File/Close"
+msgstr "Închide"
+
+#: fltk/native/main.cpp:1147 fltk/native/main.cpp:1854
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Undo"
+msgstr "Editează"
+
+#: fltk/native/main.cpp:1148 fltk/native/main.cpp:1855
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Cut"
+msgstr "Editează"
+
+#: fltk/native/main.cpp:1149 fltk/native/main.cpp:1856
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Copy"
+msgstr "Editează"
+
+#: fltk/native/main.cpp:1150 fltk/native/main.cpp:1857
+#, fuzzy
+#| msgid "Edit Template"
+msgid "Edit/Paste"
+msgstr "Editează șablonul"
+
+#: fltk/native/main.cpp:1151 fltk/native/main.cpp:1858
+#, fuzzy
+#| msgid "Select all"
+msgid "Edit/Select All"
+msgstr "Selectează tot"
+
+#: fltk/native/main.cpp:1156
+msgid "Wait for the current request to finish."
+msgstr ""
+
+#: fltk/native/main.cpp:1161
+msgid "Close this message? Save a draft to keep your changes."
+msgstr ""
+
+#: fltk/native/main.cpp:1195
+#, fuzzy
+#| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
+msgid "This build has no Microsoft sign-in client."
+msgstr ""
+"Această copie a Penguin Mail a fost compilată fără conectare Microsoft."
+
+#: fltk/native/main.cpp:1197
+#, fuzzy
+#| msgid "Choose a Time…"
+msgid "Choose Client JSON…"
+msgstr "Alegeți o oră…"
+
+#: fltk/native/main.cpp:1197
+msgid "Setup Instructions"
+msgstr ""
+
+#: fltk/native/main.cpp:1198
+msgid ""
+"This build has no Google sign-in client.\n"
+"Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
+"After sign-in, the account client and refresh token will be saved\n"
+"in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1204
+msgid "Google Desktop OAuth Client"
+msgstr ""
+
+#: fltk/native/main.cpp:1209
+#, fuzzy
+#| msgid "Continue in your browser"
+msgid "Complete sign-in in your browser."
+msgstr "Continuați în navigator"
+
+#: fltk/native/main.cpp:1218
+msgid ""
+"Demo mode uses temporary sample accounts. Start without --demo to add an "
+"account."
+msgstr ""
+
+#: fltk/native/main.cpp:1223
+#, fuzzy
+#| msgid "Google Meet"
+msgid "Google…"
+msgstr "Google Meet"
+
+#: fltk/native/main.cpp:1224
+#, fuzzy
+#| msgid "Microsoft Teams"
+msgid "Microsoft…"
+msgstr "Microsoft Teams"
+
+#: fltk/native/main.cpp:1226
+#, fuzzy
+#| msgid "Account"
+msgid "Account Type"
+msgstr "Cont"
+
+#: fltk/native/main.cpp:1232 fltk/native/main.cpp:1285
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "IMAP Server"
+msgstr "Servere MCP"
+
+#: fltk/native/main.cpp:1235
+#, fuzzy
+#| msgid "Security"
+msgid "IMAP Security"
+msgstr "Securitate"
+
+#: fltk/native/main.cpp:1238
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "SMTP Server"
+msgstr "Servere MCP"
+
+#: fltk/native/main.cpp:1241
+#, fuzzy
+#| msgid "Security"
+msgid "SMTP Security"
+msgstr "Securitate"
+
+#: fltk/native/main.cpp:1244
+#, fuzzy
+#| msgid "User Name"
+msgid "SMTP User Name"
+msgstr "Nume de utilizator"
+
+#: fltk/native/main.cpp:1245
+#, fuzzy
+#| msgid "Password"
+msgid "SMTP Password"
+msgstr "Parolă"
+
+#: fltk/native/main.cpp:1248
+msgid ""
+"Leave user names and the SMTP password empty to use the incoming account's "
+"details. Passwords are stored in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1252
+#, fuzzy
+#| msgid "Servers"
+msgid "Find Servers"
+msgstr "Servere"
+
+#: fltk/native/main.cpp:1259
+msgid "No servers found. Enter the server details manually."
+msgstr ""
+
+#: fltk/native/main.cpp:1264
+#, fuzzy
+#| msgid "Use {server}"
+msgid "Use Servers"
+msgstr "Folosește {server}"
+
+#: fltk/native/main.cpp:1265
+msgid "These servers were discovered outside your email domain. Use them?"
+msgstr ""
+
+#: fltk/native/main.cpp:1283
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "POP3 Server"
+msgstr "Servere MCP"
+
+#: fltk/native/main.cpp:1284
+#, fuzzy
+#| msgid "Server"
+msgid "Server URL"
+msgstr "Server"
+
+#: fltk/native/main.cpp:1300
+msgid "Authentication"
+msgstr ""
+
+#: fltk/native/main.cpp:1322
+msgid "Enter ports between 1 and 65535."
+msgstr ""
+
+#: fltk/native/main.cpp:1350
+msgid "Checking the incoming and outgoing servers…"
+msgstr ""
+
+#: fltk/native/main.cpp:1369
+msgid ""
+"Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
+"the preview closes."
+msgstr ""
+
+#: fltk/native/main.cpp:1370
+msgid ""
+"OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
+"file, or manage keys with your usual GnuPG tools. Keys are never fetched "
+"automatically."
+msgstr ""
+
+#: fltk/native/main.cpp:1372
+#, fuzzy
+#| msgid "Add Address"
+msgid "Addresses"
+msgstr "Adaugă o adresă"
+
+#: fltk/native/main.cpp:1388
+#, fuzzy
+#| msgid "Not encrypted in transit"
+msgid "No encryption key"
+msgstr "Necriptat în tranzit"
+
+#: fltk/native/main.cpp:1395
+#, fuzzy
+#| msgid "Check for Updates"
+msgid "Check Local Keys"
+msgstr "Caută actualizări"
+
+#: fltk/native/main.cpp:1396
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Key File…"
+msgstr "Importă…"
+
+#: fltk/native/main.cpp:1398
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Import OpenPGP Key"
+msgstr "Importă chei OpenPGP"
+
+#: fltk/native/main.cpp:1401
+#, fuzzy
+#| msgid "Import…"
+msgid "Import"
+msgstr "Importă…"
+
+#: fltk/native/main.cpp:1402
+msgid "Import this file into your GnuPG keyring?"
+msgstr ""
+
+#: fltk/native/main.cpp:1403
+#, fuzzy
+#| msgid "Import…"
+msgid "Importing key…"
+msgstr "Importă…"
+
+#: fltk/native/main.cpp:1406
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Imported keys:"
+msgstr "Importă chei OpenPGP"
+
+#: fltk/native/main.cpp:1416
+#, fuzzy
+#| msgid "Conversation"
+msgid "GnuPG version:"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:1423
+msgid "Keep syncing in the tray when the window closes"
+msgstr ""
+
+#: fltk/native/main.cpp:1426
+#, fuzzy
+#| msgid "Notifications"
+msgid "Show new mail notifications"
+msgstr "Notificări"
+
+#: fltk/native/main.cpp:1431
+#, fuzzy
+#| msgid "Group Messages into Conversations"
+msgid "Group messages into conversations"
+msgstr "Grupează mesajele în conversații"
+
+#: fltk/native/main.cpp:1434
+msgid "Sync Interval (seconds)"
+msgstr ""
+
+#: fltk/native/main.cpp:1437
+msgid "Local Mail Window (days)"
+msgstr ""
+
+#: fltk/native/main.cpp:1441
+msgid ""
+"Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
+"window changes apply after restart."
+msgstr ""
+
+#: fltk/native/main.cpp:1486
+#, fuzzy
+#| msgid "Calendar to add to"
+msgid "Calendar loaded"
+msgstr "Calendarul în care se adaugă"
+
+#: fltk/native/main.cpp:1535
+msgid "No writable calendar is available."
+msgstr ""
+
+#: fltk/native/main.cpp:1540
+#, fuzzy
+#| msgid "Starts"
+msgid "Start"
+msgstr "Începe"
+
+#: fltk/native/main.cpp:1541
+#, fuzzy
+#| msgid "Ends"
+msgid "End"
+msgstr "Se termină"
+
+#: fltk/native/main.cpp:1542
+#, fuzzy
+#| msgid "Notifications"
+msgid "Location"
+msgstr "Notificări"
+
+#: fltk/native/main.cpp:1546
+msgid ""
+"Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
+"provider."
+msgstr ""
+
+#: fltk/native/main.cpp:1567
+#, fuzzy
+#| msgid "New Event"
+msgid "Save Event"
+msgstr "Eveniment nou"
+
+#: fltk/native/main.cpp:1573
+msgid "Enter a title and a valid start and end time."
+msgstr ""
+
+#: fltk/native/main.cpp:1598 fltk/native/main.cpp:1818
+#, fuzzy
+#| msgid "Delete it"
+msgid "Delete Event"
+msgstr "Șterge-l"
+
+#: fltk/native/main.cpp:1599
+msgid "Delete this event and notify its guests?"
+msgstr ""
+
+#: fltk/native/main.cpp:1610
+#, fuzzy
+#| msgid "Contacts"
+msgid "Contacts loaded"
+msgstr "Contacte"
+
+#: fltk/native/main.cpp:1631 fltk/native/main.cpp:1826
+#, fuzzy
+#| msgid "Contact"
+msgid "New Contact"
+msgstr "Contact"
+
+#: fltk/native/main.cpp:1639
+#, fuzzy
+#| msgid "Contact"
+msgid "Save Contact"
+msgstr "Contact"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1883
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Forward"
+msgstr "Mesaj"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1879
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Reply"
+msgstr "Mesaj"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1881
+#, fuzzy
+#| msgid "Reply All"
+msgid "Message/Reply All"
+msgstr "Răspunde tuturor"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1885
+#, fuzzy
+#| msgid "Message Cache"
+msgid "Message/Archive"
+msgstr "Cache de mesaje"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1887
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Message/Move to Trash"
+msgstr "Mută în Coșul de gunoi"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1893
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Flag"
+msgstr "Mesaj"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1889
+#, fuzzy
+#| msgid "Message sent"
+msgid "Message/Mark Read"
+msgstr "Mesaj trimis"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1891
+#, fuzzy
+#| msgid "Mark as Unread"
+msgid "Message/Mark Unread"
+msgstr "Marchează ca necitit"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1895
+#, fuzzy
+#| msgid "New Label…"
+msgid "Message/Label…"
+msgstr "Etichetă nouă…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1896
+#, fuzzy
+#| msgid "Remind Me"
+msgid "Message/Remind Me…"
+msgstr "Amintește-mi"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1894
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Unflag"
+msgstr "Mesaj"
+
+#: fltk/native/main.cpp:1684 fltk/native/main.cpp:1845
+#, fuzzy
+#| msgid "Conversation"
+msgid "File/Export Conversation…"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:1772
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "Conversație"
+
+#: fltk/native/main.cpp:1814
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "Calendare"
+
+#: fltk/native/main.cpp:1824
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "Contacte"
+
+#: fltk/native/main.cpp:1829
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:1840
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "Întrebați Penguin Mail…"
+
+#: fltk/native/main.cpp:1842
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "Mesaj nou"
+
+#: fltk/native/main.cpp:1844
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "Adaugă un cont…"
+
+#: fltk/native/main.cpp:1847
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "Chei OpenPGP"
+
+#: fltk/native/main.cpp:1848
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "Preferințe"
+
+#: fltk/native/main.cpp:1850
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:1851
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "Închide fereastra"
+
+#: fltk/native/main.cpp:1853
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "Ieșire"
+
+#: fltk/native/main.cpp:1859
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "Caută"
+
+#: fltk/native/main.cpp:1861
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "Vizualizare"
+
+#: fltk/native/main.cpp:1862
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "Calendar nou"
+
+#: fltk/native/main.cpp:1864
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "Contacte"
+
+#: fltk/native/main.cpp:1866
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "Reîmprospătează"
+
+#: fltk/native/main.cpp:1869
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "Vezi sursa"
+
+#: fltk/native/main.cpp:1874
+#, fuzzy
+#| msgid "Edit Draft"
+msgid "Message/Edit Draft"
+msgstr "Editează ciorna"
+
+#: fltk/native/main.cpp:1875
+msgid "Message/Send Queued Message Now"
+msgstr ""
+
+#: fltk/native/main.cpp:1877
+msgid "Message/Delete Queued Message"
+msgstr ""
+
+#: fltk/native/main.cpp:1897
+#, fuzzy
+#| msgid "Keyboard Shortcuts"
+msgid "Help/Keyboard Shortcuts"
+msgstr "Scurtături de tastatură"
+
+#: fltk/native/main.cpp:1899
+msgid ""
+"Ctrl+N: New Message\n"
+"Ctrl+R: Reply\n"
+"Ctrl+Shift+R: Reply All\n"
+"Ctrl+L: Forward\n"
+"Ctrl+E: Archive\n"
+"Delete: Move to Trash\n"
+"Ctrl+Z: Undo\n"
+"Ctrl+F: Search\n"
+"Ctrl+1/2/3: Mail / Calendar / Contacts\n"
+"F5: Refresh\n"
+"Ctrl+W: Close Window\n"
+"Ctrl+Q: Quit\n"
+"\n"
+"Composer: Ctrl+Enter sends, Ctrl+S saves a draft.\n"
+"DomeD owns Super shortcuts."
+msgstr ""
+
+#: fltk/native/main.cpp:1906
+#, fuzzy
+#| msgid "About Penguin Mail"
+msgid "Help/About Penguin Mail"
+msgstr "Despre Penguin Mail"
+
+#: fltk/native/main.cpp:1909
+msgid ""
+"Penguin Mail 1.0.10\n"
+"FLTK edition for DomeD\n"
+"\n"
+"Original mail engines: c9dev/penguin-mail\n"
+"License: GPL-3.0-or-later"
+msgstr ""
+
+#: fltk/native/main.cpp:2037
+msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr ""
+
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
 msgstr ""
@@ -12568,6 +13636,28 @@ msgstr "Marchează ca nefiind spam"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "Mută în {folder}"
+
+#, fuzzy
+#~| msgid "New message"
+#~ msgid "new messages"
+#~ msgstr "Mesaj nou"
+
+#, fuzzy
+#~| msgid "No Mail"
+#~ msgid "New Mail"
+#~ msgstr "Nicio corespondență"
+
+#~ msgid "gmail"
+#~ msgstr "gmail"
+
+#~ msgid "email"
+#~ msgstr "e-mail"
+
+#~ msgid "mail"
+#~ msgstr "corespondență"
+
+#~ msgid "inbox"
+#~ msgstr "mesaje primite"
 
 #~ msgid ""
 #~ "Added below new messages and above quoted text in replies. Markdown works."

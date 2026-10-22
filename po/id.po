@@ -120,22 +120,6 @@ msgstr ""
 "peramban. Penguin Mail dibuat dengan GTK dan libadwaita dan paling cocok "
 "dengan GNOME, tetapi dapat berjalan di desktop Linux mana pun."
 
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:53
-msgid "gmail"
-msgstr "gmail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:54
-msgid "email"
-msgstr "email"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:55
-msgid "mail"
-msgstr "surat"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:56
-msgid "inbox"
-msgstr "kotak masuk"
-
 #: app/data/io.github.c9dev.PenguinMail.metainfo.xml:85
 msgid "All your accounts in one inbox, with a reply open"
 msgstr "Semua akun dalam satu kotak masuk, dengan balasan terbuka"
@@ -3291,81 +3275,69 @@ msgstr "Berkas yang dilampirkan ke acara"
 msgid "{account} has not allowed Penguin Mail to {missing}"
 msgstr "{account} belum mengizinkan Penguin Mail untuk {missing}"
 
-#: app/src/pgp.rs:114
+#: app/src/pgp/adapter.rs:105
 msgid "Add a recipient whose key gpg holds."
 msgstr "Tambahkan penerima yang kuncinya disimpan gpg."
 
-#: app/src/pgp.rs:123
+#: app/src/pgp/adapter.rs:114
 msgid "gpg holds no key for {addresses}."
 msgstr "gpg tidak menyimpan kunci untuk {addresses}."
 
-#: app/src/pgp.rs:140
+#: app/src/pgp/adapter.rs:131
 msgid "gpg holds no key for any of the addresses you send from."
 msgstr "gpg tidak menyimpan kunci untuk alamat pengirim Anda."
 
-#: app/src/pgp.rs:142
+#: app/src/pgp/adapter.rs:133
 msgid "gpg holds a key for {addresses}."
 msgstr "gpg menyimpan kunci untuk {addresses}."
 
-#: app/src/pgp.rs:146
+#: app/src/pgp/adapter.rs:137
 msgid "gpg holds a key for {addresses}, and none for {without}."
 msgstr "gpg menyimpan kunci untuk {addresses}, tetapi tidak untuk {without}."
 
-#: app/src/pgp.rs:250
+#: app/src/pgp/adapter.rs:241
 msgid "This computer has no gpg. Install GnuPG to read or send OpenPGP mail."
 msgstr ""
 "Komputer ini tidak memiliki gpg. Pasang GnuPG untuk membaca atau mengirim "
 "email OpenPGP."
 
-#: app/src/pgp.rs:253 app/src/smime.rs:258
-msgid "Could not run {program}: {reason}"
-msgstr "Tidak dapat menjalankan {program}: {reason}"
-
-#: app/src/pgp.rs:257 app/src/smime.rs:262
-msgid "Could not write a temporary file: {reason}"
-msgstr "Tidak dapat menulis berkas sementara: {reason}"
-
-#: app/src/pgp.rs:261
+#: app/src/pgp/adapter.rs:252
 msgid "This message is encrypted to a key this computer does not hold."
 msgstr ""
 "Pesan ini dienkripsi menggunakan kunci yang tidak tersimpan di komputer ini."
 
-#: app/src/pgp.rs:264
+#: app/src/pgp/adapter.rs:255
 msgid "gpg holds no secret key to sign as {address}."
 msgstr ""
 "gpg tidak menyimpan kunci rahasia untuk menandatangani sebagai {address}."
 
-#: app/src/pgp.rs:268
+#: app/src/pgp/adapter.rs:259
 msgid "gpg holds no key it can encrypt to for {address}."
 msgstr ""
 "gpg tidak menyimpan kunci yang dapat digunakan untuk mengenkripsi bagi "
 "{address}."
 
-#: app/src/pgp.rs:271
+#: app/src/pgp/adapter.rs:262
 msgid "This text holds no OpenPGP block."
 msgstr "Teks ini tidak mengandung blok OpenPGP."
 
-#: app/src/pgp.rs:272
+#: app/src/pgp/adapter.rs:263
 msgid "This file holds no OpenPGP key."
 msgstr "Berkas ini tidak mengandung kunci OpenPGP."
 
-#: app/src/pgp.rs:273 app/src/smime.rs:278
-msgid "This message is too large to open."
-msgstr "Pesan ini terlalu besar untuk dibuka."
-
-#: app/src/pgp.rs:274
+#: app/src/pgp/adapter.rs:265
 msgid "gpg failed: {reason}"
 msgstr "gpg gagal: {reason}"
 
-#: app/src/protection.rs:123
+#: app/src/protection.rs:69
 msgid "{smime} {pgp}"
 msgstr "{smime} {pgp}"
 
-#: app/src/protection.rs:136
+#: app/src/protection.rs:82
 msgid "This computer has nothing to encrypt with."
 msgstr "Komputer ini tidak memiliki sarana enkripsi."
 
-#: app/src/protection.rs:143
+#: app/src/protection.rs:89
 msgid ""
 "S/MIME names every recipient inside an encrypted message, so a blind copy "
 "would not stay blind."
@@ -3373,44 +3345,44 @@ msgstr ""
 "S/MIME mencantumkan semua penerima dalam pesan terenkripsi, sehingga "
 "penerima salinan tersembunyi akan terlihat."
 
-#: app/src/protection.rs:301
+#: app/src/protection.rs:247
 msgid "Signed"
 msgstr "Ditandatangani"
 
-#: app/src/protection.rs:302
+#: app/src/protection.rs:248
 msgid "Encrypted"
 msgstr "Dienkripsi"
 
-#: app/src/protection.rs:303
+#: app/src/protection.rs:249
 msgid "Signed and encrypted"
 msgstr "Ditandatangani dan dienkripsi"
 
-#: app/src/protection.rs:312
+#: app/src/protection.rs:258
 msgid "Encrypt this message to the recipients' keys"
 msgstr "Enkripsi pesan ini dengan kunci penerima"
 
-#: app/src/protection.rs:313
+#: app/src/protection.rs:259
 msgid "Encrypt this message to the recipients' certificates"
 msgstr "Enkripsi pesan ini dengan sertifikat penerima"
 
-#: app/src/protection.rs:339
+#: app/src/protection.rs:285
 msgid "gpg holds no key and gpgsm no trusted certificate for {addresses}."
 msgstr ""
 "gpg tidak menyimpan kunci dan gpgsm tidak menyimpan sertifikat tepercaya "
 "untuk {addresses}."
 
-#: app/src/protection.rs:347
+#: app/src/protection.rs:293
 msgid "A message goes out under one standard or the other. {pgp} {smime}"
 msgstr "Pesan dikirim menggunakan salah satu standar. {pgp} {smime}"
 
-#: app/src/protection.rs:612
+#: app/src/protection/common.rs:323
 msgid ""
 "This key does not name {sender}, the address the message says it is from."
 msgstr ""
 "Kunci ini tidak mencantumkan {sender}, alamat pengirim yang tertera pada "
 "pesan."
 
-#: app/src/protection.rs:616
+#: app/src/protection/common.rs:327
 msgid ""
 "This certificate does not name {sender}, the address the message says it is "
 "from."
@@ -3418,83 +3390,83 @@ msgstr ""
 "Sertifikat ini tidak mencantumkan {sender}, alamat pengirim yang tertera "
 "pada pesan."
 
-#: app/src/protection.rs:625
+#: app/src/protection/common.rs:336
 msgid "Signed by {signer}"
 msgstr "Ditandatangani oleh {signer}"
 
-#: app/src/protection.rs:631
+#: app/src/protection/common.rs:342
 msgid "This message changed after it was signed"
 msgstr "Pesan ini berubah setelah ditandatangani"
 
-#: app/src/protection.rs:633
+#: app/src/protection/common.rs:344
 msgid "The signature of {signer} does not match what arrived."
 msgstr "Tanda tangan {signer} tidak cocok dengan pesan yang diterima."
 
-#: app/src/protection.rs:640
+#: app/src/protection/common.rs:351
 msgid "Signed by {signer}, whose key has expired"
 msgstr "Ditandatangani oleh {signer}, dengan kunci yang kedaluwarsa"
 
-#: app/src/protection.rs:644
+#: app/src/protection/common.rs:355
 msgid "The text is as it was written, and the key behind it ran out."
 msgstr "Teks tidak berubah, tetapi kunci yang digunakan telah kedaluwarsa."
 
-#: app/src/protection.rs:650
+#: app/src/protection/common.rs:361
 msgid "Signed by {signer}, whose certificate has run out"
 msgstr "Ditandatangani oleh {signer}, dengan sertifikat yang kedaluwarsa"
 
-#: app/src/protection.rs:654
+#: app/src/protection/common.rs:365
 msgid ""
 "The text is as it was written, and the certificate behind it has expired."
 msgstr ""
 "Teks tidak berubah, tetapi sertifikat yang digunakan telah kedaluwarsa."
 
-#: app/src/protection.rs:660
+#: app/src/protection/common.rs:371
 msgid "Signed by {signer}, who took this key back"
 msgstr "Ditandatangani oleh {signer}, yang mencabut kunci ini"
 
-#: app/src/protection.rs:664
+#: app/src/protection/common.rs:375
 msgid "The owner revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Pemilik telah mencabutnya, sehingga kunci ini tidak membuktikan siapa "
 "penulisnya."
 
-#: app/src/protection.rs:670
+#: app/src/protection/common.rs:381
 msgid "Signed by {signer}, whose certificate was taken back"
 msgstr "Ditandatangani oleh {signer}, dengan sertifikat yang dicabut"
 
-#: app/src/protection.rs:674
+#: app/src/protection/common.rs:385
 msgid "Whoever issued it revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Penerbit telah mencabutnya, sehingga sertifikat ini tidak membuktikan siapa "
 "penulisnya."
 
-#: app/src/protection.rs:680
+#: app/src/protection/common.rs:391
 msgid "Signed by {signer}, and the signature has run out"
 msgstr "Ditandatangani oleh {signer}, dan tanda tangannya telah kedaluwarsa"
 
-#: app/src/protection.rs:684
+#: app/src/protection/common.rs:395
 msgid "It carried a date to stop being good on, and that date has passed."
 msgstr ""
 "Tanda tangan memiliki batas masa berlaku, dan tanggal tersebut telah lewat."
 
-#: app/src/protection.rs:689
+#: app/src/protection/common.rs:400
 msgid "Signed by a key this computer does not hold"
 msgstr "Ditandatangani dengan kunci yang tidak tersimpan di komputer ini"
 
-#: app/src/protection.rs:691
+#: app/src/protection/common.rs:402
 msgid "Nothing here can check it. Ask gpg for key {key}."
 msgstr ""
 "Tidak ada sarana untuk memeriksanya di sini. Minta kunci {key} melalui gpg."
 
-#: app/src/protection.rs:698
+#: app/src/protection/common.rs:409
 msgid "it names"
 msgstr "yang tercantum"
 
-#: app/src/protection.rs:704
+#: app/src/protection/common.rs:415
 msgid "Signed by a certificate this computer does not hold"
 msgstr "Ditandatangani dengan sertifikat yang tidak tersimpan di komputer ini"
 
-#: app/src/protection.rs:706
+#: app/src/protection/common.rs:417
 msgid ""
 "The message carried none either, so there is nothing here to check it "
 "against."
@@ -3502,98 +3474,98 @@ msgstr ""
 "Pesan juga tidak menyertakannya, sehingga tidak ada sertifikat untuk "
 "memeriksa tanda tangan."
 
-#: app/src/protection.rs:712
+#: app/src/protection/common.rs:423
 msgid "gpg could not check this signature"
 msgstr "gpg tidak dapat memeriksa tanda tangan ini"
 
-#: app/src/protection.rs:717
+#: app/src/protection/common.rs:428
 msgid "gpgsm could not check this signature"
 msgstr "gpgsm tidak dapat memeriksa tanda tangan ini"
 
-#: app/src/protection.rs:740
+#: app/src/protection/common.rs:451
 msgid "Encrypted, and signed by {signer}"
 msgstr "Dienkripsi, dan ditandatangani oleh {signer}"
 
-#: app/src/protection.rs:749
+#: app/src/protection/common.rs:460
 msgid "Encrypted. {what}"
 msgstr "Dienkripsi. {what}"
 
-#: app/src/protection.rs:755
+#: app/src/protection/common.rs:466
 msgid "This message arrived encrypted"
 msgstr "Pesan ini diterima dalam keadaan terenkripsi"
 
-#: app/src/protection.rs:757
+#: app/src/protection/common.rs:468
 msgid "Nobody signed it, so it says nothing about who sent it."
 msgstr ""
 "Tidak ada yang menandatanganinya, sehingga pesan ini tidak membuktikan siapa "
 "pengirimnya."
 
-#: app/src/protection.rs:765
+#: app/src/protection/common.rs:476
 msgid "{detail} {files}"
 msgstr "{detail} {files}"
 
-#: app/src/protection.rs:779
+#: app/src/protection/common.rs:490
 msgid "This message is encrypted to a key you do not hold"
 msgstr "Pesan ini dienkripsi menggunakan kunci yang tidak Anda miliki"
 
-#: app/src/protection.rs:781
+#: app/src/protection/common.rs:492
 msgid "Whoever sent it used a key gpg has no secret half of."
 msgstr "Pengirim menggunakan kunci yang bagian rahasianya tidak disimpan gpg."
 
-#: app/src/protection.rs:786
+#: app/src/protection/common.rs:497
 msgid "This message is encrypted to a certificate you do not hold"
 msgstr "Pesan ini dienkripsi menggunakan sertifikat yang tidak Anda miliki"
 
-#: app/src/protection.rs:788
+#: app/src/protection/common.rs:499
 msgid "Whoever sent it used a certificate gpgsm has no secret key for."
 msgstr ""
 "Pengirim menggunakan sertifikat yang kunci rahasianya tidak disimpan gpgsm."
 
-#: app/src/protection.rs:794
+#: app/src/protection/common.rs:505
 msgid "This message says it is OpenPGP and is not"
 msgstr "Pesan ini mengaku berformat OpenPGP, tetapi bukan"
 
-#: app/src/protection.rs:795
+#: app/src/protection/common.rs:506
 msgid "This message says it is S/MIME and is not"
 msgstr "Pesan ini mengaku berformat S/MIME, tetapi bukan"
 
-#: app/src/protection.rs:798
+#: app/src/protection/common.rs:509
 msgid "Its parts are not where a signed or encrypted message keeps them."
 msgstr ""
 "Bagian-bagiannya tidak berada di tempat yang sesuai untuk pesan bertanda "
 "tangan atau terenkripsi."
 
-#: app/src/protection.rs:803
+#: app/src/protection/common.rs:514
 msgid "This message is too large to open"
 msgstr "Pesan ini terlalu besar untuk dibuka"
 
-#: app/src/protection.rs:805
+#: app/src/protection/common.rs:516
 msgid "It opens to more than {size} MB, so Penguin Mail stopped reading it."
 msgstr ""
 "Ukuran setelah dibuka melebihi {size} MB, sehingga Penguin Mail berhenti "
 "membacanya."
 
-#: app/src/protection.rs:812
+#: app/src/protection/common.rs:523
 msgid "gpg could not open this message"
 msgstr "gpg tidak dapat membuka pesan ini"
 
-#: app/src/protection.rs:813
+#: app/src/protection/common.rs:524
 msgid "gpgsm could not open this message"
 msgstr "gpgsm tidak dapat membuka pesan ini"
 
-#: app/src/protection.rs:826
+#: app/src/protection/common.rs:537
 msgid "You marked this key as one not to trust."
 msgstr "Anda menandai kunci ini sebagai tidak tepercaya."
 
-#: app/src/protection.rs:827
+#: app/src/protection/common.rs:538
 msgid "This is one of your own keys."
 msgstr "Ini salah satu kunci Anda sendiri."
 
-#: app/src/protection.rs:828
+#: app/src/protection/common.rs:539
 msgid "You have vouched for this key."
 msgstr "Anda telah menjamin keabsahan kunci ini."
 
-#: app/src/protection.rs:830
+#: app/src/protection/common.rs:541
 msgid ""
 "Only people you partly trust have vouched for this key, so it is not fully "
 "checked."
@@ -3601,13 +3573,13 @@ msgstr ""
 "Hanya orang yang Anda percayai sebagian yang menjamin keabsahan kunci ini, "
 "sehingga pemeriksaannya belum lengkap."
 
-#: app/src/protection.rs:833
+#: app/src/protection/common.rs:544
 msgid "Nobody has vouched for this key, so it names no one."
 msgstr ""
 "Belum ada yang menjamin keabsahan kunci ini, sehingga identitas pemiliknya "
 "belum terbukti."
 
-#: app/src/protection.rs:836
+#: app/src/protection/common.rs:547
 msgid ""
 "Its certificate leads back to an authority you trust, but this computer "
 "could not check whether it was revoked."
@@ -3615,37 +3587,37 @@ msgstr ""
 "Sertifikat ini terhubung ke otoritas yang Anda percayai, tetapi komputer ini "
 "tidak dapat memeriksa apakah sertifikat telah dicabut."
 
-#: app/src/protection.rs:840
+#: app/src/protection/common.rs:551
 msgid "Its certificate leads back to an authority you trust."
 msgstr "Sertifikat ini terhubung ke otoritas yang Anda percayai."
 
-#: app/src/protection.rs:843
+#: app/src/protection/common.rs:554
 msgid "Its certificate leads back to nobody you trust, so it names no one."
 msgstr ""
 "Sertifikat ini tidak terhubung ke pihak yang Anda percayai, sehingga "
 "identitas pemiliknya belum terbukti."
 
-#: app/src/protection.rs:846
+#: app/src/protection/common.rs:557
 msgid "Nothing here says who that certificate belongs to."
 msgstr "Tidak ada bukti di sini tentang pemilik sertifikat tersebut."
 
-#: app/src/protection.rs:882
+#: app/src/protection/common.rs:593
 msgid "key {key}"
 msgstr "kunci {key}"
 
-#: app/src/protection.rs:885
+#: app/src/protection/common.rs:596
 msgid "a key gpg would not name"
 msgstr "kunci yang tidak disebutkan gpg"
 
-#: app/src/protection.rs:886
+#: app/src/protection/common.rs:597
 msgid "a certificate gpgsm would not name"
 msgstr "sertifikat yang tidak disebutkan gpgsm"
 
-#: app/src/protection.rs:897
+#: app/src/protection/common.rs:608
 msgid "It carries a file, kept in this window only."
 msgstr "Pesan membawa satu berkas, yang hanya disimpan dalam jendela ini."
 
-#: app/src/protection.rs:899
+#: app/src/protection/common.rs:610
 msgid "It carries {count} file, kept in this window only."
 msgid_plural "It carries {count} files, kept in this window only."
 msgstr[0] ""
@@ -3653,11 +3625,11 @@ msgstr[0] ""
 msgstr[1] ""
 "Pesan membawa {count} berkas, yang hanya disimpan dalam jendela ini."
 
-#: app/src/protection.rs:930
+#: app/src/protection/common.rs:641
 msgid "{names} or {last}"
 msgstr "{names} atau {last}"
 
-#: app/src/protection.rs:942
+#: app/src/protection/common.rs:653
 msgid "{names} and {last}"
 msgstr "{names} dan {last}"
 
@@ -4278,6 +4250,14 @@ msgstr ""
 "Komputer ini tidak memiliki gpgsm. Pasang GnuPG untuk membaca atau mengirim "
 "email S/MIME."
 
+#: app/src/smime.rs:258
+msgid "Could not run {program}: {reason}"
+msgstr "Tidak dapat menjalankan {program}: {reason}"
+
+#: app/src/smime.rs:262
+msgid "Could not write a temporary file: {reason}"
+msgstr "Tidak dapat menulis berkas sementara: {reason}"
+
 #: app/src/smime.rs:266
 msgid "This message is encrypted to a certificate this computer does not hold."
 msgstr ""
@@ -4302,6 +4282,10 @@ msgstr "Bagian ini tidak mengandung data S/MIME."
 #: app/src/smime.rs:277
 msgid "This file holds no certificate."
 msgstr "Berkas ini tidak mengandung sertifikat."
+
+#: app/src/smime.rs:278
+msgid "This message is too large to open."
+msgstr "Pesan ini terlalu besar untuk dibuka."
 
 #: app/src/smime.rs:280
 msgid "That passphrase does not open this file. Nothing was imported."
@@ -11526,6 +11510,1089 @@ msgstr "Belum dibaca"
 msgid "Is flagged"
 msgstr "Berbendera"
 
+#: fltk/engine/src/accounts.rs:6
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot change real accounts"
+msgstr "Mode demo tidak dapat menambahkan akun sungguhan."
+
+#: fltk/engine/src/accounts.rs:116
+#, fuzzy
+#| msgid "Account options"
+msgid "Account not found"
+msgstr "Opsi akun"
+
+#: fltk/engine/src/accounts.rs:122
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Unknown account request"
+msgstr "Tambahkan akun terlebih dahulu"
+
+#: fltk/engine/src/compose.rs:11
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid recipient address"
+msgstr "{recipient}, bukan alamat"
+
+#: fltk/engine/src/compose.rs:27
+#, fuzzy
+#| msgid "Changing a contact"
+msgid "Choose a sending account"
+msgstr "Mengubah kontak"
+
+#: fltk/engine/src/compose.rs:33
+#, fuzzy
+#| msgid "No recipients"
+msgid "Enter a recipient"
+msgstr "Tidak ada penerima"
+
+#: fltk/engine/src/compose.rs:37
+msgid "Subject cannot contain a line break"
+msgstr ""
+
+#: fltk/engine/src/compose.rs:56
+#, fuzzy
+#| msgid "Has an attachment"
+msgid "Invalid attachment path"
+msgstr "Memiliki lampiran"
+
+#: fltk/engine/src/compose.rs:60 fltk/engine/src/compose.rs:67
+#: fltk/engine/src/compose.rs:85
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachments exceed 25 MB"
+msgstr "Lampiran"
+
+#: fltk/engine/src/compose.rs:72
+#, fuzzy
+#| msgid "Attachment Missing?"
+msgid "Attachment name missing"
+msgstr "Lampiran Terlupa?"
+
+#: fltk/engine/src/crypto.rs:89
+msgid "Key file exceeds 4 MB"
+msgstr ""
+
+#: fltk/engine/src/crypto.rs:97
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown OpenPGP request"
+msgstr "Pengirim tidak dikenal"
+
+#: fltk/engine/src/main.rs:64
+#, fuzzy
+#| msgid "Sign in again to {account}"
+msgid "Sign in again to grant permission."
+msgstr "Masuk kembali ke {account}"
+
+#: fltk/engine/src/main.rs:182
+#, fuzzy
+#| msgid "Sign In Again"
+msgid "Sign in again"
+msgstr "Masuk Lagi"
+
+#: fltk/engine/src/main.rs:266
+#, fuzzy
+#| msgid "Account Added"
+msgid "Account required"
+msgstr "Akun Ditambahkan"
+
+#: fltk/engine/src/main.rs:270
+#, fuzzy
+#| msgid "Show Mailboxes"
+msgid "Unknown mailbox"
+msgstr "Tampilkan Kotak Surat"
+
+#: fltk/engine/src/main.rs:329
+msgid "Queued message not found"
+msgstr ""
+
+#: fltk/engine/src/main.rs:358
+msgid "This message is not cached. Reconnect the account to download it."
+msgstr ""
+
+#: fltk/engine/src/main.rs:367
+msgid "Reconnect the account to read the original protected message."
+msgstr ""
+
+#: fltk/engine/src/main.rs:376
+#, fuzzy
+#| msgid "gpg could not open this message"
+msgid "OpenPGP could not open this message"
+msgstr "gpg tidak dapat membuka pesan ini"
+
+#: fltk/engine/src/main.rs:398
+msgid "Targets required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:408
+msgid "Time required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:460
+#, fuzzy
+#| msgid "That message is no longer waiting."
+msgid "This message is no longer a draft"
+msgstr "Pesan tersebut tidak lagi menunggu."
+
+#: fltk/engine/src/main.rs:464
+#, fuzzy
+#| msgid "Save draft"
+msgid "Unreadable draft"
+msgstr "Simpan draf"
+
+#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#, fuzzy
+#| msgid "Forwarded message removed"
+msgid "Queued message required"
+msgstr "Pesan yang diteruskan dihapus"
+
+#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot add real accounts"
+msgstr "Mode demo tidak dapat menambahkan akun sungguhan."
+
+#: fltk/engine/src/main.rs:575
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown provider"
+msgstr "Pengirim tidak dikenal"
+
+#: fltk/engine/src/main.rs:598
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Sign-in timed out"
+msgstr "Proses masuk dihentikan"
+
+#: fltk/engine/src/main.rs:608
+#, fuzzy
+#| msgid "Your email address"
+msgid "Invalid email address"
+msgstr "Alamat email Anda"
+
+#: fltk/engine/src/main.rs:700
+msgid "Enter a title and an end after the start"
+msgstr ""
+
+#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/notifications.rs:164
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown request"
+msgstr "Pengirim tidak dikenal"
+
+#: fltk/engine/src/notifications.rs:144
+#, fuzzy
+#| msgid "File not found"
+msgid "Event not found"
+msgstr "Berkas tidak ditemukan"
+
+#: fltk/engine/src/oauth.rs:23
+#, fuzzy
+#| msgid "Attachments"
+msgid "OAuth client file exceeds 1 MB"
+msgstr "Lampiran"
+
+#: fltk/engine/src/oauth.rs:26
+msgid "Unreadable Google OAuth client JSON"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:32
+msgid "Choose a Google OAuth client of type Desktop app"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:38
+msgid "The Google client file has no valid client ID and secret"
+msgstr ""
+
+#: fltk/native/engine.h:47
+msgid "Mail engine disconnected"
+msgstr ""
+
+#: fltk/native/engine.h:61
+msgid "Mail engine response exceeds limit"
+msgstr ""
+
+#: fltk/native/engine.h:69
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Mail engine stopped"
+msgstr "Proses masuk dihentikan"
+
+#: fltk/native/engine.h:103 fltk/native/engine.h:107
+msgid "Cannot create engine pipe"
+msgstr ""
+
+#: fltk/native/engine.h:182
+#, fuzzy
+#| msgid "Penguin Mail {version} is available"
+msgid "Mail engine unavailable"
+msgstr "Penguin Mail {version} tersedia"
+
+#: fltk/native/engine.h:187
+#, fuzzy
+#| msgid "Too many connections"
+msgid "Too many pending requests"
+msgstr "Terlalu banyak koneksi"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Month"
+msgid "Mon"
+msgstr "Bulan"
+
+#: fltk/native/main.cpp:296
+msgid "Thu"
+msgstr ""
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Tuesday"
+msgid "Tue"
+msgstr "Selasa"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Red"
+msgid "Wed"
+msgstr "Merah"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Friday"
+msgid "Fri"
+msgstr "Jumat"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Slate"
+msgid "Sat"
+msgstr "Abu-Abu Kebiruan"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Sunday"
+msgid "Sun"
+msgstr "Minggu"
+
+#: fltk/native/main.cpp:436
+msgid "The request failed."
+msgstr ""
+
+#: fltk/native/main.cpp:441
+#, fuzzy
+#| msgid "Changing a setting"
+msgid "The mail engine is starting."
+msgstr "Mengubah pengaturan"
+
+#: fltk/native/main.cpp:516
+#, fuzzy
+#| msgid "Undo"
+msgid "Undone"
+msgstr "Urungkan"
+
+#: fltk/native/main.cpp:525
+#, fuzzy
+#| msgid "Open a conversation first"
+msgid "Select a conversation first."
+msgstr "Buka percakapan terlebih dahulu"
+
+#: fltk/native/main.cpp:530
+#, fuzzy
+#| msgid "Labels changed"
+msgid "Label name"
+msgstr "Label diubah"
+
+#: fltk/native/main.cpp:537
+msgid "Remind at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:542 fltk/native/main.cpp:1063
+msgid "Choose a future date and time."
+msgstr ""
+
+#: fltk/native/main.cpp:547
+#, fuzzy
+#| msgid "Matching your mail…"
+msgid "Updating mail…"
+msgstr "Mencocokkan email Anda…"
+
+#: fltk/native/main.cpp:549
+msgid "Mail updated. Use Undo to reverse the action."
+msgstr ""
+
+#: fltk/native/main.cpp:684
+#, fuzzy
+#| msgid "Conversation"
+msgid "conversations"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:686
+msgid "Load More is available in View."
+msgstr ""
+
+#: fltk/native/main.cpp:731
+#, fuzzy
+#| msgid "Reading a conversation"
+msgid "Loading conversation…"
+msgstr "Membaca percakapan"
+
+#: fltk/native/main.cpp:768 fltk/native/main.cpp:787
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment"
+msgstr "Lampiran"
+
+#: fltk/native/main.cpp:771
+msgid "S/MIME message. Export the original to inspect its protection."
+msgstr ""
+
+#: fltk/native/main.cpp:775
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversation loaded"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:786 fltk/native/main.cpp:1787
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Save Attachment"
+msgstr "Simpan Lampiran"
+
+#: fltk/native/main.cpp:796
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment saved"
+msgstr "Lampiran"
+
+#: fltk/native/main.cpp:809
+msgid "Select an outgoing message first."
+msgstr ""
+
+#: fltk/native/main.cpp:813
+#, fuzzy
+#| msgid "Delete This Message Forever?"
+msgid "Delete this queued message?"
+msgstr "Hapus Pesan Ini Permanen?"
+
+#: fltk/native/main.cpp:824
+#, fuzzy
+#| msgid "Conversation"
+msgid "Export Conversation"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:832
+#, fuzzy
+#| msgid "No Conversation Selected"
+msgid "Conversation exported"
+msgstr "Tidak Ada Percakapan Dipilih"
+
+#: fltk/native/main.cpp:872
+#, fuzzy
+#| msgid "Reminders"
+msgid "Reminder snoozed"
+msgstr "Pengingat"
+
+#: fltk/native/main.cpp:930
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Add an account before composing mail."
+msgstr "Tambahkan akun terlebih dahulu"
+
+#: fltk/native/main.cpp:935 fltk/native/main.cpp:2069
+#, fuzzy
+#| msgid "New Message"
+msgid "Compose Message"
+msgstr "Pesan Baru"
+
+#: fltk/native/main.cpp:947
+msgid "Sign (OpenPGP)"
+msgstr ""
+
+#: fltk/native/main.cpp:948
+#, fuzzy
+#| msgid "Encrypted"
+msgid "Encrypt (OpenPGP)"
+msgstr "Dienkripsi"
+
+#: fltk/native/main.cpp:970
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Remove Attachment"
+msgstr "Simpan Lampiran"
+
+#: fltk/native/main.cpp:980
+#, fuzzy
+#| msgid "Checking for Updates…"
+msgid "Checking local OpenPGP keys…"
+msgstr "Memeriksa Pembaruan…"
+
+#: fltk/native/main.cpp:1042
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "Ditandatangani dan dienkripsi"
+
+#: fltk/native/main.cpp:1043
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1058
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1070
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "Kirim Tanpa Enkripsi?"
+
+#: fltk/native/main.cpp:1075
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "Bekerja"
+
+#: fltk/native/main.cpp:1092
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1116
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1122
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1135
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "Diperiksa"
+
+#: fltk/native/main.cpp:1138
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "Kirim"
+
+#: fltk/native/main.cpp:1140
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "Kirim Nanti"
+
+#: fltk/native/main.cpp:1142
+#, fuzzy
+#| msgid "Save Draft"
+msgid "File/Save Draft"
+msgstr "Simpan Draf"
+
+#: fltk/native/main.cpp:1144
+#, fuzzy
+#| msgid "Close"
+msgid "File/Close"
+msgstr "Tutup"
+
+#: fltk/native/main.cpp:1147 fltk/native/main.cpp:1854
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Undo"
+msgstr "Edit"
+
+#: fltk/native/main.cpp:1148 fltk/native/main.cpp:1855
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Cut"
+msgstr "Edit"
+
+#: fltk/native/main.cpp:1149 fltk/native/main.cpp:1856
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Copy"
+msgstr "Edit"
+
+#: fltk/native/main.cpp:1150 fltk/native/main.cpp:1857
+#, fuzzy
+#| msgid "Edit Template"
+msgid "Edit/Paste"
+msgstr "Edit Templat"
+
+#: fltk/native/main.cpp:1151 fltk/native/main.cpp:1858
+#, fuzzy
+#| msgid "Select all"
+msgid "Edit/Select All"
+msgstr "Pilih semua"
+
+#: fltk/native/main.cpp:1156
+msgid "Wait for the current request to finish."
+msgstr ""
+
+#: fltk/native/main.cpp:1161
+msgid "Close this message? Save a draft to keep your changes."
+msgstr ""
+
+#: fltk/native/main.cpp:1195
+#, fuzzy
+#| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
+msgid "This build has no Microsoft sign-in client."
+msgstr "Salinan Penguin Mail ini dibuat tanpa dukungan masuk Microsoft."
+
+#: fltk/native/main.cpp:1197
+#, fuzzy
+#| msgid "Choose a Time…"
+msgid "Choose Client JSON…"
+msgstr "Pilih Waktu…"
+
+#: fltk/native/main.cpp:1197
+msgid "Setup Instructions"
+msgstr ""
+
+#: fltk/native/main.cpp:1198
+msgid ""
+"This build has no Google sign-in client.\n"
+"Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
+"After sign-in, the account client and refresh token will be saved\n"
+"in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1204
+msgid "Google Desktop OAuth Client"
+msgstr ""
+
+#: fltk/native/main.cpp:1209
+#, fuzzy
+#| msgid "Continue in your browser"
+msgid "Complete sign-in in your browser."
+msgstr "Lanjutkan di peramban Anda"
+
+#: fltk/native/main.cpp:1218
+msgid ""
+"Demo mode uses temporary sample accounts. Start without --demo to add an "
+"account."
+msgstr ""
+
+#: fltk/native/main.cpp:1223
+#, fuzzy
+#| msgid "Google Meet"
+msgid "Google…"
+msgstr "Google Meet"
+
+#: fltk/native/main.cpp:1224
+#, fuzzy
+#| msgid "Microsoft Teams"
+msgid "Microsoft…"
+msgstr "Microsoft Teams"
+
+#: fltk/native/main.cpp:1226
+#, fuzzy
+#| msgid "Account"
+msgid "Account Type"
+msgstr "Akun"
+
+#: fltk/native/main.cpp:1232 fltk/native/main.cpp:1285
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "IMAP Server"
+msgstr "Server MCP"
+
+#: fltk/native/main.cpp:1235
+#, fuzzy
+#| msgid "Security"
+msgid "IMAP Security"
+msgstr "Keamanan"
+
+#: fltk/native/main.cpp:1238
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "SMTP Server"
+msgstr "Server MCP"
+
+#: fltk/native/main.cpp:1241
+#, fuzzy
+#| msgid "Security"
+msgid "SMTP Security"
+msgstr "Keamanan"
+
+#: fltk/native/main.cpp:1244
+#, fuzzy
+#| msgid "User Name"
+msgid "SMTP User Name"
+msgstr "Nama Pengguna"
+
+#: fltk/native/main.cpp:1245
+#, fuzzy
+#| msgid "Password"
+msgid "SMTP Password"
+msgstr "Sandi"
+
+#: fltk/native/main.cpp:1248
+msgid ""
+"Leave user names and the SMTP password empty to use the incoming account's "
+"details. Passwords are stored in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1252
+#, fuzzy
+#| msgid "Servers"
+msgid "Find Servers"
+msgstr "Server"
+
+#: fltk/native/main.cpp:1259
+msgid "No servers found. Enter the server details manually."
+msgstr ""
+
+#: fltk/native/main.cpp:1264
+#, fuzzy
+#| msgid "Use {server}"
+msgid "Use Servers"
+msgstr "Gunakan {server}"
+
+#: fltk/native/main.cpp:1265
+msgid "These servers were discovered outside your email domain. Use them?"
+msgstr ""
+
+#: fltk/native/main.cpp:1283
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "POP3 Server"
+msgstr "Server MCP"
+
+#: fltk/native/main.cpp:1284
+#, fuzzy
+#| msgid "Server"
+msgid "Server URL"
+msgstr "Server"
+
+#: fltk/native/main.cpp:1300
+msgid "Authentication"
+msgstr ""
+
+#: fltk/native/main.cpp:1322
+msgid "Enter ports between 1 and 65535."
+msgstr ""
+
+#: fltk/native/main.cpp:1350
+msgid "Checking the incoming and outgoing servers…"
+msgstr ""
+
+#: fltk/native/main.cpp:1369
+msgid ""
+"Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
+"the preview closes."
+msgstr ""
+
+#: fltk/native/main.cpp:1370
+msgid ""
+"OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
+"file, or manage keys with your usual GnuPG tools. Keys are never fetched "
+"automatically."
+msgstr ""
+
+#: fltk/native/main.cpp:1372
+#, fuzzy
+#| msgid "Add Address"
+msgid "Addresses"
+msgstr "Tambahkan Alamat"
+
+#: fltk/native/main.cpp:1388
+#, fuzzy
+#| msgid "Not encrypted in transit"
+msgid "No encryption key"
+msgstr "Tidak dienkripsi saat transit"
+
+#: fltk/native/main.cpp:1395
+#, fuzzy
+#| msgid "Check for Updates"
+msgid "Check Local Keys"
+msgstr "Periksa Pembaruan"
+
+#: fltk/native/main.cpp:1396
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Key File…"
+msgstr "Impor…"
+
+#: fltk/native/main.cpp:1398
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Import OpenPGP Key"
+msgstr "Impor Kunci OpenPGP"
+
+#: fltk/native/main.cpp:1401
+#, fuzzy
+#| msgid "Import…"
+msgid "Import"
+msgstr "Impor…"
+
+#: fltk/native/main.cpp:1402
+msgid "Import this file into your GnuPG keyring?"
+msgstr ""
+
+#: fltk/native/main.cpp:1403
+#, fuzzy
+#| msgid "Import…"
+msgid "Importing key…"
+msgstr "Impor…"
+
+#: fltk/native/main.cpp:1406
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Imported keys:"
+msgstr "Impor Kunci OpenPGP"
+
+#: fltk/native/main.cpp:1416
+#, fuzzy
+#| msgid "Conversation"
+msgid "GnuPG version:"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:1423
+msgid "Keep syncing in the tray when the window closes"
+msgstr ""
+
+#: fltk/native/main.cpp:1426
+#, fuzzy
+#| msgid "Notifications"
+msgid "Show new mail notifications"
+msgstr "Notifikasi"
+
+#: fltk/native/main.cpp:1431
+#, fuzzy
+#| msgid "Group Messages into Conversations"
+msgid "Group messages into conversations"
+msgstr "Kelompokkan Pesan menjadi Percakapan"
+
+#: fltk/native/main.cpp:1434
+msgid "Sync Interval (seconds)"
+msgstr ""
+
+#: fltk/native/main.cpp:1437
+msgid "Local Mail Window (days)"
+msgstr ""
+
+#: fltk/native/main.cpp:1441
+msgid ""
+"Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
+"window changes apply after restart."
+msgstr ""
+
+#: fltk/native/main.cpp:1486
+#, fuzzy
+#| msgid "Calendar to add to"
+msgid "Calendar loaded"
+msgstr "Kalender tujuan"
+
+#: fltk/native/main.cpp:1535
+msgid "No writable calendar is available."
+msgstr ""
+
+#: fltk/native/main.cpp:1540
+#, fuzzy
+#| msgid "Starts"
+msgid "Start"
+msgstr "Mulai"
+
+#: fltk/native/main.cpp:1541
+#, fuzzy
+#| msgid "Ends"
+msgid "End"
+msgstr "Selesai"
+
+#: fltk/native/main.cpp:1542
+#, fuzzy
+#| msgid "Notifications"
+msgid "Location"
+msgstr "Notifikasi"
+
+#: fltk/native/main.cpp:1546
+msgid ""
+"Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
+"provider."
+msgstr ""
+
+#: fltk/native/main.cpp:1567
+#, fuzzy
+#| msgid "New Event"
+msgid "Save Event"
+msgstr "Acara Baru"
+
+#: fltk/native/main.cpp:1573
+msgid "Enter a title and a valid start and end time."
+msgstr ""
+
+#: fltk/native/main.cpp:1598 fltk/native/main.cpp:1818
+#, fuzzy
+#| msgid "Delete it"
+msgid "Delete Event"
+msgstr "Hapus pesan"
+
+#: fltk/native/main.cpp:1599
+msgid "Delete this event and notify its guests?"
+msgstr ""
+
+#: fltk/native/main.cpp:1610
+#, fuzzy
+#| msgid "Contacts"
+msgid "Contacts loaded"
+msgstr "Kontak"
+
+#: fltk/native/main.cpp:1631 fltk/native/main.cpp:1826
+#, fuzzy
+#| msgid "Contact"
+msgid "New Contact"
+msgstr "Kontak"
+
+#: fltk/native/main.cpp:1639
+#, fuzzy
+#| msgid "Contact"
+msgid "Save Contact"
+msgstr "Kontak"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1883
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Forward"
+msgstr "Pesan"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1879
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Reply"
+msgstr "Pesan"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1881
+#, fuzzy
+#| msgid "Reply All"
+msgid "Message/Reply All"
+msgstr "Balas Semua"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1885
+#, fuzzy
+#| msgid "Message Cache"
+msgid "Message/Archive"
+msgstr "Singgahan Pesan"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1887
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Message/Move to Trash"
+msgstr "Pindahkan ke Sampah"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1893
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Flag"
+msgstr "Pesan"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1889
+#, fuzzy
+#| msgid "Message sent"
+msgid "Message/Mark Read"
+msgstr "Pesan terkirim"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1891
+#, fuzzy
+#| msgid "Mark as Unread"
+msgid "Message/Mark Unread"
+msgstr "Tandai Belum Dibaca"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1895
+#, fuzzy
+#| msgid "New Label…"
+msgid "Message/Label…"
+msgstr "Label Baru…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1896
+#, fuzzy
+#| msgid "Remind Me"
+msgid "Message/Remind Me…"
+msgstr "Ingatkan Saya"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1894
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Unflag"
+msgstr "Pesan"
+
+#: fltk/native/main.cpp:1684 fltk/native/main.cpp:1845
+#, fuzzy
+#| msgid "Conversation"
+msgid "File/Export Conversation…"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:1772
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "Percakapan"
+
+#: fltk/native/main.cpp:1814
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "Kalender"
+
+#: fltk/native/main.cpp:1824
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "Kontak"
+
+#: fltk/native/main.cpp:1829
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:1840
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "Tanya Penguin Mail…"
+
+#: fltk/native/main.cpp:1842
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "Pesan Baru"
+
+#: fltk/native/main.cpp:1844
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "Tambahkan Akun…"
+
+#: fltk/native/main.cpp:1847
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "Kunci OpenPGP"
+
+#: fltk/native/main.cpp:1848
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "Preferensi"
+
+#: fltk/native/main.cpp:1850
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:1851
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "Tutup jendela"
+
+#: fltk/native/main.cpp:1853
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "Keluar"
+
+#: fltk/native/main.cpp:1859
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "Cari"
+
+#: fltk/native/main.cpp:1861
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "Tampilan"
+
+#: fltk/native/main.cpp:1862
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "Kalender Baru"
+
+#: fltk/native/main.cpp:1864
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "Kontak"
+
+#: fltk/native/main.cpp:1866
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "Segarkan"
+
+#: fltk/native/main.cpp:1869
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "Lihat Sumber"
+
+#: fltk/native/main.cpp:1874
+#, fuzzy
+#| msgid "Edit Draft"
+msgid "Message/Edit Draft"
+msgstr "Edit Draf"
+
+#: fltk/native/main.cpp:1875
+msgid "Message/Send Queued Message Now"
+msgstr ""
+
+#: fltk/native/main.cpp:1877
+msgid "Message/Delete Queued Message"
+msgstr ""
+
+#: fltk/native/main.cpp:1897
+#, fuzzy
+#| msgid "Keyboard Shortcuts"
+msgid "Help/Keyboard Shortcuts"
+msgstr "Pintasan Papan Ketik"
+
+#: fltk/native/main.cpp:1899
+msgid ""
+"Ctrl+N: New Message\n"
+"Ctrl+R: Reply\n"
+"Ctrl+Shift+R: Reply All\n"
+"Ctrl+L: Forward\n"
+"Ctrl+E: Archive\n"
+"Delete: Move to Trash\n"
+"Ctrl+Z: Undo\n"
+"Ctrl+F: Search\n"
+"Ctrl+1/2/3: Mail / Calendar / Contacts\n"
+"F5: Refresh\n"
+"Ctrl+W: Close Window\n"
+"Ctrl+Q: Quit\n"
+"\n"
+"Composer: Ctrl+Enter sends, Ctrl+S saves a draft.\n"
+"DomeD owns Super shortcuts."
+msgstr ""
+
+#: fltk/native/main.cpp:1906
+#, fuzzy
+#| msgid "About Penguin Mail"
+msgid "Help/About Penguin Mail"
+msgstr "Tentang Penguin Mail"
+
+#: fltk/native/main.cpp:1909
+msgid ""
+"Penguin Mail 1.0.10\n"
+"FLTK edition for DomeD\n"
+"\n"
+"Original mail engines: c9dev/penguin-mail\n"
+"License: GPL-3.0-or-later"
+msgstr ""
+
+#: fltk/native/main.cpp:2037
+msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr ""
+
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
 msgstr ""
@@ -12340,6 +13407,28 @@ msgstr "Tandai bukan spam"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "Pindahkan ke {folder}"
+
+#, fuzzy
+#~| msgid "New message"
+#~ msgid "new messages"
+#~ msgstr "Pesan baru"
+
+#, fuzzy
+#~| msgid "No Mail"
+#~ msgid "New Mail"
+#~ msgstr "Tidak Ada Email"
+
+#~ msgid "gmail"
+#~ msgstr "gmail"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid "mail"
+#~ msgstr "surat"
+
+#~ msgid "inbox"
+#~ msgstr "kotak masuk"
 
 #~ msgid ""
 #~ "Added below new messages and above quoted text in replies. Markdown works."

@@ -124,22 +124,6 @@ msgstr ""
 "в браузере. Penguin Mail создан на GTK и libadwaita и лучше всего подходит "
 "для GNOME, но работает в любом окружении рабочего стола Linux."
 
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:53
-msgid "gmail"
-msgstr "gmail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:54
-msgid "email"
-msgstr "почта"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:55
-msgid "mail"
-msgstr "письма"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:56
-msgid "inbox"
-msgstr "входящие"
-
 #: app/data/io.github.c9dev.PenguinMail.metainfo.xml:85
 msgid "All your accounts in one inbox, with a reply open"
 msgstr "Все ваши учётные записи в общих входящих, с открытым ответом"
@@ -3353,78 +3337,66 @@ msgstr "Файлы, прикреплённые к событиям"
 msgid "{account} has not allowed Penguin Mail to {missing}"
 msgstr "{account} не разрешает Penguin Mail {missing}"
 
-#: app/src/pgp.rs:114
+#: app/src/pgp/adapter.rs:105
 msgid "Add a recipient whose key gpg holds."
 msgstr "Добавьте получателя, ключ которого есть в gpg."
 
-#: app/src/pgp.rs:123
+#: app/src/pgp/adapter.rs:114
 msgid "gpg holds no key for {addresses}."
 msgstr "В gpg нет ключа для {addresses}."
 
-#: app/src/pgp.rs:140
+#: app/src/pgp/adapter.rs:131
 msgid "gpg holds no key for any of the addresses you send from."
 msgstr ""
 "В gpg нет ключа ни для одного из адресов, с которых вы отправляете почту."
 
-#: app/src/pgp.rs:142
+#: app/src/pgp/adapter.rs:133
 msgid "gpg holds a key for {addresses}."
 msgstr "В gpg есть ключ для {addresses}."
 
-#: app/src/pgp.rs:146
+#: app/src/pgp/adapter.rs:137
 msgid "gpg holds a key for {addresses}, and none for {without}."
 msgstr "В gpg есть ключ для {addresses}, но нет для {without}."
 
-#: app/src/pgp.rs:250
+#: app/src/pgp/adapter.rs:241
 msgid "This computer has no gpg. Install GnuPG to read or send OpenPGP mail."
 msgstr ""
 "На этом компьютере нет gpg. Установите GnuPG, чтобы читать и отправлять "
 "почту OpenPGP."
 
-#: app/src/pgp.rs:253 app/src/smime.rs:258
-msgid "Could not run {program}: {reason}"
-msgstr "Не удалось запустить {program}: {reason}"
-
-#: app/src/pgp.rs:257 app/src/smime.rs:262
-msgid "Could not write a temporary file: {reason}"
-msgstr "Не удалось записать временный файл: {reason}"
-
-#: app/src/pgp.rs:261
+#: app/src/pgp/adapter.rs:252
 msgid "This message is encrypted to a key this computer does not hold."
 msgstr "Это сообщение зашифровано ключом, которого нет на этом компьютере."
 
-#: app/src/pgp.rs:264
+#: app/src/pgp/adapter.rs:255
 msgid "gpg holds no secret key to sign as {address}."
 msgstr "В gpg нет секретного ключа для подписи от имени {address}."
 
-#: app/src/pgp.rs:268
+#: app/src/pgp/adapter.rs:259
 msgid "gpg holds no key it can encrypt to for {address}."
 msgstr "В gpg нет ключа, которым можно зашифровать для {address}."
 
-#: app/src/pgp.rs:271
+#: app/src/pgp/adapter.rs:262
 msgid "This text holds no OpenPGP block."
 msgstr "В этом тексте нет блока OpenPGP."
 
-#: app/src/pgp.rs:272
+#: app/src/pgp/adapter.rs:263
 msgid "This file holds no OpenPGP key."
 msgstr "В этом файле нет ключа OpenPGP."
 
-#: app/src/pgp.rs:273 app/src/smime.rs:278
-msgid "This message is too large to open."
-msgstr "Это сообщение слишком большое, чтобы его открыть."
-
-#: app/src/pgp.rs:274
+#: app/src/pgp/adapter.rs:265
 msgid "gpg failed: {reason}"
 msgstr "Ошибка gpg: {reason}"
 
-#: app/src/protection.rs:123
+#: app/src/protection.rs:69
 msgid "{smime} {pgp}"
 msgstr "{smime} {pgp}"
 
-#: app/src/protection.rs:136
+#: app/src/protection.rs:82
 msgid "This computer has nothing to encrypt with."
 msgstr "На этом компьютере нечем зашифровать."
 
-#: app/src/protection.rs:143
+#: app/src/protection.rs:89
 msgid ""
 "S/MIME names every recipient inside an encrypted message, so a blind copy "
 "would not stay blind."
@@ -3432,42 +3404,42 @@ msgstr ""
 "S/MIME указывает каждого получателя внутри зашифрованного сообщения, поэтому "
 "скрытая копия не останется скрытой."
 
-#: app/src/protection.rs:301
+#: app/src/protection.rs:247
 msgid "Signed"
 msgstr "Подписано"
 
-#: app/src/protection.rs:302
+#: app/src/protection.rs:248
 msgid "Encrypted"
 msgstr "Зашифровано"
 
-#: app/src/protection.rs:303
+#: app/src/protection.rs:249
 msgid "Signed and encrypted"
 msgstr "Подписано и зашифровано"
 
-#: app/src/protection.rs:312
+#: app/src/protection.rs:258
 msgid "Encrypt this message to the recipients' keys"
 msgstr "Зашифровать это сообщение ключами получателей"
 
-#: app/src/protection.rs:313
+#: app/src/protection.rs:259
 msgid "Encrypt this message to the recipients' certificates"
 msgstr "Зашифровать это сообщение сертификатами получателей"
 
-#: app/src/protection.rs:339
+#: app/src/protection.rs:285
 msgid "gpg holds no key and gpgsm no trusted certificate for {addresses}."
 msgstr ""
 "В gpg нет ключа, а в gpgsm нет доверенного сертификата для {addresses}."
 
-#: app/src/protection.rs:347
+#: app/src/protection.rs:293
 msgid "A message goes out under one standard or the other. {pgp} {smime}"
 msgstr "Сообщение отправляется только по одному из стандартов. {pgp} {smime}"
 
-#: app/src/protection.rs:612
+#: app/src/protection/common.rs:323
 msgid ""
 "This key does not name {sender}, the address the message says it is from."
 msgstr ""
 "В этом ключе не указан {sender} — адрес, от которого якобы пришло сообщение."
 
-#: app/src/protection.rs:616
+#: app/src/protection/common.rs:327
 msgid ""
 "This certificate does not name {sender}, the address the message says it is "
 "from."
@@ -3475,175 +3447,175 @@ msgstr ""
 "В этом сертификате не указан {sender} — адрес, от которого якобы пришло "
 "сообщение."
 
-#: app/src/protection.rs:625
+#: app/src/protection/common.rs:336
 msgid "Signed by {signer}"
 msgstr "Подписано: {signer}"
 
-#: app/src/protection.rs:631
+#: app/src/protection/common.rs:342
 msgid "This message changed after it was signed"
 msgstr "Сообщение изменилось после подписания"
 
-#: app/src/protection.rs:633
+#: app/src/protection/common.rs:344
 msgid "The signature of {signer} does not match what arrived."
 msgstr "Подпись {signer} не соответствует полученному."
 
-#: app/src/protection.rs:640
+#: app/src/protection/common.rs:351
 msgid "Signed by {signer}, whose key has expired"
 msgstr "Подписано: {signer}, срок действия ключа истёк"
 
-#: app/src/protection.rs:644
+#: app/src/protection/common.rs:355
 msgid "The text is as it was written, and the key behind it ran out."
 msgstr "Текст не изменён, но срок действия ключа, которым он подписан, истёк."
 
-#: app/src/protection.rs:650
+#: app/src/protection/common.rs:361
 msgid "Signed by {signer}, whose certificate has run out"
 msgstr "Подписано: {signer}, срок действия сертификата истёк"
 
-#: app/src/protection.rs:654
+#: app/src/protection/common.rs:365
 msgid ""
 "The text is as it was written, and the certificate behind it has expired."
 msgstr ""
 "Текст не изменён, но срок действия сертификата, которым он подписан, истёк."
 
-#: app/src/protection.rs:660
+#: app/src/protection/common.rs:371
 msgid "Signed by {signer}, who took this key back"
 msgstr "Подписано: {signer}, ключ отозван владельцем"
 
-#: app/src/protection.rs:664
+#: app/src/protection/common.rs:375
 msgid "The owner revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Владелец отозвал его, поэтому он ничего не говорит о том, кто это написал."
 
-#: app/src/protection.rs:670
+#: app/src/protection/common.rs:381
 msgid "Signed by {signer}, whose certificate was taken back"
 msgstr "Подписано: {signer}, сертификат отозван"
 
-#: app/src/protection.rs:674
+#: app/src/protection/common.rs:385
 msgid "Whoever issued it revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Издатель отозвал его, поэтому он ничего не говорит о том, кто это написал."
 
-#: app/src/protection.rs:680
+#: app/src/protection/common.rs:391
 msgid "Signed by {signer}, and the signature has run out"
 msgstr "Подписано: {signer}, срок действия подписи истёк"
 
-#: app/src/protection.rs:684
+#: app/src/protection/common.rs:395
 msgid "It carried a date to stop being good on, and that date has passed."
 msgstr "В подписи указана дата окончания действия, и эта дата прошла."
 
-#: app/src/protection.rs:689
+#: app/src/protection/common.rs:400
 msgid "Signed by a key this computer does not hold"
 msgstr "Подписано ключом, которого нет на этом компьютере"
 
-#: app/src/protection.rs:691
+#: app/src/protection/common.rs:402
 msgid "Nothing here can check it. Ask gpg for key {key}."
 msgstr "Здесь нечем её проверить. Запросите у gpg ключ {key}."
 
-#: app/src/protection.rs:698
+#: app/src/protection/common.rs:409
 msgid "it names"
 msgstr "в нём указан"
 
-#: app/src/protection.rs:704
+#: app/src/protection/common.rs:415
 msgid "Signed by a certificate this computer does not hold"
 msgstr "Подписано сертификатом, которого нет на этом компьютере"
 
-#: app/src/protection.rs:706
+#: app/src/protection/common.rs:417
 msgid ""
 "The message carried none either, so there is nothing here to check it "
 "against."
 msgstr "В сообщении его тоже нет, поэтому проверить подпись здесь не с чем."
 
-#: app/src/protection.rs:712
+#: app/src/protection/common.rs:423
 msgid "gpg could not check this signature"
 msgstr "gpg не удалось проверить эту подпись"
 
-#: app/src/protection.rs:717
+#: app/src/protection/common.rs:428
 msgid "gpgsm could not check this signature"
 msgstr "gpgsm не удалось проверить эту подпись"
 
-#: app/src/protection.rs:740
+#: app/src/protection/common.rs:451
 msgid "Encrypted, and signed by {signer}"
 msgstr "Зашифровано и подписано: {signer}"
 
-#: app/src/protection.rs:749
+#: app/src/protection/common.rs:460
 msgid "Encrypted. {what}"
 msgstr "Зашифровано. {what}"
 
-#: app/src/protection.rs:755
+#: app/src/protection/common.rs:466
 msgid "This message arrived encrypted"
 msgstr "Это сообщение пришло зашифрованным"
 
-#: app/src/protection.rs:757
+#: app/src/protection/common.rs:468
 msgid "Nobody signed it, so it says nothing about who sent it."
 msgstr ""
 "Оно никем не подписано, поэтому ничего не говорит о том, кто его отправил."
 
-#: app/src/protection.rs:765
+#: app/src/protection/common.rs:476
 msgid "{detail} {files}"
 msgstr "{detail} {files}"
 
-#: app/src/protection.rs:779
+#: app/src/protection/common.rs:490
 msgid "This message is encrypted to a key you do not hold"
 msgstr "Это сообщение зашифровано ключом, которого у вас нет"
 
-#: app/src/protection.rs:781
+#: app/src/protection/common.rs:492
 msgid "Whoever sent it used a key gpg has no secret half of."
 msgstr "Отправитель использовал ключ, секретной части которого нет в gpg."
 
-#: app/src/protection.rs:786
+#: app/src/protection/common.rs:497
 msgid "This message is encrypted to a certificate you do not hold"
 msgstr "Это сообщение зашифровано сертификатом, которого у вас нет"
 
-#: app/src/protection.rs:788
+#: app/src/protection/common.rs:499
 msgid "Whoever sent it used a certificate gpgsm has no secret key for."
 msgstr ""
 "Отправитель использовал сертификат, секретного ключа к которому нет в gpgsm."
 
-#: app/src/protection.rs:794
+#: app/src/protection/common.rs:505
 msgid "This message says it is OpenPGP and is not"
 msgstr "Сообщение выдаёт себя за OpenPGP, но им не является"
 
-#: app/src/protection.rs:795
+#: app/src/protection/common.rs:506
 msgid "This message says it is S/MIME and is not"
 msgstr "Сообщение выдаёт себя за S/MIME, но им не является"
 
-#: app/src/protection.rs:798
+#: app/src/protection/common.rs:509
 msgid "Its parts are not where a signed or encrypted message keeps them."
 msgstr ""
 "Его части расположены не там, где их хранит подписанное или зашифрованное "
 "сообщение."
 
-#: app/src/protection.rs:803
+#: app/src/protection/common.rs:514
 msgid "This message is too large to open"
 msgstr "Это сообщение слишком большое, чтобы его открыть"
 
-#: app/src/protection.rs:805
+#: app/src/protection/common.rs:516
 msgid "It opens to more than {size} MB, so Penguin Mail stopped reading it."
 msgstr ""
 "В распакованном виде оно больше {size} МБ, поэтому Penguin Mail прекратил "
 "его чтение."
 
-#: app/src/protection.rs:812
+#: app/src/protection/common.rs:523
 msgid "gpg could not open this message"
 msgstr "gpg не удалось открыть это сообщение"
 
-#: app/src/protection.rs:813
+#: app/src/protection/common.rs:524
 msgid "gpgsm could not open this message"
 msgstr "gpgsm не удалось открыть это сообщение"
 
-#: app/src/protection.rs:826
+#: app/src/protection/common.rs:537
 msgid "You marked this key as one not to trust."
 msgstr "Вы отметили этот ключ как недоверенный."
 
-#: app/src/protection.rs:827
+#: app/src/protection/common.rs:538
 msgid "This is one of your own keys."
 msgstr "Это один из ваших собственных ключей."
 
-#: app/src/protection.rs:828
+#: app/src/protection/common.rs:539
 msgid "You have vouched for this key."
 msgstr "Вы поручились за этот ключ."
 
-#: app/src/protection.rs:830
+#: app/src/protection/common.rs:541
 msgid ""
 "Only people you partly trust have vouched for this key, so it is not fully "
 "checked."
@@ -3651,11 +3623,11 @@ msgstr ""
 "За этот ключ поручились только люди, которым вы доверяете частично, поэтому "
 "он проверен не полностью."
 
-#: app/src/protection.rs:833
+#: app/src/protection/common.rs:544
 msgid "Nobody has vouched for this key, so it names no one."
 msgstr "За этот ключ никто не поручился, поэтому он ни на кого не указывает."
 
-#: app/src/protection.rs:836
+#: app/src/protection/common.rs:547
 msgid ""
 "Its certificate leads back to an authority you trust, but this computer "
 "could not check whether it was revoked."
@@ -3663,48 +3635,48 @@ msgstr ""
 "Его сертификат восходит к доверенному вами центру сертификации, но этот "
 "компьютер не смог проверить, не отозван ли он."
 
-#: app/src/protection.rs:840
+#: app/src/protection/common.rs:551
 msgid "Its certificate leads back to an authority you trust."
 msgstr "Его сертификат восходит к доверенному вами центру сертификации."
 
-#: app/src/protection.rs:843
+#: app/src/protection/common.rs:554
 msgid "Its certificate leads back to nobody you trust, so it names no one."
 msgstr ""
 "Его сертификат не восходит ни к кому, кому вы доверяете, поэтому он ни на "
 "кого не указывает."
 
-#: app/src/protection.rs:846
+#: app/src/protection/common.rs:557
 msgid "Nothing here says who that certificate belongs to."
 msgstr "Здесь ничто не указывает, кому принадлежит этот сертификат."
 
-#: app/src/protection.rs:882
+#: app/src/protection/common.rs:593
 msgid "key {key}"
 msgstr "ключ {key}"
 
-#: app/src/protection.rs:885
+#: app/src/protection/common.rs:596
 msgid "a key gpg would not name"
 msgstr "ключ, который gpg не опознал"
 
-#: app/src/protection.rs:886
+#: app/src/protection/common.rs:597
 msgid "a certificate gpgsm would not name"
 msgstr "сертификат, который gpgsm не опознал"
 
-#: app/src/protection.rs:897
+#: app/src/protection/common.rs:608
 msgid "It carries a file, kept in this window only."
 msgstr "В нём есть файл, доступный только в этом окне."
 
-#: app/src/protection.rs:899
+#: app/src/protection/common.rs:610
 msgid "It carries {count} file, kept in this window only."
 msgid_plural "It carries {count} files, kept in this window only."
 msgstr[0] "В нём {count} файл, доступный только в этом окне."
 msgstr[1] "В нём {count} файла, доступные только в этом окне."
 msgstr[2] "В нём {count} файлов, доступных только в этом окне."
 
-#: app/src/protection.rs:930
+#: app/src/protection/common.rs:641
 msgid "{names} or {last}"
 msgstr "{names} или {last}"
 
-#: app/src/protection.rs:942
+#: app/src/protection/common.rs:653
 msgid "{names} and {last}"
 msgstr "{names} и {last}"
 
@@ -4329,6 +4301,14 @@ msgstr ""
 "На этом компьютере нет gpgsm. Установите GnuPG, чтобы читать и отправлять "
 "почту S/MIME."
 
+#: app/src/smime.rs:258
+msgid "Could not run {program}: {reason}"
+msgstr "Не удалось запустить {program}: {reason}"
+
+#: app/src/smime.rs:262
+msgid "Could not write a temporary file: {reason}"
+msgstr "Не удалось записать временный файл: {reason}"
+
 #: app/src/smime.rs:266
 msgid "This message is encrypted to a certificate this computer does not hold."
 msgstr ""
@@ -4349,6 +4329,10 @@ msgstr "В этой части нет данных S/MIME."
 #: app/src/smime.rs:277
 msgid "This file holds no certificate."
 msgstr "В этом файле нет сертификата."
+
+#: app/src/smime.rs:278
+msgid "This message is too large to open."
+msgstr "Это сообщение слишком большое, чтобы его открыть."
 
 #: app/src/smime.rs:280
 msgid "That passphrase does not open this file. Nothing was imported."
@@ -11671,6 +11655,1089 @@ msgstr "Не прочитано"
 msgid "Is flagged"
 msgstr "С флажком"
 
+#: fltk/engine/src/accounts.rs:6
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot change real accounts"
+msgstr "В демо-режиме нельзя добавлять настоящие учётные записи."
+
+#: fltk/engine/src/accounts.rs:116
+#, fuzzy
+#| msgid "Account options"
+msgid "Account not found"
+msgstr "Настройки учётной записи"
+
+#: fltk/engine/src/accounts.rs:122
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Unknown account request"
+msgstr "Сначала добавьте учётную запись"
+
+#: fltk/engine/src/compose.rs:11
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid recipient address"
+msgstr "{recipient}, не адрес"
+
+#: fltk/engine/src/compose.rs:27
+#, fuzzy
+#| msgid "Changing a contact"
+msgid "Choose a sending account"
+msgstr "Изменение контакта"
+
+#: fltk/engine/src/compose.rs:33
+#, fuzzy
+#| msgid "No recipients"
+msgid "Enter a recipient"
+msgstr "Нет получателей"
+
+#: fltk/engine/src/compose.rs:37
+msgid "Subject cannot contain a line break"
+msgstr ""
+
+#: fltk/engine/src/compose.rs:56
+#, fuzzy
+#| msgid "Has an attachment"
+msgid "Invalid attachment path"
+msgstr "Есть вложение"
+
+#: fltk/engine/src/compose.rs:60 fltk/engine/src/compose.rs:67
+#: fltk/engine/src/compose.rs:85
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachments exceed 25 MB"
+msgstr "Вложения"
+
+#: fltk/engine/src/compose.rs:72
+#, fuzzy
+#| msgid "Attachment Missing?"
+msgid "Attachment name missing"
+msgstr "Забыли вложение?"
+
+#: fltk/engine/src/crypto.rs:89
+msgid "Key file exceeds 4 MB"
+msgstr ""
+
+#: fltk/engine/src/crypto.rs:97
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown OpenPGP request"
+msgstr "Неизвестный отправитель"
+
+#: fltk/engine/src/main.rs:64
+#, fuzzy
+#| msgid "Sign in again to {account}"
+msgid "Sign in again to grant permission."
+msgstr "Войти в {account} снова"
+
+#: fltk/engine/src/main.rs:182
+#, fuzzy
+#| msgid "Sign In Again"
+msgid "Sign in again"
+msgstr "Войти снова"
+
+#: fltk/engine/src/main.rs:266
+#, fuzzy
+#| msgid "Account Added"
+msgid "Account required"
+msgstr "Учётная запись добавлена"
+
+#: fltk/engine/src/main.rs:270
+#, fuzzy
+#| msgid "Show Mailboxes"
+msgid "Unknown mailbox"
+msgstr "Показать почтовые ящики"
+
+#: fltk/engine/src/main.rs:329
+msgid "Queued message not found"
+msgstr ""
+
+#: fltk/engine/src/main.rs:358
+msgid "This message is not cached. Reconnect the account to download it."
+msgstr ""
+
+#: fltk/engine/src/main.rs:367
+msgid "Reconnect the account to read the original protected message."
+msgstr ""
+
+#: fltk/engine/src/main.rs:376
+#, fuzzy
+#| msgid "gpg could not open this message"
+msgid "OpenPGP could not open this message"
+msgstr "gpg не удалось открыть это сообщение"
+
+#: fltk/engine/src/main.rs:398
+msgid "Targets required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:408
+msgid "Time required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:460
+#, fuzzy
+#| msgid "That message is no longer waiting."
+msgid "This message is no longer a draft"
+msgstr "Это сообщение больше не ожидает отправки."
+
+#: fltk/engine/src/main.rs:464
+#, fuzzy
+#| msgid "Save draft"
+msgid "Unreadable draft"
+msgstr "Сохранить черновик"
+
+#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#, fuzzy
+#| msgid "Forwarded message removed"
+msgid "Queued message required"
+msgstr "Пересланное сообщение убрано"
+
+#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot add real accounts"
+msgstr "В демо-режиме нельзя добавлять настоящие учётные записи."
+
+#: fltk/engine/src/main.rs:575
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown provider"
+msgstr "Неизвестный отправитель"
+
+#: fltk/engine/src/main.rs:598
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Sign-in timed out"
+msgstr "Вход прерван"
+
+#: fltk/engine/src/main.rs:608
+#, fuzzy
+#| msgid "Your email address"
+msgid "Invalid email address"
+msgstr "Ваш адрес электронной почты"
+
+#: fltk/engine/src/main.rs:700
+msgid "Enter a title and an end after the start"
+msgstr ""
+
+#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/notifications.rs:164
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown request"
+msgstr "Неизвестный отправитель"
+
+#: fltk/engine/src/notifications.rs:144
+#, fuzzy
+#| msgid "File not found"
+msgid "Event not found"
+msgstr "Файл не найден"
+
+#: fltk/engine/src/oauth.rs:23
+#, fuzzy
+#| msgid "Attachments"
+msgid "OAuth client file exceeds 1 MB"
+msgstr "Вложения"
+
+#: fltk/engine/src/oauth.rs:26
+msgid "Unreadable Google OAuth client JSON"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:32
+msgid "Choose a Google OAuth client of type Desktop app"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:38
+msgid "The Google client file has no valid client ID and secret"
+msgstr ""
+
+#: fltk/native/engine.h:47
+msgid "Mail engine disconnected"
+msgstr ""
+
+#: fltk/native/engine.h:61
+msgid "Mail engine response exceeds limit"
+msgstr ""
+
+#: fltk/native/engine.h:69
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Mail engine stopped"
+msgstr "Вход прерван"
+
+#: fltk/native/engine.h:103 fltk/native/engine.h:107
+msgid "Cannot create engine pipe"
+msgstr ""
+
+#: fltk/native/engine.h:182
+#, fuzzy
+#| msgid "Penguin Mail {version} is available"
+msgid "Mail engine unavailable"
+msgstr "Доступна версия Penguin Mail {version}"
+
+#: fltk/native/engine.h:187
+#, fuzzy
+#| msgid "Too many connections"
+msgid "Too many pending requests"
+msgstr "Слишком много соединений"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Month"
+msgid "Mon"
+msgstr "Месяц"
+
+#: fltk/native/main.cpp:296
+msgid "Thu"
+msgstr ""
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Tuesday"
+msgid "Tue"
+msgstr "вторник"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Red"
+msgid "Wed"
+msgstr "Красный"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Friday"
+msgid "Fri"
+msgstr "пятница"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Slate"
+msgid "Sat"
+msgstr "Серо-синий"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Sunday"
+msgid "Sun"
+msgstr "воскресенье"
+
+#: fltk/native/main.cpp:436
+msgid "The request failed."
+msgstr ""
+
+#: fltk/native/main.cpp:441
+#, fuzzy
+#| msgid "Changing a setting"
+msgid "The mail engine is starting."
+msgstr "Изменение настройки"
+
+#: fltk/native/main.cpp:516
+#, fuzzy
+#| msgid "Undo"
+msgid "Undone"
+msgstr "Отменить"
+
+#: fltk/native/main.cpp:525
+#, fuzzy
+#| msgid "Open a conversation first"
+msgid "Select a conversation first."
+msgstr "Сначала откройте цепочку"
+
+#: fltk/native/main.cpp:530
+#, fuzzy
+#| msgid "Labels changed"
+msgid "Label name"
+msgstr "Ярлыки изменены"
+
+#: fltk/native/main.cpp:537
+msgid "Remind at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:542 fltk/native/main.cpp:1063
+msgid "Choose a future date and time."
+msgstr ""
+
+#: fltk/native/main.cpp:547
+#, fuzzy
+#| msgid "Matching your mail…"
+msgid "Updating mail…"
+msgstr "Сопоставление почты…"
+
+#: fltk/native/main.cpp:549
+msgid "Mail updated. Use Undo to reverse the action."
+msgstr ""
+
+#: fltk/native/main.cpp:684
+#, fuzzy
+#| msgid "Conversation"
+msgid "conversations"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:686
+msgid "Load More is available in View."
+msgstr ""
+
+#: fltk/native/main.cpp:731
+#, fuzzy
+#| msgid "Reading a conversation"
+msgid "Loading conversation…"
+msgstr "Чтение цепочки"
+
+#: fltk/native/main.cpp:768 fltk/native/main.cpp:787
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment"
+msgstr "Вложения"
+
+#: fltk/native/main.cpp:771
+msgid "S/MIME message. Export the original to inspect its protection."
+msgstr ""
+
+#: fltk/native/main.cpp:775
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversation loaded"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:786 fltk/native/main.cpp:1787
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Save Attachment"
+msgstr "Сохранить вложения"
+
+#: fltk/native/main.cpp:796
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment saved"
+msgstr "Вложения"
+
+#: fltk/native/main.cpp:809
+msgid "Select an outgoing message first."
+msgstr ""
+
+#: fltk/native/main.cpp:813
+#, fuzzy
+#| msgid "Delete This Message Forever?"
+msgid "Delete this queued message?"
+msgstr "Удалить это сообщение навсегда?"
+
+#: fltk/native/main.cpp:824
+#, fuzzy
+#| msgid "Conversation"
+msgid "Export Conversation"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:832
+#, fuzzy
+#| msgid "No Conversation Selected"
+msgid "Conversation exported"
+msgstr "Цепочка не выбрана"
+
+#: fltk/native/main.cpp:872
+#, fuzzy
+#| msgid "Reminders"
+msgid "Reminder snoozed"
+msgstr "Напоминания"
+
+#: fltk/native/main.cpp:930
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Add an account before composing mail."
+msgstr "Сначала добавьте учётную запись"
+
+#: fltk/native/main.cpp:935 fltk/native/main.cpp:2069
+#, fuzzy
+#| msgid "New Message"
+msgid "Compose Message"
+msgstr "Новое сообщение"
+
+#: fltk/native/main.cpp:947
+msgid "Sign (OpenPGP)"
+msgstr ""
+
+#: fltk/native/main.cpp:948
+#, fuzzy
+#| msgid "Encrypted"
+msgid "Encrypt (OpenPGP)"
+msgstr "Зашифровано"
+
+#: fltk/native/main.cpp:970
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Remove Attachment"
+msgstr "Сохранить вложения"
+
+#: fltk/native/main.cpp:980
+#, fuzzy
+#| msgid "Checking for Updates…"
+msgid "Checking local OpenPGP keys…"
+msgstr "Проверка обновлений…"
+
+#: fltk/native/main.cpp:1042
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "Подписано и зашифровано"
+
+#: fltk/native/main.cpp:1043
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1058
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1070
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "Отправить без шифрования?"
+
+#: fltk/native/main.cpp:1075
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "Работа"
+
+#: fltk/native/main.cpp:1092
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1116
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1122
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1135
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "Проверено"
+
+#: fltk/native/main.cpp:1138
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "Отправить"
+
+#: fltk/native/main.cpp:1140
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "Отправить позже"
+
+#: fltk/native/main.cpp:1142
+#, fuzzy
+#| msgid "Save Draft"
+msgid "File/Save Draft"
+msgstr "Сохранить черновик"
+
+#: fltk/native/main.cpp:1144
+#, fuzzy
+#| msgid "Close"
+msgid "File/Close"
+msgstr "Закрыть"
+
+#: fltk/native/main.cpp:1147 fltk/native/main.cpp:1854
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Undo"
+msgstr "Изменить"
+
+#: fltk/native/main.cpp:1148 fltk/native/main.cpp:1855
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Cut"
+msgstr "Изменить"
+
+#: fltk/native/main.cpp:1149 fltk/native/main.cpp:1856
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Copy"
+msgstr "Изменить"
+
+#: fltk/native/main.cpp:1150 fltk/native/main.cpp:1857
+#, fuzzy
+#| msgid "Edit Template"
+msgid "Edit/Paste"
+msgstr "Изменить шаблон"
+
+#: fltk/native/main.cpp:1151 fltk/native/main.cpp:1858
+#, fuzzy
+#| msgid "Select all"
+msgid "Edit/Select All"
+msgstr "Выделить всё"
+
+#: fltk/native/main.cpp:1156
+msgid "Wait for the current request to finish."
+msgstr ""
+
+#: fltk/native/main.cpp:1161
+msgid "Close this message? Save a draft to keep your changes."
+msgstr ""
+
+#: fltk/native/main.cpp:1195
+#, fuzzy
+#| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
+msgid "This build has no Microsoft sign-in client."
+msgstr "Эта сборка Penguin Mail собрана без входа в Microsoft."
+
+#: fltk/native/main.cpp:1197
+#, fuzzy
+#| msgid "Choose a Time…"
+msgid "Choose Client JSON…"
+msgstr "Выбрать время…"
+
+#: fltk/native/main.cpp:1197
+msgid "Setup Instructions"
+msgstr ""
+
+#: fltk/native/main.cpp:1198
+msgid ""
+"This build has no Google sign-in client.\n"
+"Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
+"After sign-in, the account client and refresh token will be saved\n"
+"in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1204
+msgid "Google Desktop OAuth Client"
+msgstr ""
+
+#: fltk/native/main.cpp:1209
+#, fuzzy
+#| msgid "Continue in your browser"
+msgid "Complete sign-in in your browser."
+msgstr "Продолжите в браузере"
+
+#: fltk/native/main.cpp:1218
+msgid ""
+"Demo mode uses temporary sample accounts. Start without --demo to add an "
+"account."
+msgstr ""
+
+#: fltk/native/main.cpp:1223
+#, fuzzy
+#| msgid "Google Meet"
+msgid "Google…"
+msgstr "Google Meet"
+
+#: fltk/native/main.cpp:1224
+#, fuzzy
+#| msgid "Microsoft Teams"
+msgid "Microsoft…"
+msgstr "Microsoft Teams"
+
+#: fltk/native/main.cpp:1226
+#, fuzzy
+#| msgid "Account"
+msgid "Account Type"
+msgstr "Учётная запись"
+
+#: fltk/native/main.cpp:1232 fltk/native/main.cpp:1285
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "IMAP Server"
+msgstr "Серверы MCP"
+
+#: fltk/native/main.cpp:1235
+#, fuzzy
+#| msgid "Security"
+msgid "IMAP Security"
+msgstr "Безопасность"
+
+#: fltk/native/main.cpp:1238
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "SMTP Server"
+msgstr "Серверы MCP"
+
+#: fltk/native/main.cpp:1241
+#, fuzzy
+#| msgid "Security"
+msgid "SMTP Security"
+msgstr "Безопасность"
+
+#: fltk/native/main.cpp:1244
+#, fuzzy
+#| msgid "User Name"
+msgid "SMTP User Name"
+msgstr "Имя пользователя"
+
+#: fltk/native/main.cpp:1245
+#, fuzzy
+#| msgid "Password"
+msgid "SMTP Password"
+msgstr "Пароль"
+
+#: fltk/native/main.cpp:1248
+msgid ""
+"Leave user names and the SMTP password empty to use the incoming account's "
+"details. Passwords are stored in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1252
+#, fuzzy
+#| msgid "Servers"
+msgid "Find Servers"
+msgstr "Серверы"
+
+#: fltk/native/main.cpp:1259
+msgid "No servers found. Enter the server details manually."
+msgstr ""
+
+#: fltk/native/main.cpp:1264
+#, fuzzy
+#| msgid "Use {server}"
+msgid "Use Servers"
+msgstr "Использовать {server}"
+
+#: fltk/native/main.cpp:1265
+msgid "These servers were discovered outside your email domain. Use them?"
+msgstr ""
+
+#: fltk/native/main.cpp:1283
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "POP3 Server"
+msgstr "Серверы MCP"
+
+#: fltk/native/main.cpp:1284
+#, fuzzy
+#| msgid "Server"
+msgid "Server URL"
+msgstr "Сервер"
+
+#: fltk/native/main.cpp:1300
+msgid "Authentication"
+msgstr ""
+
+#: fltk/native/main.cpp:1322
+msgid "Enter ports between 1 and 65535."
+msgstr ""
+
+#: fltk/native/main.cpp:1350
+msgid "Checking the incoming and outgoing servers…"
+msgstr ""
+
+#: fltk/native/main.cpp:1369
+msgid ""
+"Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
+"the preview closes."
+msgstr ""
+
+#: fltk/native/main.cpp:1370
+msgid ""
+"OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
+"file, or manage keys with your usual GnuPG tools. Keys are never fetched "
+"automatically."
+msgstr ""
+
+#: fltk/native/main.cpp:1372
+#, fuzzy
+#| msgid "Add Address"
+msgid "Addresses"
+msgstr "Добавить адрес"
+
+#: fltk/native/main.cpp:1388
+#, fuzzy
+#| msgid "Not encrypted in transit"
+msgid "No encryption key"
+msgstr "Не зашифровано при передаче"
+
+#: fltk/native/main.cpp:1395
+#, fuzzy
+#| msgid "Check for Updates"
+msgid "Check Local Keys"
+msgstr "Проверить обновления"
+
+#: fltk/native/main.cpp:1396
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Key File…"
+msgstr "Импортировать…"
+
+#: fltk/native/main.cpp:1398
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Import OpenPGP Key"
+msgstr "Импорт ключей OpenPGP"
+
+#: fltk/native/main.cpp:1401
+#, fuzzy
+#| msgid "Import…"
+msgid "Import"
+msgstr "Импортировать…"
+
+#: fltk/native/main.cpp:1402
+msgid "Import this file into your GnuPG keyring?"
+msgstr ""
+
+#: fltk/native/main.cpp:1403
+#, fuzzy
+#| msgid "Import…"
+msgid "Importing key…"
+msgstr "Импортировать…"
+
+#: fltk/native/main.cpp:1406
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Imported keys:"
+msgstr "Импорт ключей OpenPGP"
+
+#: fltk/native/main.cpp:1416
+#, fuzzy
+#| msgid "Conversation"
+msgid "GnuPG version:"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:1423
+msgid "Keep syncing in the tray when the window closes"
+msgstr ""
+
+#: fltk/native/main.cpp:1426
+#, fuzzy
+#| msgid "Notifications"
+msgid "Show new mail notifications"
+msgstr "Уведомления"
+
+#: fltk/native/main.cpp:1431
+#, fuzzy
+#| msgid "Group Messages into Conversations"
+msgid "Group messages into conversations"
+msgstr "Группировать сообщения в цепочки"
+
+#: fltk/native/main.cpp:1434
+msgid "Sync Interval (seconds)"
+msgstr ""
+
+#: fltk/native/main.cpp:1437
+msgid "Local Mail Window (days)"
+msgstr ""
+
+#: fltk/native/main.cpp:1441
+msgid ""
+"Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
+"window changes apply after restart."
+msgstr ""
+
+#: fltk/native/main.cpp:1486
+#, fuzzy
+#| msgid "Calendar to add to"
+msgid "Calendar loaded"
+msgstr "Календарь для добавления"
+
+#: fltk/native/main.cpp:1535
+msgid "No writable calendar is available."
+msgstr ""
+
+#: fltk/native/main.cpp:1540
+#, fuzzy
+#| msgid "Starts"
+msgid "Start"
+msgstr "Начало"
+
+#: fltk/native/main.cpp:1541
+#, fuzzy
+#| msgid "Ends"
+msgid "End"
+msgstr "Окончание"
+
+#: fltk/native/main.cpp:1542
+#, fuzzy
+#| msgid "Notifications"
+msgid "Location"
+msgstr "Уведомления"
+
+#: fltk/native/main.cpp:1546
+msgid ""
+"Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
+"provider."
+msgstr ""
+
+#: fltk/native/main.cpp:1567
+#, fuzzy
+#| msgid "New Event"
+msgid "Save Event"
+msgstr "Новое событие"
+
+#: fltk/native/main.cpp:1573
+msgid "Enter a title and a valid start and end time."
+msgstr ""
+
+#: fltk/native/main.cpp:1598 fltk/native/main.cpp:1818
+#, fuzzy
+#| msgid "Delete it"
+msgid "Delete Event"
+msgstr "Удалить"
+
+#: fltk/native/main.cpp:1599
+msgid "Delete this event and notify its guests?"
+msgstr ""
+
+#: fltk/native/main.cpp:1610
+#, fuzzy
+#| msgid "Contacts"
+msgid "Contacts loaded"
+msgstr "Контакты"
+
+#: fltk/native/main.cpp:1631 fltk/native/main.cpp:1826
+#, fuzzy
+#| msgid "Contact"
+msgid "New Contact"
+msgstr "Контакт"
+
+#: fltk/native/main.cpp:1639
+#, fuzzy
+#| msgid "Contact"
+msgid "Save Contact"
+msgstr "Контакт"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1883
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Forward"
+msgstr "Сообщение"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1879
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Reply"
+msgstr "Сообщение"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1881
+#, fuzzy
+#| msgid "Reply All"
+msgid "Message/Reply All"
+msgstr "Ответить всем"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1885
+#, fuzzy
+#| msgid "Message Cache"
+msgid "Message/Archive"
+msgstr "История сообщений"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1887
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Message/Move to Trash"
+msgstr "Переместить в корзину"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1893
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Flag"
+msgstr "Сообщение"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1889
+#, fuzzy
+#| msgid "Message sent"
+msgid "Message/Mark Read"
+msgstr "Сообщение отправлено"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1891
+#, fuzzy
+#| msgid "Mark as Unread"
+msgid "Message/Mark Unread"
+msgstr "Отметить как непрочитанное"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1895
+#, fuzzy
+#| msgid "New Label…"
+msgid "Message/Label…"
+msgstr "Новый ярлык…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1896
+#, fuzzy
+#| msgid "Remind Me"
+msgid "Message/Remind Me…"
+msgstr "Напомнить"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1894
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Unflag"
+msgstr "Сообщение"
+
+#: fltk/native/main.cpp:1684 fltk/native/main.cpp:1845
+#, fuzzy
+#| msgid "Conversation"
+msgid "File/Export Conversation…"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:1772
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "Цепочка"
+
+#: fltk/native/main.cpp:1814
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "Календари"
+
+#: fltk/native/main.cpp:1824
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "Контакты"
+
+#: fltk/native/main.cpp:1829
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:1840
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "Спросите Penguin Mail…"
+
+#: fltk/native/main.cpp:1842
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "Новое сообщение"
+
+#: fltk/native/main.cpp:1844
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "Добавить учётную запись…"
+
+#: fltk/native/main.cpp:1847
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "Ключи OpenPGP"
+
+#: fltk/native/main.cpp:1848
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "Настройки"
+
+#: fltk/native/main.cpp:1850
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:1851
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "Закрыть окно"
+
+#: fltk/native/main.cpp:1853
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "Выйти"
+
+#: fltk/native/main.cpp:1859
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "Поиск"
+
+#: fltk/native/main.cpp:1861
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "Вид"
+
+#: fltk/native/main.cpp:1862
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "Новый календарь"
+
+#: fltk/native/main.cpp:1864
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "Контакты"
+
+#: fltk/native/main.cpp:1866
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "Обновить"
+
+#: fltk/native/main.cpp:1869
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "Показать исходный код"
+
+#: fltk/native/main.cpp:1874
+#, fuzzy
+#| msgid "Edit Draft"
+msgid "Message/Edit Draft"
+msgstr "Изменить черновик"
+
+#: fltk/native/main.cpp:1875
+msgid "Message/Send Queued Message Now"
+msgstr ""
+
+#: fltk/native/main.cpp:1877
+msgid "Message/Delete Queued Message"
+msgstr ""
+
+#: fltk/native/main.cpp:1897
+#, fuzzy
+#| msgid "Keyboard Shortcuts"
+msgid "Help/Keyboard Shortcuts"
+msgstr "Сочетания клавиш"
+
+#: fltk/native/main.cpp:1899
+msgid ""
+"Ctrl+N: New Message\n"
+"Ctrl+R: Reply\n"
+"Ctrl+Shift+R: Reply All\n"
+"Ctrl+L: Forward\n"
+"Ctrl+E: Archive\n"
+"Delete: Move to Trash\n"
+"Ctrl+Z: Undo\n"
+"Ctrl+F: Search\n"
+"Ctrl+1/2/3: Mail / Calendar / Contacts\n"
+"F5: Refresh\n"
+"Ctrl+W: Close Window\n"
+"Ctrl+Q: Quit\n"
+"\n"
+"Composer: Ctrl+Enter sends, Ctrl+S saves a draft.\n"
+"DomeD owns Super shortcuts."
+msgstr ""
+
+#: fltk/native/main.cpp:1906
+#, fuzzy
+#| msgid "About Penguin Mail"
+msgid "Help/About Penguin Mail"
+msgstr "О программе Penguin Mail"
+
+#: fltk/native/main.cpp:1909
+msgid ""
+"Penguin Mail 1.0.10\n"
+"FLTK edition for DomeD\n"
+"\n"
+"Original mail engines: c9dev/penguin-mail\n"
+"License: GPL-3.0-or-later"
+msgstr ""
+
+#: fltk/native/main.cpp:2037
+msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr ""
+
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
 msgstr ""
@@ -12500,6 +13567,28 @@ msgstr "Отметить как не спам"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "Переместить в {folder}"
+
+#, fuzzy
+#~| msgid "New message"
+#~ msgid "new messages"
+#~ msgstr "Новое сообщение"
+
+#, fuzzy
+#~| msgid "No Mail"
+#~ msgid "New Mail"
+#~ msgstr "Нет писем"
+
+#~ msgid "gmail"
+#~ msgstr "gmail"
+
+#~ msgid "email"
+#~ msgstr "почта"
+
+#~ msgid "mail"
+#~ msgstr "письма"
+
+#~ msgid "inbox"
+#~ msgstr "входящие"
 
 #~ msgid ""
 #~ "Added below new messages and above quoted text in replies. Markdown works."

@@ -120,22 +120,6 @@ msgstr ""
 "navegador. O Penguin Mail é feito com GTK e libadwaita e integra-se melhor "
 "no GNOME, mas funciona em qualquer ambiente de trabalho Linux."
 
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:53
-msgid "gmail"
-msgstr "gmail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:54
-msgid "email"
-msgstr "e-mail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:55
-msgid "mail"
-msgstr "correio"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:56
-msgid "inbox"
-msgstr "caixa de entrada"
-
 #: app/data/io.github.c9dev.PenguinMail.metainfo.xml:85
 msgid "All your accounts in one inbox, with a reply open"
 msgstr "Todas as contas numa caixa de entrada, com uma resposta aberta"
@@ -3316,78 +3300,66 @@ msgstr "Ficheiros anexados a eventos"
 msgid "{account} has not allowed Penguin Mail to {missing}"
 msgstr "{account} não autorizou o Penguin Mail a {missing}"
 
-#: app/src/pgp.rs:114
+#: app/src/pgp/adapter.rs:105
 msgid "Add a recipient whose key gpg holds."
 msgstr "Adicione um destinatário de quem o gpg tenha a chave."
 
-#: app/src/pgp.rs:123
+#: app/src/pgp/adapter.rs:114
 msgid "gpg holds no key for {addresses}."
 msgstr "O gpg não tem chave para {addresses}."
 
-#: app/src/pgp.rs:140
+#: app/src/pgp/adapter.rs:131
 msgid "gpg holds no key for any of the addresses you send from."
 msgstr "O gpg não tem chave para nenhum dos endereços de onde envia."
 
-#: app/src/pgp.rs:142
+#: app/src/pgp/adapter.rs:133
 msgid "gpg holds a key for {addresses}."
 msgstr "O gpg tem chave para {addresses}."
 
-#: app/src/pgp.rs:146
+#: app/src/pgp/adapter.rs:137
 msgid "gpg holds a key for {addresses}, and none for {without}."
 msgstr "O gpg tem chave para {addresses} e nenhuma para {without}."
 
-#: app/src/pgp.rs:250
+#: app/src/pgp/adapter.rs:241
 msgid "This computer has no gpg. Install GnuPG to read or send OpenPGP mail."
 msgstr ""
 "Este computador não tem gpg. Instale o GnuPG para ler ou enviar correio "
 "OpenPGP."
 
-#: app/src/pgp.rs:253 app/src/smime.rs:258
-msgid "Could not run {program}: {reason}"
-msgstr "Não foi possível executar {program}: {reason}"
-
-#: app/src/pgp.rs:257 app/src/smime.rs:262
-msgid "Could not write a temporary file: {reason}"
-msgstr "Não foi possível escrever um ficheiro temporário: {reason}"
-
-#: app/src/pgp.rs:261
+#: app/src/pgp/adapter.rs:252
 msgid "This message is encrypted to a key this computer does not hold."
 msgstr ""
 "Esta mensagem está encriptada para uma chave que este computador não tem."
 
-#: app/src/pgp.rs:264
+#: app/src/pgp/adapter.rs:255
 msgid "gpg holds no secret key to sign as {address}."
 msgstr "O gpg não tem chave secreta para assinar como {address}."
 
-#: app/src/pgp.rs:268
+#: app/src/pgp/adapter.rs:259
 msgid "gpg holds no key it can encrypt to for {address}."
 msgstr "O gpg não tem chave para encriptar para {address}."
 
-#: app/src/pgp.rs:271
+#: app/src/pgp/adapter.rs:262
 msgid "This text holds no OpenPGP block."
 msgstr "Este texto não contém nenhum bloco OpenPGP."
 
-#: app/src/pgp.rs:272
+#: app/src/pgp/adapter.rs:263
 msgid "This file holds no OpenPGP key."
 msgstr "Este ficheiro não contém nenhuma chave OpenPGP."
 
-#: app/src/pgp.rs:273 app/src/smime.rs:278
-msgid "This message is too large to open."
-msgstr "Esta mensagem é demasiado grande para abrir."
-
-#: app/src/pgp.rs:274
+#: app/src/pgp/adapter.rs:265
 msgid "gpg failed: {reason}"
 msgstr "O gpg falhou: {reason}"
 
-#: app/src/protection.rs:123
+#: app/src/protection.rs:69
 msgid "{smime} {pgp}"
 msgstr "{smime} {pgp}"
 
-#: app/src/protection.rs:136
+#: app/src/protection.rs:82
 msgid "This computer has nothing to encrypt with."
 msgstr "Este computador não tem com que encriptar."
 
-#: app/src/protection.rs:143
+#: app/src/protection.rs:89
 msgid ""
 "S/MIME names every recipient inside an encrypted message, so a blind copy "
 "would not stay blind."
@@ -3395,43 +3367,43 @@ msgstr ""
 "O S/MIME indica todos os destinatários dentro de uma mensagem encriptada, "
 "pelo que uma cópia oculta deixaria de ser oculta."
 
-#: app/src/protection.rs:301
+#: app/src/protection.rs:247
 msgid "Signed"
 msgstr "Assinada"
 
-#: app/src/protection.rs:302
+#: app/src/protection.rs:248
 msgid "Encrypted"
 msgstr "Encriptada"
 
-#: app/src/protection.rs:303
+#: app/src/protection.rs:249
 msgid "Signed and encrypted"
 msgstr "Assinada e encriptada"
 
-#: app/src/protection.rs:312
+#: app/src/protection.rs:258
 msgid "Encrypt this message to the recipients' keys"
 msgstr "Encriptar esta mensagem para as chaves dos destinatários"
 
-#: app/src/protection.rs:313
+#: app/src/protection.rs:259
 msgid "Encrypt this message to the recipients' certificates"
 msgstr "Encriptar esta mensagem para os certificados dos destinatários"
 
-#: app/src/protection.rs:339
+#: app/src/protection.rs:285
 msgid "gpg holds no key and gpgsm no trusted certificate for {addresses}."
 msgstr ""
 "O gpg não tem chave nem o gpgsm certificado de confiança para {addresses}."
 
-#: app/src/protection.rs:347
+#: app/src/protection.rs:293
 msgid "A message goes out under one standard or the other. {pgp} {smime}"
 msgstr "Uma mensagem sai por uma norma ou pela outra. {pgp} {smime}"
 
-#: app/src/protection.rs:612
+#: app/src/protection/common.rs:323
 msgid ""
 "This key does not name {sender}, the address the message says it is from."
 msgstr ""
 "Esta chave não identifica {sender}, o endereço de onde a mensagem diz que "
 "vem."
 
-#: app/src/protection.rs:616
+#: app/src/protection/common.rs:327
 msgid ""
 "This certificate does not name {sender}, the address the message says it is "
 "from."
@@ -3439,78 +3411,78 @@ msgstr ""
 "Este certificado não identifica {sender}, o endereço de onde a mensagem diz "
 "que vem."
 
-#: app/src/protection.rs:625
+#: app/src/protection/common.rs:336
 msgid "Signed by {signer}"
 msgstr "Assinada por {signer}"
 
-#: app/src/protection.rs:631
+#: app/src/protection/common.rs:342
 msgid "This message changed after it was signed"
 msgstr "Esta mensagem mudou depois de ter sido assinada"
 
-#: app/src/protection.rs:633
+#: app/src/protection/common.rs:344
 msgid "The signature of {signer} does not match what arrived."
 msgstr "A assinatura de {signer} não corresponde ao que chegou."
 
-#: app/src/protection.rs:640
+#: app/src/protection/common.rs:351
 msgid "Signed by {signer}, whose key has expired"
 msgstr "Assinada por {signer}, cuja chave expirou"
 
-#: app/src/protection.rs:644
+#: app/src/protection/common.rs:355
 msgid "The text is as it was written, and the key behind it ran out."
 msgstr "O texto está como foi escrito e a chave por trás dele expirou."
 
-#: app/src/protection.rs:650
+#: app/src/protection/common.rs:361
 msgid "Signed by {signer}, whose certificate has run out"
 msgstr "Assinada por {signer}, cujo certificado expirou"
 
-#: app/src/protection.rs:654
+#: app/src/protection/common.rs:365
 msgid ""
 "The text is as it was written, and the certificate behind it has expired."
 msgstr "O texto está como foi escrito e o certificado por trás dele expirou."
 
-#: app/src/protection.rs:660
+#: app/src/protection/common.rs:371
 msgid "Signed by {signer}, who took this key back"
 msgstr "Assinada por {signer}, que revogou esta chave"
 
-#: app/src/protection.rs:664
+#: app/src/protection/common.rs:375
 msgid "The owner revoked it, so it says nothing about who wrote this."
 msgstr "O dono revogou-a, por isso não diz nada sobre quem escreveu isto."
 
-#: app/src/protection.rs:670
+#: app/src/protection/common.rs:381
 msgid "Signed by {signer}, whose certificate was taken back"
 msgstr "Assinada por {signer}, cujo certificado foi revogado"
 
-#: app/src/protection.rs:674
+#: app/src/protection/common.rs:385
 msgid "Whoever issued it revoked it, so it says nothing about who wrote this."
 msgstr ""
 "Quem o emitiu revogou-o, por isso não diz nada sobre quem escreveu isto."
 
-#: app/src/protection.rs:680
+#: app/src/protection/common.rs:391
 msgid "Signed by {signer}, and the signature has run out"
 msgstr "Assinada por {signer}, e a assinatura expirou"
 
-#: app/src/protection.rs:684
+#: app/src/protection/common.rs:395
 msgid "It carried a date to stop being good on, and that date has passed."
 msgstr ""
 "Levava uma data a partir da qual deixava de valer, e essa data já passou."
 
-#: app/src/protection.rs:689
+#: app/src/protection/common.rs:400
 msgid "Signed by a key this computer does not hold"
 msgstr "Assinada por uma chave que este computador não tem"
 
-#: app/src/protection.rs:691
+#: app/src/protection/common.rs:402
 msgid "Nothing here can check it. Ask gpg for key {key}."
 msgstr "Nada aqui a consegue verificar. Peça ao gpg a chave {key}."
 
-#: app/src/protection.rs:698
+#: app/src/protection/common.rs:409
 msgid "it names"
 msgstr "que indica"
 
-#: app/src/protection.rs:704
+#: app/src/protection/common.rs:415
 msgid "Signed by a certificate this computer does not hold"
 msgstr "Assinada por um certificado que este computador não tem"
 
-#: app/src/protection.rs:706
+#: app/src/protection/common.rs:417
 msgid ""
 "The message carried none either, so there is nothing here to check it "
 "against."
@@ -3518,94 +3490,94 @@ msgstr ""
 "A mensagem também não o trazia, por isso não há aqui nada com que a "
 "verificar."
 
-#: app/src/protection.rs:712
+#: app/src/protection/common.rs:423
 msgid "gpg could not check this signature"
 msgstr "O gpg não conseguiu verificar esta assinatura"
 
-#: app/src/protection.rs:717
+#: app/src/protection/common.rs:428
 msgid "gpgsm could not check this signature"
 msgstr "O gpgsm não conseguiu verificar esta assinatura"
 
-#: app/src/protection.rs:740
+#: app/src/protection/common.rs:451
 msgid "Encrypted, and signed by {signer}"
 msgstr "Encriptada e assinada por {signer}"
 
-#: app/src/protection.rs:749
+#: app/src/protection/common.rs:460
 msgid "Encrypted. {what}"
 msgstr "Encriptada. {what}"
 
-#: app/src/protection.rs:755
+#: app/src/protection/common.rs:466
 msgid "This message arrived encrypted"
 msgstr "Esta mensagem chegou encriptada"
 
-#: app/src/protection.rs:757
+#: app/src/protection/common.rs:468
 msgid "Nobody signed it, so it says nothing about who sent it."
 msgstr "Ninguém a assinou, por isso não diz nada sobre quem a enviou."
 
-#: app/src/protection.rs:765
+#: app/src/protection/common.rs:476
 msgid "{detail} {files}"
 msgstr "{detail} {files}"
 
-#: app/src/protection.rs:779
+#: app/src/protection/common.rs:490
 msgid "This message is encrypted to a key you do not hold"
 msgstr "Esta mensagem está encriptada para uma chave que não tem"
 
-#: app/src/protection.rs:781
+#: app/src/protection/common.rs:492
 msgid "Whoever sent it used a key gpg has no secret half of."
 msgstr "Quem a enviou usou uma chave de que o gpg não tem a metade secreta."
 
-#: app/src/protection.rs:786
+#: app/src/protection/common.rs:497
 msgid "This message is encrypted to a certificate you do not hold"
 msgstr "Esta mensagem está encriptada para um certificado que não tem"
 
-#: app/src/protection.rs:788
+#: app/src/protection/common.rs:499
 msgid "Whoever sent it used a certificate gpgsm has no secret key for."
 msgstr ""
 "Quem a enviou usou um certificado de que o gpgsm não tem a chave secreta."
 
-#: app/src/protection.rs:794
+#: app/src/protection/common.rs:505
 msgid "This message says it is OpenPGP and is not"
 msgstr "Esta mensagem diz ser OpenPGP e não é"
 
-#: app/src/protection.rs:795
+#: app/src/protection/common.rs:506
 msgid "This message says it is S/MIME and is not"
 msgstr "Esta mensagem diz ser S/MIME e não é"
 
-#: app/src/protection.rs:798
+#: app/src/protection/common.rs:509
 msgid "Its parts are not where a signed or encrypted message keeps them."
 msgstr ""
 "As partes dela não estão onde uma mensagem assinada ou encriptada as guarda."
 
-#: app/src/protection.rs:803
+#: app/src/protection/common.rs:514
 msgid "This message is too large to open"
 msgstr "Esta mensagem é demasiado grande para abrir"
 
-#: app/src/protection.rs:805
+#: app/src/protection/common.rs:516
 msgid "It opens to more than {size} MB, so Penguin Mail stopped reading it."
 msgstr ""
 "Aberta, ocupa mais de {size} MB, por isso o Penguin Mail parou de a ler."
 
-#: app/src/protection.rs:812
+#: app/src/protection/common.rs:523
 msgid "gpg could not open this message"
 msgstr "O gpg não conseguiu abrir esta mensagem"
 
-#: app/src/protection.rs:813
+#: app/src/protection/common.rs:524
 msgid "gpgsm could not open this message"
 msgstr "O gpgsm não conseguiu abrir esta mensagem"
 
-#: app/src/protection.rs:826
+#: app/src/protection/common.rs:537
 msgid "You marked this key as one not to trust."
 msgstr "Marcou esta chave como não fiável."
 
-#: app/src/protection.rs:827
+#: app/src/protection/common.rs:538
 msgid "This is one of your own keys."
 msgstr "Esta é uma das suas chaves."
 
-#: app/src/protection.rs:828
+#: app/src/protection/common.rs:539
 msgid "You have vouched for this key."
 msgstr "Confirmou esta chave."
 
-#: app/src/protection.rs:830
+#: app/src/protection/common.rs:541
 msgid ""
 "Only people you partly trust have vouched for this key, so it is not fully "
 "checked."
@@ -3613,11 +3585,11 @@ msgstr ""
 "Só pessoas em quem confia em parte confirmaram esta chave, por isso não está "
 "totalmente verificada."
 
-#: app/src/protection.rs:833
+#: app/src/protection/common.rs:544
 msgid "Nobody has vouched for this key, so it names no one."
 msgstr "Ninguém confirmou esta chave, por isso não identifica ninguém."
 
-#: app/src/protection.rs:836
+#: app/src/protection/common.rs:547
 msgid ""
 "Its certificate leads back to an authority you trust, but this computer "
 "could not check whether it was revoked."
@@ -3625,47 +3597,47 @@ msgstr ""
 "O certificado dela remete para uma autoridade em que confia, mas este "
 "computador não conseguiu verificar se foi revogado."
 
-#: app/src/protection.rs:840
+#: app/src/protection/common.rs:551
 msgid "Its certificate leads back to an authority you trust."
 msgstr "O certificado dela remete para uma autoridade em que confia."
 
-#: app/src/protection.rs:843
+#: app/src/protection/common.rs:554
 msgid "Its certificate leads back to nobody you trust, so it names no one."
 msgstr ""
 "O certificado dela não remete para ninguém em quem confie, por isso não "
 "identifica ninguém."
 
-#: app/src/protection.rs:846
+#: app/src/protection/common.rs:557
 msgid "Nothing here says who that certificate belongs to."
 msgstr "Nada aqui diz a quem pertence esse certificado."
 
-#: app/src/protection.rs:882
+#: app/src/protection/common.rs:593
 msgid "key {key}"
 msgstr "chave {key}"
 
-#: app/src/protection.rs:885
+#: app/src/protection/common.rs:596
 msgid "a key gpg would not name"
 msgstr "uma chave que o gpg não identificou"
 
-#: app/src/protection.rs:886
+#: app/src/protection/common.rs:597
 msgid "a certificate gpgsm would not name"
 msgstr "um certificado que o gpgsm não identificou"
 
-#: app/src/protection.rs:897
+#: app/src/protection/common.rs:608
 msgid "It carries a file, kept in this window only."
 msgstr "Leva um ficheiro, guardado apenas nesta janela."
 
-#: app/src/protection.rs:899
+#: app/src/protection/common.rs:610
 msgid "It carries {count} file, kept in this window only."
 msgid_plural "It carries {count} files, kept in this window only."
 msgstr[0] "Leva {count} ficheiro, guardado apenas nesta janela."
 msgstr[1] "Leva {count} ficheiros, guardados apenas nesta janela."
 
-#: app/src/protection.rs:930
+#: app/src/protection/common.rs:641
 msgid "{names} or {last}"
 msgstr "{names} ou {last}"
 
-#: app/src/protection.rs:942
+#: app/src/protection/common.rs:653
 msgid "{names} and {last}"
 msgstr "{names} e {last}"
 
@@ -4289,6 +4261,14 @@ msgstr ""
 "Este computador não tem gpgsm. Instale o GnuPG para ler ou enviar correio S/"
 "MIME."
 
+#: app/src/smime.rs:258
+msgid "Could not run {program}: {reason}"
+msgstr "Não foi possível executar {program}: {reason}"
+
+#: app/src/smime.rs:262
+msgid "Could not write a temporary file: {reason}"
+msgstr "Não foi possível escrever um ficheiro temporário: {reason}"
+
 #: app/src/smime.rs:266
 msgid "This message is encrypted to a certificate this computer does not hold."
 msgstr ""
@@ -4311,6 +4291,10 @@ msgstr "Esta parte não contém dados S/MIME."
 #: app/src/smime.rs:277
 msgid "This file holds no certificate."
 msgstr "Este ficheiro não contém nenhum certificado."
+
+#: app/src/smime.rs:278
+msgid "This message is too large to open."
+msgstr "Esta mensagem é demasiado grande para abrir."
 
 #: app/src/smime.rs:280
 msgid "That passphrase does not open this file. Nothing was imported."
@@ -11539,6 +11523,864 @@ msgstr "Está por ler"
 msgid "Is flagged"
 msgstr "Está marcada"
 
+#: fltk/engine/src/accounts.rs:6
+msgid "Demo mode cannot change real accounts"
+msgstr "O modo de demonstração não pode alterar contas reais"
+
+#: fltk/engine/src/accounts.rs:116
+msgid "Account not found"
+msgstr "Conta não encontrada"
+
+#: fltk/engine/src/accounts.rs:122
+msgid "Unknown account request"
+msgstr "Pedido de conta desconhecido"
+
+#: fltk/engine/src/compose.rs:11
+msgid "Invalid recipient address"
+msgstr "Endereço do destinatário inválido"
+
+#: fltk/engine/src/compose.rs:27
+msgid "Choose a sending account"
+msgstr "Escolha uma conta de envio"
+
+#: fltk/engine/src/compose.rs:33
+msgid "Enter a recipient"
+msgstr "Introduza um destinatário"
+
+#: fltk/engine/src/compose.rs:37
+msgid "Subject cannot contain a line break"
+msgstr "O assunto não pode conter uma quebra de linha"
+
+#: fltk/engine/src/compose.rs:56
+msgid "Invalid attachment path"
+msgstr "Caminho do anexo inválido"
+
+#: fltk/engine/src/compose.rs:60 fltk/engine/src/compose.rs:67
+#: fltk/engine/src/compose.rs:85
+msgid "Attachments exceed 25 MB"
+msgstr "Os anexos excedem 25 MB"
+
+#: fltk/engine/src/compose.rs:72
+msgid "Attachment name missing"
+msgstr "Falta o nome do anexo"
+
+#: fltk/engine/src/crypto.rs:89
+msgid "Key file exceeds 4 MB"
+msgstr "O ficheiro de chaves excede 4 MB"
+
+#: fltk/engine/src/crypto.rs:97
+msgid "Unknown OpenPGP request"
+msgstr "Pedido OpenPGP desconhecido"
+
+#: fltk/engine/src/main.rs:64
+msgid "Sign in again to grant permission."
+msgstr "Inicie sessão novamente para conceder permissão."
+
+#: fltk/engine/src/main.rs:182
+msgid "Sign in again"
+msgstr "Iniciar sessão novamente"
+
+#: fltk/engine/src/main.rs:266
+msgid "Account required"
+msgstr "É necessária uma conta"
+
+#: fltk/engine/src/main.rs:270
+msgid "Unknown mailbox"
+msgstr "Caixa de correio desconhecida"
+
+#: fltk/engine/src/main.rs:329
+msgid "Queued message not found"
+msgstr "Mensagem em espera não encontrada"
+
+#: fltk/engine/src/main.rs:358
+msgid "This message is not cached. Reconnect the account to download it."
+msgstr ""
+"Esta mensagem não está guardada. Volte a ligar a conta para a transferir."
+
+#: fltk/engine/src/main.rs:367
+msgid "Reconnect the account to read the original protected message."
+msgstr "Volte a ligar a conta para ler a mensagem protegida original."
+
+#: fltk/engine/src/main.rs:376
+msgid "OpenPGP could not open this message"
+msgstr "O OpenPGP não conseguiu abrir esta mensagem"
+
+#: fltk/engine/src/main.rs:398
+msgid "Targets required"
+msgstr "É necessário selecionar mensagens"
+
+#: fltk/engine/src/main.rs:408
+msgid "Time required"
+msgstr "É necessária uma hora"
+
+#: fltk/engine/src/main.rs:460
+msgid "This message is no longer a draft"
+msgstr "Esta mensagem já não é um rascunho"
+
+#: fltk/engine/src/main.rs:464
+msgid "Unreadable draft"
+msgstr "Não é possível ler o rascunho"
+
+#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+msgid "Queued message required"
+msgstr "É necessária uma mensagem em espera"
+
+#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+msgid "Demo mode cannot add real accounts"
+msgstr "O modo de demonstração não pode adicionar contas reais"
+
+#: fltk/engine/src/main.rs:575
+msgid "Unknown provider"
+msgstr "Fornecedor desconhecido"
+
+#: fltk/engine/src/main.rs:598
+msgid "Sign-in timed out"
+msgstr "O início de sessão excedeu o tempo limite"
+
+#: fltk/engine/src/main.rs:608
+msgid "Invalid email address"
+msgstr "Endereço de correio eletrónico inválido"
+
+#: fltk/engine/src/main.rs:700
+msgid "Enter a title and an end after the start"
+msgstr "Introduza um título e um fim posterior ao início"
+
+#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/notifications.rs:164
+msgid "Unknown request"
+msgstr "Pedido desconhecido"
+
+#: fltk/engine/src/notifications.rs:144
+msgid "Event not found"
+msgstr "Evento não encontrado"
+
+#: fltk/engine/src/oauth.rs:23
+msgid "OAuth client file exceeds 1 MB"
+msgstr "O ficheiro do cliente OAuth excede 1 MB"
+
+#: fltk/engine/src/oauth.rs:26
+msgid "Unreadable Google OAuth client JSON"
+msgstr "Não é possível ler o JSON do cliente OAuth da Google"
+
+#: fltk/engine/src/oauth.rs:32
+msgid "Choose a Google OAuth client of type Desktop app"
+msgstr "Escolha um cliente OAuth da Google do tipo Aplicação para computador"
+
+#: fltk/engine/src/oauth.rs:38
+msgid "The Google client file has no valid client ID and secret"
+msgstr ""
+"O ficheiro do cliente da Google não tem um ID e segredo de cliente válidos"
+
+#: fltk/native/engine.h:47
+msgid "Mail engine disconnected"
+msgstr "O serviço de correio foi desligado"
+
+#: fltk/native/engine.h:61
+msgid "Mail engine response exceeds limit"
+msgstr "A resposta do serviço de correio excede o limite"
+
+#: fltk/native/engine.h:69
+msgid "Mail engine stopped"
+msgstr "O serviço de correio parou"
+
+#: fltk/native/engine.h:103 fltk/native/engine.h:107
+msgid "Cannot create engine pipe"
+msgstr "Não é possível criar a ligação ao serviço de correio"
+
+#: fltk/native/engine.h:182
+msgid "Mail engine unavailable"
+msgstr "Serviço de correio indisponível"
+
+#: fltk/native/engine.h:187
+msgid "Too many pending requests"
+msgstr "Demasiados pedidos pendentes"
+
+#: fltk/native/main.cpp:296
+msgid "Mon"
+msgstr "Seg"
+
+#: fltk/native/main.cpp:296
+msgid "Thu"
+msgstr "Qui"
+
+#: fltk/native/main.cpp:296
+msgid "Tue"
+msgstr "Ter"
+
+#: fltk/native/main.cpp:296
+msgid "Wed"
+msgstr "Qua"
+
+#: fltk/native/main.cpp:297
+msgid "Fri"
+msgstr "Sex"
+
+#: fltk/native/main.cpp:297
+msgid "Sat"
+msgstr "Sáb"
+
+#: fltk/native/main.cpp:297
+msgid "Sun"
+msgstr "Dom"
+
+#: fltk/native/main.cpp:436
+msgid "The request failed."
+msgstr "O pedido falhou."
+
+#: fltk/native/main.cpp:441
+msgid "The mail engine is starting."
+msgstr "O serviço de correio está a iniciar."
+
+#: fltk/native/main.cpp:516
+msgid "Undone"
+msgstr "Anulado"
+
+#: fltk/native/main.cpp:525
+msgid "Select a conversation first."
+msgstr "Selecione primeiro uma conversa."
+
+#: fltk/native/main.cpp:530
+msgid "Label name"
+msgstr "Nome da etiqueta"
+
+#: fltk/native/main.cpp:537
+msgid "Remind at (YYYY-MM-DD HH:MM)"
+msgstr "Lembrar em (AAAA-MM-DD HH:MM)"
+
+#: fltk/native/main.cpp:542 fltk/native/main.cpp:1063
+msgid "Choose a future date and time."
+msgstr "Escolha uma data e hora futuras."
+
+#: fltk/native/main.cpp:547
+msgid "Updating mail…"
+msgstr "A atualizar o correio…"
+
+#: fltk/native/main.cpp:549
+msgid "Mail updated. Use Undo to reverse the action."
+msgstr "Correio atualizado. Use Desfazer para reverter a ação."
+
+#: fltk/native/main.cpp:684
+msgid "conversations"
+msgstr "conversas"
+
+#: fltk/native/main.cpp:686
+msgid "Load More is available in View."
+msgstr "Carregar mais está disponível em Ver."
+
+#: fltk/native/main.cpp:731
+msgid "Loading conversation…"
+msgstr "A carregar a conversa…"
+
+#: fltk/native/main.cpp:768 fltk/native/main.cpp:787
+msgid "Attachment"
+msgstr "Anexo"
+
+#: fltk/native/main.cpp:771
+msgid "S/MIME message. Export the original to inspect its protection."
+msgstr "Mensagem S/MIME. Exporte o original para inspecionar a sua proteção."
+
+#: fltk/native/main.cpp:775
+msgid "Conversation loaded"
+msgstr "Conversa carregada"
+
+#: fltk/native/main.cpp:786 fltk/native/main.cpp:1787
+msgid "Save Attachment"
+msgstr "Guardar anexo"
+
+#: fltk/native/main.cpp:796
+msgid "Attachment saved"
+msgstr "Anexo guardado"
+
+#: fltk/native/main.cpp:809
+msgid "Select an outgoing message first."
+msgstr "Selecione primeiro uma mensagem de saída."
+
+#: fltk/native/main.cpp:813
+msgid "Delete this queued message?"
+msgstr "Eliminar esta mensagem em espera?"
+
+#: fltk/native/main.cpp:824
+msgid "Export Conversation"
+msgstr "Exportar conversa"
+
+#: fltk/native/main.cpp:832
+msgid "Conversation exported"
+msgstr "Conversa exportada"
+
+#: fltk/native/main.cpp:872
+msgid "Reminder snoozed"
+msgstr "Lembrete adiado"
+
+#: fltk/native/main.cpp:930
+msgid "Add an account before composing mail."
+msgstr "Adicione uma conta antes de escrever uma mensagem."
+
+#: fltk/native/main.cpp:935 fltk/native/main.cpp:2069
+msgid "Compose Message"
+msgstr "Escrever mensagem"
+
+#: fltk/native/main.cpp:947
+msgid "Sign (OpenPGP)"
+msgstr "Assinar (OpenPGP)"
+
+#: fltk/native/main.cpp:948
+msgid "Encrypt (OpenPGP)"
+msgstr "Cifrar (OpenPGP)"
+
+#: fltk/native/main.cpp:970
+msgid "Remove Attachment"
+msgstr "Remover anexo"
+
+#: fltk/native/main.cpp:980
+msgid "Checking local OpenPGP keys…"
+msgstr "A verificar as chaves OpenPGP locais…"
+
+#: fltk/native/main.cpp:1042
+msgid "Send Unencrypted"
+msgstr "Enviar sem cifrar"
+
+#: fltk/native/main.cpp:1043
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr "Esta mensagem cita correio decifrado. Enviar esse texto sem cifra?"
+
+#: fltk/native/main.cpp:1058
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr "Enviar em (AAAA-MM-DD HH:MM)"
+
+#: fltk/native/main.cpp:1070
+msgid "Send without a subject?"
+msgstr "Enviar sem assunto?"
+
+#: fltk/native/main.cpp:1075
+msgid "Working…"
+msgstr "A processar…"
+
+#: fltk/native/main.cpp:1092
+msgid "Message queued in Outbox or Send Later."
+msgstr "Mensagem em espera na Caixa de saída ou em Enviar mais tarde."
+
+#: fltk/native/main.cpp:1113
+msgid "A secret key is available for signing."
+msgstr "Está disponível uma chave secreta para assinar."
+
+#: fltk/native/main.cpp:1113
+msgid "No secret signing key for this sender."
+msgstr "Não há chave secreta de assinatura para este remetente."
+
+#: fltk/native/main.cpp:1116
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr "Todos os destinatários e a sua cópia em Enviados têm chaves de cifra."
+
+#: fltk/native/main.cpp:1122
+msgid "Key identity is not fully trusted:"
+msgstr "A identidade da chave não é totalmente fiável:"
+
+#: fltk/native/main.cpp:1135
+msgid "Check Keys"
+msgstr "Verificar chaves"
+
+#: fltk/native/main.cpp:1138
+msgid "File/Send"
+msgstr "Ficheiro/Enviar"
+
+#: fltk/native/main.cpp:1140
+msgid "File/Send Later…"
+msgstr "Ficheiro/Enviar mais tarde…"
+
+#: fltk/native/main.cpp:1142
+msgid "File/Save Draft"
+msgstr "Ficheiro/Guardar rascunho"
+
+#: fltk/native/main.cpp:1144
+msgid "File/Close"
+msgstr "Ficheiro/Fechar"
+
+#: fltk/native/main.cpp:1147 fltk/native/main.cpp:1854
+msgid "Edit/Undo"
+msgstr "Editar/Desfazer"
+
+#: fltk/native/main.cpp:1148 fltk/native/main.cpp:1855
+msgid "Edit/Cut"
+msgstr "Editar/Cortar"
+
+#: fltk/native/main.cpp:1149 fltk/native/main.cpp:1856
+msgid "Edit/Copy"
+msgstr "Editar/Copiar"
+
+#: fltk/native/main.cpp:1150 fltk/native/main.cpp:1857
+msgid "Edit/Paste"
+msgstr "Editar/Colar"
+
+#: fltk/native/main.cpp:1151 fltk/native/main.cpp:1858
+msgid "Edit/Select All"
+msgstr "Editar/Selecionar tudo"
+
+#: fltk/native/main.cpp:1156
+msgid "Wait for the current request to finish."
+msgstr "Aguarde até o pedido atual terminar."
+
+#: fltk/native/main.cpp:1161
+msgid "Close this message? Save a draft to keep your changes."
+msgstr "Fechar esta mensagem? Guarde um rascunho para manter as alterações."
+
+#: fltk/native/main.cpp:1195
+msgid "This build has no Microsoft sign-in client."
+msgstr "Esta compilação não tem um cliente de início de sessão da Microsoft."
+
+#: fltk/native/main.cpp:1197
+msgid "Choose Client JSON…"
+msgstr "Escolher JSON do cliente…"
+
+#: fltk/native/main.cpp:1197
+msgid "Setup Instructions"
+msgstr "Instruções de configuração"
+
+#: fltk/native/main.cpp:1198
+msgid ""
+"This build has no Google sign-in client.\n"
+"Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
+"After sign-in, the account client and refresh token will be saved\n"
+"in your desktop keyring."
+msgstr ""
+"Esta compilação não tem um cliente de início de sessão da Google.\n"
+"Escolha o JSON do cliente OAuth do tipo Aplicação para computador\n"
+"do seu projeto Google Cloud. Após iniciar sessão, o cliente da conta\n"
+"e o token de atualização serão guardados no chaveiro do ambiente de trabalho."
+
+#: fltk/native/main.cpp:1204
+msgid "Google Desktop OAuth Client"
+msgstr "Cliente OAuth da Google para computador"
+
+#: fltk/native/main.cpp:1209
+msgid "Complete sign-in in your browser."
+msgstr "Conclua o início de sessão no navegador."
+
+#: fltk/native/main.cpp:1218
+msgid ""
+"Demo mode uses temporary sample accounts. Start without --demo to add an "
+"account."
+msgstr ""
+"O modo de demonstração usa contas de exemplo temporárias. Inicie sem --demo "
+"para adicionar uma conta."
+
+#: fltk/native/main.cpp:1223
+msgid "Google…"
+msgstr "Google…"
+
+#: fltk/native/main.cpp:1224
+msgid "Microsoft…"
+msgstr "Microsoft…"
+
+#: fltk/native/main.cpp:1226
+msgid "Account Type"
+msgstr "Tipo de conta"
+
+#: fltk/native/main.cpp:1232 fltk/native/main.cpp:1285
+msgid "IMAP Server"
+msgstr "Servidor IMAP"
+
+#: fltk/native/main.cpp:1235
+msgid "IMAP Security"
+msgstr "Segurança IMAP"
+
+#: fltk/native/main.cpp:1238
+msgid "SMTP Server"
+msgstr "Servidor SMTP"
+
+#: fltk/native/main.cpp:1241
+msgid "SMTP Security"
+msgstr "Segurança SMTP"
+
+#: fltk/native/main.cpp:1244
+msgid "SMTP User Name"
+msgstr "Nome de utilizador SMTP"
+
+#: fltk/native/main.cpp:1245
+msgid "SMTP Password"
+msgstr "Palavra-passe SMTP"
+
+#: fltk/native/main.cpp:1248
+msgid ""
+"Leave user names and the SMTP password empty to use the incoming account's "
+"details. Passwords are stored in your desktop keyring."
+msgstr ""
+"Deixe os nomes de utilizador e a palavra-passe SMTP vazios para usar os "
+"dados da conta de entrada. As palavras-passe são guardadas no porta-chaves "
+"do ambiente de trabalho."
+
+#: fltk/native/main.cpp:1252
+msgid "Find Servers"
+msgstr "Procurar servidores"
+
+#: fltk/native/main.cpp:1259
+msgid "No servers found. Enter the server details manually."
+msgstr ""
+"Não foram encontrados servidores. Introduza os dados dos servidores "
+"manualmente."
+
+#: fltk/native/main.cpp:1264
+msgid "Use Servers"
+msgstr "Usar servidores"
+
+#: fltk/native/main.cpp:1265
+msgid "These servers were discovered outside your email domain. Use them?"
+msgstr ""
+"Estes servidores foram encontrados fora do domínio do seu endereço. Usá-los?"
+
+#: fltk/native/main.cpp:1283
+msgid "POP3 Server"
+msgstr "Servidor POP3"
+
+#: fltk/native/main.cpp:1284
+msgid "Server URL"
+msgstr "URL do servidor"
+
+#: fltk/native/main.cpp:1300
+msgid "Authentication"
+msgstr "Autenticação"
+
+#: fltk/native/main.cpp:1322
+msgid "Enter ports between 1 and 65535."
+msgstr "Introduza portas entre 1 e 65535."
+
+#: fltk/native/main.cpp:1350
+msgid "Checking the incoming and outgoing servers…"
+msgstr "A verificar os servidores de entrada e de saída…"
+
+#: fltk/native/main.cpp:1369
+msgid ""
+"Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
+"the preview closes."
+msgstr ""
+"O modo de demonstração utiliza um chaveiro GnuPG temporário. As chaves "
+"importadas são eliminadas ao fechar a pré-visualização."
+
+#: fltk/native/main.cpp:1370
+msgid ""
+"OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
+"file, or manage keys with your usual GnuPG tools. Keys are never fetched "
+"automatically."
+msgstr ""
+"O OpenPGP utiliza o seu chaveiro GnuPG e o pinentry. Importe um ficheiro de "
+"chave pública ou secreta, ou faça a gestão das chaves com as suas "
+"ferramentas GnuPG habituais. As chaves nunca são obtidas automaticamente."
+
+#: fltk/native/main.cpp:1372
+msgid "Addresses"
+msgstr "Endereços"
+
+#: fltk/native/main.cpp:1388
+msgid "No encryption key"
+msgstr "Sem chave de cifra"
+
+#: fltk/native/main.cpp:1395
+msgid "Check Local Keys"
+msgstr "Verificar chaves locais"
+
+#: fltk/native/main.cpp:1396
+msgid "Import Key File…"
+msgstr "Importar ficheiro de chaves…"
+
+#: fltk/native/main.cpp:1398
+msgid "Import OpenPGP Key"
+msgstr "Importar chave OpenPGP"
+
+#: fltk/native/main.cpp:1401
+msgid "Import"
+msgstr "Importar"
+
+#: fltk/native/main.cpp:1402
+msgid "Import this file into your GnuPG keyring?"
+msgstr "Importar este ficheiro para o seu chaveiro GnuPG?"
+
+#: fltk/native/main.cpp:1403
+msgid "Importing key…"
+msgstr "A importar chave…"
+
+#: fltk/native/main.cpp:1406
+msgid "Imported keys:"
+msgstr "Chaves importadas:"
+
+#: fltk/native/main.cpp:1416
+msgid "GnuPG version:"
+msgstr "Versão do GnuPG:"
+
+#: fltk/native/main.cpp:1423
+msgid "Keep syncing in the tray when the window closes"
+msgstr "Continuar a sincronizar na área de notificação quando a janela fechar"
+
+#: fltk/native/main.cpp:1426
+msgid "Show new mail notifications"
+msgstr "Mostrar notificações de correio novo"
+
+#: fltk/native/main.cpp:1431
+msgid "Group messages into conversations"
+msgstr "Agrupar mensagens em conversas"
+
+#: fltk/native/main.cpp:1434
+msgid "Sync Interval (seconds)"
+msgstr "Intervalo de sincronização (segundos)"
+
+#: fltk/native/main.cpp:1437
+msgid "Local Mail Window (days)"
+msgstr "Período de correio local (dias)"
+
+#: fltk/native/main.cpp:1441
+msgid ""
+"Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
+"window changes apply after restart."
+msgstr ""
+"As cores, o realce e o tipo e tamanho de letra seguem o DomeD. As alterações "
+"ao intervalo e ao período de correio são aplicadas após reiniciar."
+
+#: fltk/native/main.cpp:1486
+msgid "Calendar loaded"
+msgstr "Calendário carregado"
+
+#: fltk/native/main.cpp:1535
+msgid "No writable calendar is available."
+msgstr "Não está disponível nenhum calendário que possa alterar."
+
+#: fltk/native/main.cpp:1540
+msgid "Start"
+msgstr "Início"
+
+#: fltk/native/main.cpp:1541
+msgid "End"
+msgstr "Fim"
+
+#: fltk/native/main.cpp:1542
+msgid "Location"
+msgstr "Local"
+
+#: fltk/native/main.cpp:1546
+msgid ""
+"Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
+"provider."
+msgstr ""
+"Introduza datas locais no formato AAAA-MM-DD HH:MM. As alterações são "
+"enviadas ao fornecedor do calendário."
+
+#: fltk/native/main.cpp:1567
+msgid "Save Event"
+msgstr "Guardar evento"
+
+#: fltk/native/main.cpp:1573
+msgid "Enter a title and a valid start and end time."
+msgstr "Introduza um título e horas de início e fim válidas."
+
+#: fltk/native/main.cpp:1598 fltk/native/main.cpp:1818
+msgid "Delete Event"
+msgstr "Eliminar evento"
+
+#: fltk/native/main.cpp:1599
+msgid "Delete this event and notify its guests?"
+msgstr "Eliminar este evento e notificar os convidados?"
+
+#: fltk/native/main.cpp:1610
+msgid "Contacts loaded"
+msgstr "Contactos carregados"
+
+#: fltk/native/main.cpp:1631 fltk/native/main.cpp:1826
+msgid "New Contact"
+msgstr "Novo contacto"
+
+#: fltk/native/main.cpp:1639
+msgid "Save Contact"
+msgstr "Guardar contacto"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1883
+msgid "Message/Forward"
+msgstr "Mensagem/Reencaminhar"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1879
+msgid "Message/Reply"
+msgstr "Mensagem/Responder"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1881
+msgid "Message/Reply All"
+msgstr "Mensagem/Responder a todos"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1885
+msgid "Message/Archive"
+msgstr "Mensagem/Arquivar"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1887
+msgid "Message/Move to Trash"
+msgstr "Mensagem/Mover para o lixo"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1893
+msgid "Message/Flag"
+msgstr "Mensagem/Assinalar"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1889
+msgid "Message/Mark Read"
+msgstr "Mensagem/Marcar como lido"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1891
+msgid "Message/Mark Unread"
+msgstr "Mensagem/Marcar como não lido"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1895
+msgid "Message/Label…"
+msgstr "Mensagem/Etiqueta…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1896
+msgid "Message/Remind Me…"
+msgstr "Mensagem/Lembrar-me…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1894
+msgid "Message/Unflag"
+msgstr "Mensagem/Retirar sinalizador"
+
+#: fltk/native/main.cpp:1684 fltk/native/main.cpp:1845
+msgid "File/Export Conversation…"
+msgstr "Ficheiro/Exportar conversa…"
+
+#: fltk/native/main.cpp:1772
+msgid "Conversations"
+msgstr "Conversas"
+
+#: fltk/native/main.cpp:1814
+msgid "Calendar days"
+msgstr "Dias do calendário"
+
+#: fltk/native/main.cpp:1824
+msgid "Find Contacts"
+msgstr "Procurar contactos"
+
+#: fltk/native/main.cpp:1829
+msgid "Write to Selected Contact"
+msgstr "Escrever ao contacto selecionado"
+
+#: fltk/native/main.cpp:1840
+msgid "Starting Penguin Mail…"
+msgstr "A iniciar o Penguin Mail…"
+
+#: fltk/native/main.cpp:1842
+msgid "File/New Message"
+msgstr "Ficheiro/Nova mensagem"
+
+#: fltk/native/main.cpp:1844
+msgid "File/Add Account…"
+msgstr "Ficheiro/Adicionar conta…"
+
+#: fltk/native/main.cpp:1847
+msgid "File/OpenPGP Keys…"
+msgstr "Ficheiro/Chaves OpenPGP…"
+
+#: fltk/native/main.cpp:1848
+msgid "File/Preferences…"
+msgstr "Ficheiro/Preferências…"
+
+#: fltk/native/main.cpp:1850
+msgid "File/Show Window"
+msgstr "Ficheiro/Mostrar janela"
+
+#: fltk/native/main.cpp:1851
+msgid "File/Close Window"
+msgstr "Ficheiro/Fechar janela"
+
+#: fltk/native/main.cpp:1853
+msgid "File/Quit"
+msgstr "Ficheiro/Sair"
+
+#: fltk/native/main.cpp:1859
+msgid "Edit/Search"
+msgstr "Editar/Procurar"
+
+#: fltk/native/main.cpp:1861
+msgid "View/Mail"
+msgstr "Ver/Correio"
+
+#: fltk/native/main.cpp:1862
+msgid "View/Calendar"
+msgstr "Ver/Calendário"
+
+#: fltk/native/main.cpp:1864
+msgid "View/Contacts"
+msgstr "Ver/Contactos"
+
+#: fltk/native/main.cpp:1866
+msgid "View/Refresh"
+msgstr "Ver/Atualizar"
+
+#: fltk/native/main.cpp:1869
+msgid "View/Load More"
+msgstr "Ver/Carregar mais"
+
+#: fltk/native/main.cpp:1874
+msgid "Message/Edit Draft"
+msgstr "Mensagem/Editar rascunho"
+
+#: fltk/native/main.cpp:1875
+msgid "Message/Send Queued Message Now"
+msgstr "Mensagem/Enviar mensagem em espera agora"
+
+#: fltk/native/main.cpp:1877
+msgid "Message/Delete Queued Message"
+msgstr "Mensagem/Eliminar mensagem em espera"
+
+#: fltk/native/main.cpp:1897
+msgid "Help/Keyboard Shortcuts"
+msgstr "Ajuda/Atalhos de teclado"
+
+#: fltk/native/main.cpp:1899
+msgid ""
+"Ctrl+N: New Message\n"
+"Ctrl+R: Reply\n"
+"Ctrl+Shift+R: Reply All\n"
+"Ctrl+L: Forward\n"
+"Ctrl+E: Archive\n"
+"Delete: Move to Trash\n"
+"Ctrl+Z: Undo\n"
+"Ctrl+F: Search\n"
+"Ctrl+1/2/3: Mail / Calendar / Contacts\n"
+"F5: Refresh\n"
+"Ctrl+W: Close Window\n"
+"Ctrl+Q: Quit\n"
+"\n"
+"Composer: Ctrl+Enter sends, Ctrl+S saves a draft.\n"
+"DomeD owns Super shortcuts."
+msgstr ""
+"Ctrl+N: Nova mensagem\n"
+"Ctrl+R: Responder\n"
+"Ctrl+Shift+R: Responder a todos\n"
+"Ctrl+L: Reencaminhar\n"
+"Ctrl+E: Arquivar\n"
+"Delete: Mover para o lixo\n"
+"Ctrl+Z: Desfazer\n"
+"Ctrl+F: Procurar\n"
+"Ctrl+1/2/3: Correio / Calendário / Contactos\n"
+"F5: Atualizar\n"
+"Ctrl+W: Fechar janela\n"
+"Ctrl+Q: Sair\n"
+"\n"
+"Ao escrever: Ctrl+Enter envia, Ctrl+S guarda um rascunho.\n"
+"Os atalhos Super pertencem ao DomeD."
+
+#: fltk/native/main.cpp:1906
+msgid "Help/About Penguin Mail"
+msgstr "Ajuda/Sobre o Penguin Mail"
+
+#: fltk/native/main.cpp:1909
+msgid ""
+"Penguin Mail 1.0.10\n"
+"FLTK edition for DomeD\n"
+"\n"
+"Original mail engines: c9dev/penguin-mail\n"
+"License: GPL-3.0-or-later"
+msgstr ""
+"Penguin Mail 1.0.10\n"
+"Edição FLTK para DomeD\n"
+"\n"
+"Serviços de correio originais: c9dev/penguin-mail\n"
+"Licença: GPL-3.0-or-later"
+
+#: fltk/native/main.cpp:2037
+msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr "Data do calendário inválida. Use AAAA-MM-DD."
+
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
 msgstr ""
@@ -12364,6 +13206,24 @@ msgstr "Marcar como não sendo spam"
 msgid "Move to {folder}"
 msgstr "Mover para {folder}"
 
+#~ msgid "new messages"
+#~ msgstr "mensagens novas"
+
+#~ msgid "New Mail"
+#~ msgstr "Novo correio"
+
+#~ msgid "gmail"
+#~ msgstr "gmail"
+
+#~ msgid "email"
+#~ msgstr "e-mail"
+
+#~ msgid "mail"
+#~ msgstr "correio"
+
+#~ msgid "inbox"
+#~ msgstr "caixa de entrada"
+
 #~ msgid ""
 #~ "Added below new messages and above quoted text in replies. Markdown works."
 #~ msgstr ""
@@ -12385,15 +13245,6 @@ msgstr "Mover para {folder}"
 #~ msgid "Install Bubblewrap"
 #~ msgstr "Instalar o Bubblewrap"
 
-#~ msgid "Send New Messages From"
-#~ msgstr "Enviar mensagens novas de"
-
-#~ msgid "Contacts & Calendar"
-#~ msgstr "Contactos e calendário"
-
-#~ msgid "No accounts yet"
-#~ msgstr "Ainda não há contas"
-
 #~ msgid "How much of its space each server says your mail takes"
 #~ msgstr "Quanto do seu espaço cada servidor diz que o seu correio ocupa"
 
@@ -12402,12 +13253,6 @@ msgstr "Mover para {folder}"
 
 #~ msgid "Could not send the receipt: {reason}"
 #~ msgstr "Não foi possível enviar o recibo: {reason}"
-
-#~ msgid "Sender Addresses"
-#~ msgstr "Endereços de remetente"
-
-#~ msgid "Waiting for the account to switch to JMAP"
-#~ msgstr "À espera de que a conta mude para JMAP"
 
 #~ msgid "Hide My Email works with Gmail accounts."
 #~ msgstr "O Ocultar o meu e-mail funciona com contas Gmail."
@@ -12785,9 +13630,6 @@ msgstr "Mover para {folder}"
 #~ msgid "Invitation from {organizer}"
 #~ msgstr "Convite de {organizer}"
 
-#~ msgid "to {recipients}"
-#~ msgstr "para {recipients}"
-
 #~ msgid "Open Settings"
 #~ msgstr "Abrir as Definições"
 
@@ -12875,9 +13717,6 @@ msgstr "Mover para {folder}"
 #~ msgid "How do I get these?"
 #~ msgstr "Como obtenho isto?"
 
-#~ msgid "Create Your OAuth Client"
-#~ msgstr "Criar o seu cliente OAuth"
-
 #~ msgid "Got It"
 #~ msgstr "Percebi"
 
@@ -12958,9 +13797,6 @@ msgstr "Mover para {folder}"
 
 #~ msgid "No meetings"
 #~ msgstr "Nenhuma reunião"
-
-#~ msgid "Undone"
-#~ msgstr "Anulado"
 
 #~ msgid "{provider}'s Help for Mail Apps"
 #~ msgstr "Ajuda de {provider} para aplicações de correio"

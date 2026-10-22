@@ -877,6 +877,7 @@ impl FakeState {
             id: meta.id.clone(),
             thread_id: meta.thread_id.clone(),
         };
+        self.raws.insert(meta.id.clone(), raw.to_vec());
         self.bodies.insert(meta.id.clone(), body);
         self.messages.insert(meta.id.clone(), meta);
         self.record(change);
@@ -888,6 +889,8 @@ impl FakeState {
         let Some(message_id) = self.draft_messages.remove(draft_id) else {
             return;
         };
+        self.raws.remove(&message_id);
+        self.bodies.remove(&message_id);
         if let Some(gone) = self.messages.remove(&message_id) {
             self.record(HistoryChange::MessageDeleted {
                 id: message_id,
@@ -1158,7 +1161,13 @@ impl GmailApi for FakeGmail {
             // sent mail, the fake can do the same.
             if let Some(copy) = s.sent_copy.as_ref().and_then(|read| read(raw)) {
                 draft.snippet = copy.meta.snippet;
+                draft.to = copy.meta.to;
+                draft.cc = copy.meta.cc;
+                draft.has_attachments = copy.meta.has_attachments;
             }
+            // A draft's original bytes carry Bcc and attachment contents that
+            // rebuilding a message from its listing cannot retain.
+            s.raws.insert(message_id.clone(), raw.to_vec());
             s.messages.insert(message_id.clone(), draft);
             s.record(HistoryChange::MessageAdded {
                 id: message_id.clone(),

@@ -114,22 +114,6 @@ msgstr ""
 "添加 Gmail 或 Microsoft 账号只需在浏览器中登录一次。Penguin Mail 采用 GTK 和 "
 "libadwaita，最适合 GNOME，也可在任何 Linux 桌面环境中运行。"
 
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:53
-msgid "gmail"
-msgstr "gmail"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:54
-msgid "email"
-msgstr "电子邮件"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:55
-msgid "mail"
-msgstr "邮件"
-
-#: app/data/io.github.c9dev.PenguinMail.metainfo.xml:56
-msgid "inbox"
-msgstr "收件箱"
-
 #: app/data/io.github.c9dev.PenguinMail.metainfo.xml:85
 msgid "All your accounts in one inbox, with a reply open"
 msgstr "所有账号集中在同一收件箱，并打开一封回复"
@@ -3123,332 +3107,320 @@ msgstr "活动附件"
 msgid "{account} has not allowed Penguin Mail to {missing}"
 msgstr "{account} 尚未允许 Penguin Mail {missing}"
 
-#: app/src/pgp.rs:114
+#: app/src/pgp/adapter.rs:105
 msgid "Add a recipient whose key gpg holds."
 msgstr "请添加 gpg 中已有其密钥的收件人。"
 
-#: app/src/pgp.rs:123
+#: app/src/pgp/adapter.rs:114
 msgid "gpg holds no key for {addresses}."
 msgstr "gpg 中没有 {addresses} 的密钥。"
 
-#: app/src/pgp.rs:140
+#: app/src/pgp/adapter.rs:131
 msgid "gpg holds no key for any of the addresses you send from."
 msgstr "gpg 中没有任何发件地址的密钥。"
 
-#: app/src/pgp.rs:142
+#: app/src/pgp/adapter.rs:133
 msgid "gpg holds a key for {addresses}."
 msgstr "gpg 中有 {addresses} 的密钥。"
 
-#: app/src/pgp.rs:146
+#: app/src/pgp/adapter.rs:137
 msgid "gpg holds a key for {addresses}, and none for {without}."
 msgstr "gpg 中有 {addresses} 的密钥，但没有 {without} 的密钥。"
 
-#: app/src/pgp.rs:250
+#: app/src/pgp/adapter.rs:241
 msgid "This computer has no gpg. Install GnuPG to read or send OpenPGP mail."
 msgstr "此电脑没有 gpg。请安装 GnuPG 以读取或发送 OpenPGP 邮件。"
 
-#: app/src/pgp.rs:253 app/src/smime.rs:258
-msgid "Could not run {program}: {reason}"
-msgstr "无法运行 {program}：{reason}"
-
-#: app/src/pgp.rs:257 app/src/smime.rs:262
-msgid "Could not write a temporary file: {reason}"
-msgstr "无法写入临时文件：{reason}"
-
-#: app/src/pgp.rs:261
+#: app/src/pgp/adapter.rs:252
 msgid "This message is encrypted to a key this computer does not hold."
 msgstr "此邮件使用此电脑没有的密钥加密。"
 
-#: app/src/pgp.rs:264
+#: app/src/pgp/adapter.rs:255
 msgid "gpg holds no secret key to sign as {address}."
 msgstr "gpg 中没有可用于以 {address} 签名的私钥。"
 
-#: app/src/pgp.rs:268
+#: app/src/pgp/adapter.rs:259
 msgid "gpg holds no key it can encrypt to for {address}."
 msgstr "gpg 中没有可用于为 {address} 加密的密钥。"
 
-#: app/src/pgp.rs:271
+#: app/src/pgp/adapter.rs:262
 msgid "This text holds no OpenPGP block."
 msgstr "此文本没有 OpenPGP 块。"
 
-#: app/src/pgp.rs:272
+#: app/src/pgp/adapter.rs:263
 msgid "This file holds no OpenPGP key."
 msgstr "此文件没有 OpenPGP 密钥。"
 
-#: app/src/pgp.rs:273 app/src/smime.rs:278
-msgid "This message is too large to open."
-msgstr "此邮件过大，无法打开。"
-
-#: app/src/pgp.rs:274
+#: app/src/pgp/adapter.rs:265
 msgid "gpg failed: {reason}"
 msgstr "gpg 失败：{reason}"
 
-#: app/src/protection.rs:123
+#: app/src/protection.rs:69
 msgid "{smime} {pgp}"
 msgstr "{smime} {pgp}"
 
-#: app/src/protection.rs:136
+#: app/src/protection.rs:82
 msgid "This computer has nothing to encrypt with."
 msgstr "此电脑没有可用于加密的密钥或证书。"
 
-#: app/src/protection.rs:143
+#: app/src/protection.rs:89
 msgid ""
 "S/MIME names every recipient inside an encrypted message, so a blind copy "
 "would not stay blind."
 msgstr "S/MIME 会在加密邮件中列出每位收件人，因此密送无法隐藏收件人。"
 
-#: app/src/protection.rs:301
+#: app/src/protection.rs:247
 msgid "Signed"
 msgstr "已签名"
 
-#: app/src/protection.rs:302
+#: app/src/protection.rs:248
 msgid "Encrypted"
 msgstr "已加密"
 
-#: app/src/protection.rs:303
+#: app/src/protection.rs:249
 msgid "Signed and encrypted"
 msgstr "已签名并加密"
 
-#: app/src/protection.rs:312
+#: app/src/protection.rs:258
 msgid "Encrypt this message to the recipients' keys"
 msgstr "使用收件人的密钥加密此邮件"
 
-#: app/src/protection.rs:313
+#: app/src/protection.rs:259
 msgid "Encrypt this message to the recipients' certificates"
 msgstr "使用收件人的证书加密此邮件"
 
-#: app/src/protection.rs:339
+#: app/src/protection.rs:285
 msgid "gpg holds no key and gpgsm no trusted certificate for {addresses}."
 msgstr "gpg 没有 {addresses} 的密钥，gpgsm 也没有受信任的证书。"
 
-#: app/src/protection.rs:347
+#: app/src/protection.rs:293
 msgid "A message goes out under one standard or the other. {pgp} {smime}"
 msgstr "邮件只能采用其中一种标准发送。{pgp} {smime}"
 
-#: app/src/protection.rs:612
+#: app/src/protection/common.rs:323
 msgid ""
 "This key does not name {sender}, the address the message says it is from."
 msgstr "此密钥未列出邮件所宣称的发件地址 {sender}。"
 
-#: app/src/protection.rs:616
+#: app/src/protection/common.rs:327
 msgid ""
 "This certificate does not name {sender}, the address the message says it is "
 "from."
 msgstr "此证书未列出邮件所宣称的发件地址 {sender}。"
 
-#: app/src/protection.rs:625
+#: app/src/protection/common.rs:336
 msgid "Signed by {signer}"
 msgstr "由 {signer} 签名"
 
-#: app/src/protection.rs:631
+#: app/src/protection/common.rs:342
 msgid "This message changed after it was signed"
 msgstr "此邮件在签名后遭到更改"
 
-#: app/src/protection.rs:633
+#: app/src/protection/common.rs:344
 msgid "The signature of {signer} does not match what arrived."
 msgstr "{signer} 的签名与收到的内容不符。"
 
-#: app/src/protection.rs:640
+#: app/src/protection/common.rs:351
 msgid "Signed by {signer}, whose key has expired"
 msgstr "由 {signer} 签名，但密钥已过期"
 
-#: app/src/protection.rs:644
+#: app/src/protection/common.rs:355
 msgid "The text is as it was written, and the key behind it ran out."
 msgstr "文本仍与撰写时相同，但签名使用的密钥已过期。"
 
-#: app/src/protection.rs:650
+#: app/src/protection/common.rs:361
 msgid "Signed by {signer}, whose certificate has run out"
 msgstr "由 {signer} 签名，但证书已过期"
 
-#: app/src/protection.rs:654
+#: app/src/protection/common.rs:365
 msgid ""
 "The text is as it was written, and the certificate behind it has expired."
 msgstr "文本仍与撰写时相同，但签名使用的证书已过期。"
 
-#: app/src/protection.rs:660
+#: app/src/protection/common.rs:371
 msgid "Signed by {signer}, who took this key back"
 msgstr "由 {signer} 签名，但已撤销此密钥"
 
-#: app/src/protection.rs:664
+#: app/src/protection/common.rs:375
 msgid "The owner revoked it, so it says nothing about who wrote this."
 msgstr "拥有者已撤销密钥，因此无法据此确认作者身份。"
 
-#: app/src/protection.rs:670
+#: app/src/protection/common.rs:381
 msgid "Signed by {signer}, whose certificate was taken back"
 msgstr "由 {signer} 签名，但证书已撤销"
 
-#: app/src/protection.rs:674
+#: app/src/protection/common.rs:385
 msgid "Whoever issued it revoked it, so it says nothing about who wrote this."
 msgstr "签发者已撤销证书，因此无法据此确认作者身份。"
 
-#: app/src/protection.rs:680
+#: app/src/protection/common.rs:391
 msgid "Signed by {signer}, and the signature has run out"
 msgstr "由 {signer} 签名，但签名已过期"
 
-#: app/src/protection.rs:684
+#: app/src/protection/common.rs:395
 msgid "It carried a date to stop being good on, and that date has passed."
 msgstr "签名指定的有效期限已过。"
 
-#: app/src/protection.rs:689
+#: app/src/protection/common.rs:400
 msgid "Signed by a key this computer does not hold"
 msgstr "签名使用的密钥不在此电脑上"
 
-#: app/src/protection.rs:691
+#: app/src/protection/common.rs:402
 msgid "Nothing here can check it. Ask gpg for key {key}."
 msgstr "此电脑无法验证。请通过 gpg 取得 {key} 密钥。"
 
-#: app/src/protection.rs:698
+#: app/src/protection/common.rs:409
 msgid "it names"
 msgstr "邮件指定的"
 
-#: app/src/protection.rs:704
+#: app/src/protection/common.rs:415
 msgid "Signed by a certificate this computer does not hold"
 msgstr "签名使用的证书不在此电脑上"
 
-#: app/src/protection.rs:706
+#: app/src/protection/common.rs:417
 msgid ""
 "The message carried none either, so there is nothing here to check it "
 "against."
 msgstr "邮件也未附上证书，因此无法验证。"
 
-#: app/src/protection.rs:712
+#: app/src/protection/common.rs:423
 msgid "gpg could not check this signature"
 msgstr "gpg 无法验证此签名"
 
-#: app/src/protection.rs:717
+#: app/src/protection/common.rs:428
 msgid "gpgsm could not check this signature"
 msgstr "gpgsm 无法验证此签名"
 
-#: app/src/protection.rs:740
+#: app/src/protection/common.rs:451
 msgid "Encrypted, and signed by {signer}"
 msgstr "已加密，并由 {signer} 签名"
 
-#: app/src/protection.rs:749
+#: app/src/protection/common.rs:460
 msgid "Encrypted. {what}"
 msgstr "已加密。{what}"
 
-#: app/src/protection.rs:755
+#: app/src/protection/common.rs:466
 msgid "This message arrived encrypted"
 msgstr "此邮件送达时已加密"
 
-#: app/src/protection.rs:757
+#: app/src/protection/common.rs:468
 msgid "Nobody signed it, so it says nothing about who sent it."
 msgstr "邮件未经签名，因此无法确认发件人身份。"
 
-#: app/src/protection.rs:765
+#: app/src/protection/common.rs:476
 msgid "{detail} {files}"
 msgstr "{detail} {files}"
 
-#: app/src/protection.rs:779
+#: app/src/protection/common.rs:490
 msgid "This message is encrypted to a key you do not hold"
 msgstr "此邮件使用此电脑没有的密钥加密"
 
-#: app/src/protection.rs:781
+#: app/src/protection/common.rs:492
 msgid "Whoever sent it used a key gpg has no secret half of."
 msgstr "发件人使用的密钥没有对应的私钥保存在 gpg 中。"
 
-#: app/src/protection.rs:786
+#: app/src/protection/common.rs:497
 msgid "This message is encrypted to a certificate you do not hold"
 msgstr "此邮件使用此电脑没有的证书加密"
 
-#: app/src/protection.rs:788
+#: app/src/protection/common.rs:499
 msgid "Whoever sent it used a certificate gpgsm has no secret key for."
 msgstr "发件人使用的证书没有对应的私钥保存在 gpgsm 中。"
 
-#: app/src/protection.rs:794
+#: app/src/protection/common.rs:505
 msgid "This message says it is OpenPGP and is not"
 msgstr "此邮件声称采用 OpenPGP，但格式不符"
 
-#: app/src/protection.rs:795
+#: app/src/protection/common.rs:506
 msgid "This message says it is S/MIME and is not"
 msgstr "此邮件声称采用 S/MIME，但格式不符"
 
-#: app/src/protection.rs:798
+#: app/src/protection/common.rs:509
 msgid "Its parts are not where a signed or encrypted message keeps them."
 msgstr "邮件各部分的位置不符合签名或加密邮件的格式。"
 
-#: app/src/protection.rs:803
+#: app/src/protection/common.rs:514
 msgid "This message is too large to open"
 msgstr "此邮件过大，无法打开"
 
-#: app/src/protection.rs:805
+#: app/src/protection/common.rs:516
 msgid "It opens to more than {size} MB, so Penguin Mail stopped reading it."
 msgstr "解开后超过 {size} MB，因此 Penguin Mail 已停止读取。"
 
-#: app/src/protection.rs:812
+#: app/src/protection/common.rs:523
 msgid "gpg could not open this message"
 msgstr "gpg 无法打开此邮件"
 
-#: app/src/protection.rs:813
+#: app/src/protection/common.rs:524
 msgid "gpgsm could not open this message"
 msgstr "gpgsm 无法打开此邮件"
 
-#: app/src/protection.rs:826
+#: app/src/protection/common.rs:537
 msgid "You marked this key as one not to trust."
 msgstr "已将此密钥标记为不信任。"
 
-#: app/src/protection.rs:827
+#: app/src/protection/common.rs:538
 msgid "This is one of your own keys."
 msgstr "这是自己的密钥。"
 
-#: app/src/protection.rs:828
+#: app/src/protection/common.rs:539
 msgid "You have vouched for this key."
 msgstr "已为此密钥的身份作保。"
 
-#: app/src/protection.rs:830
+#: app/src/protection/common.rs:541
 msgid ""
 "Only people you partly trust have vouched for this key, so it is not fully "
 "checked."
 msgstr "只有您部分信任的人为此密钥作保，因此尚未充分验证。"
 
-#: app/src/protection.rs:833
+#: app/src/protection/common.rs:544
 msgid "Nobody has vouched for this key, so it names no one."
 msgstr "没有人为此密钥作保，因此无法确认身份。"
 
-#: app/src/protection.rs:836
+#: app/src/protection/common.rs:547
 msgid ""
 "Its certificate leads back to an authority you trust, but this computer "
 "could not check whether it was revoked."
 msgstr "证书可追溯至信任的证书机构，但此电脑无法检查证书是否已撤销。"
 
-#: app/src/protection.rs:840
+#: app/src/protection/common.rs:551
 msgid "Its certificate leads back to an authority you trust."
 msgstr "证书可追溯至信任的证书机构。"
 
-#: app/src/protection.rs:843
+#: app/src/protection/common.rs:554
 msgid "Its certificate leads back to nobody you trust, so it names no one."
 msgstr "证书无法追溯至信任的证书机构，因此无法确认身份。"
 
-#: app/src/protection.rs:846
+#: app/src/protection/common.rs:557
 msgid "Nothing here says who that certificate belongs to."
 msgstr "此电脑上没有可确认证书拥有者的信息。"
 
-#: app/src/protection.rs:882
+#: app/src/protection/common.rs:593
 msgid "key {key}"
 msgstr "密钥 {key}"
 
-#: app/src/protection.rs:885
+#: app/src/protection/common.rs:596
 msgid "a key gpg would not name"
 msgstr "gpg 无法识别身份的密钥"
 
-#: app/src/protection.rs:886
+#: app/src/protection/common.rs:597
 msgid "a certificate gpgsm would not name"
 msgstr "gpgsm 无法识别身份的证书"
 
-#: app/src/protection.rs:897
+#: app/src/protection/common.rs:608
 msgid "It carries a file, kept in this window only."
 msgstr "附有一个文件，仅保留在此窗口中。"
 
-#: app/src/protection.rs:899
+#: app/src/protection/common.rs:610
 msgid "It carries {count} file, kept in this window only."
 msgid_plural "It carries {count} files, kept in this window only."
 msgstr[0] "附有 {count} 个文件，仅保留在此窗口中。"
 
-#: app/src/protection.rs:930
+#: app/src/protection/common.rs:641
 msgid "{names} or {last}"
 msgstr "{names} 或 {last}"
 
-#: app/src/protection.rs:942
+#: app/src/protection/common.rs:653
 msgid "{names} and {last}"
 msgstr "{names} 和 {last}"
 
@@ -4045,6 +4017,14 @@ msgstr "gpgsm 中有 {addresses} 的证书，但没有 {without} 的证书。"
 msgid "This computer has no gpgsm. Install GnuPG to read or send S/MIME mail."
 msgstr "此电脑没有 gpgsm。请安装 GnuPG 以读取或发送 S/MIME 邮件。"
 
+#: app/src/smime.rs:258
+msgid "Could not run {program}: {reason}"
+msgstr "无法运行 {program}：{reason}"
+
+#: app/src/smime.rs:262
+msgid "Could not write a temporary file: {reason}"
+msgstr "无法写入临时文件：{reason}"
+
 #: app/src/smime.rs:266
 msgid "This message is encrypted to a certificate this computer does not hold."
 msgstr "此邮件使用此电脑没有的证书加密。"
@@ -4064,6 +4044,10 @@ msgstr "此部分没有 S/MIME 数据。"
 #: app/src/smime.rs:277
 msgid "This file holds no certificate."
 msgstr "此文件没有证书。"
+
+#: app/src/smime.rs:278
+msgid "This message is too large to open."
+msgstr "此邮件过大，无法打开。"
 
 #: app/src/smime.rs:280
 msgid "That passphrase does not open this file. Nothing was imported."
@@ -11013,6 +10997,1089 @@ msgstr "未读"
 msgid "Is flagged"
 msgstr "有标记"
 
+#: fltk/engine/src/accounts.rs:6
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot change real accounts"
+msgstr "演示模式无法添加真实账号。"
+
+#: fltk/engine/src/accounts.rs:116
+#, fuzzy
+#| msgid "Account options"
+msgid "Account not found"
+msgstr "账号选项"
+
+#: fltk/engine/src/accounts.rs:122
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Unknown account request"
+msgstr "请先添加账号"
+
+#: fltk/engine/src/compose.rs:11
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid recipient address"
+msgstr "{recipient}，不是地址"
+
+#: fltk/engine/src/compose.rs:27
+#, fuzzy
+#| msgid "Changing a contact"
+msgid "Choose a sending account"
+msgstr "正在更改联系人"
+
+#: fltk/engine/src/compose.rs:33
+#, fuzzy
+#| msgid "No recipients"
+msgid "Enter a recipient"
+msgstr "没有收件人"
+
+#: fltk/engine/src/compose.rs:37
+msgid "Subject cannot contain a line break"
+msgstr ""
+
+#: fltk/engine/src/compose.rs:56
+#, fuzzy
+#| msgid "Has an attachment"
+msgid "Invalid attachment path"
+msgstr "有附件"
+
+#: fltk/engine/src/compose.rs:60 fltk/engine/src/compose.rs:67
+#: fltk/engine/src/compose.rs:85
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachments exceed 25 MB"
+msgstr "附件"
+
+#: fltk/engine/src/compose.rs:72
+#, fuzzy
+#| msgid "Attachment Missing?"
+msgid "Attachment name missing"
+msgstr "忘记附件了吗？"
+
+#: fltk/engine/src/crypto.rs:89
+msgid "Key file exceeds 4 MB"
+msgstr ""
+
+#: fltk/engine/src/crypto.rs:97
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown OpenPGP request"
+msgstr "未知发件人"
+
+#: fltk/engine/src/main.rs:64
+#, fuzzy
+#| msgid "Sign in again to {account}"
+msgid "Sign in again to grant permission."
+msgstr "重新登录 {account}"
+
+#: fltk/engine/src/main.rs:182
+#, fuzzy
+#| msgid "Sign In Again"
+msgid "Sign in again"
+msgstr "重新登录"
+
+#: fltk/engine/src/main.rs:266
+#, fuzzy
+#| msgid "Account Added"
+msgid "Account required"
+msgstr "已添加账号"
+
+#: fltk/engine/src/main.rs:270
+#, fuzzy
+#| msgid "Show Mailboxes"
+msgid "Unknown mailbox"
+msgstr "显示邮箱"
+
+#: fltk/engine/src/main.rs:329
+msgid "Queued message not found"
+msgstr ""
+
+#: fltk/engine/src/main.rs:358
+msgid "This message is not cached. Reconnect the account to download it."
+msgstr ""
+
+#: fltk/engine/src/main.rs:367
+msgid "Reconnect the account to read the original protected message."
+msgstr ""
+
+#: fltk/engine/src/main.rs:376
+#, fuzzy
+#| msgid "gpg could not open this message"
+msgid "OpenPGP could not open this message"
+msgstr "gpg 无法打开此邮件"
+
+#: fltk/engine/src/main.rs:398
+msgid "Targets required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:408
+msgid "Time required"
+msgstr ""
+
+#: fltk/engine/src/main.rs:460
+#, fuzzy
+#| msgid "That message is no longer waiting."
+msgid "This message is no longer a draft"
+msgstr "此邮件已不在等待中。"
+
+#: fltk/engine/src/main.rs:464
+#, fuzzy
+#| msgid "Save draft"
+msgid "Unreadable draft"
+msgstr "保存草稿"
+
+#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#, fuzzy
+#| msgid "Forwarded message removed"
+msgid "Queued message required"
+msgstr "已移除转发的邮件"
+
+#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot add real accounts"
+msgstr "演示模式无法添加真实账号。"
+
+#: fltk/engine/src/main.rs:575
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown provider"
+msgstr "未知发件人"
+
+#: fltk/engine/src/main.rs:598
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Sign-in timed out"
+msgstr "已停止登录"
+
+#: fltk/engine/src/main.rs:608
+#, fuzzy
+#| msgid "Your email address"
+msgid "Invalid email address"
+msgstr "电子邮件地址"
+
+#: fltk/engine/src/main.rs:700
+msgid "Enter a title and an end after the start"
+msgstr ""
+
+#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/notifications.rs:164
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown request"
+msgstr "未知发件人"
+
+#: fltk/engine/src/notifications.rs:144
+#, fuzzy
+#| msgid "File not found"
+msgid "Event not found"
+msgstr "找不到文件"
+
+#: fltk/engine/src/oauth.rs:23
+#, fuzzy
+#| msgid "Attachments"
+msgid "OAuth client file exceeds 1 MB"
+msgstr "附件"
+
+#: fltk/engine/src/oauth.rs:26
+msgid "Unreadable Google OAuth client JSON"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:32
+msgid "Choose a Google OAuth client of type Desktop app"
+msgstr ""
+
+#: fltk/engine/src/oauth.rs:38
+msgid "The Google client file has no valid client ID and secret"
+msgstr ""
+
+#: fltk/native/engine.h:47
+msgid "Mail engine disconnected"
+msgstr ""
+
+#: fltk/native/engine.h:61
+msgid "Mail engine response exceeds limit"
+msgstr ""
+
+#: fltk/native/engine.h:69
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Mail engine stopped"
+msgstr "已停止登录"
+
+#: fltk/native/engine.h:103 fltk/native/engine.h:107
+msgid "Cannot create engine pipe"
+msgstr ""
+
+#: fltk/native/engine.h:182
+#, fuzzy
+#| msgid "Penguin Mail {version} is available"
+msgid "Mail engine unavailable"
+msgstr "已有 Penguin Mail {version} 可用"
+
+#: fltk/native/engine.h:187
+#, fuzzy
+#| msgid "Too many connections"
+msgid "Too many pending requests"
+msgstr "连接数过多"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Month"
+msgid "Mon"
+msgstr "月"
+
+#: fltk/native/main.cpp:296
+msgid "Thu"
+msgstr ""
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Tuesday"
+msgid "Tue"
+msgstr "星期二"
+
+#: fltk/native/main.cpp:296
+#, fuzzy
+#| msgid "Red"
+msgid "Wed"
+msgstr "红色"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Friday"
+msgid "Fri"
+msgstr "星期五"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Slate"
+msgid "Sat"
+msgstr "石板灰色"
+
+#: fltk/native/main.cpp:297
+#, fuzzy
+#| msgid "Sunday"
+msgid "Sun"
+msgstr "星期日"
+
+#: fltk/native/main.cpp:436
+msgid "The request failed."
+msgstr ""
+
+#: fltk/native/main.cpp:441
+#, fuzzy
+#| msgid "Changing a setting"
+msgid "The mail engine is starting."
+msgstr "正在更改设置"
+
+#: fltk/native/main.cpp:516
+#, fuzzy
+#| msgid "Undo"
+msgid "Undone"
+msgstr "撤销"
+
+#: fltk/native/main.cpp:525
+#, fuzzy
+#| msgid "Open a conversation first"
+msgid "Select a conversation first."
+msgstr "请先打开对话"
+
+#: fltk/native/main.cpp:530
+#, fuzzy
+#| msgid "Labels changed"
+msgid "Label name"
+msgstr "已更改标签"
+
+#: fltk/native/main.cpp:537
+msgid "Remind at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:542 fltk/native/main.cpp:1063
+msgid "Choose a future date and time."
+msgstr ""
+
+#: fltk/native/main.cpp:547
+#, fuzzy
+#| msgid "Matching your mail…"
+msgid "Updating mail…"
+msgstr "正在匹配您的邮件…"
+
+#: fltk/native/main.cpp:549
+msgid "Mail updated. Use Undo to reverse the action."
+msgstr ""
+
+#: fltk/native/main.cpp:684
+#, fuzzy
+#| msgid "Conversation"
+msgid "conversations"
+msgstr "对话"
+
+#: fltk/native/main.cpp:686
+msgid "Load More is available in View."
+msgstr ""
+
+#: fltk/native/main.cpp:731
+#, fuzzy
+#| msgid "Reading a conversation"
+msgid "Loading conversation…"
+msgstr "正在读取对话"
+
+#: fltk/native/main.cpp:768 fltk/native/main.cpp:787
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment"
+msgstr "附件"
+
+#: fltk/native/main.cpp:771
+msgid "S/MIME message. Export the original to inspect its protection."
+msgstr ""
+
+#: fltk/native/main.cpp:775
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversation loaded"
+msgstr "对话"
+
+#: fltk/native/main.cpp:786 fltk/native/main.cpp:1787
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Save Attachment"
+msgstr "保存附件"
+
+#: fltk/native/main.cpp:796
+#, fuzzy
+#| msgid "Attachments"
+msgid "Attachment saved"
+msgstr "附件"
+
+#: fltk/native/main.cpp:809
+msgid "Select an outgoing message first."
+msgstr ""
+
+#: fltk/native/main.cpp:813
+#, fuzzy
+#| msgid "Delete This Message Forever?"
+msgid "Delete this queued message?"
+msgstr "是否永久删除此邮件？"
+
+#: fltk/native/main.cpp:824
+#, fuzzy
+#| msgid "Conversation"
+msgid "Export Conversation"
+msgstr "对话"
+
+#: fltk/native/main.cpp:832
+#, fuzzy
+#| msgid "No Conversation Selected"
+msgid "Conversation exported"
+msgstr "未选择对话"
+
+#: fltk/native/main.cpp:872
+#, fuzzy
+#| msgid "Reminders"
+msgid "Reminder snoozed"
+msgstr "提醒"
+
+#: fltk/native/main.cpp:930
+#, fuzzy
+#| msgid "Add an account first"
+msgid "Add an account before composing mail."
+msgstr "请先添加账号"
+
+#: fltk/native/main.cpp:935 fltk/native/main.cpp:2069
+#, fuzzy
+#| msgid "New Message"
+msgid "Compose Message"
+msgstr "新建邮件"
+
+#: fltk/native/main.cpp:947
+msgid "Sign (OpenPGP)"
+msgstr ""
+
+#: fltk/native/main.cpp:948
+#, fuzzy
+#| msgid "Encrypted"
+msgid "Encrypt (OpenPGP)"
+msgstr "已加密"
+
+#: fltk/native/main.cpp:970
+#, fuzzy
+#| msgid "Save Attachments"
+msgid "Remove Attachment"
+msgstr "保存附件"
+
+#: fltk/native/main.cpp:980
+#, fuzzy
+#| msgid "Checking for Updates…"
+msgid "Checking local OpenPGP keys…"
+msgstr "正在检查更新…"
+
+#: fltk/native/main.cpp:1042
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "已签名并加密"
+
+#: fltk/native/main.cpp:1043
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1058
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1070
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "是否不加密发送？"
+
+#: fltk/native/main.cpp:1075
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "处理中"
+
+#: fltk/native/main.cpp:1092
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1113
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1116
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1122
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1135
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "已验证"
+
+#: fltk/native/main.cpp:1138
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "发送"
+
+#: fltk/native/main.cpp:1140
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "定时发送"
+
+#: fltk/native/main.cpp:1142
+#, fuzzy
+#| msgid "Save Draft"
+msgid "File/Save Draft"
+msgstr "保存草稿"
+
+#: fltk/native/main.cpp:1144
+#, fuzzy
+#| msgid "Close"
+msgid "File/Close"
+msgstr "关闭"
+
+#: fltk/native/main.cpp:1147 fltk/native/main.cpp:1854
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Undo"
+msgstr "编辑"
+
+#: fltk/native/main.cpp:1148 fltk/native/main.cpp:1855
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Cut"
+msgstr "编辑"
+
+#: fltk/native/main.cpp:1149 fltk/native/main.cpp:1856
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit/Copy"
+msgstr "编辑"
+
+#: fltk/native/main.cpp:1150 fltk/native/main.cpp:1857
+#, fuzzy
+#| msgid "Edit Template"
+msgid "Edit/Paste"
+msgstr "编辑模板"
+
+#: fltk/native/main.cpp:1151 fltk/native/main.cpp:1858
+#, fuzzy
+#| msgid "Select all"
+msgid "Edit/Select All"
+msgstr "全选"
+
+#: fltk/native/main.cpp:1156
+msgid "Wait for the current request to finish."
+msgstr ""
+
+#: fltk/native/main.cpp:1161
+msgid "Close this message? Save a draft to keep your changes."
+msgstr ""
+
+#: fltk/native/main.cpp:1195
+#, fuzzy
+#| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
+msgid "This build has no Microsoft sign-in client."
+msgstr "此版本的 Penguin Mail 未包含 Microsoft 登录功能。"
+
+#: fltk/native/main.cpp:1197
+#, fuzzy
+#| msgid "Choose a Time…"
+msgid "Choose Client JSON…"
+msgstr "选择时间…"
+
+#: fltk/native/main.cpp:1197
+msgid "Setup Instructions"
+msgstr ""
+
+#: fltk/native/main.cpp:1198
+msgid ""
+"This build has no Google sign-in client.\n"
+"Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
+"After sign-in, the account client and refresh token will be saved\n"
+"in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1204
+msgid "Google Desktop OAuth Client"
+msgstr ""
+
+#: fltk/native/main.cpp:1209
+#, fuzzy
+#| msgid "Continue in your browser"
+msgid "Complete sign-in in your browser."
+msgstr "请在浏览器中继续"
+
+#: fltk/native/main.cpp:1218
+msgid ""
+"Demo mode uses temporary sample accounts. Start without --demo to add an "
+"account."
+msgstr ""
+
+#: fltk/native/main.cpp:1223
+#, fuzzy
+#| msgid "Google Meet"
+msgid "Google…"
+msgstr "Google Meet"
+
+#: fltk/native/main.cpp:1224
+#, fuzzy
+#| msgid "Microsoft Teams"
+msgid "Microsoft…"
+msgstr "Microsoft Teams"
+
+#: fltk/native/main.cpp:1226
+#, fuzzy
+#| msgid "Account"
+msgid "Account Type"
+msgstr "账号"
+
+#: fltk/native/main.cpp:1232 fltk/native/main.cpp:1285
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "IMAP Server"
+msgstr "MCP 服务器"
+
+#: fltk/native/main.cpp:1235
+#, fuzzy
+#| msgid "Security"
+msgid "IMAP Security"
+msgstr "安全性"
+
+#: fltk/native/main.cpp:1238
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "SMTP Server"
+msgstr "MCP 服务器"
+
+#: fltk/native/main.cpp:1241
+#, fuzzy
+#| msgid "Security"
+msgid "SMTP Security"
+msgstr "安全性"
+
+#: fltk/native/main.cpp:1244
+#, fuzzy
+#| msgid "User Name"
+msgid "SMTP User Name"
+msgstr "用户名"
+
+#: fltk/native/main.cpp:1245
+#, fuzzy
+#| msgid "Password"
+msgid "SMTP Password"
+msgstr "密码"
+
+#: fltk/native/main.cpp:1248
+msgid ""
+"Leave user names and the SMTP password empty to use the incoming account's "
+"details. Passwords are stored in your desktop keyring."
+msgstr ""
+
+#: fltk/native/main.cpp:1252
+#, fuzzy
+#| msgid "Servers"
+msgid "Find Servers"
+msgstr "服务器"
+
+#: fltk/native/main.cpp:1259
+msgid "No servers found. Enter the server details manually."
+msgstr ""
+
+#: fltk/native/main.cpp:1264
+#, fuzzy
+#| msgid "Use {server}"
+msgid "Use Servers"
+msgstr "使用 {server}"
+
+#: fltk/native/main.cpp:1265
+msgid "These servers were discovered outside your email domain. Use them?"
+msgstr ""
+
+#: fltk/native/main.cpp:1283
+#, fuzzy
+#| msgid "MCP Servers"
+msgid "POP3 Server"
+msgstr "MCP 服务器"
+
+#: fltk/native/main.cpp:1284
+#, fuzzy
+#| msgid "Server"
+msgid "Server URL"
+msgstr "服务器"
+
+#: fltk/native/main.cpp:1300
+msgid "Authentication"
+msgstr ""
+
+#: fltk/native/main.cpp:1322
+msgid "Enter ports between 1 and 65535."
+msgstr ""
+
+#: fltk/native/main.cpp:1350
+msgid "Checking the incoming and outgoing servers…"
+msgstr ""
+
+#: fltk/native/main.cpp:1369
+msgid ""
+"Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
+"the preview closes."
+msgstr ""
+
+#: fltk/native/main.cpp:1370
+msgid ""
+"OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
+"file, or manage keys with your usual GnuPG tools. Keys are never fetched "
+"automatically."
+msgstr ""
+
+#: fltk/native/main.cpp:1372
+#, fuzzy
+#| msgid "Add Address"
+msgid "Addresses"
+msgstr "添加地址"
+
+#: fltk/native/main.cpp:1388
+#, fuzzy
+#| msgid "Not encrypted in transit"
+msgid "No encryption key"
+msgstr "传输过程未加密"
+
+#: fltk/native/main.cpp:1395
+#, fuzzy
+#| msgid "Check for Updates"
+msgid "Check Local Keys"
+msgstr "检查更新"
+
+#: fltk/native/main.cpp:1396
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Key File…"
+msgstr "导入…"
+
+#: fltk/native/main.cpp:1398
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Import OpenPGP Key"
+msgstr "导入 OpenPGP 密钥"
+
+#: fltk/native/main.cpp:1401
+#, fuzzy
+#| msgid "Import…"
+msgid "Import"
+msgstr "导入…"
+
+#: fltk/native/main.cpp:1402
+msgid "Import this file into your GnuPG keyring?"
+msgstr ""
+
+#: fltk/native/main.cpp:1403
+#, fuzzy
+#| msgid "Import…"
+msgid "Importing key…"
+msgstr "导入…"
+
+#: fltk/native/main.cpp:1406
+#, fuzzy
+#| msgid "Import OpenPGP Keys"
+msgid "Imported keys:"
+msgstr "导入 OpenPGP 密钥"
+
+#: fltk/native/main.cpp:1416
+#, fuzzy
+#| msgid "Conversation"
+msgid "GnuPG version:"
+msgstr "对话"
+
+#: fltk/native/main.cpp:1423
+msgid "Keep syncing in the tray when the window closes"
+msgstr ""
+
+#: fltk/native/main.cpp:1426
+#, fuzzy
+#| msgid "Notifications"
+msgid "Show new mail notifications"
+msgstr "通知"
+
+#: fltk/native/main.cpp:1431
+#, fuzzy
+#| msgid "Group Messages into Conversations"
+msgid "Group messages into conversations"
+msgstr "依对话将邮件分组显示"
+
+#: fltk/native/main.cpp:1434
+msgid "Sync Interval (seconds)"
+msgstr ""
+
+#: fltk/native/main.cpp:1437
+msgid "Local Mail Window (days)"
+msgstr ""
+
+#: fltk/native/main.cpp:1441
+msgid ""
+"Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
+"window changes apply after restart."
+msgstr ""
+
+#: fltk/native/main.cpp:1486
+#, fuzzy
+#| msgid "Calendar to add to"
+msgid "Calendar loaded"
+msgstr "要加入的日历"
+
+#: fltk/native/main.cpp:1535
+msgid "No writable calendar is available."
+msgstr ""
+
+#: fltk/native/main.cpp:1540
+#, fuzzy
+#| msgid "Starts"
+msgid "Start"
+msgstr "开始"
+
+#: fltk/native/main.cpp:1541
+#, fuzzy
+#| msgid "Ends"
+msgid "End"
+msgstr "结束"
+
+#: fltk/native/main.cpp:1542
+#, fuzzy
+#| msgid "Notifications"
+msgid "Location"
+msgstr "通知"
+
+#: fltk/native/main.cpp:1546
+msgid ""
+"Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
+"provider."
+msgstr ""
+
+#: fltk/native/main.cpp:1567
+#, fuzzy
+#| msgid "New Event"
+msgid "Save Event"
+msgstr "新建活动"
+
+#: fltk/native/main.cpp:1573
+msgid "Enter a title and a valid start and end time."
+msgstr ""
+
+#: fltk/native/main.cpp:1598 fltk/native/main.cpp:1818
+#, fuzzy
+#| msgid "Delete it"
+msgid "Delete Event"
+msgstr "删除邮件"
+
+#: fltk/native/main.cpp:1599
+msgid "Delete this event and notify its guests?"
+msgstr ""
+
+#: fltk/native/main.cpp:1610
+#, fuzzy
+#| msgid "Contacts"
+msgid "Contacts loaded"
+msgstr "联系人"
+
+#: fltk/native/main.cpp:1631 fltk/native/main.cpp:1826
+#, fuzzy
+#| msgid "Contact"
+msgid "New Contact"
+msgstr "联系人"
+
+#: fltk/native/main.cpp:1639
+#, fuzzy
+#| msgid "Contact"
+msgid "Save Contact"
+msgstr "联系人"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1883
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Forward"
+msgstr "消息"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1879
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Reply"
+msgstr "消息"
+
+#: fltk/native/main.cpp:1680 fltk/native/main.cpp:1881
+#, fuzzy
+#| msgid "Reply All"
+msgid "Message/Reply All"
+msgstr "全部回复"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1885
+#, fuzzy
+#| msgid "Message Cache"
+msgid "Message/Archive"
+msgstr "邮件缓存"
+
+#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1887
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Message/Move to Trash"
+msgstr "移至回收站"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1893
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Flag"
+msgstr "消息"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1889
+#, fuzzy
+#| msgid "Message sent"
+msgid "Message/Mark Read"
+msgstr "已发送邮件"
+
+#: fltk/native/main.cpp:1682 fltk/native/main.cpp:1891
+#, fuzzy
+#| msgid "Mark as Unread"
+msgid "Message/Mark Unread"
+msgstr "标记为未读"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1895
+#, fuzzy
+#| msgid "New Label…"
+msgid "Message/Label…"
+msgstr "添加标签…"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1896
+#, fuzzy
+#| msgid "Remind Me"
+msgid "Message/Remind Me…"
+msgstr "提醒我"
+
+#: fltk/native/main.cpp:1683 fltk/native/main.cpp:1894
+#, fuzzy
+#| msgid "Message"
+msgid "Message/Unflag"
+msgstr "消息"
+
+#: fltk/native/main.cpp:1684 fltk/native/main.cpp:1845
+#, fuzzy
+#| msgid "Conversation"
+msgid "File/Export Conversation…"
+msgstr "对话"
+
+#: fltk/native/main.cpp:1772
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "对话"
+
+#: fltk/native/main.cpp:1814
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "日历"
+
+#: fltk/native/main.cpp:1824
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "联系人"
+
+#: fltk/native/main.cpp:1829
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:1840
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "询问 Penguin Mail…"
+
+#: fltk/native/main.cpp:1842
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "新建邮件"
+
+#: fltk/native/main.cpp:1844
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "添加账号…"
+
+#: fltk/native/main.cpp:1847
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "OpenPGP 密钥"
+
+#: fltk/native/main.cpp:1848
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "首选项"
+
+#: fltk/native/main.cpp:1850
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:1851
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "关闭窗口"
+
+#: fltk/native/main.cpp:1853
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "退出"
+
+#: fltk/native/main.cpp:1859
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "搜索"
+
+#: fltk/native/main.cpp:1861
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "视图"
+
+#: fltk/native/main.cpp:1862
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "新建日历"
+
+#: fltk/native/main.cpp:1864
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "联系人"
+
+#: fltk/native/main.cpp:1866
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "刷新"
+
+#: fltk/native/main.cpp:1869
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "查看邮件源码"
+
+#: fltk/native/main.cpp:1874
+#, fuzzy
+#| msgid "Edit Draft"
+msgid "Message/Edit Draft"
+msgstr "编辑草稿"
+
+#: fltk/native/main.cpp:1875
+msgid "Message/Send Queued Message Now"
+msgstr ""
+
+#: fltk/native/main.cpp:1877
+msgid "Message/Delete Queued Message"
+msgstr ""
+
+#: fltk/native/main.cpp:1897
+#, fuzzy
+#| msgid "Keyboard Shortcuts"
+msgid "Help/Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: fltk/native/main.cpp:1899
+msgid ""
+"Ctrl+N: New Message\n"
+"Ctrl+R: Reply\n"
+"Ctrl+Shift+R: Reply All\n"
+"Ctrl+L: Forward\n"
+"Ctrl+E: Archive\n"
+"Delete: Move to Trash\n"
+"Ctrl+Z: Undo\n"
+"Ctrl+F: Search\n"
+"Ctrl+1/2/3: Mail / Calendar / Contacts\n"
+"F5: Refresh\n"
+"Ctrl+W: Close Window\n"
+"Ctrl+Q: Quit\n"
+"\n"
+"Composer: Ctrl+Enter sends, Ctrl+S saves a draft.\n"
+"DomeD owns Super shortcuts."
+msgstr ""
+
+#: fltk/native/main.cpp:1906
+#, fuzzy
+#| msgid "About Penguin Mail"
+msgid "Help/About Penguin Mail"
+msgstr "关于 Penguin Mail"
+
+#: fltk/native/main.cpp:1909
+msgid ""
+"Penguin Mail 1.0.10\n"
+"FLTK edition for DomeD\n"
+"\n"
+"Original mail engines: c9dev/penguin-mail\n"
+"License: GPL-3.0-or-later"
+msgstr ""
+
+#: fltk/native/main.cpp:2037
+msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr ""
+
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
 msgstr "邮件已发送，但 Penguin Mail 无法在已发送中保留副本。"
@@ -11770,6 +12837,28 @@ msgstr "标记为非垃圾邮件"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "移至 {folder}"
+
+#, fuzzy
+#~| msgid "New message"
+#~ msgid "new messages"
+#~ msgstr "新邮件"
+
+#, fuzzy
+#~| msgid "No Mail"
+#~ msgid "New Mail"
+#~ msgstr "没有邮件"
+
+#~ msgid "gmail"
+#~ msgstr "gmail"
+
+#~ msgid "email"
+#~ msgstr "电子邮件"
+
+#~ msgid "mail"
+#~ msgstr "邮件"
+
+#~ msgid "inbox"
+#~ msgstr "收件箱"
 
 #~ msgid ""
 #~ "Added below new messages and above quoted text in replies. Markdown works."

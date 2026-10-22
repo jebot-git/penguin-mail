@@ -27,3 +27,9 @@ packaging/secrets.env
 __pycache__/
 CLAUDE.local.md
 packaging/flatpak/local-signin-test.yml
+
+/build-fltk/
+
+__pycache__/
+
+/test-artifacts/

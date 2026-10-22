@@ -459,3 +459,13 @@ Terms the code and its docs use for Gmail mail. The `domain` crate holds the cod
 ## Sidebar folder counts
 
 The sidebar places nested folders under the server mailbox whose role it knows, including Inbox, Sent and Trash. The label passed to the window retains that role independently of the name and id. Folder badges show unread mail, while Drafts keeps its total. IMAP supplies whole-mailbox unread message counts through STATUS, including folders the reader has not opened and mail outside the local window. The sidebar shows stored or cached counts at once and refreshes each account in the background. It keeps server answers for one minute or until a mail change or manual refresh; unavailable server counts fall back to the stored mail. Each STATUS request has its own timeout, and a failed request leaves completed folder counts available. Other accounts count unread threads in the store, as the Inbox does.
+
+## FLTK interface
+
+**Calendar date link**: `penguin-mail --calendar YYYY-MM-DD` opens the native calendar on that local date. A running copy receives the date through its session bus rather than starting a second sync engine. DomeD's clock popup uses this link.
+
+**Native frontend**: `fltk/` holds the FLTK interface and its private pipe adapter to the existing Rust engines. GTK remains in `app/` as an explicit alternative. The native frontend and `penguin-mail-engine` link no GTK, Qt or WebKit.
+
+The native protected-message reader shares `protection/common.rs` and `pgp/adapter.rs` with GTK. Its worker runs GnuPG off the UI thread; encrypted drafts are for the writer alone, opened attachments remain in the window, and replies quoting decrypted text start encrypted. Demo OpenPGP uses a throwaway keyring. Native Google sign-in can take a Desktop app client JSON file and keeps the signed-in account client through the upstream account secrets store.
+
+Native mail and calendar notifications call DomeD’s `org.freedesktop.Notifications` service directly. Their server-issued IDs map clicks to the stored conversation or event date. Calendar notices reuse the upstream reminder planner and shown/snooze log, and are recorded after delivery succeeds.

@@ -58,6 +58,27 @@ impl Pgp {
         signature
     }
 
+    /// Whether the local keyring holds a usable secret signing key for this exact address.
+    /// Listing secret keys never asks for a passphrase or fetches a key.
+    pub fn can_sign(&self, address: &str) -> Result<bool, PgpError> {
+        if address.trim().is_empty() {
+            return Ok(false);
+        }
+        let run = self.run(&[], Pinentry::Never, |command| {
+            command
+                .args(["--with-colons", "--list-secret-keys", "--"])
+                .arg(user_id(address));
+        })?;
+        Ok(String::from_utf8_lossy(&run.out).lines().any(|line| {
+            let fields: Vec<_> = line.split(':').collect();
+            fields.first() == Some(&"sec")
+                && !matches!(fields.get(1), Some(&"r" | &"e" | &"d" | &"i"))
+                && fields
+                    .get(11)
+                    .is_some_and(|c| c.contains('S') && !c.contains('D'))
+        }))
+    }
+
     /// What gpg holds for each of `addresses`, in the order they were given.
     /// A caller offers encryption when every recipient has a key, and this
     /// says which one is missing when they do not.

@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Application
+Name=Penguin Mail
+GenericName=Mail
+Comment=Mail and calendar for DomeD
+Exec=penguin-mail %u
+Icon=io.github.c9dev.PenguinMail
+Terminal=false
+Categories=Network;Email;Calendar;
+Keywords=mail;email;gmail;imap;inbox;calendar;contacts;
+MimeType=x-scheme-handler/mailto;
+StartupNotify=false
+StartupWMClass=io.github.c9dev.PenguinMail
+Actions=compose;calendar;
+
+[Desktop Action compose]
+Name=New Message
+Exec=penguin-mail --compose
+
+[Desktop Action calendar]
+Name=Calendar
+Exec=penguin-mail --calendar-today

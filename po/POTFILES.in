@@ -207,3 +207,14 @@ app/src/ui/assistant/controls.rs
 app/src/ui/assistant/files.rs
 sync/src/account/space.rs
 app/src/ui/window/trash.rs
+
+fltk/engine/src/main.rs
+fltk/engine/src/compose.rs
+fltk/engine/src/accounts.rs
+fltk/native/main.cpp
+fltk/native/engine.h
+app/src/pgp/adapter.rs
+app/src/protection/common.rs
+fltk/engine/src/crypto.rs
+fltk/engine/src/oauth.rs
+fltk/engine/src/notifications.rs

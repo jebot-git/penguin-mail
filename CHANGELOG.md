@@ -7,11 +7,18 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### New
 
+- Build a native FLTK interface for DomeD with universal menus, live appearance, a tray icon and calendar date links.
+- Integrate OpenPGP signature checks, decryption, signing, encryption, encrypted drafts and key-file import into the native interface. Share the protected-message reader with GTK.
+- Deliver native mail and calendar notifications through DomeD’s notification server, with conversation/date actions, calendar join and persistent snooze.
+- Let native Google sign-in use a Desktop app OAuth client JSON file and report missing OAuth configuration before opening the browser.
+
 - Give each sending address its own signature or use the account signature, with `<email>` and `<domain>` filled from the actual sender.
 - Mark all unread inbox mail as read in every account from the tray menu.
 - Empty Trash from its mailbox menu, including older mail outside the local cache, with bounded memory use and a fresh check before each delete batch.
 
 ### Fixed
+
+- Hide duplicate native menu bars while DomeD provides the universal menu, preserving shortcuts and restoring local menus when the host disappears.
 
 - IMAP and POP3 accounts stay signed in while their mail server restarts or updates, and try again every few minutes instead of asking you to sign in ([#79](https://github.com/c9dev/penguin-mail/issues/79)).
 - Changing From replaces signatures containing quotes, and typing an address suffix no longer rereads the whole message.

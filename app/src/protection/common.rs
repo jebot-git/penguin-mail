@@ -1,0 +1,978 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+//! Shared protected-message reader for the GTK and FLTK frontends.
+//! No toolkit or account runtime is used here.
+use mail_parser::MessageParser;
+use mailrs_domain::MessageBody;
+use mailrs_domain::translate::{fill, fill_plural, gettext};
+use serde::{Deserialize, Serialize};
+
+/// What the engine made of one message: the mark to put above it, and the
+/// body to draw in place of the one that arrived, cut from what the engine
+/// checked or opened. A refusal leaves the body as it arrived.
+#[derive(Debug, Clone)]
+pub struct Read {
+    pub mark: Mark,
+    pub body: Option<MessageBody>,
+    /// The bytes of the files inside, in the order `body.attachments`
+    /// lists them. The body names none by Gmail's attachment id, since
+    /// Gmail's ids point at parts of the message as it arrived, which for
+    /// an encrypted one is ciphertext; these bytes are what the window
+    /// saves and opens.
+    pub files: Vec<Vec<u8>>,
+    /// Whether the message arrived encrypted and the engine opened it. A
+    /// reply to one starts encrypted: the engine opens whatever armor
+    /// turns up in a message, so a stranger can mail in somebody else's
+    /// ciphertext, and a reply that quoted it in the clear would hand them
+    /// the plaintext.
+    pub sealed: bool,
+    /// Whether gpgsm could not say if a certificate behind a signature was
+    /// revoked. It asks the certificate authority, which may be out of
+    /// reach now and back in reach a minute later, so the next open asks
+    /// again rather than repeat this answer.
+    pub revocation_unchecked: bool,
+}
+
+/// What the card says about a message, and how loudly.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Mark {
+    pub title: String,
+    /// The line under the title, when there is more to say.
+    pub detail: Option<String>,
+    pub tone: Tone,
+}
+
+/// How much of the message the card is vouching for.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Tone {
+    /// The text is the text the signer wrote.
+    Good,
+    /// Something is wrong with the message.
+    Bad,
+    /// Nothing on this computer could check it.
+    Unchecked,
+}
+
+/// Which standard a message goes out under.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub enum Standard {
+    #[default]
+    Pgp,
+    Smime,
+}
+
+/// The two parts of the entity `raw` holds: the first whole, headers and
+/// all, and the second's body on its own.
+///
+/// These are slices of the message rather than anything parsed and put
+/// back together, because a signature covers the first part byte for byte.
+/// The CRLF before a boundary belongs to the boundary, so it comes off
+/// here, and a message whose lines end some other way never signed
+/// anything a reader could check.
+pub(crate) fn wrapper_parts(raw: &[u8]) -> Option<(&[u8], &[u8])> {
+    let blank = find(raw, b"\r\n\r\n")?;
+    let boundary = param(&unfolded(&raw[..blank], "content-type")?, "boundary")?;
+    let open = format!("--{boundary}\r\n").into_bytes();
+    let next = format!("\r\n--{boundary}").into_bytes();
+    let body = &raw[blank + 4..];
+    let first = &body[find(body, &open)? + open.len()..];
+    let (first, after) = first.split_at(find(first, &next)?);
+    let second = after.get(next.len()..)?.strip_prefix(b"\r\n")?;
+    let second = &second[..find(second, &next)?];
+    Some((first, &second[find(second, b"\r\n\r\n")? + 4..]))
+}
+
+/// What an engine found in one protected message, in words neither
+/// standard owns. Each adapter fills one from what gpg or gpgsm said, and
+/// [`read`] alone turns it into the card and the body the window shows.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Found {
+    /// Whether the message arrived encrypted and the engine opened it.
+    pub encrypted: bool,
+    /// The signatures over `part`, in the order the engine reported them.
+    /// On an encrypted message only ones that travelled inside the
+    /// encryption count, since anyone can wrap somebody else's ciphertext
+    /// in a signature of their own.
+    pub signatures: Vec<Signed>,
+    /// What the engine checked or opened. The window draws this and
+    /// nothing else, so a part the signature does not cover never appears
+    /// under the signer's name.
+    pub part: Part,
+}
+
+/// The bytes a [`Found`] is about.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Part {
+    /// A MIME entity, headers and all: the part a `multipart/signed`
+    /// covers, or what came out of the encryption.
+    Entity(Vec<u8>),
+    /// Text that sat inside inline armor, already decoded.
+    Text(String),
+}
+
+/// One signature, as neither standard words it.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Signed {
+    pub verdict: Verdict,
+    pub signer: Signer,
+    pub vouched: Vouched,
+}
+
+/// Whether the text is the text that was signed, and whether the key or
+/// certificate behind it was in good standing.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Verdict {
+    Good,
+    /// The text and the signature disagree.
+    Bad,
+    /// The signature matches, and the key or certificate has run out.
+    KeyExpired,
+    /// The signature matches, and the key or certificate was revoked.
+    KeyRevoked,
+    /// The signature matches, and it carried a date that has passed.
+    SignatureExpired,
+    /// This computer holds nothing to check the signature against.
+    NoKey,
+    /// The engine could not check it and gave another reason.
+    Unchecked,
+}
+
+/// Who signed, as the key or certificate names them.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct Signer {
+    /// The name without the address, as "Ada Lovelace".
+    pub name: Option<String>,
+    /// The addresses the key or certificate names, in its own order.
+    pub addresses: Vec<Named>,
+    /// The key id, for a signer the engine has no name for.
+    pub key: Option<String>,
+}
+
+/// One address a key or certificate names, and how far the person's trust
+/// reaches it. OpenPGP vouches for each user id on its own, so a key
+/// somebody vouched for under one name can carry another nobody did.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Named {
+    pub address: String,
+    pub vouched: Vouched,
+}
+
+/// How far the person's own trust reaches the signer: their trust database
+/// under OpenPGP, the chain to a root under S/MIME. It answers who signed,
+/// which is a separate question from whether the text is what was signed.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Vouched {
+    /// One of the person's own keys.
+    Own,
+    /// The person vouched for it, or its chain reaches a root they trust.
+    Yes,
+    /// People the person trusts vouched for it.
+    Partly,
+    /// Its chain reaches a root the person trusts, and nothing could say
+    /// whether a certificate on it was revoked. Only S/MIME answers this:
+    /// gpgsm asks the certificate authority, which may be out of reach.
+    RevocationUnknown,
+    /// Nobody has vouched for it, or its chain reaches no trusted root.
+    Nobody,
+    /// The engine said nothing about it.
+    Unsaid,
+    /// The person marked it as one not to trust.
+    Never,
+}
+
+/// Why an engine would not answer about a message.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Refusal {
+    /// It is encrypted to a key or certificate this computer lacks.
+    NotForYou,
+    /// Its parts are not where the standard keeps them.
+    Unreadable,
+    /// What the engine opened came to more than its runner reads, so it
+    /// stopped there.
+    TooLarge,
+    /// The engine failed, for the reason given, in words a person reads.
+    Failed(String),
+}
+
+/// What the window shows for a protected message, from what its engine
+/// found: the card, and a body cut from the bytes the engine checked or
+/// opened, whatever kind of message it was. `arrived` is the body Gmail
+/// read, which lends the new one only what came from the headers. `from`
+/// is the address the message says it is from, which a signature has to
+/// name before the card calls it good.
+pub fn read(
+    standard: Standard,
+    found: Result<Found, Refusal>,
+    arrived: &MessageBody,
+    from: Option<&str>,
+) -> Read {
+    let found = match found {
+        Ok(found) => found,
+        Err(refusal) => {
+            return Read {
+                mark: refused(standard, &refusal),
+                body: None,
+                files: Vec::new(),
+                sealed: false,
+                revocation_unchecked: false,
+            };
+        }
+    };
+    // The part moves out rather than being copied: an opened message can
+    // run to tens of megabytes, and the entity goes once it is parsed.
+    let (mut body, files) = match found.part {
+        Part::Entity(entity) => opened_body(&entity),
+        Part::Text(text) => (
+            MessageBody {
+                text: Some(text),
+                ..MessageBody::default()
+            },
+            Vec::new(),
+        ),
+    };
+    // The headers were never inside the signature or the encryption, and
+    // the details panel and the list's own buttons read them.
+    body.list_unsubscribe = arrived.list_unsubscribe.clone();
+    body.one_click_unsubscribe = arrived.one_click_unsubscribe;
+    body.provenance = arrived.provenance.clone();
+    body.protection = arrived.protection;
+    let mark = match (chosen(&found.signatures, from), found.encrypted) {
+        (Some(signed), false) => signed_mark(standard, signed, from),
+        (signature, true) => encrypted_mark(standard, signature, from, files.len()),
+        // An engine that neither opened nor checked anything has nothing
+        // to vouch for, which is what an unchecked signature says.
+        (None, false) => signed_mark(
+            standard,
+            &Signed {
+                verdict: Verdict::Unchecked,
+                signer: Signer::default(),
+                vouched: Vouched::Unsaid,
+            },
+            from,
+        ),
+    };
+    let revocation_unchecked = found.signatures.iter().any(|signed| {
+        signed.vouched == Vouched::RevocationUnknown
+            || signed
+                .signer
+                .addresses
+                .iter()
+                .any(|named| named.vouched == Vouched::RevocationUnknown)
+    });
+    Read {
+        mark,
+        body: Some(body),
+        files,
+        sealed: found.encrypted,
+        revocation_unchecked,
+    }
+}
+
+/// The one signature of several the card speaks for. One that does not
+/// match wins, since it means the text is not what that signer signed;
+/// then a good one from the sender; then any good one; then the first.
+fn chosen<'a>(signatures: &'a [Signed], from: Option<&str>) -> Option<&'a Signed> {
+    let good = |signed: &&Signed| signed.verdict == Verdict::Good;
+    signatures
+        .iter()
+        .find(|signed| signed.verdict == Verdict::Bad)
+        .or_else(|| {
+            signatures
+                .iter()
+                .filter(good)
+                .find(|signed| sender(&signed.signer, from).is_some())
+        })
+        .or_else(|| signatures.iter().find(good))
+        .or_else(|| signatures.first())
+}
+
+/// What the card says about a signature over a message that arrived in
+/// the clear. The verdict and the vouching answer different questions, so
+/// the title carries the one and the line under it the other.
+///
+/// A good signature earns the good tone only when the key or certificate
+/// names the address the message is from and the person's trust reaches
+/// that address. Anyone can make a key that says "Ada Lovelace", sign with
+/// it, and put Ada's address in From; the verdict alone would call that
+/// good, because the text is the text that key signed.
+fn signed_mark(standard: Standard, signed: &Signed, from: Option<&str>) -> Mark {
+    let sender = sender(&signed.signer, from);
+    let who = signer_name(standard, &signed.signer, sender);
+    let signer = [("signer", who.as_str())];
+    let pgp = standard == Standard::Pgp;
+    match signed.verdict {
+        Verdict::Good => {
+            let vouched = match (signed.vouched, sender) {
+                (Vouched::Never, _) => Vouched::Never,
+                (_, Some(named)) => named.vouched,
+                (vouched, None) => vouched,
+            };
+            let tone = match (vouched, sender) {
+                (Vouched::Never, _) => Tone::Bad,
+                // Marginal validity is GnuPG's "not fully valid": people the
+                // person only partly trusts vouched for the key. The card
+                // says so in the neutral tone rather than calling it good.
+                // A certificate whose revocation nobody could check gets
+                // the same tone, since it may have been taken back.
+                (Vouched::Own | Vouched::Yes, Some(_)) => Tone::Good,
+                _ => Tone::Unchecked,
+            };
+            let detail = match (sender, from) {
+                (None, Some(from)) if vouched != Vouched::Never => fill(
+                    &match standard {
+                        Standard::Pgp => gettext(
+                            "This key does not name {sender}, the address the message says it \
+                             is from.",
+                        ),
+                        Standard::Smime => gettext(
+                            "This certificate does not name {sender}, the address the message \
+                             says it is from.",
+                        ),
+                    },
+                    &[("sender", from)],
+                ),
+                _ => vouching(standard, vouched),
+            };
+            Mark {
+                title: fill(&gettext("Signed by {signer}"), &signer),
+                detail: Some(detail),
+                tone,
+            }
+        }
+        Verdict::Bad => Mark {
+            title: gettext("This message changed after it was signed"),
+            detail: Some(fill(
+                &gettext("The signature of {signer} does not match what arrived."),
+                &signer,
+            )),
+            tone: Tone::Bad,
+        },
+        Verdict::KeyExpired if pgp => Mark {
+            title: fill(
+                &gettext("Signed by {signer}, whose key has expired"),
+                &signer,
+            ),
+            detail: Some(gettext(
+                "The text is as it was written, and the key behind it ran out.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Verdict::KeyExpired => Mark {
+            title: fill(
+                &gettext("Signed by {signer}, whose certificate has run out"),
+                &signer,
+            ),
+            detail: Some(gettext(
+                "The text is as it was written, and the certificate behind it has expired.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Verdict::KeyRevoked if pgp => Mark {
+            title: fill(
+                &gettext("Signed by {signer}, who took this key back"),
+                &signer,
+            ),
+            detail: Some(gettext(
+                "The owner revoked it, so it says nothing about who wrote this.",
+            )),
+            tone: Tone::Bad,
+        },
+        Verdict::KeyRevoked => Mark {
+            title: fill(
+                &gettext("Signed by {signer}, whose certificate was taken back"),
+                &signer,
+            ),
+            detail: Some(gettext(
+                "Whoever issued it revoked it, so it says nothing about who wrote this.",
+            )),
+            tone: Tone::Bad,
+        },
+        Verdict::SignatureExpired => Mark {
+            title: fill(
+                &gettext("Signed by {signer}, and the signature has run out"),
+                &signer,
+            ),
+            detail: Some(gettext(
+                "It carried a date to stop being good on, and that date has passed.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Verdict::NoKey if pgp => Mark {
+            title: gettext("Signed by a key this computer does not hold"),
+            detail: Some(fill(
+                &gettext("Nothing here can check it. Ask gpg for key {key}."),
+                &[(
+                    "key",
+                    &signed
+                        .signer
+                        .key
+                        .clone()
+                        .unwrap_or_else(|| gettext("it names")),
+                )],
+            )),
+            tone: Tone::Unchecked,
+        },
+        Verdict::NoKey => Mark {
+            title: gettext("Signed by a certificate this computer does not hold"),
+            detail: Some(gettext(
+                "The message carried none either, so there is nothing here to check it \
+                 against.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Verdict::Unchecked if pgp => Mark {
+            title: gettext("gpg could not check this signature"),
+            detail: None,
+            tone: Tone::Unchecked,
+        },
+        Verdict::Unchecked => Mark {
+            title: gettext("gpgsm could not check this signature"),
+            detail: None,
+            tone: Tone::Unchecked,
+        },
+    }
+}
+
+/// What the card says about a message that arrived encrypted, with the
+/// signature that travelled inside it when it carried one.
+fn encrypted_mark(
+    standard: Standard,
+    signed: Option<&Signed>,
+    from: Option<&str>,
+    files: usize,
+) -> Mark {
+    let mut mark = match signed {
+        Some(signed) => {
+            let inside = signed_mark(standard, signed, from);
+            match signed.verdict {
+                // The one case the card says in a single sentence rather
+                // than in two.
+                Verdict::Good => Mark {
+                    title: fill(
+                        &gettext("Encrypted, and signed by {signer}"),
+                        &[(
+                            "signer",
+                            &signer_name(standard, &signed.signer, sender(&signed.signer, from)),
+                        )],
+                    ),
+                    ..inside
+                },
+                _ => Mark {
+                    title: fill(&gettext("Encrypted. {what}"), &[("what", &inside.title)]),
+                    ..inside
+                },
+            }
+        }
+        None => Mark {
+            title: gettext("This message arrived encrypted"),
+            detail: Some(gettext(
+                "Nobody signed it, so it says nothing about who sent it.",
+            )),
+            tone: Tone::Unchecked,
+        },
+    };
+    if let Some(line) = files_line(files) {
+        mark.detail = Some(match mark.detail {
+            Some(detail) => fill(
+                &gettext("{detail} {files}"),
+                &[("detail", &detail), ("files", &line)],
+            ),
+            None => line,
+        });
+    }
+    mark
+}
+
+/// What the card says when an engine would not open a message.
+fn refused(standard: Standard, refusal: &Refusal) -> Mark {
+    let pgp = standard == Standard::Pgp;
+    match refusal {
+        Refusal::NotForYou if pgp => Mark {
+            title: gettext("This message is encrypted to a key you do not hold"),
+            detail: Some(gettext(
+                "Whoever sent it used a key gpg has no secret half of.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Refusal::NotForYou => Mark {
+            title: gettext("This message is encrypted to a certificate you do not hold"),
+            detail: Some(gettext(
+                "Whoever sent it used a certificate gpgsm has no secret key for.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Refusal::Unreadable => Mark {
+            title: match standard {
+                Standard::Pgp => gettext("This message says it is OpenPGP and is not"),
+                Standard::Smime => gettext("This message says it is S/MIME and is not"),
+            },
+            detail: Some(gettext(
+                "Its parts are not where a signed or encrypted message keeps them.",
+            )),
+            tone: Tone::Unchecked,
+        },
+        Refusal::TooLarge => Mark {
+            title: gettext("This message is too large to open"),
+            detail: Some(fill(
+                &gettext("It opens to more than {size} MB, so Penguin Mail stopped reading it."),
+                &[("size", &(mailrs_pgp::gnupg::MOST_OUTPUT >> 20).to_string())],
+            )),
+            tone: Tone::Unchecked,
+        },
+        Refusal::Failed(reason) => Mark {
+            title: match standard {
+                Standard::Pgp => gettext("gpg could not open this message"),
+                Standard::Smime => gettext("gpgsm could not open this message"),
+            },
+            detail: Some(reason.clone()),
+            tone: Tone::Unchecked,
+        },
+    }
+}
+
+/// How far the person's trust reaches the signer, said plainly. A key or
+/// certificate nobody vouched for still signs; the two are separate
+/// answers and running them together tells people the wrong thing.
+fn vouching(standard: Standard, vouched: Vouched) -> String {
+    match (standard, vouched) {
+        (_, Vouched::Never) => gettext("You marked this key as one not to trust."),
+        (Standard::Pgp, Vouched::Own) => gettext("This is one of your own keys."),
+        (Standard::Pgp, Vouched::Yes) => gettext("You have vouched for this key."),
+        (Standard::Pgp, Vouched::Partly) => gettext(
+            "Only people you partly trust have vouched for this key, so it is not fully checked.",
+        ),
+        (Standard::Pgp, Vouched::Nobody | Vouched::Unsaid) => {
+            gettext("Nobody has vouched for this key, so it names no one.")
+        }
+        (_, Vouched::RevocationUnknown) => gettext(
+            "Its certificate leads back to an authority you trust, but this computer could not \
+             check whether it was revoked.",
+        ),
+        (Standard::Smime, Vouched::Own | Vouched::Yes | Vouched::Partly) => {
+            gettext("Its certificate leads back to an authority you trust.")
+        }
+        (Standard::Smime, Vouched::Nobody) => {
+            gettext("Its certificate leads back to nobody you trust, so it names no one.")
+        }
+        (Standard::Smime, Vouched::Unsaid) => {
+            gettext("Nothing here says who that certificate belongs to.")
+        }
+    }
+}
+
+/// The address the signer names that the message says it is from.
+fn sender<'a>(signer: &'a Signer, from: Option<&str>) -> Option<&'a Named> {
+    let from = from?;
+    signer
+        .addresses
+        .iter()
+        .find(|named| same(&named.address, from))
+}
+
+/// The address the message says it is from, out of its own headers.
+/// This is the From line the window shows above the message, so it is the
+/// one a signature has to name.
+pub fn from_address(raw: &[u8]) -> Option<String> {
+    let parsed = MessageParser::default().parse_headers(raw)?;
+    let address = parsed.from()?.first()?.address()?.trim().to_string();
+    (!address.is_empty()).then_some(address)
+}
+
+/// Who signed, as "Ada Lovelace <ada@example.test>" when the key or
+/// certificate gives both, and as whatever it gives otherwise. The address
+/// is `sender` when the signer names the one the message is from, and the
+/// first it names otherwise.
+fn signer_name(standard: Standard, signer: &Signer, sender: Option<&Named>) -> String {
+    let address = sender
+        .or(signer.addresses.first())
+        .map(|named| &named.address);
+    match (&signer.name, address, &signer.key) {
+        (Some(name), Some(address), _) => format!("{name} <{address}>"),
+        (Some(name), None, _) => name.clone(),
+        (None, Some(address), _) => address.clone(),
+        (None, None, Some(key)) if standard == Standard::Pgp => {
+            fill(&gettext("key {key}"), &[("key", key)])
+        }
+        (None, None, _) => match standard {
+            Standard::Pgp => gettext("a key gpg would not name"),
+            Standard::Smime => gettext("a certificate gpgsm would not name"),
+        },
+    }
+}
+
+/// What the card says about the files inside. They came out of the
+/// encryption and live in this window alone, so saving one writes the copy
+/// that exists rather than fetching anything.
+pub(crate) fn files_line(files: usize) -> Option<String> {
+    match files {
+        0 => None,
+        1 => Some(gettext("It carries a file, kept in this window only.")),
+        count => Some(fill_plural(
+            "It carries {count} file, kept in this window only.",
+            "It carries {count} files, kept in this window only.",
+            count,
+            &[("count", &count.to_string())],
+        )),
+    }
+}
+
+/// The message inside an encrypted or opaque-signed one, as the window
+/// shows it, with the bytes of each file. Its files live in these bytes
+/// and nowhere on the server, so none carries a part path to fetch.
+pub(crate) fn opened_body(part: &[u8]) -> (MessageBody, Vec<Vec<u8>>) {
+    let mut body = mailrs_mime::read(part);
+    if body.html.is_none() && body.text.is_none() && body.attachments.is_empty() {
+        body.text = Some(String::from_utf8_lossy(part).into_owned());
+        return (body, Vec::new());
+    }
+    let files = mailrs_mime::files(part);
+    for file in &mut body.attachments {
+        file.attachment_id = None;
+    }
+    (body, files)
+}
+
+/// "ann@example.com", "ann@example.com or bo@example.com", and with more
+/// than two, commas until the last.
+pub(crate) fn listed(names: &[&str]) -> String {
+    match names {
+        [] => String::new(),
+        [one] => (*one).to_string(),
+        [rest @ .., last] => fill(
+            &gettext("{names} or {last}"),
+            &[("names", &rest.join(", ")), ("last", last)],
+        ),
+    }
+}
+
+/// The same list, for a sentence that wants "and" between the last two.
+pub(crate) fn joined(names: &[&str]) -> String {
+    match names {
+        [] => String::new(),
+        [one] => (*one).to_string(),
+        [rest @ .., last] => fill(
+            &gettext("{names} and {last}"),
+            &[("names", &rest.join(", ")), ("last", last)],
+        ),
+    }
+}
+
+/// The version out of `gpg --version`, which leads with `gpg (GnuPG) 2.4.8`.
+pub(crate) fn version_of(output: &str) -> Option<String> {
+    let line = output.lines().next()?.trim();
+    let version = line.rsplit(' ').next()?;
+    version
+        .chars()
+        .next()
+        .is_some_and(|c| c.is_ascii_digit())
+        .then(|| version.to_string())
+}
+
+/// The value of one header, the lines it folds onto joined back on. Header
+/// values are only read here, so bytes that are not UTF-8 lose nothing.
+pub(crate) fn unfolded(headers: &[u8], name: &str) -> Option<String> {
+    let text = String::from_utf8_lossy(headers)
+        .replace("\r\n ", " ")
+        .replace("\r\n\t", " ");
+    text.lines().find_map(|line| {
+        let (key, value) = line.split_once(':')?;
+        key.trim()
+            .eq_ignore_ascii_case(name)
+            .then(|| value.trim().to_string())
+    })
+}
+
+/// One parameter of a header value, without its quotes.
+pub(crate) fn param(value: &str, name: &str) -> Option<String> {
+    value.split(';').skip(1).find_map(|parameter| {
+        let (key, value) = parameter.split_once('=')?;
+        key.trim()
+            .eq_ignore_ascii_case(name)
+            .then(|| value.trim().trim_matches('"').to_string())
+    })
+}
+
+pub(crate) fn find(haystack: &[u8], needle: &[u8]) -> Option<usize> {
+    haystack
+        .windows(needle.len())
+        .position(|window| window == needle)
+}
+
+/// Signed messages somebody added a part to, for the adapters' tests.
+#[cfg(test)]
+pub(crate) mod tampered {
+    use mailrs_domain::MessageBody;
+
+    /// A signed entity with one more part after the signature, which is
+    /// what somebody who wants their words under another's name sends.
+    pub fn with_unsigned_part(entity: &[u8]) -> Vec<u8> {
+        let entity = String::from_utf8_lossy(entity).into_owned();
+        let boundary = entity
+            .split("boundary=\"")
+            .nth(1)
+            .and_then(|rest| rest.split('"').next())
+            .expect("a boundary")
+            .to_string();
+        let closing = format!("--{boundary}--\r\n");
+        let extra = format!(
+            "--{boundary}\r\nContent-Type: text/html\r\n\r\n<p>Pay Mallory.</p>\r\n\
+             --{boundary}\r\nContent-Type: application/pdf\r\n\
+             Content-Disposition: attachment; filename=\"invoice.pdf\"\r\n\r\n%PDF\r\n\
+             {closing}"
+        );
+        entity.replace(&closing, &extra).into_bytes()
+    }
+
+    /// What Gmail made of the same message before the engine ran, had it
+    /// read every part.
+    pub fn as_gmail_read_it() -> MessageBody {
+        MessageBody {
+            html: Some("<p>Pay Mallory.</p>".into()),
+            attachments: vec![mailrs_domain::Attachment {
+                part_id: "3".into(),
+                filename: "invoice.pdf".into(),
+                mime_type: "application/pdf".into(),
+                size: 4,
+                attachment_id: Some("att-2".into()),
+                content_id: None,
+            }],
+            text: Some("Meet at six.".into()),
+            ..MessageBody::default()
+        }
+    }
+}
+
+fn same(a: &str, b: &str) -> bool {
+    a.trim().eq_ignore_ascii_case(b.trim())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn the_signed_part_comes_out_as_it_arrived() {
+        let raw = b"From: ada@example.test\r\n\
+                    Content-Type: multipart/signed; micalg=pgp-sha256;\r\n \
+                    protocol=\"application/pgp-signature\"; boundary=\"edge\"\r\n\
+                    \r\n\
+                    --edge\r\n\
+                    Content-Type: text/plain\r\n\
+                    \r\n\
+                    Meet at six.\r\n\
+                    --edge\r\n\
+                    Content-Type: application/pgp-signature\r\n\
+                    \r\n\
+                    -----BEGIN PGP SIGNATURE-----\r\n\
+                    -----END PGP SIGNATURE-----\r\n\
+                    --edge--\r\n";
+        let (part, signature) = wrapper_parts(raw).expect("two parts");
+        assert_eq!(part, b"Content-Type: text/plain\r\n\r\nMeet at six.");
+        assert_eq!(
+            signature,
+            b"-----BEGIN PGP SIGNATURE-----\r\n-----END PGP SIGNATURE-----"
+        );
+    }
+
+    #[test]
+    fn a_message_missing_its_boundary_gives_back_nothing() {
+        let raw = b"Content-Type: multipart/signed\r\n\r\nMeet at six.\r\n";
+        assert!(wrapper_parts(raw).is_none());
+    }
+
+    #[test]
+    fn a_file_inside_the_encryption_comes_out_with_its_bytes_and_its_type() {
+        let part = b"Content-Type: multipart/mixed; boundary=\"b\"\r\n\r\n\
+            --b\r\nContent-Type: text/plain\r\n\r\nHere it is.\r\n\
+            --b\r\nContent-Type: image/png; name=\"cat.png\"\r\n\
+            Content-Disposition: attachment; filename=\"cat.png\"\r\n\
+            Content-Transfer-Encoding: base64\r\n\r\niVBORwECAwQ=\r\n--b--\r\n";
+        let (body, files) = opened_body(part);
+        assert_eq!(body.attachments.len(), 1);
+        let found = &body.attachments[0];
+        assert_eq!(found.filename, "cat.png");
+        assert_eq!(
+            found.mime_type, "image/png",
+            "the row needs it for a picture"
+        );
+        assert!(
+            found.attachment_id.is_none(),
+            "Gmail never saw this part, so there is nothing to fetch"
+        );
+        // The bytes line up with the attachment list, which is how the
+        // window finds them when somebody asks to save or open one.
+        assert_eq!(files.len(), 1);
+        assert_eq!(files[0], vec![0x89, 0x50, 0x4e, 0x47, 1, 2, 3, 4]);
+    }
+
+    /// A good signature from a key or certificate that names `addresses`,
+    /// each vouched for as far as it says, on a message from `from`.
+    fn good_from(
+        standard: Standard,
+        addresses: &[(&str, Vouched)],
+        vouched: Vouched,
+        from: &str,
+    ) -> Mark {
+        let found = Found {
+            encrypted: false,
+            signatures: vec![Signed {
+                verdict: Verdict::Good,
+                signer: Signer {
+                    name: Some("Ada Lovelace".into()),
+                    addresses: addresses
+                        .iter()
+                        .map(|(address, vouched)| Named {
+                            address: address.to_string(),
+                            vouched: *vouched,
+                        })
+                        .collect(),
+                    key: None,
+                },
+                vouched,
+            }],
+            part: Part::Text("Meet at six.".into()),
+        };
+        read(standard, Ok(found), &MessageBody::default(), Some(from)).mark
+    }
+
+    fn signed_by(verdict: Verdict, address: &str) -> Signed {
+        Signed {
+            verdict,
+            signer: Signer {
+                name: None,
+                addresses: vec![Named {
+                    address: address.into(),
+                    vouched: Vouched::Yes,
+                }],
+                key: None,
+            },
+            vouched: Vouched::Yes,
+        }
+    }
+
+    fn several(signatures: Vec<Signed>, from: &str) -> Mark {
+        let found = Found {
+            encrypted: false,
+            signatures,
+            part: Part::Text("Meet at six.".into()),
+        };
+        read(
+            Standard::Pgp,
+            Ok(found),
+            &MessageBody::default(),
+            Some(from),
+        )
+        .mark
+    }
+
+    #[test]
+    fn one_signature_that_does_not_match_is_what_the_card_says() {
+        let mark = several(
+            vec![
+                signed_by(Verdict::Good, "ada@example.test"),
+                signed_by(Verdict::Bad, "bo@example.test"),
+            ],
+            "ada@example.test",
+        );
+        assert_eq!(mark.tone, Tone::Bad, "{mark:?}");
+    }
+
+    #[test]
+    fn of_several_good_signatures_the_senders_is_the_one_named() {
+        let mark = several(
+            vec![
+                signed_by(Verdict::Good, "mallory@example.test"),
+                signed_by(Verdict::Good, "ada@example.test"),
+            ],
+            "ada@example.test",
+        );
+        assert_eq!(mark.title, "Signed by ada@example.test");
+        assert_eq!(mark.tone, Tone::Good);
+    }
+
+    #[test]
+    fn a_vouched_signer_who_sent_the_message_gets_the_good_tone() {
+        for standard in [Standard::Pgp, Standard::Smime] {
+            let mark = good_from(
+                standard,
+                &[("ada@example.test", Vouched::Yes)],
+                Vouched::Yes,
+                "Ada@Example.test",
+            );
+            assert_eq!(mark.tone, Tone::Good, "{standard:?} {mark:?}");
+            assert_eq!(mark.title, "Signed by Ada Lovelace <ada@example.test>");
+        }
+    }
+
+    #[test]
+    fn a_key_only_partly_vouched_for_is_not_the_good_tone_and_says_so() {
+        let mark = good_from(
+            Standard::Pgp,
+            &[("ada@example.test", Vouched::Partly)],
+            Vouched::Partly,
+            "ada@example.test",
+        );
+        assert_eq!(mark.tone, Tone::Unchecked, "{mark:?}");
+        assert_eq!(mark.title, "Signed by Ada Lovelace <ada@example.test>");
+        assert_eq!(
+            mark.detail.as_deref(),
+            Some(
+                "Only people you partly trust have vouched for this key, so it is not fully \
+                 checked."
+            )
+        );
+    }
+
+    #[test]
+    fn a_key_nobody_vouched_for_is_not_good_under_either_standard() {
+        for standard in [Standard::Pgp, Standard::Smime] {
+            let mark = good_from(
+                standard,
+                &[("ada@example.test", Vouched::Nobody)],
+                Vouched::Nobody,
+                "ada@example.test",
+            );
+            assert_eq!(mark.tone, Tone::Unchecked, "{standard:?} {mark:?}");
+        }
+    }
+
+    #[test]
+    fn a_signer_who_is_not_the_sender_is_not_good_and_the_card_says_why() {
+        for standard in [Standard::Pgp, Standard::Smime] {
+            let mark = good_from(
+                standard,
+                &[("ada@example.test", Vouched::Yes)],
+                Vouched::Yes,
+                "bank@example.test",
+            );
+            assert_eq!(mark.tone, Tone::Unchecked, "{standard:?} {mark:?}");
+            let detail = mark.detail.unwrap_or_default();
+            assert!(detail.contains("bank@example.test"), "{detail}");
+        }
+    }
+
+    #[test]
+    fn the_address_the_message_came_from_is_the_one_whose_vouching_counts() {
+        // Somebody vouched for the key under one name, and its owner added
+        // another name to it, which nobody vouched for.
+        let mark = good_from(
+            Standard::Pgp,
+            &[
+                ("mallory@example.test", Vouched::Yes),
+                ("ceo@example.test", Vouched::Nobody),
+            ],
+            Vouched::Yes,
+            "ceo@example.test",
+        );
+        assert_eq!(mark.tone, Tone::Unchecked, "{mark:?}");
+        assert_eq!(mark.title, "Signed by Ada Lovelace <ceo@example.test>");
+    }
+
+    #[test]
+    fn the_version_is_the_last_word_of_the_first_line() {
+        assert_eq!(
+            version_of("gpg (GnuPG) 2.4.8\nlibgcrypt 1.12.0\n").as_deref(),
+            Some("2.4.8")
+        );
+        assert_eq!(version_of("").as_deref(), None);
+        assert_eq!(version_of("gpg: no such option").as_deref(), None);
+    }
+}

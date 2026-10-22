@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["domain", "mime", "gmail", "graph", "jmap", "discover", "imap", "dav", "sieve", "pop3", "store", "sync", "pgp", "smime", "ai", "cli", "app", "testmail"]
+members = ["domain", "mime", "gmail", "graph", "jmap", "discover", "imap", "dav", "sieve", "pop3", "store", "sync", "pgp", "smime", "ai", "cli", "app", "testmail", "fltk/engine"]
 exclude = ["vendor/ksni"]
 
 [workspace.package]
