@@ -58,6 +58,7 @@ public:
     static std::string fontRevision;
     auto revision = std::to_string(dx::font_revision);
     if (fontRevision != revision) {
+      gl_texture_reset();
       gl_texture_pile_height(512);
       fontRevision = revision;
     }

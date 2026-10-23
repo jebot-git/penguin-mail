@@ -1,7 +1,7 @@
 # Penguin Mail for FLTK and DomeD
 
 This experimental native frontend is based on upstream main at
-`0facdf2ee4a7d07eb1a0eed0a22d32822ac1c10e` (2026-10-22, version 1.0.10).
+`c1db2a78` (merged 2026-10-23, version 1.0.10).
 The original GTK frontend and its source documentation remain in `app/` and
 `README_UPSTREAM.md`.
 

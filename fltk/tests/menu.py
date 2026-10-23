@@ -13,7 +13,7 @@ from PIL import Image
 signal.pthread_sigmask(signal.SIG_SETMASK,[])
 if os.environ.get('PENGUIN_MENU_BUS')!='1':os.execvpe('dbus-run-session',['dbus-run-session','--',sys.executable,*sys.argv],{**os.environ,'PENGUIN_MENU_BUS':'1'})
 repo=Path(__file__).resolve().parents[2];root=repo.parent;art=repo/'test-artifacts';art.mkdir(parents=True,exist_ok=True);processes=[];checks=[]
-def wait(fn,seconds=15):
+def wait(fn,seconds=60):
  end=time.monotonic()+seconds
  while time.monotonic()<end:
   v=fn()

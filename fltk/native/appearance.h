@@ -121,12 +121,17 @@ inline bool bitmap(const std::string &family, int pixels, const std::string &sty
 }
 inline std::string last;
 inline std::string font_configuration_revision() {
-  const char *file = getenv("FONTCONFIG_FILE");
-  if (!file || !*file)
-    return {};
-  std::error_code error;
-  auto modified = std::filesystem::last_write_time(file, error);
-  return std::string(file) + (error ? "" : std::to_string(modified.time_since_epoch().count()));
+  std::string revision;
+  // The application exports its own BDF policy around the session config.
+  // Refreshing that inherited config must invalidate the live font cache too.
+  for (const char *key : {"FONTCONFIG_FILE", "DE_XR_FONTCONFIG_BASE"}) {
+    const char *file = getenv(key);
+    if (!file || !*file) continue;
+    std::error_code error;
+    auto modified = std::filesystem::last_write_time(file, error);
+    revision += std::string(file) + (error ? "" : std::to_string(modified.time_since_epoch().count()));
+  }
+  return revision;
 }
 inline void appearance(void * = nullptr) {
   try {

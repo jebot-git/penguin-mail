@@ -13,7 +13,7 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 - Integrate OpenPGP signature checks, decryption, signing, encryption, encrypted drafts and key-file import into the native interface. Share the protected-message reader with GTK.
 - Deliver native mail and calendar notifications through DomeD’s notification server, with conversation/date actions, calendar join and persistent snooze.
 - Let native Google sign-in use a Desktop app OAuth client JSON file and report missing OAuth configuration before opening the browser.
-
+- Choose message preview lines, hide avatars, and control bold text for unread messages and senders.
 - Give each sending address its own signature or use the account signature, with `<email>` and `<domain>` filled from the actual sender.
 - Mark all unread inbox mail as read in every account from the tray menu.
 - Empty Trash from its mailbox menu, including older mail outside the local cache, with bounded memory use and a fresh check before each delete batch.
@@ -24,7 +24,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 - Reload DomeD bitmap font exports and text textures when the session's font configuration changes.
 - Keep Reply, Reply All and Forward labels inside their buttons when the reading pane narrows or the desktop font changes.
 - Hide duplicate native menu bars while DomeD provides the universal menu, preserving shortcuts and restoring local menus when the host disappears.
-
+- Screen readers omit hidden message previews when navigating the list with the keyboard.
+- IMAP messages show preview text in the list without needing to open them first.
 - IMAP and POP3 accounts stay signed in while their mail server restarts or updates, and try again every few minutes instead of asking you to sign in ([#79](https://github.com/c9dev/penguin-mail/issues/79)).
 - Changing From replaces signatures containing quotes, and typing an address suffix no longer rereads the whole message.
 - TLS connections reject distrusted emSign certificates.

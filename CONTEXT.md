@@ -456,6 +456,8 @@ Terms the code and its docs use for Gmail mail. The `domain` crate holds the cod
 
 **Next event card**: the card at the foot of the mail sidebar that names the next event on the calendars the person shows, from three hours before it starts, or the event under way until it ends unless another starts within a quarter of an hour. A click opens the event in the calendar. `mailrs::ui::calendar::next::next_up`. _Avoid_: agenda, upcoming widget.
 
+**Message preview**: a short extract of the newest message shown below a list row's subject. Appearance chooses zero, one, or two lines. Missing IMAP previews are filled in the background for visible rows without marking messages read. Preview text stays in the local metadata cache. _Avoid_: summary, which means an AI-generated summary.
+
 ## Sidebar folder counts
 
 The sidebar places nested folders under the server mailbox whose role it knows, including Inbox, Sent and Trash. The label passed to the window retains that role independently of the name and id. Folder badges show unread mail, while Drafts keeps its total. IMAP supplies whole-mailbox unread message counts through STATUS, including folders the reader has not opened and mail outside the local window. The sidebar shows stored or cached counts at once and refreshes each account in the background. It keeps server answers for one minute or until a mail change or manual refresh; unavailable server counts fall back to the stored mail. Each STATUS request has its own timeout, and a failed request leaves completed folder counts available. Other accounts count unread threads in the store, as the Inbox does.

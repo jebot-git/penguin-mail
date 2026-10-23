@@ -296,7 +296,13 @@ inline Face resolve(const std::string &family, const std::string &style, int pix
 }
 inline std::string export_config() {
   static const std::string inherited = [] {
-    std::string value = getenv("DE_XR_FONTCONFIG_BASE") ? getenv("DE_XR_FONTCONFIG_BASE") : getenv("FONTCONFIG_FILE") ? getenv("FONTCONFIG_FILE") : "/etc/fonts/fonts.conf";
+    const char *current = getenv("FONTCONFIG_FILE");
+    const char *base = getenv("DE_XR_FONTCONFIG_BASE");
+    // A launcher may retain a system base while DomeD supplies a newer export.
+    // Prefer that live export; unwrap only our own generated policy on relaunch.
+    std::string value = current && *current ? current : base && *base ? base : "/etc/fonts/fonts.conf";
+    if (value.find("/de-xr/fontconfig/") != std::string::npos && base && *base)
+      value = base;
     setenv("DE_XR_FONTCONFIG_BASE", value.c_str(), 1); return value;
   }();
   auto escape = [](const std::string &value) {
@@ -314,7 +320,7 @@ inline std::string export_config() {
   directories.insert((cache/"bdf-media-v1").string());
   std::string xml = "<?xml version=\"1.0\"?><!DOCTYPE fontconfig SYSTEM \"urn:fontconfig:fonts.dtd\"><fontconfig><include ignore_missing=\"yes\">"+escape(inherited)+"</include>";
   for (const auto &directory : directories) xml += "<dir>"+escape(directory)+"</dir>";
-  xml += "<selectfont><rejectfont><glob>*</glob></rejectfont><acceptfont><glob>*.bdf</glob><glob>*.bdf.gz</glob><glob>*.BDF</glob><glob>*.BDF.gz</glob><pattern><patelt name=\"fontformat\"><string>BDF</string></patelt></pattern></acceptfont></selectfont></fontconfig>";
+  xml += "<selectfont><rejectfont><pattern/></rejectfont><acceptfont><glob>*.bdf</glob><glob>*.bdf.gz</glob><glob>*.BDF</glob><glob>*.BDF.gz</glob><pattern><patelt name=\"fontformat\"><string>BDF</string></patelt></pattern></acceptfont></selectfont></fontconfig>";
   unsigned long long hash=14695981039346656037ull;for(unsigned char c:xml){hash^=c;hash*=1099511628211ull;}
   auto path=cache/"fontconfig"/(std::to_string(hash)+".conf");
   if(!std::filesystem::is_regular_file(path)){
