@@ -11167,85 +11167,93 @@ msgstr "已新增帳號"
 msgid "Unknown mailbox"
 msgstr "顯示信箱"
 
-#: fltk/engine/src/main.rs:281
+#: fltk/engine/src/main.rs:282 fltk/engine/src/main.rs:289
 #, fuzzy
 #| msgid "Demo mode cannot add real accounts."
 msgid "Demo mode cannot use Misfin identities"
 msgstr "示範模式無法新增真實帳號。"
 
-#: fltk/engine/src/main.rs:338
+#: fltk/engine/src/main.rs:295 fltk/engine/src/main.rs:312
+msgid "This action is not available for Misfin"
+msgstr ""
+
+#: fltk/engine/src/main.rs:304
+msgid "Choose a Misfin account to send a Misfin message"
+msgstr ""
+
+#: fltk/engine/src/main.rs:395
 msgid "Queued message not found"
 msgstr ""
 
-#: fltk/engine/src/main.rs:367
+#: fltk/engine/src/main.rs:424
 msgid "This message is not cached. Reconnect the account to download it."
 msgstr ""
 
-#: fltk/engine/src/main.rs:376
+#: fltk/engine/src/main.rs:433
 msgid "Reconnect the account to read the original protected message."
 msgstr ""
 
-#: fltk/engine/src/main.rs:385
+#: fltk/engine/src/main.rs:442
 #, fuzzy
 #| msgid "gpg could not open this message"
 msgid "OpenPGP could not open this message"
 msgstr "gpg 無法開啟此郵件"
 
-#: fltk/engine/src/main.rs:407
+#: fltk/engine/src/main.rs:464
 msgid "Targets required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:417
+#: fltk/engine/src/main.rs:474
 msgid "Time required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:469
+#: fltk/engine/src/main.rs:526
 #, fuzzy
 #| msgid "That message is no longer waiting."
 msgid "This message is no longer a draft"
 msgstr "此郵件已不在等候中。"
 
-#: fltk/engine/src/main.rs:473
+#: fltk/engine/src/main.rs:530
 #, fuzzy
 #| msgid "Save draft"
 msgid "Unreadable draft"
 msgstr "儲存草稿"
 
-#: fltk/engine/src/main.rs:524 fltk/engine/src/main.rs:536
+#: fltk/engine/src/main.rs:581 fltk/engine/src/main.rs:593
 #, fuzzy
 #| msgid "Forwarded message removed"
 msgid "Queued message required"
 msgstr "已移除轉寄的郵件"
 
-#: fltk/engine/src/main.rs:579 fltk/engine/src/main.rs:613
+#: fltk/engine/src/main.rs:636 fltk/engine/src/main.rs:670
 #, fuzzy
 #| msgid "Demo mode cannot add real accounts."
 msgid "Demo mode cannot add real accounts"
 msgstr "示範模式無法新增真實帳號。"
 
-#: fltk/engine/src/main.rs:584
+#: fltk/engine/src/main.rs:641
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown provider"
 msgstr "未知寄件者"
 
-#: fltk/engine/src/main.rs:607
+#: fltk/engine/src/main.rs:664
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Sign-in timed out"
 msgstr "已停止登入"
 
-#: fltk/engine/src/main.rs:617
+#: fltk/engine/src/main.rs:674
 #, fuzzy
 #| msgid "Your email address"
 msgid "Invalid email address"
 msgstr "電子郵件地址"
 
-#: fltk/engine/src/main.rs:709
+#: fltk/engine/src/main.rs:766
 msgid "Enter a title and an end after the start"
 msgstr ""
 
-#: fltk/engine/src/main.rs:757 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/main.rs:814 fltk/engine/src/notifications.rs:161
 #: fltk/engine/src/notifications.rs:164
 #, fuzzy
 #| msgid "Unknown sender"
@@ -11346,295 +11354,312 @@ msgstr "石板灰色"
 msgid "Sun"
 msgstr "星期日"
 
-#: fltk/native/main.cpp:487
+#: fltk/native/main.cpp:517
 msgid "The request failed."
 msgstr ""
 
-#: fltk/native/main.cpp:492
+#: fltk/native/main.cpp:522
 #, fuzzy
 #| msgid "Changing a setting"
 msgid "The mail engine is starting."
 msgstr "正在變更設定"
 
-#: fltk/native/main.cpp:567
+#: fltk/native/main.cpp:599
 #, fuzzy
 #| msgid "Undo"
 msgid "Undone"
 msgstr "復原"
 
-#: fltk/native/main.cpp:576
+#: fltk/native/main.cpp:614
 #, fuzzy
 #| msgid "Open a conversation first"
 msgid "Select a conversation first."
 msgstr "請先開啟對話"
 
-#: fltk/native/main.cpp:581
+#: fltk/native/main.cpp:619
 #, fuzzy
 #| msgid "Labels changed"
 msgid "Label name"
 msgstr "已變更標籤"
 
-#: fltk/native/main.cpp:588
+#: fltk/native/main.cpp:626
 msgid "Remind at (YYYY-MM-DD HH:MM)"
 msgstr ""
 
-#: fltk/native/main.cpp:593 fltk/native/main.cpp:1114
+#: fltk/native/main.cpp:631 fltk/native/main.cpp:1220
 msgid "Choose a future date and time."
 msgstr ""
 
-#: fltk/native/main.cpp:598
+#: fltk/native/main.cpp:636
 #, fuzzy
 #| msgid "Matching your mail…"
 msgid "Updating mail…"
 msgstr "正在比對您的郵件…"
 
-#: fltk/native/main.cpp:600
+#: fltk/native/main.cpp:638
 msgid "Mail updated. Use Undo to reverse the action."
 msgstr ""
 
-#: fltk/native/main.cpp:735
+#: fltk/native/main.cpp:789
 #, fuzzy
 #| msgid "Conversation"
 msgid "conversations"
 msgstr "對話"
 
-#: fltk/native/main.cpp:737
+#: fltk/native/main.cpp:791
 msgid "Load More is available in View."
 msgstr ""
 
-#: fltk/native/main.cpp:782
+#: fltk/native/main.cpp:836
 #, fuzzy
 #| msgid "Reading a conversation"
 msgid "Loading conversation…"
 msgstr "正在讀取對話"
 
-#: fltk/native/main.cpp:819 fltk/native/main.cpp:838
+#: fltk/native/main.cpp:873 fltk/native/main.cpp:892
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment"
 msgstr "附件"
 
-#: fltk/native/main.cpp:822
+#: fltk/native/main.cpp:876
 msgid "S/MIME message. Export the original to inspect its protection."
 msgstr ""
 
-#: fltk/native/main.cpp:826
+#: fltk/native/main.cpp:880
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversation loaded"
 msgstr "對話"
 
-#: fltk/native/main.cpp:837 fltk/native/main.cpp:1856
+#: fltk/native/main.cpp:891 fltk/native/main.cpp:2175
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Save Attachment"
 msgstr "儲存附件"
 
-#: fltk/native/main.cpp:847
+#: fltk/native/main.cpp:901
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment saved"
 msgstr "附件"
 
-#: fltk/native/main.cpp:860
+#: fltk/native/main.cpp:914
 msgid "Select an outgoing message first."
 msgstr ""
 
-#: fltk/native/main.cpp:864
+#: fltk/native/main.cpp:918
 #, fuzzy
 #| msgid "Delete This Message Forever?"
 msgid "Delete this queued message?"
 msgstr "是否永久刪除此郵件？"
 
-#: fltk/native/main.cpp:875
+#: fltk/native/main.cpp:929
 #, fuzzy
 #| msgid "Conversation"
 msgid "Export Conversation"
 msgstr "對話"
 
-#: fltk/native/main.cpp:883
+#: fltk/native/main.cpp:937
 #, fuzzy
 #| msgid "No Conversation Selected"
 msgid "Conversation exported"
 msgstr "未選取對話"
 
-#: fltk/native/main.cpp:923
+#: fltk/native/main.cpp:977
 #, fuzzy
 #| msgid "Reminders"
 msgid "Reminder snoozed"
 msgstr "提醒"
 
-#: fltk/native/main.cpp:981
+#: fltk/native/main.cpp:1038
 #, fuzzy
 #| msgid "Add an account first"
 msgid "Add an account before composing mail."
 msgstr "請先新增帳號"
 
-#: fltk/native/main.cpp:986 fltk/native/main.cpp:2141
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2480
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
 msgstr "新增郵件"
 
-#: fltk/native/main.cpp:998
+#: fltk/native/main.cpp:1058
 msgid "Sign (OpenPGP)"
 msgstr ""
 
-#: fltk/native/main.cpp:999
+#: fltk/native/main.cpp:1059
 #, fuzzy
 #| msgid "Encrypted"
 msgid "Encrypt (OpenPGP)"
 msgstr "已加密"
 
-#: fltk/native/main.cpp:1021
+#: fltk/native/main.cpp:1061
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Misfin"
+msgstr "{recipient}，不是地址"
+
+#: fltk/native/main.cpp:1063
+msgid "Send a Misfin(C) message using a configured Misfin account"
+msgstr ""
+
+#: fltk/native/main.cpp:1088
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Remove Attachment"
 msgstr "儲存附件"
 
-#: fltk/native/main.cpp:1031
+#: fltk/native/main.cpp:1098
 #, fuzzy
 #| msgid "Checking for Updates…"
 msgid "Checking local OpenPGP keys…"
 msgstr "正在檢查更新…"
 
-#: fltk/native/main.cpp:1093
-#, fuzzy
-#| msgid "Signed and encrypted"
-msgid "Send Unencrypted"
-msgstr "已簽署並加密"
-
-#: fltk/native/main.cpp:1094
-msgid "This message quotes decrypted mail. Send that text without encryption?"
-msgstr ""
-
-#: fltk/native/main.cpp:1109
-msgid "Send at (YYYY-MM-DD HH:MM)"
-msgstr ""
-
-#: fltk/native/main.cpp:1121
-#, fuzzy
-#| msgid "Send Without Encryption?"
-msgid "Send without a subject?"
-msgstr "是否不加密傳送？"
-
-#: fltk/native/main.cpp:1126
-#, fuzzy
-#| msgid "Working"
-msgid "Working…"
-msgstr "處理中"
-
-#: fltk/native/main.cpp:1143
-msgid "Message queued in Outbox or Send Later."
-msgstr ""
-
-#: fltk/native/main.cpp:1164
-msgid "A secret key is available for signing."
-msgstr ""
-
-#: fltk/native/main.cpp:1164
-msgid "No secret signing key for this sender."
-msgstr ""
-
-#: fltk/native/main.cpp:1167
-msgid "All recipients and your Sent copy have encryption keys."
-msgstr ""
-
-#: fltk/native/main.cpp:1173
-msgid "Key identity is not fully trusted:"
-msgstr ""
-
-#: fltk/native/main.cpp:1186
-#, fuzzy
-#| msgid "Checked"
-msgid "Check Keys"
-msgstr "已驗證"
-
-#: fltk/native/main.cpp:1189
-#, fuzzy
-#| msgid "Send"
-msgid "File/Send"
-msgstr "傳送"
-
-#: fltk/native/main.cpp:1191
-#, fuzzy
-#| msgid "Send Later"
-msgid "File/Send Later…"
-msgstr "排程傳送"
-
-#: fltk/native/main.cpp:1193
+#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1329
 #, fuzzy
 #| msgid "Save Draft"
 msgid "File/Save Draft"
 msgstr "儲存草稿"
 
-#: fltk/native/main.cpp:1195 fltk/native/misfin.h:209 fltk/native/misfin.h:344
+#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1327
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "排程傳送"
+
+#: fltk/native/main.cpp:1181
+msgid ""
+"Misfin(C): one recipient, plain Gemtext, 16384 UTF-8 bytes including "
+"metadata. No attachments, drafts, scheduling or OpenPGP."
+msgstr ""
+
+#: fltk/native/main.cpp:1199
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "已簽署並加密"
+
+#: fltk/native/main.cpp:1200
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1215
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1227
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "是否不加密傳送？"
+
+#: fltk/native/main.cpp:1231
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "處理中"
+
+#: fltk/native/main.cpp:1250
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1289
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1289
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1292
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1298
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1312
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "已驗證"
+
+#: fltk/native/main.cpp:1325
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "傳送"
+
+#: fltk/native/main.cpp:1331 fltk/native/misfin.h:116
 #, fuzzy
 #| msgid "Close"
 msgid "File/Close"
 msgstr "關閉"
 
-#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1926
+#: fltk/native/main.cpp:1334 fltk/native/main.cpp:2041
+#: fltk/native/main.cpp:2246
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Undo"
 msgstr "編輯"
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:211
-#: fltk/native/misfin.h:345
+#: fltk/native/main.cpp:1335 fltk/native/main.cpp:2247 fltk/native/misfin.h:118
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Cut"
 msgstr "編輯"
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:212
-#: fltk/native/misfin.h:346
+#: fltk/native/main.cpp:1336 fltk/native/main.cpp:2248 fltk/native/misfin.h:119
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Copy"
 msgstr "編輯"
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:213
-#: fltk/native/misfin.h:347
+#: fltk/native/main.cpp:1337 fltk/native/main.cpp:2249 fltk/native/misfin.h:120
 #, fuzzy
 #| msgid "Edit Template"
 msgid "Edit/Paste"
 msgstr "編輯範本"
 
-#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:214
-#: fltk/native/misfin.h:348
+#: fltk/native/main.cpp:1338 fltk/native/main.cpp:2250 fltk/native/misfin.h:121
 #, fuzzy
 #| msgid "Select all"
 msgid "Edit/Select All"
 msgstr "全選"
 
-#: fltk/native/main.cpp:1207
+#: fltk/native/main.cpp:1343
 #, fuzzy
 #| msgid "Waiting for the account to switch to JMAP"
 msgid "Wait for the current request to finish."
 msgstr "正在等候帳號切換至 JMAP"
 
-#: fltk/native/main.cpp:1212
+#: fltk/native/main.cpp:1349
+msgid "Discard this Misfin message? Misfin drafts are unavailable."
+msgstr ""
+
+#: fltk/native/main.cpp:1352
 msgid "Close this message? Save a draft to keep your changes."
 msgstr ""
 
-#: fltk/native/main.cpp:1246
+#: fltk/native/main.cpp:1387
 #, fuzzy
 #| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
 msgid "This build has no Microsoft sign-in client."
 msgstr "此版本的 Penguin Mail 未包含 Microsoft 登入功能。"
 
-#: fltk/native/main.cpp:1248
+#: fltk/native/main.cpp:1389
 #, fuzzy
 #| msgid "Choose a Time…"
 msgid "Choose Client JSON…"
 msgstr "選擇時間…"
 
-#: fltk/native/main.cpp:1248
+#: fltk/native/main.cpp:1389
 msgid "Setup Instructions"
 msgstr ""
 
-#: fltk/native/main.cpp:1249
+#: fltk/native/main.cpp:1390
 msgid ""
 "This build has no Google sign-in client.\n"
 "Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
@@ -11642,516 +11667,569 @@ msgid ""
 "in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1255
+#: fltk/native/main.cpp:1396
 msgid "Google Desktop OAuth Client"
 msgstr ""
 
-#: fltk/native/main.cpp:1260
+#: fltk/native/main.cpp:1401
 #, fuzzy
 #| msgid "Continue in your browser"
 msgid "Complete sign-in in your browser."
 msgstr "請在瀏覽器中繼續"
 
-#: fltk/native/main.cpp:1272
+#: fltk/native/main.cpp:1413
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
 msgstr ""
 
-#: fltk/native/main.cpp:1277
+#: fltk/native/main.cpp:1418
 #, fuzzy
 #| msgid "Google Meet"
 msgid "Google…"
 msgstr "Google Meet"
 
-#: fltk/native/main.cpp:1278
+#: fltk/native/main.cpp:1419
 #, fuzzy
 #| msgid "Microsoft Teams"
 msgid "Microsoft…"
 msgstr "Microsoft Teams"
 
-#: fltk/native/main.cpp:1280
+#: fltk/native/main.cpp:1421
 #, fuzzy
 #| msgid "Account"
 msgid "Account Type"
 msgstr "帳號"
 
-#: fltk/native/main.cpp:1286 fltk/native/main.cpp:1339
+#: fltk/native/main.cpp:1430 fltk/native/main.cpp:1530
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "IMAP Server"
 msgstr "MCP 伺服器"
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1433
 #, fuzzy
 #| msgid "Security"
 msgid "IMAP Security"
 msgstr "安全性"
 
-#: fltk/native/main.cpp:1292
+#: fltk/native/main.cpp:1436
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "SMTP Server"
 msgstr "MCP 伺服器"
 
-#: fltk/native/main.cpp:1295
+#: fltk/native/main.cpp:1439
 #, fuzzy
 #| msgid "Security"
 msgid "SMTP Security"
 msgstr "安全性"
 
-#: fltk/native/main.cpp:1298
+#: fltk/native/main.cpp:1442
 #, fuzzy
 #| msgid "User Name"
 msgid "SMTP User Name"
 msgstr "使用者名稱"
 
-#: fltk/native/main.cpp:1299
+#: fltk/native/main.cpp:1443
 #, fuzzy
 #| msgid "Password"
 msgid "SMTP Password"
 msgstr "密碼"
 
-#: fltk/native/main.cpp:1302
+#: fltk/native/main.cpp:1446 fltk/native/main.cpp:1583
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1306
+#: fltk/native/main.cpp:1450
 #, fuzzy
 #| msgid "Servers"
 msgid "Find Servers"
 msgstr "伺服器"
 
-#: fltk/native/main.cpp:1313
+#: fltk/native/main.cpp:1457
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 
-#: fltk/native/main.cpp:1318
+#: fltk/native/main.cpp:1462
 #, fuzzy
 #| msgid "Use {server}"
 msgid "Use Servers"
 msgstr "使用 {server}"
 
-#: fltk/native/main.cpp:1319
+#: fltk/native/main.cpp:1463
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 
-#: fltk/native/main.cpp:1337
+#: fltk/native/main.cpp:1483
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Misfin Identity…"
+msgstr "匯入…"
+
+#: fltk/native/main.cpp:1486
+msgid "Misfin Identity Certificate (PEM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1490
+msgid "Misfin Private Key (PEM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1528
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "POP3 Server"
 msgstr "MCP 伺服器"
 
-#: fltk/native/main.cpp:1338
+#: fltk/native/main.cpp:1529
 #, fuzzy
 #| msgid "Server"
 msgid "Server URL"
 msgstr "伺服器"
 
-#: fltk/native/main.cpp:1354
+#: fltk/native/main.cpp:1545
 msgid "Authentication"
 msgstr ""
 
-#: fltk/native/main.cpp:1376
+#: fltk/native/main.cpp:1561
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Misfin Address"
+msgstr "{recipient}，不是地址"
+
+#: fltk/native/main.cpp:1562
+msgid "Identity Name"
+msgstr ""
+
+#: fltk/native/main.cpp:1564 fltk/native/misfin.h:69
+msgid "Gemini Mailbox URL"
+msgstr ""
+
+#: fltk/native/main.cpp:1573
+#, fuzzy
+#| msgid "Create Address"
+msgid "Create Identity"
+msgstr "建立地址"
+
+#: fltk/native/main.cpp:1577
+msgid ""
+"Misfin(C): one recipient, plain Gemtext, up to 16384 UTF-8 bytes. No "
+"attachments, Cc/Bcc, drafts, scheduled sending or OpenPGP. Receive through "
+"an optional provider-supplied Gemini archive or local Gemmail import. Create "
+"a five-year certificate or import an existing identity; provider "
+"registration is still required."
+msgstr ""
+
+#: fltk/native/main.cpp:1630
 msgid "Enter ports between 1 and 65535."
 msgstr ""
 
-#: fltk/native/main.cpp:1404
+#: fltk/native/main.cpp:1658
 msgid "Checking the incoming and outgoing servers…"
 msgstr ""
 
-#: fltk/native/main.cpp:1423
+#: fltk/native/main.cpp:1677
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
 msgstr ""
 
-#: fltk/native/main.cpp:1424
+#: fltk/native/main.cpp:1678
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
 "automatically."
 msgstr ""
 
-#: fltk/native/main.cpp:1426
+#: fltk/native/main.cpp:1680
 #, fuzzy
 #| msgid "Sender Addresses"
 msgid "Addresses"
 msgstr "寄件地址"
 
-#: fltk/native/main.cpp:1442
+#: fltk/native/main.cpp:1696
 #, fuzzy
 #| msgid "Not encrypted in transit"
 msgid "No encryption key"
 msgstr "傳輸過程未加密"
 
-#: fltk/native/main.cpp:1449
+#: fltk/native/main.cpp:1703
 #, fuzzy
 #| msgid "Check for Updates"
 msgid "Check Local Keys"
 msgstr "檢查更新"
 
-#: fltk/native/main.cpp:1450
+#: fltk/native/main.cpp:1704
 #, fuzzy
 #| msgid "Import…"
 msgid "Import Key File…"
 msgstr "匯入…"
 
-#: fltk/native/main.cpp:1452
+#: fltk/native/main.cpp:1706
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Import OpenPGP Key"
 msgstr "匯入 OpenPGP 金鑰"
 
-#: fltk/native/main.cpp:1455
+#: fltk/native/main.cpp:1709
 #, fuzzy
 #| msgid "Import…"
 msgid "Import"
 msgstr "匯入…"
 
-#: fltk/native/main.cpp:1456
+#: fltk/native/main.cpp:1710
 msgid "Import this file into your GnuPG keyring?"
 msgstr ""
 
-#: fltk/native/main.cpp:1457
+#: fltk/native/main.cpp:1711
 #, fuzzy
 #| msgid "Import…"
 msgid "Importing key…"
 msgstr "匯入…"
 
-#: fltk/native/main.cpp:1460
+#: fltk/native/main.cpp:1714
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Imported keys:"
 msgstr "匯入 OpenPGP 金鑰"
 
-#: fltk/native/main.cpp:1470
+#: fltk/native/main.cpp:1724
 #, fuzzy
 #| msgid "Conversation"
 msgid "GnuPG version:"
 msgstr "對話"
 
-#: fltk/native/main.cpp:1476
+#: fltk/native/main.cpp:1730
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Start Penguin Mail at login"
 msgstr "詢問 Penguin Mail…"
 
-#: fltk/native/main.cpp:1480
+#: fltk/native/main.cpp:1734
 msgid "Keep syncing in the tray when the window closes"
 msgstr ""
 
-#: fltk/native/main.cpp:1483
+#: fltk/native/main.cpp:1737
 #, fuzzy
 #| msgid "Notifications"
 msgid "Show new mail notifications"
 msgstr "通知"
 
-#: fltk/native/main.cpp:1488
+#: fltk/native/main.cpp:1742
 #, fuzzy
 #| msgid "Group Messages into Conversations"
 msgid "Group messages into conversations"
 msgstr "依對話將郵件分組顯示"
 
-#: fltk/native/main.cpp:1491
+#: fltk/native/main.cpp:1745
 msgid "Sync Interval (seconds)"
 msgstr ""
 
-#: fltk/native/main.cpp:1494
+#: fltk/native/main.cpp:1748
 msgid "Local Mail Window (days)"
 msgstr ""
 
-#: fltk/native/main.cpp:1498
+#: fltk/native/main.cpp:1752
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
 msgstr ""
 
-#: fltk/native/main.cpp:1506
+#: fltk/native/main.cpp:1760
 #, fuzzy
 #| msgid "Could not paste the image"
 msgid "Could not update login startup"
 msgstr "無法貼上圖片"
 
-#: fltk/native/main.cpp:1550
+#: fltk/native/main.cpp:1804
 #, fuzzy
 #| msgid "Calendar to add to"
 msgid "Calendar loaded"
 msgstr "要加入的行事曆"
 
-#: fltk/native/main.cpp:1599
+#: fltk/native/main.cpp:1853
 msgid "No writable calendar is available."
 msgstr ""
 
-#: fltk/native/main.cpp:1604
+#: fltk/native/main.cpp:1858
 #, fuzzy
 #| msgid "Starts"
 msgid "Start"
 msgstr "開始"
 
-#: fltk/native/main.cpp:1605
+#: fltk/native/main.cpp:1859
 #, fuzzy
 #| msgid "Ends"
 msgid "End"
 msgstr "結束"
 
-#: fltk/native/main.cpp:1606
+#: fltk/native/main.cpp:1860
 #, fuzzy
 #| msgid "Notifications"
 msgid "Location"
 msgstr "通知"
 
-#: fltk/native/main.cpp:1610
+#: fltk/native/main.cpp:1864
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
 msgstr ""
 
-#: fltk/native/main.cpp:1631
+#: fltk/native/main.cpp:1885
 #, fuzzy
 #| msgid "New Event"
 msgid "Save Event"
 msgstr "新增活動"
 
-#: fltk/native/main.cpp:1637
+#: fltk/native/main.cpp:1891
 msgid "Enter a title and a valid start and end time."
 msgstr ""
 
-#: fltk/native/main.cpp:1662 fltk/native/main.cpp:1887
+#: fltk/native/main.cpp:1916 fltk/native/main.cpp:2206
 #, fuzzy
 #| msgid "Delete it"
 msgid "Delete Event"
 msgstr "刪除郵件"
 
-#: fltk/native/main.cpp:1663
+#: fltk/native/main.cpp:1917
 msgid "Delete this event and notify its guests?"
 msgstr ""
 
-#: fltk/native/main.cpp:1674
+#: fltk/native/main.cpp:1928
 #, fuzzy
 #| msgid "Contacts & Calendar"
 msgid "Contacts loaded"
 msgstr "聯絡人與行事曆"
 
-#: fltk/native/main.cpp:1695 fltk/native/main.cpp:1895
+#: fltk/native/main.cpp:1953 fltk/native/main.cpp:2214
 #, fuzzy
 #| msgid "Contact"
 msgid "New Contact"
 msgstr "聯絡人"
 
-#: fltk/native/main.cpp:1703
+#: fltk/native/main.cpp:1961
 #, fuzzy
 #| msgid "Contact"
 msgid "Save Contact"
 msgstr "聯絡人"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1955
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2279
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Forward"
 msgstr "訊息"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1951
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2275
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Reply"
 msgstr "訊息"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1953
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2031
+#: fltk/native/main.cpp:2277
 #, fuzzy
 #| msgid "Reply All"
 msgid "Message/Reply All"
 msgstr "全部回覆"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1957
+#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2031
+#: fltk/native/main.cpp:2281
 #, fuzzy
 #| msgid "Message Cache"
 msgid "Message/Archive"
 msgstr "郵件快取"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1959
+#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2032
+#: fltk/native/main.cpp:2283
 #, fuzzy
 #| msgid "Move to Trash"
 msgid "Message/Move to Trash"
 msgstr "移至垃圾桶"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1965
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2289
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Flag"
 msgstr "訊息"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1961
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2032
+#: fltk/native/main.cpp:2285
 #, fuzzy
 #| msgid "Message sent"
 msgid "Message/Mark Read"
 msgstr "已傳送郵件"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1963
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2287
 #, fuzzy
 #| msgid "Mark as Unread"
 msgid "Message/Mark Unread"
 msgstr "標示為未讀"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1967
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
+#: fltk/native/main.cpp:2291
 #, fuzzy
 #| msgid "New Label…"
 msgid "Message/Label…"
 msgstr "新增標籤…"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1968
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
+#: fltk/native/main.cpp:2292
 #, fuzzy
 #| msgid "Remind Me"
 msgid "Message/Remind Me…"
 msgstr "提醒我"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1966
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2290
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Unflag"
 msgstr "訊息"
 
-#: fltk/native/main.cpp:1750 fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:2010 fltk/native/main.cpp:2035
+#: fltk/native/main.cpp:2237
 #, fuzzy
 #| msgid "Conversation"
 msgid "File/Export Conversation…"
 msgstr "對話"
 
-#: fltk/native/main.cpp:1838
-#, fuzzy
-#| msgid "Conversation"
-msgid "Conversations"
-msgstr "對話"
-
-#: fltk/native/main.cpp:1883
-#, fuzzy
-#| msgid "Calendars"
-msgid "Calendar days"
-msgstr "行事曆"
-
-#: fltk/native/main.cpp:1893
-#, fuzzy
-#| msgid "Contacts"
-msgid "Find Contacts"
-msgstr "聯絡人"
-
-#: fltk/native/main.cpp:1898
-msgid "Write to Selected Contact"
-msgstr ""
-
-#: fltk/native/main.cpp:1909
-#, fuzzy
-#| msgid "Ask Penguin Mail…"
-msgid "Starting Penguin Mail…"
-msgstr "詢問 Penguin Mail…"
-
-#: fltk/native/main.cpp:1911
-#, fuzzy
-#| msgid "New Message"
-msgid "File/New Message"
-msgstr "新增郵件"
-
-#: fltk/native/main.cpp:1913
-#, fuzzy
-#| msgid "Add Account…"
-msgid "File/Add Account…"
-msgstr "新增帳號…"
-
-#: fltk/native/main.cpp:1915
-#, fuzzy
-#| msgid "New Message"
-msgid "File/Misfin Messaging…"
-msgstr "新增郵件"
-
-#: fltk/native/main.cpp:1919
-#, fuzzy
-#| msgid "OpenPGP Keys"
-msgid "File/OpenPGP Keys…"
-msgstr "OpenPGP 金鑰"
-
-#: fltk/native/main.cpp:1920
-#, fuzzy
-#| msgid "Preferences"
-msgid "File/Preferences…"
-msgstr "偏好設定"
-
-#: fltk/native/main.cpp:1922
-msgid "File/Show Window"
-msgstr ""
-
-#: fltk/native/main.cpp:1923
-#, fuzzy
-#| msgid "Close window"
-msgid "File/Close Window"
-msgstr "關閉視窗"
-
-#: fltk/native/main.cpp:1925
-#, fuzzy
-#| msgid "Quit"
-msgid "File/Quit"
-msgstr "結束"
-
-#: fltk/native/main.cpp:1931
-#, fuzzy
-#| msgid "Search"
-msgid "Edit/Search"
-msgstr "搜尋"
-
-#: fltk/native/main.cpp:1933
-#, fuzzy
-#| msgid "View"
-msgid "View/Mail"
-msgstr "檢視"
-
-#: fltk/native/main.cpp:1934
-#, fuzzy
-#| msgid "New Calendar"
-msgid "View/Calendar"
-msgstr "新增行事曆"
-
-#: fltk/native/main.cpp:1936
-#, fuzzy
-#| msgid "Contacts"
-msgid "View/Contacts"
-msgstr "聯絡人"
-
-#: fltk/native/main.cpp:1938
-#, fuzzy
-#| msgid "Refresh"
-msgid "View/Refresh"
-msgstr "重新整理"
-
-#: fltk/native/main.cpp:1941
-#, fuzzy
-#| msgid "View Source"
-msgid "View/Load More"
-msgstr "檢視原始碼"
-
-#: fltk/native/main.cpp:1946
+#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2270
 #, fuzzy
 #| msgid "Edit Draft"
 msgid "Message/Edit Draft"
 msgstr "編輯草稿"
 
-#: fltk/native/main.cpp:1947
+#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2271
 #, fuzzy
 #| msgid "Send New Messages From"
 msgid "Message/Send Queued Message Now"
 msgstr "新郵件的寄件帳號"
 
-#: fltk/native/main.cpp:1949
+#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2239
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "OpenPGP 金鑰"
+
+#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2273
 msgid "Message/Delete Queued Message"
 msgstr ""
 
-#: fltk/native/main.cpp:1969
+#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2234
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Account Settings…"
+msgstr "新增帳號…"
+
+#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2254
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "新增行事曆"
+
+#: fltk/native/main.cpp:2044 fltk/native/main.cpp:2256
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "聯絡人"
+
+#: fltk/native/main.cpp:2156
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "對話"
+
+#: fltk/native/main.cpp:2202
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "行事曆"
+
+#: fltk/native/main.cpp:2212
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "聯絡人"
+
+#: fltk/native/main.cpp:2217
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:2228
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "詢問 Penguin Mail…"
+
+#: fltk/native/main.cpp:2230
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "新增郵件"
+
+#: fltk/native/main.cpp:2232
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "新增帳號…"
+
+#: fltk/native/main.cpp:2240
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "偏好設定"
+
+#: fltk/native/main.cpp:2242
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:2243
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "關閉視窗"
+
+#: fltk/native/main.cpp:2245
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "結束"
+
+#: fltk/native/main.cpp:2251
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "搜尋"
+
+#: fltk/native/main.cpp:2253
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "檢視"
+
+#: fltk/native/main.cpp:2258
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "重新整理"
+
+#: fltk/native/main.cpp:2265
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "檢視原始碼"
+
+#: fltk/native/main.cpp:2293
 #, fuzzy
 #| msgid "Keyboard Shortcuts"
 msgid "Help/Keyboard Shortcuts"
 msgstr "鍵盤快速鍵"
 
-#: fltk/native/main.cpp:1971
+#: fltk/native/main.cpp:2295
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12170,13 +12248,13 @@ msgid ""
 "DomeD owns Super shortcuts."
 msgstr ""
 
-#: fltk/native/main.cpp:1978
+#: fltk/native/main.cpp:2302
 #, fuzzy
 #| msgid "About Penguin Mail"
 msgid "Help/About Penguin Mail"
 msgstr "關於 Penguin Mail"
 
-#: fltk/native/main.cpp:1981
+#: fltk/native/main.cpp:2305
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12185,184 +12263,21 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2109
+#: fltk/native/main.cpp:2448
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 
-#: fltk/native/misfin.h:36
-#, fuzzy
-#| msgid "This Message"
-msgid "Misfin Messaging"
-msgstr "此郵件"
-
-#: fltk/native/misfin.h:38
-#, fuzzy
-#| msgid "Import…"
-msgid "Create Misfin Identity…"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:39
-#, fuzzy
-#| msgid "Import…"
-msgid "Import Misfin Identity…"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:40
-msgid "Identity"
-msgstr ""
-
-#: fltk/native/misfin.h:41
-#, fuzzy
-#| msgid "Recipients"
-msgid "Misfin Recipient"
-msgstr "收件者"
-
-#: fltk/native/misfin.h:43
-msgid "One mailbox@hostname address; Misfin(C), port 1958 by default"
-msgstr ""
-
-#: fltk/native/misfin.h:45
-#, fuzzy
-#| msgid "New Message"
-msgid "Gemtext Message"
-msgstr "新增郵件"
-
-#: fltk/native/misfin.h:49
-msgid "Send Misfin"
-msgstr ""
-
-#: fltk/native/misfin.h:51
-#, fuzzy
-#| msgid "Import…"
-msgid "Import Gemmail Archive…"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:52
-msgid "Refresh Local History"
-msgstr ""
-
-#: fltk/native/misfin.h:53
-msgid "Gemini Mailbox URL"
-msgstr ""
-
-#: fltk/native/misfin.h:55
-msgid ""
-"Optional server-provided gemini:// URL for a Misfin(C) gemmail or gembox "
-"archive"
-msgstr ""
-
-#: fltk/native/misfin.h:57
-#, fuzzy
-#| msgid "New Smart Mailbox"
-msgid "Fetch Mailbox"
-msgstr "新增智慧信箱"
-
-#: fltk/native/misfin.h:59
-msgid "Local Misfin History"
-msgstr ""
-
-#: fltk/native/misfin.h:62
-msgid "Gemmail Text"
-msgstr ""
-
-#: fltk/native/misfin.h:68
-msgid ""
-"Misfin(C) uses certificate identities. Attachments and SMTP are not used."
-msgstr ""
-
-#: fltk/native/misfin.h:100
-#, fuzzy
-#| msgid "Receive Mail"
-msgid "Received: "
-msgstr "接收郵件"
-
-#: fltk/native/misfin.h:100
-#, fuzzy
-#| msgid "Sent"
-msgid "Sent: "
-msgstr "寄件備份"
-
-#: fltk/native/misfin.h:132
-msgid "Misfin Identity Certificate (PEM)"
-msgstr ""
-
-#: fltk/native/misfin.h:136
-msgid "Misfin Private Key (PEM)"
-msgstr ""
-
-#: fltk/native/misfin.h:158
-#, fuzzy
-#| msgid "Import…"
-msgid "Create Misfin Identity"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:160
-#, fuzzy
-#| msgid "{recipient}, not an address"
-msgid "Misfin Address"
-msgstr "{recipient}，不是地址"
-
-#: fltk/native/misfin.h:162
-msgid "Mailbox and DNS hostname assigned by your Misfin provider"
-msgstr ""
-
-#: fltk/native/misfin.h:163
-msgid "Identity Name"
-msgstr ""
-
-#: fltk/native/misfin.h:166
-msgid ""
-"Creates a local certificate valid for five years.\n"
-"Register its public certificate with your provider to receive mail.\n"
-"This does not create a server mailbox."
-msgstr ""
-
-#: fltk/native/misfin.h:172
-#, fuzzy
-#| msgid "Create Address"
-msgid "Create Identity"
-msgstr "建立地址"
-
-#: fltk/native/misfin.h:182
-#, fuzzy
-#| msgid "Import…"
-msgid "Creating Misfin identity…"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:200
-msgid ""
-"Identity created. Copy its public certificate from File to register with "
-"your provider."
-msgstr ""
-
-#: fltk/native/misfin.h:208
-#, fuzzy
-#| msgid "Import…"
-msgid "File/Create Identity"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:234
-msgid ""
-"Public identity certificate copied. The private key stays in Penguin Mail."
-msgstr ""
-
-#: fltk/native/misfin.h:260
-#, fuzzy
-#| msgid "Checking for Updates…"
-msgid "Checking server certificate…"
-msgstr "正在檢查更新…"
-
-#: fltk/native/misfin.h:272
+#: fltk/native/misfin.h:19
 #, fuzzy
 #| msgid "The server did not take the rules."
 msgid "This server is not trusted yet."
 msgstr "伺服器未接受這些規則。"
 
-#: fltk/native/misfin.h:273
+#: fltk/native/misfin.h:20
 msgid "The server certificate has changed."
 msgstr ""
 
-#: fltk/native/misfin.h:274
+#: fltk/native/misfin.h:22
 #, c-format
 msgid ""
 "%s\n"
@@ -12372,61 +12287,76 @@ msgid ""
 "Trust this fingerprint and continue?"
 msgstr ""
 
-#: fltk/native/misfin.h:276
+#: fltk/native/misfin.h:23
 #, fuzzy
 #| msgid "Continue"
 msgid "Trust and Continue"
 msgstr "繼續"
 
-#: fltk/native/misfin.h:280
+#: fltk/native/misfin.h:26
 #, fuzzy
 #| msgid "Canceled."
 msgid "Canceled"
 msgstr "已取消。"
 
-#: fltk/native/misfin.h:285
-msgid "Contacting Misfin server…"
+#: fltk/native/misfin.h:45
+msgid ""
+"Set a provider-supplied Gemini mailbox URL in Account Settings, or import a "
+"Gemmail archive."
 msgstr ""
 
-#: fltk/native/misfin.h:298
-msgid "Misfin message accepted by the server"
-msgstr ""
+#: fltk/native/misfin.h:50
+#, fuzzy
+#| msgid "New Smart Mailbox"
+msgid "Fetching Misfin mailbox…"
+msgstr "新增智慧信箱"
 
-#: fltk/native/misfin.h:299
+#: fltk/native/misfin.h:56
 msgid "Misfin mailbox fetched"
 msgstr ""
 
-#: fltk/native/misfin.h:318
+#: fltk/native/misfin.h:67
+#, fuzzy
+#| msgid "Account options"
+msgid "Account Settings"
+msgstr "帳號選項"
+
+#: fltk/native/misfin.h:75
+msgid ""
+"Misfin(C) receives mail through a provider-supplied Gemini archive or a "
+"local Gemmail import.\n"
+"Refresh fetches the configured archive with your certificate. There is no "
+"background polling.\n"
+"Creating an identity does not register a server mailbox. Copy the public "
+"certificate for your provider."
+msgstr ""
+
+#: fltk/native/misfin.h:87
+msgid ""
+"Public identity certificate copied. The private key stays in Penguin Mail."
+msgstr ""
+
+#: fltk/native/misfin.h:94
 msgid "Misfin(C) Gemmail or Gembox Archive"
 msgstr ""
 
-#: fltk/native/misfin.h:337
+#: fltk/native/misfin.h:102
 #, fuzzy
-#| msgid "Send"
-msgid "File/Send Misfin"
-msgstr "傳送"
+#| msgid "a certificate gpgsm would not name"
+msgid "Copy Identity Certificate"
+msgstr "gpgsm 無法辨識身分的憑證"
 
-#: fltk/native/misfin.h:339
-#, fuzzy
-#| msgid "Import…"
-msgid "File/Create Misfin Identity…"
-msgstr "匯入…"
-
-#: fltk/native/misfin.h:340
+#: fltk/native/misfin.h:103
 #, fuzzy
 #| msgid "Import…"
-msgid "File/Import Misfin Identity…"
+msgid "Import Gemmail Archive…"
 msgstr "匯入…"
 
-#: fltk/native/misfin.h:341
+#: fltk/native/misfin.h:114
 msgid "File/Copy Identity Certificate"
 msgstr ""
 
-#: fltk/native/misfin.h:342
-msgid "File/Fetch Mailbox"
-msgstr ""
-
-#: fltk/native/misfin.h:343
+#: fltk/native/misfin.h:115
 msgid "File/Import Gemmail Archive…"
 msgstr ""
 
@@ -12825,73 +12755,101 @@ msgstr ""
 msgid "Mailbox archive exceeds 4 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:57
+#: sync/src/misfin/mod.rs:59
 msgid "Misfin storage exceeds 8 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:78 sync/src/misfin/mod.rs:111
+#: sync/src/misfin/mod.rs:97 sync/src/misfin/mod.rs:140
 msgid "At most 16 Misfin identities can be imported"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:95
+#: sync/src/misfin/mod.rs:114
 msgid ""
 "An identity for this address already exists. Import its certificate instead."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:128
+#: sync/src/misfin/mod.rs:158
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Misfin account identifiers conflict"
+msgstr "已停止登入"
+
+#: sync/src/misfin/mod.rs:172
+#, fuzzy
+#| msgid "Mailbox storage is not available through this connection."
+msgid "This mailbox is not available for Misfin"
+msgstr "此連線無法提供信箱儲存空間資訊。"
+
+#: sync/src/misfin/mod.rs:225
 msgid "Choose a Misfin identity first"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:153
+#: sync/src/misfin/mod.rs:249
+#, fuzzy
+#| msgid "This Message"
+msgid "Misfin message not found"
+msgstr "此郵件"
+
+#: sync/src/misfin/mod.rs:282
 msgid "Invalid server fingerprint"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:162
+#: sync/src/misfin/mod.rs:291
 msgid ""
 "Delivery was not confirmed. The message may have arrived; check before "
 "sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:166
+#: sync/src/misfin/mod.rs:295
 #, fuzzy
 #| msgid "The server had already sent this message."
 msgid "Misfin server declined the message"
 msgstr "伺服器已經寄出這封郵件。"
 
-#: sync/src/misfin/mod.rs:194
+#: sync/src/misfin/mod.rs:323
 msgid "Message accepted, but the local copy could not be saved."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:198
+#: sync/src/misfin/mod.rs:327
 msgid ""
 "Message accepted, but the recipient fingerprint is invalid. Do not resend."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:204
+#: sync/src/misfin/mod.rs:333
 msgid ""
 "Message accepted, but the recipient's certificate fingerprint changed. "
 "Verify it before sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:222
+#: sync/src/misfin/mod.rs:351
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown Misfin request"
 msgstr "未知寄件者"
 
-#: sync/src/misfin/mod.rs:252
+#: sync/src/misfin/mod.rs:381
 msgid "Expected a regular file"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:259
+#: sync/src/misfin/mod.rs:388
 msgid "File exceeds size limit"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:266
+#: sync/src/misfin/mod.rs:395
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Misfin connection timed out"
 msgstr "已停止登入"
+
+#: sync/src/misfin/mod.rs:413
+msgid "Select Misfin when sending from a Misfin account"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:427
+msgid ""
+"Misfin supports one recipient and plain Gemtext, up to 16384 UTF-8 bytes. "
+"Cc, Bcc, attachments, drafts, scheduled sending and OpenPGP are unavailable."
+msgstr ""
 
 #: sync/src/misfin/wire.rs:21 sync/src/misfin/wire.rs:32
 #, fuzzy
@@ -13428,6 +13386,71 @@ msgstr "標示為非垃圾郵件"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "移至 {folder}"
+
+#, fuzzy
+#~| msgid "New Message"
+#~ msgid "File/Misfin Messaging…"
+#~ msgstr "新增郵件"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Create Misfin Identity…"
+#~ msgstr "匯入…"
+
+#, fuzzy
+#~| msgid "Recipients"
+#~ msgid "Misfin Recipient"
+#~ msgstr "收件者"
+
+#, fuzzy
+#~| msgid "New Message"
+#~ msgid "Gemtext Message"
+#~ msgstr "新增郵件"
+
+#, fuzzy
+#~| msgid "Receive Mail"
+#~ msgid "Received: "
+#~ msgstr "接收郵件"
+
+#, fuzzy
+#~| msgid "Sent"
+#~ msgid "Sent: "
+#~ msgstr "寄件備份"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Create Misfin Identity"
+#~ msgstr "匯入…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Creating Misfin identity…"
+#~ msgstr "匯入…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Create Identity"
+#~ msgstr "匯入…"
+
+#, fuzzy
+#~| msgid "Checking for Updates…"
+#~ msgid "Checking server certificate…"
+#~ msgstr "正在檢查更新…"
+
+#, fuzzy
+#~| msgid "Send"
+#~ msgid "File/Send Misfin"
+#~ msgstr "傳送"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Create Misfin Identity…"
+#~ msgstr "匯入…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Import Misfin Identity…"
+#~ msgstr "匯入…"
 
 #, fuzzy
 #~| msgid "New message"

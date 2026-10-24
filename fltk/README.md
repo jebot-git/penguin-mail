@@ -200,31 +200,47 @@ results where those packages are unavailable.
 
 Build with `python3 fltk/build.py --prefix /opt/fltk-vr/toolkit --build-dir build-fltk-misfin --misfin`
 (or CMake `-DPENGUIN_ENABLE_MISFIN=ON`). Without that option, the Rust feature
-and the native Misfin menu are absent. GTK is unchanged.
+and the native Misfin account type are absent. GTK is unchanged.
 Close any running copy before launching `build-fltk-misfin/penguin-mail`;
 otherwise activation goes to the existing application.
 
-**File > Misfin Messaging** opens a separate messaging window. Import an
-existing Misfin PEM certificate and its unencrypted PEM private key. The
-certificate must have a USER_ID mailbox and a DNS subject alternative name;
-Penguin Mail reads the address from those fields and checks the key matches.
-Alternatively, choose **Create Misfin Identity**, enter the mailbox address
-assigned by your provider and a display name. Penguin Mail generates an RSA-2048
-key and self-signed SHA-256 certificate valid for five years, with a random serial,
-USER_ID mailbox, CN display name and DNS SAN. The private key goes straight into
-the owner-only identity store. Creating another identity for an address already
-stored is refused so an existing mailbox identity is not replaced by accident.
-**File > Copy Identity Certificate** copies only the public PEM certificate for
-registration with your provider. Creating or importing an identity does not
-register a mailbox on a server. Keep a secure backup of the private identity store;
-losing the private key can prevent access to the mailbox.
+Misfin is an account type in **File > Add Account**, alongside IMAP, POP3 and
+JMAP. Choose **Misfin(C)** and enter the provider-assigned mailbox address and
+identity name. Optionally enter a provider-supplied `gemini://` mailbox archive
+URL. The form states the protocol limits and disables password, IMAP and SMTP
+controls. Create Identity generates an RSA-2048 key and a self-signed SHA-256
+certificate valid for five years. Import Misfin Identity accepts an existing
+PEM certificate and matching unencrypted PEM private key instead. Certificates
+identify the mailbox through USER_ID and DNS SAN; CN holds the identity name.
+Creating another identity for an address already stored is refused.
 
-This first implementation supports Misfin(C) delivery to one recipient, with
-Gemtext, Unicode subjects and text, local sent history, and manual incoming
-mail. If your provider exposes a gemmail/gembox archive over Gemini, enter its
-`gemini://` URL and choose Fetch Mailbox. You can also import a local Misfin(C)
-archive. Incoming entries are deduplicated. Received text is selectable and is
-never interpreted as HTML. Misfin(B), SMTP bridging, attachments, automatic
+Existing identities and sent/received history appear automatically in the normal
+account selector, Inbox, Sent and All Mail. No key or history migration is needed.
+All Accounts includes Misfin messages in these views and local text searches.
+Read and reply through the normal reader and composer. The composer has a
+**Misfin** checkbox that chooses an account for that protocol; changing From
+updates the checkbox. Switching to email restores email controls. Cc/Bcc,
+attachments, OpenPGP, Save Draft and Send Later are disabled for Misfin. Existing
+incompatible content is retained when switching and must be removed before a
+Misfin send; it is never silently omitted. One recipient and plain Gemtext are
+supported, within 16,384 UTF-8 bytes including metadata. The engine checks these
+limits before any server probe or send. Misfin sends bypass SMTP and the Outbox.
+Mailbox actions without Misfin support, including flags, labels, archive, trash,
+read/unread, reminders and MIME export, are disabled along with their shortcuts.
+Calendar and Contacts are disabled for a selected Misfin account.
+
+With a Misfin account selected, **File > Account Settings** saves its Gemini
+mailbox URL, imports a local Gemmail/Gembox archive, or copies the public identity
+certificate for provider registration. Creating or importing an identity does
+not register a server mailbox. Keep a secure backup of the private identity
+store; losing the key can prevent access to the mailbox.
+
+**Refresh** on a selected Misfin account fetches its configured archive through
+Gemini with the same certificate and trust controls used for sending. Received
+entries are deduplicated and shown in the normal Inbox. Without an archive URL,
+import local Gemmail through Account Settings. Incoming text is selectable and
+never interpreted as HTML. Periodic view refreshes reload local history; they do
+not fetch a network archive. Misfin(B), SMTP bridging, attachments, background
 polling, GMAP tag management, server hosting and account provisioning are not
 implemented. Redirects and temporary failures are reported without resending.
 

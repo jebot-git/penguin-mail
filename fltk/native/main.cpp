@@ -190,17 +190,17 @@ class MessageList : public Fl_Table_Row {
     if (item.value("starred", false))
       sender = "* " + sender;
     fl_draw(sender.c_str(), x + 10, y + 4, w - 100, 20,
-            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
+            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP, nullptr, 0);
     auto date = dateText(item.value("last_message_at", int64_t(0)), "%d %b");
     fl_draw(date.c_str(), x + w - 85, y + 4, 75, 20,
             FL_ALIGN_RIGHT | FL_ALIGN_INSIDE);
     auto subject = str(item, "subject");
     fl_draw(subject.c_str(), x + 10, y + 26, w - 20, 20,
-            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
+            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP, nullptr, 0);
     fl_color(selected ? foreground : fl_inactive(foreground));
     auto snippet = str(item, "snippet");
     fl_draw(snippet.c_str(), x + 10, y + 48, w - 20, 18,
-            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
+            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP, nullptr, 0);
     fl_color(fl_color_average(FL_FOREGROUND_COLOR, FL_BACKGROUND2_COLOR, .12f));
     fl_line(x, y + h - 1, x + w, y + h - 1);
     fl_pop_clip();
@@ -293,7 +293,7 @@ public:
     Json out = Json::array();
     for (int i = 0; i < int(items.size()); ++i)
       if (row_selected(i)) {
-        Json target = {{"account", items[i].value("account_id", 0)},
+        Json target = {{"account", items[i].value("account_id", int64_t(0))},
                        {"thread", str(items[i], "id")}};
         if (items[i].contains("message_id") &&
             items[i]["message_id"].is_string())
@@ -419,6 +419,34 @@ public:
     return Fl_Widget::handle(event);
   }
 };
+class MailboxBrowser : public Fl_Hold_Browser {
+  std::set<void *> disabled;
+  void item_select(void *item, int value) override {
+    if (!value || !disabled.count(item))
+      Fl_Hold_Browser::item_select(item, value);
+  }
+  void item_draw(void *item, int x, int y, int w, int h) const override {
+    if (!disabled.count(item)) {
+      Fl_Hold_Browser::item_draw(item, x, y, w, h);
+      return;
+    }
+    fl_color(fl_inactive(textcolor()));
+    fl_font(textfont(), textsize());
+    fl_draw(item_text(item), x + 3, y, w - 3, h,
+            FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
+  }
+
+public:
+  using Fl_Hold_Browser::Fl_Hold_Browser;
+  void reset() {
+    disabled.clear();
+    clear();
+  }
+  void deactivate(int line) {
+    disabled.insert(item_at(line));
+    redraw();
+  }
+};
 class MailWindow : public dx::GpuWindow {
   struct Binding {
     std::function<void()> fn;
@@ -430,12 +458,14 @@ class MailWindow : public dx::GpuWindow {
   DesktopMenuBar *menu;
   Fl_Choice *accountChoice, *space;
   Fl_Widget *toolbar[4]{};
+  std::array<CommandButton *, 3> readingActions{};
   Fl_Button *saveAttach = nullptr;
   Fl_Input *search;
   Fl_Box *status;
   Fl_Group *mailPage, *calendarPage, *contactsPage;
   Fl_Tile *tile;
-  Fl_Hold_Browser *sidebar, *attachments, *agenda, *contactsList;
+  MailboxBrowser *sidebar;
+  Fl_Hold_Browser *attachments, *agenda, *contactsList;
   MessageList *list;
   Fl_Text_Display *reader;
   Fl_Text_Buffer readerBuffer;
@@ -563,6 +593,8 @@ class MailWindow : public dx::GpuWindow {
       actionUndo();
   }
   void actionUndo() {
+    if (selectedAccount < 0)
+      return;
     send({{"op", "undo"}}, [this](const Json &) {
       say(_("Undone"));
       reload();
@@ -570,6 +602,12 @@ class MailWindow : public dx::GpuWindow {
   }
   void action(const std::string &command) {
     auto targets = list->targets();
+    for (const auto &target : targets)
+      if (target.value("account", int64_t(0)) < 0)
+        return;
+    if (selectedAccount < 0 || (!currentTarget.is_null() &&
+                                currentTarget.value("account", int64_t(0)) < 0))
+      return;
     if (targets.empty() && !currentTarget.is_null())
       targets.push_back(currentTarget);
     if (targets.empty()) {
@@ -604,7 +642,7 @@ class MailWindow : public dx::GpuWindow {
   void rebuildBoxes() {
     std::string key = currentBox.dump();
     boxes = Json::array();
-    sidebar->clear();
+    sidebar->reset();
     auto add = [&](const char *label, const char *kind) {
       boxes.push_back({{"mailbox", kind}});
       sidebar->add(label);
@@ -622,8 +660,21 @@ class MailWindow : public dx::GpuWindow {
     add(_("Remind Me"), "reminders");
     add(_("Follow Up"), "follow-up");
     add(_("Muted"), "muted");
+    if (selectedAccount < 0) {
+      for (int i = 0; i < sidebar->size(); ++i) {
+        const auto kind = str(boxes[i], "mailbox");
+        if (kind != "inbox" && kind != "sent" && kind != "all")
+          sidebar->deactivate(i + 1);
+      }
+      auto kind = str(currentBox, "mailbox");
+      if (kind != "inbox" && kind != "sent" && kind != "all" &&
+          kind != "search") {
+        currentBox = {{"mailbox", "inbox"}};
+        key = currentBox.dump();
+      }
+    }
     for (const auto &item : accounts)
-      if (item["account"].value("id", 0) == selectedAccount)
+      if (item["account"].value("id", int64_t(0)) == selectedAccount)
         for (const auto &label : item["labels"])
           if (str(label, "kind") == "User" || str(label, "kind") == "user" ||
               str(label, "kind") == "Tag") {
@@ -654,11 +705,13 @@ class MailWindow : public dx::GpuWindow {
         int selected = 0;
         for (int i = 0; i < int(accounts.size()); ++i) {
           auto a = accounts[i]["account"];
-          std::string title = str(a, "email");
+          std::string title =
+              str(a, "email") +
+              (a.value("id", int64_t(0)) < 0 ? " [Misfin]" : "");
           if (!accounts[i].value("connected", false))
             title += " (" + str(a, "state") + ")";
           addChoice(accountChoice, title);
-          if (a.value("id", 0) == selectedAccount)
+          if (a.value("id", int64_t(0)) == selectedAccount)
             selected = i + 1;
         }
         accountChoice->value(selected);
@@ -713,7 +766,8 @@ class MailWindow : public dx::GpuWindow {
       list->set(result["rows"], currentKey);
       bool found = false;
       for (const auto &item : list->items)
-        if (str(item, "id") == currentKey)
+        if (str(item, "id") == currentKey && !currentTarget.is_null() &&
+            item["account_id"] == currentTarget["account"])
           found = true;
       if (!found) {
         currentKey.clear();
@@ -964,8 +1018,11 @@ class MailWindow : public dx::GpuWindow {
       Fl_Hold_Browser *files;
       Fl_Box *status;
       DesktopMenuBar *menu;
-      Fl_Button *send, *save;
-      Fl_Check_Button *sign, *encrypt;
+      Fl_Button *send, *save, *attach, *remove, *checkKeys;
+      Fl_Check_Button *sign, *encrypt, *misfin;
+      bool isMisfin() const {
+        return senders.at(from->value())["account"].value("id", int64_t(0)) < 0;
+      }
       Fl_Box *keys;
       Json senders;
       uint64_t keyGeneration = 0;
@@ -990,14 +1047,23 @@ class MailWindow : public dx::GpuWindow {
     f->from = new Fl_Choice(100, 90, 720, 28, _("From"));
     int selected = 0;
     for (int i = 0; i < int(accounts.size()); ++i) {
-      addChoice(f->from, str(accounts[i]["account"], "email"));
-      if (accounts[i]["account"].value("id", 0) == selectedAccount)
+      addChoice(f->from, str(accounts[i]["account"], "email") +
+                             (accounts[i]["account"].value("id", int64_t(0)) < 0
+                                  ? " [Misfin]"
+                                  : ""));
+      if (accounts[i]["account"].value("id", int64_t(0)) == selectedAccount)
         selected = i;
     }
     f->from->value(selected);
     f->sign = new Fl_Check_Button(285, 40, 150, 32, _("Sign (OpenPGP)"));
     f->encrypt = new Fl_Check_Button(440, 40, 170, 32, _("Encrypt (OpenPGP)"));
     f->sign->deactivate(); f->encrypt->deactivate();
+    f->misfin = new Fl_Check_Button(625, 40, 195, 32, _("Misfin"));
+    f->misfin->tooltip(
+        _("Send a Misfin(C) message using a configured Misfin account"));
+#ifndef PENGUIN_ENABLE_MISFIN
+    f->misfin->hide();
+#endif
     f->to = new Fl_Input(100, 130, 720, 28, _("To"));
     f->cc = new Fl_Input(100, 168, 720, 28, _("Cc"));
     f->bcc = new Fl_Input(100, 206, 720, 28, _("Bcc"));
@@ -1009,7 +1075,7 @@ class MailWindow : public dx::GpuWindow {
     f->files = new Fl_Hold_Browser(14, 600, 600, 65, _("Attachments"));
     f->files->align(FL_ALIGN_TOP_LEFT);
     f->files->format_char(0);
-    new CommandButton(630, 600, 190, 28, _("Attach File…"), [f] {
+    f->attach = new CommandButton(630, 600, 190, 28, _("Attach File…"), [f] {
       Fl_Native_File_Chooser c;
       c.title(_("Attach File"));
       c.type(Fl_Native_File_Chooser::BROWSE_FILE);
@@ -1018,17 +1084,18 @@ class MailWindow : public dx::GpuWindow {
         f->files->add(std::filesystem::path(c.filename()).filename().c_str());
       }
     });
-    new CommandButton(630, 636, 190, 28, _("Remove Attachment"), [f] {
-      int row = f->files->value() - 1;
-      if (row >= 0 && row < int(f->kept.size() + f->paths.size())) {
-        if (row < int(f->kept.size()))
-          f->kept.erase(row);
-        else
-          f->paths.erase(f->paths.begin() + row - int(f->kept.size()));
-        f->files->remove(row + 1);
-      }
-    });
-    f->keys = new Fl_Box(14, 680, 806, 46, _("Checking local OpenPGP keys…"));
+    f->remove =
+        new CommandButton(630, 636, 190, 28, _("Remove Attachment"), [f] {
+          int row = f->files->value() - 1;
+          if (row >= 0 && row < int(f->kept.size() + f->paths.size())) {
+            if (row < int(f->kept.size()))
+              f->kept.erase(row);
+            else
+              f->paths.erase(f->paths.begin() + row - int(f->kept.size()));
+            f->files->remove(row + 1);
+          }
+        });
+    f->keys = new Fl_Box(14, 680, 600, 46, _("Checking local OpenPGP keys…"));
     f->keys->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
     f->status = new Fl_Box(14, 740, 806, 45);
     f->status->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
@@ -1076,16 +1143,55 @@ class MailWindow : public dx::GpuWindow {
         text += "> " + line + "\n";
       f->body->text(text.c_str());
       for (int i = 0; i < int(accounts.size()); ++i)
-        if (accounts[i]["account"].value("id", 0) ==
-            currentTarget.value("account", 0))
+        if (accounts[i]["account"].value("id", int64_t(0)) ==
+            currentTarget.value("account", int64_t(0)))
           f->from->value(i);
     }
-    auto submit = [this, f](bool draft, bool later) {
+    auto availability = [f] {
+      bool misfin = f->isMisfin();
+      f->misfin->value(misfin);
+      bool canSwitch = false;
+      for (const auto &sender : f->senders)
+        if ((sender["account"].value("id", int64_t(0)) < 0) != misfin)
+          canSwitch = true;
+      auto enabled = [](Fl_Widget *widget, bool value) {
+        if (value)
+          widget->activate();
+        else
+          widget->deactivate();
+      };
+      enabled(f->misfin, canSwitch && !f->busy);
+      for (Fl_Widget *widget : std::vector<Fl_Widget *>{
+               f->from, f->to, f->subject, f->editor, f->send})
+        enabled(widget, !f->busy);
+      for (Fl_Widget *widget : std::vector<Fl_Widget *>{
+               f->cc, f->bcc, f->files, f->attach, f->remove, f->save, f->sign,
+               f->encrypt, f->checkKeys})
+        enabled(widget, !misfin && !f->busy);
+      for (const char *path : {_("File/Save Draft"), _("File/Send Later…")})
+        if (auto item = const_cast<Fl_Menu_Item *>(f->menu->find_item(path))) {
+          if (!misfin && !f->busy)
+            item->activate();
+          else
+            item->deactivate();
+        }
+      if (misfin) {
+        f->sign->value(0);
+        f->encrypt->value(0);
+        copyLabel(f->keys, _("Misfin(C): one recipient, plain Gemtext, 16384 "
+                             "UTF-8 bytes including metadata. No attachments, "
+                             "drafts, scheduling or OpenPGP."));
+      }
+    };
+    auto submit = [this, f, availability](bool draft, bool later) {
       if (f->busy)
         return;
       Json r = f->base;
       r["op"] = "compose";
       r["draft"] = draft;
+      if (f->isMisfin() && (draft || later))
+        return;
+      r["misfin"] = bool(f->misfin->value());
       r["account"] = f->senders.at(f->from->value())["account"]["id"];
       r["sign"] = bool(f->sign->value());
       r["encrypt"] = bool(f->encrypt->value());
@@ -1121,17 +1227,18 @@ class MailWindow : public dx::GpuWindow {
                     _("Send without a subject?")) != 1)
         return;
       f->busy = true;
-      f->send->deactivate();
-      f->save->deactivate();
+      availability();
       copyLabel(f->status, _("Working…"));
-      engine->request(r, [this, f, draft](const Json &reply) {
+      auto completed = [this, f, draft, availability](const Json &reply) {
         f->busy = false;
-        f->send->activate();
-        f->save->activate();
+        availability();
         if (!reply.value("ok", false)) {
           copyLabel(f->status, str(reply, "error").c_str());
           return;
         }
+        if (reply["result"].contains("warning") &&
+            reply["result"]["warning"].is_string())
+          fl_alert("%s", str(reply["result"], "warning").c_str());
         if (draft) {
           f->draftId = str(reply["result"], "draft_id");
           copyLabel(f->status, _("Draft saved"));
@@ -1144,11 +1251,29 @@ class MailWindow : public dx::GpuWindow {
                   : _("Message sent"));
         }
         reload();
-      });
+      };
+#ifdef PENGUIN_ENABLE_MISFIN
+      if (f->isMisfin()) {
+        Json check = r;
+        check["op"] = "misfin-check-compose";
+        engine->request(check, [this, r, completed](const Json &reply) {
+          if (!reply.value("ok", false)) {
+            completed(reply);
+            return;
+          }
+          misfinTransmit(r, completed);
+        });
+      } else
+#endif
+        engine->request(r, completed);
     };
-    auto checkKeys = [this, f] {
-      if (!f->window->shown() && f->keyGeneration) return;
+    auto checkKeys = [this, f, availability] {
+      if (!f->window->shown() && f->keyGeneration)
+        return;
       auto generation = ++f->keyGeneration;
+      availability();
+      if (f->isMisfin())
+        return;
       Json request = {{"op", "crypto-keys"},
         {"from", str(f->senders.at(f->from->value())["account"], "email")},
         {"to", f->to->value()}, {"cc", f->cc->value()}, {"bcc", f->bcc->value()}};
@@ -1183,7 +1308,18 @@ class MailWindow : public dx::GpuWindow {
       bind(input, checkKeys);
     }
     bind(f->from, checkKeys);
-    new CommandButton(625, 40, 195, 32, _("Check Keys"), checkKeys);
+    f->checkKeys =
+        new CommandButton(625, 680, 195, 32, _("Check Keys"), checkKeys);
+    bind(f->misfin, [f, checkKeys] {
+      bool wanted = f->misfin->value();
+      for (int i = 0; i < int(f->senders.size()); ++i) {
+        if ((f->senders[i]["account"].value("id", int64_t(0)) < 0) == wanted) {
+          f->from->value(i);
+          break;
+        }
+      }
+      checkKeys();
+    });
     bind(f->send, [submit] { submit(false, false); });
     bind(f->save, [submit] { submit(true, false); });
     addMenu(*f->menu, _("File/Send"), FL_CTRL | FL_Enter,
@@ -1207,9 +1343,14 @@ class MailWindow : public dx::GpuWindow {
         copyLabel(f->status, _("Wait for the current request to finish."));
         return;
       }
-      int choice = fl_choice(
-          "%s", _("Cancel"), _("Discard"), _("Save Draft"),
-          _("Close this message? Save a draft to keep your changes."));
+      int choice =
+          f->isMisfin()
+              ? fl_choice("%s", _("Cancel"), _("Discard"), nullptr,
+                          _("Discard this Misfin message? Misfin drafts are "
+                            "unavailable."))
+              : fl_choice("%s", _("Cancel"), _("Discard"), _("Save Draft"),
+                          _("Close this message? Save a draft to keep your "
+                            "changes."));
       if (choice == 1)
         f->window->hide();
       else if (choice == 2) {
@@ -1279,6 +1420,9 @@ class MailWindow : public dx::GpuWindow {
     auto kind = new Fl_Choice(500, 20, 230, 34);
     kind->tooltip(_("Account Type"));
     kind->add("IMAP|POP3|JMAP|CalDAV");
+#ifdef PENGUIN_ENABLE_MISFIN
+    kind->add("Misfin(C)");
+#endif
     kind->value(0);
     auto address = new Fl_Input(180, 80, 550, 28, _("Email Address"));
     auto username = new Fl_Input(180, 120, 550, 28, _("User Name"));
@@ -1302,7 +1446,7 @@ class MailWindow : public dx::GpuWindow {
         _("Leave user names and the SMTP password empty to use the incoming "
           "account's details. Passwords are stored in your desktop keyring."));
     info->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
-    new CommandButton(
+    auto discover = new CommandButton(
         20, 585, 200, 34, _("Find Servers"),
         [this, address, ih, ip, itls, sh, sp, stls, info] {
           send({{"op", "discover"}, {"address", address->value()}},
@@ -1332,7 +1476,54 @@ class MailWindow : public dx::GpuWindow {
                  copyLabel(info, address->value());
                });
         });
-    bind(kind, [kind, ih, ip, itls, sh, sp, stls, su, pw] {
+    auto connect =
+        new CommandButton(530, 585, 200, 34, _("Add Account"), [] {});
+#ifdef PENGUIN_ENABLE_MISFIN
+    auto import = new CommandButton(
+        240, 585, 265, 34, _("Import Misfin Identity…"), [this, win, ih, info] {
+          Fl_Native_File_Chooser picker;
+          picker.type(Fl_Native_File_Chooser::BROWSE_FILE);
+          picker.title(_("Misfin Identity Certificate (PEM)"));
+          if (picker.show())
+            return;
+          std::string certificate = picker.filename();
+          picker.title(_("Misfin Private Key (PEM)"));
+          if (picker.show())
+            return;
+          Json request = {{"op", "misfin-import-identity"},
+                          {"certificate", certificate},
+                          { "key",
+                            picker.filename() }};
+          if (strlen(ih->value()))
+            request["inbox_url"] = ih->value();
+          engine->request(request, [this, win, info](const Json &reply) {
+            if (!accepted(reply)) {
+              copyLabel(info, str(reply, "error").c_str());
+              return;
+            }
+            selectedAccount = reply["result"].value("account", int64_t(0));
+            currentBox = {{"mailbox", "inbox"}};
+            currentKey.clear();
+            currentTarget = nullptr;
+            opened = Json::array();
+            readerBuffer.text("");
+            attachments->clear();
+            ++threadGeneration;
+            win->hide();
+            ++listGeneration;
+            reloadAccounts();
+            changeSpace(0);
+          });
+        });
+    import->hide();
+#endif
+    bind(kind, [kind, address, username, password, ih, ip, itls, sh, sp, stls,
+                su, pw, info, discover, connect
+#ifdef PENGUIN_ENABLE_MISFIN
+                ,
+                import
+#endif
+    ] {
       int type = kind->value();
       copyLabel(ih, type == 1   ? _("POP3 Server")
                      : type >= 2 ? _("Server URL")
@@ -1365,11 +1556,74 @@ class MailWindow : public dx::GpuWindow {
       }
       itls->value(0);
       ih->window()->redraw();
+
+      bool misfin = type == 4;
+      copyLabel(address, misfin ? _("Misfin Address") : _("Email Address"));
+      copyLabel(username, misfin ? _("Identity Name") : _("User Name"));
+      if (misfin)
+        copyLabel(ih, _("Gemini Mailbox URL"));
+      for (Fl_Widget *field : std::vector<Fl_Widget *>{
+               password, sh, sp, stls, su, pw, ip, itls, discover}) {
+        if (misfin) {
+          field->show();
+          field->deactivate();
+        } else
+          field->activate();
+      }
+      copyLabel(connect, misfin ? _("Create Identity") : _("Add Account"));
+      copyLabel(
+          info,
+          misfin
+              ? _("Misfin(C): one recipient, plain Gemtext, up to 16384 UTF-8 "
+                  "bytes. No attachments, Cc/Bcc, drafts, scheduled sending or "
+                  "OpenPGP. Receive through an optional provider-supplied "
+                  "Gemini archive or local Gemmail import. Create a five-year "
+                  "certificate or import an existing identity; provider "
+                  "registration is still required.")
+              : _("Leave user names and the SMTP password empty to use the "
+                  "incoming account's details. Passwords are stored in your "
+                  "desktop keyring."));
+#ifdef PENGUIN_ENABLE_MISFIN
+      if (misfin)
+        import->show();
+      else
+        import->hide();
+#endif
+      ih->window()->redraw();
     });
-    auto connect =
-        new CommandButton(530, 585, 200, 34, _("Add Account"), [] {});
     bind(connect, [this, win, kind, address, username, password, ih, ip, itls,
                    sh, sp, stls, su, pw, info, connect] {
+#ifdef PENGUIN_ENABLE_MISFIN
+      if (kind->value() == 4) {
+        connect->deactivate();
+        engine->request({{"op", "misfin-create-identity"},
+                         {"address", address->value()},
+                         {"name", username->value()},
+                         { "inbox_url",
+                           ih->value() }},
+                        [this, win, connect, info](const Json &reply) {
+                          connect->activate();
+                          if (!accepted(reply)) {
+                            copyLabel(info, str(reply, "error").c_str());
+                            return;
+                          }
+                          selectedAccount =
+                              reply["result"].value("account", int64_t(0));
+                          currentBox = {{"mailbox", "inbox"}};
+                          currentKey.clear();
+                          currentTarget = nullptr;
+                          opened = Json::array();
+                          readerBuffer.text("");
+                          attachments->clear();
+                          ++threadGeneration;
+                          win->hide();
+                          ++listGeneration;
+                          reloadAccounts();
+                          changeSpace(0);
+                        });
+        return;
+      }
+#endif
       int incoming = atoi(ip->value()), outgoing = atoi(sp->value());
       if (incoming < 1 || incoming > 65535 || outgoing < 1 ||
           outgoing > 65535) {
@@ -1425,8 +1679,8 @@ class MailWindow : public dx::GpuWindow {
     info->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
     auto addresses = new Fl_Input(135, 115, 590, 28, _("Addresses"));
     if (selectedAccount) for (const auto &a : accounts)
-      if (a["account"].value("id", 0) == selectedAccount)
-        addresses->value(str(a["account"], "email").c_str());
+        if (a["account"].value("id", int64_t(0)) == selectedAccount)
+          addresses->value(str(a["account"], "email").c_str());
     buffers.push_back(std::make_unique<Fl_Text_Buffer>());
     auto buffer = buffers.back().get();
     auto view = new Fl_Text_Display(20, 165, 720, 245);
@@ -1690,20 +1944,24 @@ class MailWindow : public dx::GpuWindow {
     }
   }
   void contactDialog() {
-    if (accounts.empty())
+    Json eligible = Json::array();
+    for (const auto &item : accounts)
+      if (item["account"].value("id", int64_t(0)) > 0)
+        eligible.push_back(item);
+    if (eligible.empty())
       return;
     auto win = dialog(600, 240, _("New Contact"));
     auto name = new Fl_Input(130, 25, 445, 28, _("Name"));
     auto email = new Fl_Input(130, 70, 445, 28, _("Email Address"));
     auto account = new Fl_Choice(130, 115, 445, 28, _("Account"));
-    for (const auto &a : accounts)
+    for (const auto &a : eligible)
       addChoice(account, str(a["account"], "email"));
     account->value(0);
     new CommandButton(
         400, 180, 175, 32, _("Save Contact"),
-        [this, win, name, email, account] {
+        [this, win, name, email, account, eligible] {
           send({{"op", "contact-save"},
-                {"account", accounts[account->value()]["account"]["id"]},
+                {"account", eligible[account->value()]["account"]["id"]},
                 {"name", name->value()},
                 {"email", email->value()}},
                [this, win](const Json &) {
@@ -1730,6 +1988,8 @@ class MailWindow : public dx::GpuWindow {
     }
   }
   void changeSpace(int value) {
+    if (selectedAccount < 0 && value != 0)
+      return;
     shownSpace = value;
     updateTitle();
     space->value(value);
@@ -1754,6 +2014,60 @@ class MailWindow : public dx::GpuWindow {
         else
           item->deactivate();
       }
+    bool misfin =
+        selectedAccount < 0 || (!currentTarget.is_null() &&
+                                currentTarget.value("account", int64_t(0)) < 0);
+    for (const auto &target : list->targets())
+      misfin = misfin || target.value("account", int64_t(0)) < 0;
+    auto enableMenu = [this](const char *path, bool enabled) {
+      if (auto item = const_cast<Fl_Menu_Item *>(menu->find_item(path))) {
+        if (enabled)
+          item->activate();
+        else
+          item->deactivate();
+      }
+    };
+    for (const char *path :
+         {_("Message/Reply All"), _("Message/Archive"),
+          _("Message/Move to Trash"), _("Message/Mark Read"),
+          _("Message/Mark Unread"), _("Message/Flag"), _("Message/Unflag"),
+          _("Message/Label…"), _("Message/Remind Me…"),
+          _("File/Export Conversation…")})
+      enableMenu(path, selected && !misfin);
+    for (const char *path :
+         {_("Message/Edit Draft"), _("Message/Send Queued Message Now"),
+          _("Message/Delete Queued Message"), _("File/OpenPGP Keys…")})
+      enableMenu(path, !misfin);
+    enableMenu(_("Edit/Undo"), !misfin);
+    enableMenu(_("File/Account Settings…"), selectedAccount < 0);
+    enableMenu(_("View/Calendar"), selectedAccount >= 0);
+    enableMenu(_("View/Contacts"), selectedAccount >= 0);
+    if (selectedAccount < 0)
+      space->deactivate();
+    else
+      space->activate();
+    for (int i = 2; i < 4; ++i) {
+      if (selected && !misfin)
+        toolbar[i]->activate();
+      else
+        toolbar[i]->deactivate();
+    }
+    for (int i = 0; i < 3; ++i) {
+      if (selected && (!misfin || i == 0 || i == 2))
+        readingActions[i]->activate();
+      else
+        readingActions[i]->deactivate();
+    }
+    if (misfin) {
+      attachments->deactivate();
+      saveAttach->deactivate();
+    } else {
+      attachments->activate();
+      if (!fileParts.empty())
+        saveAttach->activate();
+      else
+        saveAttach->deactivate();
+    }
     if (tray) {
       if (hideRequested && !hideHandled && tray->available()) {
         hideHandled = true;
@@ -1811,7 +2125,11 @@ public:
     toolbar[0] = new CommandButton(12, 38, 120, 32, _("New Message"),
                                    [this] { composer(); });
     toolbar[1] = new CommandButton(140, 38, 90, 32, _("Refresh"), [this] {
+#ifdef PENGUIN_ENABLE_MISFIN
+      refreshMailbox();
+#else
       send({{"op", "refresh"}}, [this](const Json &) { reload(); });
+#endif
     });
     toolbar[2] = new CommandButton(240, 38, 85, 32, _("Archive"),
                                    [this] { action("archive"); });
@@ -1831,7 +2149,7 @@ public:
     search->when(FL_WHEN_ENTER_KEY_ALWAYS);
     mailPage = new Fl_Group(0, 84, 1280, 704);
     tile = new Fl_Tile(0, 84, 1280, 704);
-    sidebar = new Fl_Hold_Browser(0, 84, 190, 704);
+    sidebar = new MailboxBrowser(0, 84, 190, 704);
     sidebar->format_char(0);
     sidebar->tooltip(_("Mailboxes"));
     list = new MessageList(190, 84, 425, 704);
@@ -1843,6 +2161,7 @@ public:
                       [this] { composer("reply-all"); });
     reading->actions[2] = new CommandButton(852, 94, 105, 30, _("Forward"),
                       [this] { composer("forward"); });
+    readingActions = reading->actions;
     for (auto button : reading->actions)
       button->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_WRAP | FL_ALIGN_CLIP);
     reader = new Fl_Text_Display(627, 138, 641, 540);
@@ -1912,7 +2231,8 @@ public:
             [this] { composer(); });
     addMenu(*menu, _("File/Add Account…"), 0, [this] { accountDialog(); });
 #ifdef PENGUIN_ENABLE_MISFIN
-    addMenu(*menu, _("File/Misfin Messaging…"), 0, [this] { misfinDialog(); });
+    addMenu(*menu, _("File/Account Settings…"), 0,
+            [this] { misfinSettings(); });
 #endif
     addMenu(*menu, _("File/Export Conversation…"), FL_CTRL | FL_SHIFT | 's',
             [this] { exportThread(); });
@@ -1936,7 +2256,11 @@ public:
     addMenu(*menu, _("View/Contacts"), FL_CTRL | '3',
             [this] { changeSpace(2); });
     addMenu(*menu, _("View/Refresh"), FL_F + 5, [this] {
+#ifdef PENGUIN_ENABLE_MISFIN
+      refreshMailbox();
+#else
       send({{"op", "refresh"}}, [this](const Json &) { reload(); });
+#endif
     });
     addMenu(*menu, _("View/Load More"), 0, [this] {
       loadLimit = std::min(2000, loadLimit + 500);
@@ -1983,10 +2307,21 @@ public:
     });
     bind(accountChoice, [this] {
       int n = accountChoice->value();
-      selectedAccount = n > 0 ? accounts[n - 1]["account"].value("id", 0) : 0;
+      selectedAccount =
+          n > 0 ? accounts[n - 1]["account"].value("id", int64_t(0)) : 0;
       rebuildBoxes();
+      currentKey.clear();
+      currentTarget = nullptr;
+      opened = Json::array();
+      readerBuffer.text("");
+      attachments->clear();
+      ++threadGeneration;
       ++listGeneration;
-      reload();
+      if (selectedAccount < 0)
+        changeSpace(0);
+      else
+        reload();
+      setAvailability();
     });
     bind(space, [this] { changeSpace(space->value()); });
     bind(search, [this] {
@@ -2001,6 +2336,10 @@ public:
     bind(sidebar, [this] {
       int n = sidebar->value() - 1;
       if (n < 0 || n >= int(boxes.size()))
+        return;
+      if (selectedAccount < 0 && str(boxes[n], "mailbox") != "inbox" &&
+          str(boxes[n], "mailbox") != "sent" &&
+          str(boxes[n], "mailbox") != "all")
         return;
       currentBox = boxes[n];
       search->value("");

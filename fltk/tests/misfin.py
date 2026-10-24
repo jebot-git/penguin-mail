@@ -142,6 +142,47 @@ with tempfile.TemporaryDirectory(prefix='penguin-misfin-') as name:
         p,request=engine()
         check(len(request('misfin-state')['messages'])==3,'Identity and local history survive engine restart')
         check(any(i['id']==created for i in request('misfin-state')['identities']),'Created identity survives engine restart')
+        projected=request('accounts')['items']
+        existing=next(i for i in projected if i['account'].get('misfin_identity')==ident)['account']
+        account=existing['id']
+        check(account<0 and existing['email']=='alice@localhost','Existing certificate identity appears as a normal native account')
+        allrows=request('list',account=account,mailbox='all')['rows']
+        inboxrows=request('list',account=account,mailbox='inbox')['rows']
+        sentrows=request('list',account=account,mailbox='sent')['rows']
+        check(len(allrows)==3 and len(inboxrows)==1 and len(sentrows)==2,'Existing Misfin history populates normal Inbox and Sent mailboxes')
+        check(any(row['account_id']==account for row in request('list',account=0,mailbox='inbox')['rows']),
+              'All Accounts includes received Misfin messages')
+        message=request('thread',account=account,thread=inboxrows[0]['id'])['messages'][0]
+        check(message['meta']['subject']=='Inbox' and message['body']['attachments']==[] and message['meta']['from']['email']=='alice@localhost',
+              'Normal reader opens Misfin Gemtext without MIME or attachments')
+        request('list',account=account,mailbox='drafts',fail=True)
+        request('action',action='trash',targets=[{'account':account,'thread':inboxrows[0]['id']}],fail=True)
+        request('compose',account=1,misfin=True,to=dest,subject='No SMTP',text='Secret',fail=True)
+        base=dict(account=account,misfin=True,to=dest,cc='',bcc='',subject='Integrated compose',text='Plain Gemtext',files=[],kept_files=[],draft=False,sign=False,encrypt=False)
+        before=len(captured)
+        for fields in [dict(cc='other@localhost'),dict(bcc='other@localhost'),dict(files=['missing']),
+                       dict(kept_files=[{}]),dict(draft=True),dict(send_at=1),dict(sign=True),dict(encrypt=True),
+                       dict(misfin=False),dict(to='a@localhost,b@localhost'),dict(text='界'*6000)]:
+            request('misfin-check-compose',**(base|fields),fail=True)
+        check(len(captured)==before,'Unsupported composer options are refused before contacting a server')
+        request('misfin-check-compose',**base)
+        request('compose',**base,fingerprint=fp)
+        check(len(request('list',account=account,mailbox='sent')['rows'])==3,
+              'Normal compose sends through Misfin and adds the Sent copy')
+        request('misfin-settings',account=account,inbox_url=inbox)
+        request('misfin-import-identity',certificate=str(client),key=str(key))
+        check(next(i for i in request('accounts')['items'] if i['account']['id']==account)['account']['misfin_inbox_url']==inbox,
+              'Account settings retain the receiving URL across certificate reimport')
+        p.stdin.close();p.wait(timeout=10)
+        # Simulate the earlier identity-only schema for the second identity.
+        legacy=json.loads(saved.read_text())
+        for i in legacy['identities']:
+            if i['id']==created:i.pop('inbox_url',None)
+        saved.write_text(json.dumps(legacy))
+        p,request=engine()
+        projected=request('accounts')['items']
+        check(len(projected)==2 and next(i for i in projected if i['account']['id']==account)['account']['misfin_inbox_url']==inbox,
+              'Native account projection survives restart and reads legacy identities without migration')
         check(not errors,'TLS fixture completed without internal errors')
     finally:
         if p.poll() is None:p.terminate();p.wait(timeout=5)

@@ -19,6 +19,8 @@ struct Identity {
     address: String,
     certificate: String,
     key: String,
+    #[serde(default)]
+    inbox_url: String,
 }
 #[derive(Clone, Default, Serialize, Deserialize)]
 struct State {
@@ -64,6 +66,23 @@ impl Misfin {
     }
     pub async fn request(&self, r: &serde_json::Value) -> Result<serde_json::Value> {
         use serde_json::json;
+        let mut request = r.clone();
+        if matches!(r["op"].as_str(), Some("compose" | "misfin-check-compose")) {
+            validate_compose(r)?;
+            wire::compose(
+                r["subject"].as_str().unwrap_or(""),
+                r["text"].as_str().unwrap_or(""),
+            )?;
+            Destination::parse(r["to"].as_str().unwrap_or(""), false)?;
+            request["op"] = json!(if r["op"] == "misfin-check-compose" {
+                "misfin-checked"
+            } else {
+                "misfin-send"
+            });
+            request["destination"] = r["to"].clone();
+            request["body"] = r["text"].clone();
+        }
+        let r = &request;
         let mut state = self.state.lock().await;
         let text = |key: &str| r[key].as_str().unwrap_or("");
         if matches!(
@@ -95,15 +114,25 @@ impl Misfin {
                     "An identity for this address already exists. Import its certificate instead."
                 )
             );
+            if !text("inbox_url").is_empty() {
+                Destination::parse(text("inbox_url"), true)?;
+            }
             let mut next = state.clone();
             let record = Identity {
                 id: id.clone(),
                 address,
                 certificate: String::from_utf8(certificate)?,
                 key: String::from_utf8(key)?,
+                inbox_url: text("inbox_url").into(),
             };
             if let Some(old) = next.identities.iter_mut().find(|i| i.id == id) {
+                let inbox_url = if r["inbox_url"].is_string() {
+                    record.inbox_url.clone()
+                } else {
+                    old.inbox_url.clone()
+                };
                 *old = record;
+                old.inbox_url = inbox_url;
             } else {
                 ensure!(
                     state.identities.len() < 16,
@@ -114,7 +143,69 @@ impl Misfin {
             }
             self.save(&next)?;
             *state = next;
-            return Ok(json!({"identity":id}));
+            return Ok(
+                json!({"identity":id,"account":account_number(state.identities.iter().find(|i|i.id==id).unwrap())?}),
+            );
+        }
+        if text("op") == "misfin-accounts" {
+            let mut ids = std::collections::BTreeSet::new();
+            let mut items = vec![];
+            for identity in &state.identities {
+                let id = account_number(identity)?;
+                ensure!(
+                    ids.insert(id),
+                    "{}",
+                    gettext("Misfin account identifiers conflict")
+                );
+                items.push(json!({"account":{"id":id,"email":identity.address,"provider":"Misfin",
+                    "state":"Active","misfin_identity":identity.id,"misfin_inbox_url":identity.inbox_url},
+                    "labels":[],"connected":true}));
+            }
+            return Ok(json!({"items":items}));
+        }
+        if text("op") == "misfin-list" {
+            let account = r["account"].as_i64().unwrap_or(0);
+            let mailbox = text("mailbox");
+            ensure!(
+                matches!(mailbox, "inbox" | "sent" | "all" | "search"),
+                "{}",
+                gettext("This mailbox is not available for Misfin")
+            );
+            let mut rows = vec![];
+            let query = text("query").to_lowercase();
+            for identity in &state.identities {
+                let id = account_number(identity)?;
+                if account != 0 && id != account {
+                    continue;
+                }
+                for m in state.messages.iter().filter(|m| m.identity == identity.id) {
+                    if (mailbox == "inbox" && m.direction != "received")
+                        || (mailbox == "sent" && m.direction != "sent")
+                    {
+                        continue;
+                    }
+                    if mailbox == "search"
+                        && !format!("{} {} {} {}", m.from, m.to, m.subject, m.body)
+                            .to_lowercase()
+                            .contains(&query)
+                    {
+                        continue;
+                    }
+                    let date = chrono::DateTime::parse_from_rfc3339(&m.timestamp)
+                        .map(|d| d.timestamp_millis())
+                        .unwrap_or(0);
+                    rows.push(
+                        json!({"id":m.id,"account_id":id,"message_id":m.id,"from":m.from,
+                        "subject":m.subject,"snippet":m.body.chars().take(160).collect::<String>(),
+                        "last_message_at":date,"unread":false,"starred":false,"protocol":"misfin"}),
+                    );
+                }
+            }
+            rows.sort_by_key(|row| std::cmp::Reverse(row["last_message_at"].as_i64().unwrap_or(0)));
+            let limit = r["limit"].as_u64().unwrap_or(500).clamp(1, 2000) as usize;
+            let more = rows.len() > limit;
+            rows.truncate(limit);
+            return Ok(json!({"rows":rows,"more":more,"unread":0}));
         }
         if text("op") == "misfin-state" {
             return Ok(
@@ -124,9 +215,47 @@ impl Misfin {
         let record = state
             .identities
             .iter()
-            .find(|i| i.id == text("identity"))
+            .find(|i| {
+                if text("identity").is_empty() {
+                    account_number(i).ok() == r["account"].as_i64()
+                } else {
+                    i.id == text("identity")
+                }
+            })
             .context(gettext("Choose a Misfin identity first"))?
             .clone();
+        if text("op") == "misfin-checked" {
+            return Ok(json!({}));
+        }
+        if text("op") == "misfin-settings" {
+            if !text("inbox_url").is_empty() {
+                Destination::parse(text("inbox_url"), true)?;
+            }
+            let mut next = state.clone();
+            next.identities
+                .iter_mut()
+                .find(|i| i.id == record.id)
+                .unwrap()
+                .inbox_url = text("inbox_url").into();
+            self.save(&next)?;
+            *state = next;
+            return Ok(json!({}));
+        }
+        if text("op") == "misfin-thread" {
+            let m = state
+                .messages
+                .iter()
+                .find(|m| m.identity == record.id && m.id == text("thread"))
+                .context(gettext("Misfin message not found"))?;
+            let date = chrono::DateTime::parse_from_rfc3339(&m.timestamp)
+                .map(|d| d.timestamp_millis())
+                .unwrap_or(0);
+            return Ok(
+                json!({"messages":[{"meta":{"id":m.id,"subject":m.subject,"date":date,
+                "from":{"email":m.from.split_whitespace().next().unwrap_or(""),"name":m.from.split_once(' ').map(|(_,name)|name)},"to":[{"email":m.to.split_whitespace().next().unwrap_or("")}],"cc":[],"rfc822_msgid":null},
+                "body":{"text":m.body,"attachments":[],"protection":null},"text":m.body,"sealed":false}],"protocol":"misfin"}),
+            );
+        }
         if text("op") == "misfin-certificate" {
             return Ok(
                 json!({"certificate":record.certificate,"fingerprint":record.id,"address":record.address}),
@@ -264,4 +393,39 @@ async fn timed<T>(future: impl std::future::Future<Output = Result<T>>) -> Resul
     tokio::time::timeout(Duration::from_secs(25), future)
         .await
         .context(gettext("Misfin connection timed out"))?
+}
+
+// Native account numbers occupy a separate range from SQLite email accounts.
+fn account_number(identity: &Identity) -> Result<i64> {
+    Ok(-i64::from_str_radix(
+        identity
+            .id
+            .get(..15)
+            .context("Invalid Misfin identity fingerprint")?,
+        16,
+    )? - 1)
+}
+fn validate_compose(r: &serde_json::Value) -> Result<()> {
+    let text = |key: &str| r[key].as_str().unwrap_or("");
+    ensure!(
+        r["misfin"].as_bool() == Some(true),
+        "{}",
+        gettext("Select Misfin when sending from a Misfin account")
+    );
+    ensure!(
+        text("cc").is_empty()
+            && text("bcc").is_empty()
+            && r["files"].as_array().is_none_or(|v| v.is_empty())
+            && r["kept_files"].as_array().is_none_or(|v| v.is_empty())
+            && r["draft"].as_bool() != Some(true)
+            && r["send_at"].is_null()
+            && r["sign"].as_bool() != Some(true)
+            && r["encrypt"].as_bool() != Some(true)
+            && text("draft_id").is_empty(),
+        "{}",
+        gettext(
+            "Misfin supports one recipient and plain Gemtext, up to 16384 UTF-8 bytes. Cc, Bcc, attachments, drafts, scheduled sending and OpenPGP are unavailable."
+        )
+    );
+    Ok(())
 }

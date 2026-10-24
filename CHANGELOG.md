@@ -9,6 +9,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### New
 
+- Use Misfin as an account in the normal Inbox, reader and composer, with a protocol checkbox, receiving settings and disabled unsupported actions; retain existing identities and history.
+
 - Create Misfin certificate identities in the native app and copy their public certificates for provider registration.
 
 - Optionally build Misfin(C) messaging in the native app, with imported certificate identities, explicit server trust, local history and manual Gemini mailbox archives.

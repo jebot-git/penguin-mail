@@ -11880,87 +11880,95 @@ msgstr "Ο λογαριασμός προστέθηκε"
 msgid "Unknown mailbox"
 msgstr "Εμφάνιση γραμματοκιβωτίων"
 
-#: fltk/engine/src/main.rs:281
+#: fltk/engine/src/main.rs:282 fltk/engine/src/main.rs:289
 #, fuzzy
 #| msgid "Demo mode cannot add real accounts."
 msgid "Demo mode cannot use Misfin identities"
 msgstr ""
 "Η λειτουργία επίδειξης δεν μπορεί να προσθέσει πραγματικούς λογαριασμούς."
 
-#: fltk/engine/src/main.rs:338
+#: fltk/engine/src/main.rs:295 fltk/engine/src/main.rs:312
+msgid "This action is not available for Misfin"
+msgstr ""
+
+#: fltk/engine/src/main.rs:304
+msgid "Choose a Misfin account to send a Misfin message"
+msgstr ""
+
+#: fltk/engine/src/main.rs:395
 msgid "Queued message not found"
 msgstr ""
 
-#: fltk/engine/src/main.rs:367
+#: fltk/engine/src/main.rs:424
 msgid "This message is not cached. Reconnect the account to download it."
 msgstr ""
 
-#: fltk/engine/src/main.rs:376
+#: fltk/engine/src/main.rs:433
 msgid "Reconnect the account to read the original protected message."
 msgstr ""
 
-#: fltk/engine/src/main.rs:385
+#: fltk/engine/src/main.rs:442
 #, fuzzy
 #| msgid "gpg could not open this message"
 msgid "OpenPGP could not open this message"
 msgstr "Το gpg δεν μπόρεσε να ανοίξει αυτό το μήνυμα"
 
-#: fltk/engine/src/main.rs:407
+#: fltk/engine/src/main.rs:464
 msgid "Targets required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:417
+#: fltk/engine/src/main.rs:474
 msgid "Time required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:469
+#: fltk/engine/src/main.rs:526
 #, fuzzy
 #| msgid "That message is no longer waiting."
 msgid "This message is no longer a draft"
 msgstr "Αυτό το μήνυμα δεν βρίσκεται πια σε αναμονή."
 
-#: fltk/engine/src/main.rs:473
+#: fltk/engine/src/main.rs:530
 #, fuzzy
 #| msgid "Save draft"
 msgid "Unreadable draft"
 msgstr "Αποθήκευση πρόχειρου"
 
-#: fltk/engine/src/main.rs:524 fltk/engine/src/main.rs:536
+#: fltk/engine/src/main.rs:581 fltk/engine/src/main.rs:593
 #, fuzzy
 #| msgid "Forwarded message removed"
 msgid "Queued message required"
 msgstr "Το προωθημένο μήνυμα αφαιρέθηκε"
 
-#: fltk/engine/src/main.rs:579 fltk/engine/src/main.rs:613
+#: fltk/engine/src/main.rs:636 fltk/engine/src/main.rs:670
 #, fuzzy
 #| msgid "Demo mode cannot add real accounts."
 msgid "Demo mode cannot add real accounts"
 msgstr ""
 "Η λειτουργία επίδειξης δεν μπορεί να προσθέσει πραγματικούς λογαριασμούς."
 
-#: fltk/engine/src/main.rs:584
+#: fltk/engine/src/main.rs:641
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown provider"
 msgstr "Άγνωστος αποστολέας"
 
-#: fltk/engine/src/main.rs:607
+#: fltk/engine/src/main.rs:664
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Sign-in timed out"
 msgstr "Η σύνδεση διακόπηκε"
 
-#: fltk/engine/src/main.rs:617
+#: fltk/engine/src/main.rs:674
 #, fuzzy
 #| msgid "Your email address"
 msgid "Invalid email address"
 msgstr "Η διεύθυνση email σας"
 
-#: fltk/engine/src/main.rs:709
+#: fltk/engine/src/main.rs:766
 msgid "Enter a title and an end after the start"
 msgstr ""
 
-#: fltk/engine/src/main.rs:757 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/main.rs:814 fltk/engine/src/notifications.rs:161
 #: fltk/engine/src/notifications.rs:164
 #, fuzzy
 #| msgid "Unknown sender"
@@ -12061,294 +12069,311 @@ msgstr "Γκριζομπλέ"
 msgid "Sun"
 msgstr "Κυριακή"
 
-#: fltk/native/main.cpp:487
+#: fltk/native/main.cpp:517
 msgid "The request failed."
 msgstr ""
 
-#: fltk/native/main.cpp:492
+#: fltk/native/main.cpp:522
 #, fuzzy
 #| msgid "Changing a setting"
 msgid "The mail engine is starting."
 msgstr "Αλλαγή ρύθμισης"
 
-#: fltk/native/main.cpp:567
+#: fltk/native/main.cpp:599
 #, fuzzy
 #| msgid "Undo"
 msgid "Undone"
 msgstr "Αναίρεση"
 
-#: fltk/native/main.cpp:576
+#: fltk/native/main.cpp:614
 #, fuzzy
 #| msgid "Open a conversation first"
 msgid "Select a conversation first."
 msgstr "Ανοίξτε πρώτα μια συζήτηση"
 
-#: fltk/native/main.cpp:581
+#: fltk/native/main.cpp:619
 #, fuzzy
 #| msgid "Labels changed"
 msgid "Label name"
 msgstr "Οι ετικέτες άλλαξαν"
 
-#: fltk/native/main.cpp:588
+#: fltk/native/main.cpp:626
 msgid "Remind at (YYYY-MM-DD HH:MM)"
 msgstr ""
 
-#: fltk/native/main.cpp:593 fltk/native/main.cpp:1114
+#: fltk/native/main.cpp:631 fltk/native/main.cpp:1220
 msgid "Choose a future date and time."
 msgstr ""
 
-#: fltk/native/main.cpp:598
+#: fltk/native/main.cpp:636
 #, fuzzy
 #| msgid "Matching your mail…"
 msgid "Updating mail…"
 msgstr "Αντιστοίχιση της αλληλογραφίας σας…"
 
-#: fltk/native/main.cpp:600
+#: fltk/native/main.cpp:638
 msgid "Mail updated. Use Undo to reverse the action."
 msgstr ""
 
-#: fltk/native/main.cpp:735
+#: fltk/native/main.cpp:789
 #, fuzzy
 #| msgid "Conversation"
 msgid "conversations"
 msgstr "Συζήτηση"
 
-#: fltk/native/main.cpp:737
+#: fltk/native/main.cpp:791
 msgid "Load More is available in View."
 msgstr ""
 
-#: fltk/native/main.cpp:782
+#: fltk/native/main.cpp:836
 #, fuzzy
 #| msgid "Reading a conversation"
 msgid "Loading conversation…"
 msgstr "Ανάγνωση συζήτησης"
 
-#: fltk/native/main.cpp:819 fltk/native/main.cpp:838
+#: fltk/native/main.cpp:873 fltk/native/main.cpp:892
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment"
 msgstr "Συνημμένα"
 
-#: fltk/native/main.cpp:822
+#: fltk/native/main.cpp:876
 msgid "S/MIME message. Export the original to inspect its protection."
 msgstr ""
 
-#: fltk/native/main.cpp:826
+#: fltk/native/main.cpp:880
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversation loaded"
 msgstr "Συζήτηση"
 
-#: fltk/native/main.cpp:837 fltk/native/main.cpp:1856
+#: fltk/native/main.cpp:891 fltk/native/main.cpp:2175
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Save Attachment"
 msgstr "Αποθήκευση συνημμένων"
 
-#: fltk/native/main.cpp:847
+#: fltk/native/main.cpp:901
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment saved"
 msgstr "Συνημμένα"
 
-#: fltk/native/main.cpp:860
+#: fltk/native/main.cpp:914
 msgid "Select an outgoing message first."
 msgstr ""
 
-#: fltk/native/main.cpp:864
+#: fltk/native/main.cpp:918
 #, fuzzy
 #| msgid "Delete This Message Forever?"
 msgid "Delete this queued message?"
 msgstr "Οριστική διαγραφή αυτού του μηνύματος;"
 
-#: fltk/native/main.cpp:875
+#: fltk/native/main.cpp:929
 #, fuzzy
 #| msgid "Conversation"
 msgid "Export Conversation"
 msgstr "Συζήτηση"
 
-#: fltk/native/main.cpp:883
+#: fltk/native/main.cpp:937
 #, fuzzy
 #| msgid "No Conversation Selected"
 msgid "Conversation exported"
 msgstr "Δεν επιλέχθηκε συζήτηση"
 
-#: fltk/native/main.cpp:923
+#: fltk/native/main.cpp:977
 #, fuzzy
 #| msgid "Reminders"
 msgid "Reminder snoozed"
 msgstr "Υπενθυμίσεις"
 
-#: fltk/native/main.cpp:981
+#: fltk/native/main.cpp:1038
 #, fuzzy
 #| msgid "Add an account first"
 msgid "Add an account before composing mail."
 msgstr "Προσθέστε πρώτα έναν λογαριασμό"
 
-#: fltk/native/main.cpp:986 fltk/native/main.cpp:2141
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2480
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
 msgstr "Νέο μήνυμα"
 
-#: fltk/native/main.cpp:998
+#: fltk/native/main.cpp:1058
 msgid "Sign (OpenPGP)"
 msgstr ""
 
-#: fltk/native/main.cpp:999
+#: fltk/native/main.cpp:1059
 #, fuzzy
 #| msgid "Encrypted"
 msgid "Encrypt (OpenPGP)"
 msgstr "Κρυπτογραφημένο"
 
-#: fltk/native/main.cpp:1021
+#: fltk/native/main.cpp:1061
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Misfin"
+msgstr "{recipient}, δεν είναι διεύθυνση"
+
+#: fltk/native/main.cpp:1063
+msgid "Send a Misfin(C) message using a configured Misfin account"
+msgstr ""
+
+#: fltk/native/main.cpp:1088
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Remove Attachment"
 msgstr "Αποθήκευση συνημμένων"
 
-#: fltk/native/main.cpp:1031
+#: fltk/native/main.cpp:1098
 #, fuzzy
 #| msgid "Checking for Updates…"
 msgid "Checking local OpenPGP keys…"
 msgstr "Έλεγχος για ενημερώσεις…"
 
-#: fltk/native/main.cpp:1093
-#, fuzzy
-#| msgid "Signed and encrypted"
-msgid "Send Unencrypted"
-msgstr "Υπογεγραμμένο και κρυπτογραφημένο"
-
-#: fltk/native/main.cpp:1094
-msgid "This message quotes decrypted mail. Send that text without encryption?"
-msgstr ""
-
-#: fltk/native/main.cpp:1109
-msgid "Send at (YYYY-MM-DD HH:MM)"
-msgstr ""
-
-#: fltk/native/main.cpp:1121
-#, fuzzy
-#| msgid "Send Without Encryption?"
-msgid "Send without a subject?"
-msgstr "Αποστολή χωρίς κρυπτογράφηση;"
-
-#: fltk/native/main.cpp:1126
-#, fuzzy
-#| msgid "Working"
-msgid "Working…"
-msgstr "Σε εξέλιξη"
-
-#: fltk/native/main.cpp:1143
-msgid "Message queued in Outbox or Send Later."
-msgstr ""
-
-#: fltk/native/main.cpp:1164
-msgid "A secret key is available for signing."
-msgstr ""
-
-#: fltk/native/main.cpp:1164
-msgid "No secret signing key for this sender."
-msgstr ""
-
-#: fltk/native/main.cpp:1167
-msgid "All recipients and your Sent copy have encryption keys."
-msgstr ""
-
-#: fltk/native/main.cpp:1173
-msgid "Key identity is not fully trusted:"
-msgstr ""
-
-#: fltk/native/main.cpp:1186
-#, fuzzy
-#| msgid "Checked"
-msgid "Check Keys"
-msgstr "Ελέγχθηκε"
-
-#: fltk/native/main.cpp:1189
-#, fuzzy
-#| msgid "Send"
-msgid "File/Send"
-msgstr "Αποστολή"
-
-#: fltk/native/main.cpp:1191
-#, fuzzy
-#| msgid "Send Later"
-msgid "File/Send Later…"
-msgstr "Αποστολή αργότερα"
-
-#: fltk/native/main.cpp:1193
+#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1329
 #, fuzzy
 #| msgid "Save Draft"
 msgid "File/Save Draft"
 msgstr "Αποθήκευση πρόχειρου"
 
-#: fltk/native/main.cpp:1195 fltk/native/misfin.h:209 fltk/native/misfin.h:344
+#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1327
+#, fuzzy
+#| msgid "Send Later"
+msgid "File/Send Later…"
+msgstr "Αποστολή αργότερα"
+
+#: fltk/native/main.cpp:1181
+msgid ""
+"Misfin(C): one recipient, plain Gemtext, 16384 UTF-8 bytes including "
+"metadata. No attachments, drafts, scheduling or OpenPGP."
+msgstr ""
+
+#: fltk/native/main.cpp:1199
+#, fuzzy
+#| msgid "Signed and encrypted"
+msgid "Send Unencrypted"
+msgstr "Υπογεγραμμένο και κρυπτογραφημένο"
+
+#: fltk/native/main.cpp:1200
+msgid "This message quotes decrypted mail. Send that text without encryption?"
+msgstr ""
+
+#: fltk/native/main.cpp:1215
+msgid "Send at (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1227
+#, fuzzy
+#| msgid "Send Without Encryption?"
+msgid "Send without a subject?"
+msgstr "Αποστολή χωρίς κρυπτογράφηση;"
+
+#: fltk/native/main.cpp:1231
+#, fuzzy
+#| msgid "Working"
+msgid "Working…"
+msgstr "Σε εξέλιξη"
+
+#: fltk/native/main.cpp:1250
+msgid "Message queued in Outbox or Send Later."
+msgstr ""
+
+#: fltk/native/main.cpp:1289
+msgid "A secret key is available for signing."
+msgstr ""
+
+#: fltk/native/main.cpp:1289
+msgid "No secret signing key for this sender."
+msgstr ""
+
+#: fltk/native/main.cpp:1292
+msgid "All recipients and your Sent copy have encryption keys."
+msgstr ""
+
+#: fltk/native/main.cpp:1298
+msgid "Key identity is not fully trusted:"
+msgstr ""
+
+#: fltk/native/main.cpp:1312
+#, fuzzy
+#| msgid "Checked"
+msgid "Check Keys"
+msgstr "Ελέγχθηκε"
+
+#: fltk/native/main.cpp:1325
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send"
+msgstr "Αποστολή"
+
+#: fltk/native/main.cpp:1331 fltk/native/misfin.h:116
 #, fuzzy
 #| msgid "Close"
 msgid "File/Close"
 msgstr "Κλείσιμο"
 
-#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1926
+#: fltk/native/main.cpp:1334 fltk/native/main.cpp:2041
+#: fltk/native/main.cpp:2246
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Undo"
 msgstr "Επεξεργασία"
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:211
-#: fltk/native/misfin.h:345
+#: fltk/native/main.cpp:1335 fltk/native/main.cpp:2247 fltk/native/misfin.h:118
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Cut"
 msgstr "Επεξεργασία"
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:212
-#: fltk/native/misfin.h:346
+#: fltk/native/main.cpp:1336 fltk/native/main.cpp:2248 fltk/native/misfin.h:119
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Copy"
 msgstr "Επεξεργασία"
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:213
-#: fltk/native/misfin.h:347
+#: fltk/native/main.cpp:1337 fltk/native/main.cpp:2249 fltk/native/misfin.h:120
 #, fuzzy
 #| msgid "Edit Template"
 msgid "Edit/Paste"
 msgstr "Επεξεργασία προτύπου"
 
-#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:214
-#: fltk/native/misfin.h:348
+#: fltk/native/main.cpp:1338 fltk/native/main.cpp:2250 fltk/native/misfin.h:121
 #, fuzzy
 #| msgid "Select all"
 msgid "Edit/Select All"
 msgstr "Επιλογή όλων"
 
-#: fltk/native/main.cpp:1207
+#: fltk/native/main.cpp:1343
 msgid "Wait for the current request to finish."
 msgstr ""
 
-#: fltk/native/main.cpp:1212
+#: fltk/native/main.cpp:1349
+msgid "Discard this Misfin message? Misfin drafts are unavailable."
+msgstr ""
+
+#: fltk/native/main.cpp:1352
 msgid "Close this message? Save a draft to keep your changes."
 msgstr ""
 
-#: fltk/native/main.cpp:1246
+#: fltk/native/main.cpp:1387
 #, fuzzy
 #| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
 msgid "This build has no Microsoft sign-in client."
 msgstr ""
 "Αυτό το αντίγραφο του Penguin Mail δημιουργήθηκε χωρίς σύνδεση Microsoft."
 
-#: fltk/native/main.cpp:1248
+#: fltk/native/main.cpp:1389
 #, fuzzy
 #| msgid "Choose a Time…"
 msgid "Choose Client JSON…"
 msgstr "Επιλογή ώρας…"
 
-#: fltk/native/main.cpp:1248
+#: fltk/native/main.cpp:1389
 msgid "Setup Instructions"
 msgstr ""
 
-#: fltk/native/main.cpp:1249
+#: fltk/native/main.cpp:1390
 msgid ""
 "This build has no Google sign-in client.\n"
 "Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
@@ -12356,514 +12381,567 @@ msgid ""
 "in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1255
+#: fltk/native/main.cpp:1396
 msgid "Google Desktop OAuth Client"
 msgstr ""
 
-#: fltk/native/main.cpp:1260
+#: fltk/native/main.cpp:1401
 #, fuzzy
 #| msgid "Continue in your browser"
 msgid "Complete sign-in in your browser."
 msgstr "Συνεχίστε στο πρόγραμμα περιήγησης"
 
-#: fltk/native/main.cpp:1272
+#: fltk/native/main.cpp:1413
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
 msgstr ""
 
-#: fltk/native/main.cpp:1277
+#: fltk/native/main.cpp:1418
 #, fuzzy
 #| msgid "Google Meet"
 msgid "Google…"
 msgstr "Google Meet"
 
-#: fltk/native/main.cpp:1278
+#: fltk/native/main.cpp:1419
 #, fuzzy
 #| msgid "Microsoft Teams"
 msgid "Microsoft…"
 msgstr "Microsoft Teams"
 
-#: fltk/native/main.cpp:1280
+#: fltk/native/main.cpp:1421
 #, fuzzy
 #| msgid "Account"
 msgid "Account Type"
 msgstr "Λογαριασμός"
 
-#: fltk/native/main.cpp:1286 fltk/native/main.cpp:1339
+#: fltk/native/main.cpp:1430 fltk/native/main.cpp:1530
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "IMAP Server"
 msgstr "Διακομιστές MCP"
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1433
 #, fuzzy
 #| msgid "Security"
 msgid "IMAP Security"
 msgstr "Ασφάλεια"
 
-#: fltk/native/main.cpp:1292
+#: fltk/native/main.cpp:1436
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "SMTP Server"
 msgstr "Διακομιστές MCP"
 
-#: fltk/native/main.cpp:1295
+#: fltk/native/main.cpp:1439
 #, fuzzy
 #| msgid "Security"
 msgid "SMTP Security"
 msgstr "Ασφάλεια"
 
-#: fltk/native/main.cpp:1298
+#: fltk/native/main.cpp:1442
 #, fuzzy
 #| msgid "User Name"
 msgid "SMTP User Name"
 msgstr "Όνομα χρήστη"
 
-#: fltk/native/main.cpp:1299
+#: fltk/native/main.cpp:1443
 #, fuzzy
 #| msgid "Password"
 msgid "SMTP Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: fltk/native/main.cpp:1302
+#: fltk/native/main.cpp:1446 fltk/native/main.cpp:1583
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1306
+#: fltk/native/main.cpp:1450
 #, fuzzy
 #| msgid "Servers"
 msgid "Find Servers"
 msgstr "Διακομιστές"
 
-#: fltk/native/main.cpp:1313
+#: fltk/native/main.cpp:1457
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 
-#: fltk/native/main.cpp:1318
+#: fltk/native/main.cpp:1462
 #, fuzzy
 #| msgid "Use {server}"
 msgid "Use Servers"
 msgstr "Χρήση του {server}"
 
-#: fltk/native/main.cpp:1319
+#: fltk/native/main.cpp:1463
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 
-#: fltk/native/main.cpp:1337
+#: fltk/native/main.cpp:1483
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Misfin Identity…"
+msgstr "Εισαγωγή…"
+
+#: fltk/native/main.cpp:1486
+msgid "Misfin Identity Certificate (PEM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1490
+msgid "Misfin Private Key (PEM)"
+msgstr ""
+
+#: fltk/native/main.cpp:1528
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "POP3 Server"
 msgstr "Διακομιστές MCP"
 
-#: fltk/native/main.cpp:1338
+#: fltk/native/main.cpp:1529
 #, fuzzy
 #| msgid "Server"
 msgid "Server URL"
 msgstr "Διακομιστής"
 
-#: fltk/native/main.cpp:1354
+#: fltk/native/main.cpp:1545
 msgid "Authentication"
 msgstr ""
 
-#: fltk/native/main.cpp:1376
+#: fltk/native/main.cpp:1561
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Misfin Address"
+msgstr "{recipient}, δεν είναι διεύθυνση"
+
+#: fltk/native/main.cpp:1562
+msgid "Identity Name"
+msgstr ""
+
+#: fltk/native/main.cpp:1564 fltk/native/misfin.h:69
+msgid "Gemini Mailbox URL"
+msgstr ""
+
+#: fltk/native/main.cpp:1573
+#, fuzzy
+#| msgid "Create Address"
+msgid "Create Identity"
+msgstr "Δημιουργία διεύθυνσης"
+
+#: fltk/native/main.cpp:1577
+msgid ""
+"Misfin(C): one recipient, plain Gemtext, up to 16384 UTF-8 bytes. No "
+"attachments, Cc/Bcc, drafts, scheduled sending or OpenPGP. Receive through "
+"an optional provider-supplied Gemini archive or local Gemmail import. Create "
+"a five-year certificate or import an existing identity; provider "
+"registration is still required."
+msgstr ""
+
+#: fltk/native/main.cpp:1630
 msgid "Enter ports between 1 and 65535."
 msgstr ""
 
-#: fltk/native/main.cpp:1404
+#: fltk/native/main.cpp:1658
 msgid "Checking the incoming and outgoing servers…"
 msgstr ""
 
-#: fltk/native/main.cpp:1423
+#: fltk/native/main.cpp:1677
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
 msgstr ""
 
-#: fltk/native/main.cpp:1424
+#: fltk/native/main.cpp:1678
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
 "automatically."
 msgstr ""
 
-#: fltk/native/main.cpp:1426
+#: fltk/native/main.cpp:1680
 #, fuzzy
 #| msgid "Add Address"
 msgid "Addresses"
 msgstr "Προσθήκη διεύθυνσης"
 
-#: fltk/native/main.cpp:1442
+#: fltk/native/main.cpp:1696
 #, fuzzy
 #| msgid "Not encrypted in transit"
 msgid "No encryption key"
 msgstr "Χωρίς κρυπτογράφηση κατά τη μεταφορά"
 
-#: fltk/native/main.cpp:1449
+#: fltk/native/main.cpp:1703
 #, fuzzy
 #| msgid "Check for Updates"
 msgid "Check Local Keys"
 msgstr "Έλεγχος για ενημερώσεις"
 
-#: fltk/native/main.cpp:1450
+#: fltk/native/main.cpp:1704
 #, fuzzy
 #| msgid "Import…"
 msgid "Import Key File…"
 msgstr "Εισαγωγή…"
 
-#: fltk/native/main.cpp:1452
+#: fltk/native/main.cpp:1706
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Import OpenPGP Key"
 msgstr "Εισαγωγή κλειδιών OpenPGP"
 
-#: fltk/native/main.cpp:1455
+#: fltk/native/main.cpp:1709
 #, fuzzy
 #| msgid "Import…"
 msgid "Import"
 msgstr "Εισαγωγή…"
 
-#: fltk/native/main.cpp:1456
+#: fltk/native/main.cpp:1710
 msgid "Import this file into your GnuPG keyring?"
 msgstr ""
 
-#: fltk/native/main.cpp:1457
+#: fltk/native/main.cpp:1711
 #, fuzzy
 #| msgid "Import…"
 msgid "Importing key…"
 msgstr "Εισαγωγή…"
 
-#: fltk/native/main.cpp:1460
+#: fltk/native/main.cpp:1714
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Imported keys:"
 msgstr "Εισαγωγή κλειδιών OpenPGP"
 
-#: fltk/native/main.cpp:1470
+#: fltk/native/main.cpp:1724
 #, fuzzy
 #| msgid "Conversation"
 msgid "GnuPG version:"
 msgstr "Συζήτηση"
 
-#: fltk/native/main.cpp:1476
+#: fltk/native/main.cpp:1730
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Start Penguin Mail at login"
 msgstr "Ρωτήστε το Penguin Mail…"
 
-#: fltk/native/main.cpp:1480
+#: fltk/native/main.cpp:1734
 msgid "Keep syncing in the tray when the window closes"
 msgstr ""
 
-#: fltk/native/main.cpp:1483
+#: fltk/native/main.cpp:1737
 #, fuzzy
 #| msgid "Notifications"
 msgid "Show new mail notifications"
 msgstr "Ειδοποιήσεις"
 
-#: fltk/native/main.cpp:1488
+#: fltk/native/main.cpp:1742
 #, fuzzy
 #| msgid "Group Messages into Conversations"
 msgid "Group messages into conversations"
 msgstr "Ομαδοποίηση μηνυμάτων σε συζητήσεις"
 
-#: fltk/native/main.cpp:1491
+#: fltk/native/main.cpp:1745
 msgid "Sync Interval (seconds)"
 msgstr ""
 
-#: fltk/native/main.cpp:1494
+#: fltk/native/main.cpp:1748
 msgid "Local Mail Window (days)"
 msgstr ""
 
-#: fltk/native/main.cpp:1498
+#: fltk/native/main.cpp:1752
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
 msgstr ""
 
-#: fltk/native/main.cpp:1506
+#: fltk/native/main.cpp:1760
 #, fuzzy
 #| msgid "Could not paste the image"
 msgid "Could not update login startup"
 msgstr "Δεν ήταν δυνατή η επικόλληση της εικόνας"
 
-#: fltk/native/main.cpp:1550
+#: fltk/native/main.cpp:1804
 #, fuzzy
 #| msgid "Calendar to add to"
 msgid "Calendar loaded"
 msgstr "Ημερολόγιο προορισμού"
 
-#: fltk/native/main.cpp:1599
+#: fltk/native/main.cpp:1853
 msgid "No writable calendar is available."
 msgstr ""
 
-#: fltk/native/main.cpp:1604
+#: fltk/native/main.cpp:1858
 #, fuzzy
 #| msgid "Starts"
 msgid "Start"
 msgstr "Έναρξη"
 
-#: fltk/native/main.cpp:1605
+#: fltk/native/main.cpp:1859
 #, fuzzy
 #| msgid "Ends"
 msgid "End"
 msgstr "Λήξη"
 
-#: fltk/native/main.cpp:1606
+#: fltk/native/main.cpp:1860
 #, fuzzy
 #| msgid "Notifications"
 msgid "Location"
 msgstr "Ειδοποιήσεις"
 
-#: fltk/native/main.cpp:1610
+#: fltk/native/main.cpp:1864
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
 msgstr ""
 
-#: fltk/native/main.cpp:1631
+#: fltk/native/main.cpp:1885
 #, fuzzy
 #| msgid "New Event"
 msgid "Save Event"
 msgstr "Νέο συμβάν"
 
-#: fltk/native/main.cpp:1637
+#: fltk/native/main.cpp:1891
 msgid "Enter a title and a valid start and end time."
 msgstr ""
 
-#: fltk/native/main.cpp:1662 fltk/native/main.cpp:1887
+#: fltk/native/main.cpp:1916 fltk/native/main.cpp:2206
 #, fuzzy
 #| msgid "Delete it"
 msgid "Delete Event"
 msgstr "Διαγραφή"
 
-#: fltk/native/main.cpp:1663
+#: fltk/native/main.cpp:1917
 msgid "Delete this event and notify its guests?"
 msgstr ""
 
-#: fltk/native/main.cpp:1674
+#: fltk/native/main.cpp:1928
 #, fuzzy
 #| msgid "Contacts"
 msgid "Contacts loaded"
 msgstr "Επαφές"
 
-#: fltk/native/main.cpp:1695 fltk/native/main.cpp:1895
+#: fltk/native/main.cpp:1953 fltk/native/main.cpp:2214
 #, fuzzy
 #| msgid "Contact"
 msgid "New Contact"
 msgstr "Επαφή"
 
-#: fltk/native/main.cpp:1703
+#: fltk/native/main.cpp:1961
 #, fuzzy
 #| msgid "Contact"
 msgid "Save Contact"
 msgstr "Επαφή"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1955
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2279
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Forward"
 msgstr "Μήνυμα"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1951
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2275
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Reply"
 msgstr "Μήνυμα"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1953
+#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2031
+#: fltk/native/main.cpp:2277
 #, fuzzy
 #| msgid "Reply All"
 msgid "Message/Reply All"
 msgstr "Απάντηση σε όλους"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1957
+#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2031
+#: fltk/native/main.cpp:2281
 #, fuzzy
 #| msgid "Message Cache"
 msgid "Message/Archive"
 msgstr "Προσωρινή μνήμη μηνυμάτων"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1959
+#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2032
+#: fltk/native/main.cpp:2283
 #, fuzzy
 #| msgid "Move to Trash"
 msgid "Message/Move to Trash"
 msgstr "Μετακίνηση στον Κάδο"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1965
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2289
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Flag"
 msgstr "Μήνυμα"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1961
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2032
+#: fltk/native/main.cpp:2285
 #, fuzzy
 #| msgid "Message sent"
 msgid "Message/Mark Read"
 msgstr "Το μήνυμα στάλθηκε"
 
-#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1963
+#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2287
 #, fuzzy
 #| msgid "Mark as Unread"
 msgid "Message/Mark Unread"
 msgstr "Σήμανση ως μη αναγνωσμένο"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1967
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
+#: fltk/native/main.cpp:2291
 #, fuzzy
 #| msgid "New Label…"
 msgid "Message/Label…"
 msgstr "Νέα ετικέτα…"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1968
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
+#: fltk/native/main.cpp:2292
 #, fuzzy
 #| msgid "Remind Me"
 msgid "Message/Remind Me…"
 msgstr "Υπενθύμιση"
 
-#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1966
+#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2033
+#: fltk/native/main.cpp:2290
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Unflag"
 msgstr "Μήνυμα"
 
-#: fltk/native/main.cpp:1750 fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:2010 fltk/native/main.cpp:2035
+#: fltk/native/main.cpp:2237
 #, fuzzy
 #| msgid "Conversation"
 msgid "File/Export Conversation…"
 msgstr "Συζήτηση"
 
-#: fltk/native/main.cpp:1838
-#, fuzzy
-#| msgid "Conversation"
-msgid "Conversations"
-msgstr "Συζήτηση"
-
-#: fltk/native/main.cpp:1883
-#, fuzzy
-#| msgid "Calendars"
-msgid "Calendar days"
-msgstr "Ημερολόγια"
-
-#: fltk/native/main.cpp:1893
-#, fuzzy
-#| msgid "Contacts"
-msgid "Find Contacts"
-msgstr "Επαφές"
-
-#: fltk/native/main.cpp:1898
-msgid "Write to Selected Contact"
-msgstr ""
-
-#: fltk/native/main.cpp:1909
-#, fuzzy
-#| msgid "Ask Penguin Mail…"
-msgid "Starting Penguin Mail…"
-msgstr "Ρωτήστε το Penguin Mail…"
-
-#: fltk/native/main.cpp:1911
-#, fuzzy
-#| msgid "New Message"
-msgid "File/New Message"
-msgstr "Νέο μήνυμα"
-
-#: fltk/native/main.cpp:1913
-#, fuzzy
-#| msgid "Add Account…"
-msgid "File/Add Account…"
-msgstr "Προσθήκη λογαριασμού…"
-
-#: fltk/native/main.cpp:1915
-#, fuzzy
-#| msgid "New Message"
-msgid "File/Misfin Messaging…"
-msgstr "Νέο μήνυμα"
-
-#: fltk/native/main.cpp:1919
-#, fuzzy
-#| msgid "OpenPGP Keys"
-msgid "File/OpenPGP Keys…"
-msgstr "Κλειδιά OpenPGP"
-
-#: fltk/native/main.cpp:1920
-#, fuzzy
-#| msgid "Preferences"
-msgid "File/Preferences…"
-msgstr "Προτιμήσεις"
-
-#: fltk/native/main.cpp:1922
-msgid "File/Show Window"
-msgstr ""
-
-#: fltk/native/main.cpp:1923
-#, fuzzy
-#| msgid "Close window"
-msgid "File/Close Window"
-msgstr "Κλείσιμο παραθύρου"
-
-#: fltk/native/main.cpp:1925
-#, fuzzy
-#| msgid "Quit"
-msgid "File/Quit"
-msgstr "Έξοδος"
-
-#: fltk/native/main.cpp:1931
-#, fuzzy
-#| msgid "Search"
-msgid "Edit/Search"
-msgstr "Αναζήτηση"
-
-#: fltk/native/main.cpp:1933
-#, fuzzy
-#| msgid "View"
-msgid "View/Mail"
-msgstr "Προβολή"
-
-#: fltk/native/main.cpp:1934
-#, fuzzy
-#| msgid "New Calendar"
-msgid "View/Calendar"
-msgstr "Νέο ημερολόγιο"
-
-#: fltk/native/main.cpp:1936
-#, fuzzy
-#| msgid "Contacts"
-msgid "View/Contacts"
-msgstr "Επαφές"
-
-#: fltk/native/main.cpp:1938
-#, fuzzy
-#| msgid "Refresh"
-msgid "View/Refresh"
-msgstr "Ανανέωση"
-
-#: fltk/native/main.cpp:1941
-#, fuzzy
-#| msgid "View Source"
-msgid "View/Load More"
-msgstr "Προβολή πηγαίου κώδικα"
-
-#: fltk/native/main.cpp:1946
+#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2270
 #, fuzzy
 #| msgid "Edit Draft"
 msgid "Message/Edit Draft"
 msgstr "Επεξεργασία πρόχειρου"
 
-#: fltk/native/main.cpp:1947
+#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2271
 msgid "Message/Send Queued Message Now"
 msgstr ""
 
-#: fltk/native/main.cpp:1949
+#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2239
+#, fuzzy
+#| msgid "OpenPGP Keys"
+msgid "File/OpenPGP Keys…"
+msgstr "Κλειδιά OpenPGP"
+
+#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2273
 msgid "Message/Delete Queued Message"
 msgstr ""
 
-#: fltk/native/main.cpp:1969
+#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2234
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Account Settings…"
+msgstr "Προσθήκη λογαριασμού…"
+
+#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2254
+#, fuzzy
+#| msgid "New Calendar"
+msgid "View/Calendar"
+msgstr "Νέο ημερολόγιο"
+
+#: fltk/native/main.cpp:2044 fltk/native/main.cpp:2256
+#, fuzzy
+#| msgid "Contacts"
+msgid "View/Contacts"
+msgstr "Επαφές"
+
+#: fltk/native/main.cpp:2156
+#, fuzzy
+#| msgid "Conversation"
+msgid "Conversations"
+msgstr "Συζήτηση"
+
+#: fltk/native/main.cpp:2202
+#, fuzzy
+#| msgid "Calendars"
+msgid "Calendar days"
+msgstr "Ημερολόγια"
+
+#: fltk/native/main.cpp:2212
+#, fuzzy
+#| msgid "Contacts"
+msgid "Find Contacts"
+msgstr "Επαφές"
+
+#: fltk/native/main.cpp:2217
+msgid "Write to Selected Contact"
+msgstr ""
+
+#: fltk/native/main.cpp:2228
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Starting Penguin Mail…"
+msgstr "Ρωτήστε το Penguin Mail…"
+
+#: fltk/native/main.cpp:2230
+#, fuzzy
+#| msgid "New Message"
+msgid "File/New Message"
+msgstr "Νέο μήνυμα"
+
+#: fltk/native/main.cpp:2232
+#, fuzzy
+#| msgid "Add Account…"
+msgid "File/Add Account…"
+msgstr "Προσθήκη λογαριασμού…"
+
+#: fltk/native/main.cpp:2240
+#, fuzzy
+#| msgid "Preferences"
+msgid "File/Preferences…"
+msgstr "Προτιμήσεις"
+
+#: fltk/native/main.cpp:2242
+msgid "File/Show Window"
+msgstr ""
+
+#: fltk/native/main.cpp:2243
+#, fuzzy
+#| msgid "Close window"
+msgid "File/Close Window"
+msgstr "Κλείσιμο παραθύρου"
+
+#: fltk/native/main.cpp:2245
+#, fuzzy
+#| msgid "Quit"
+msgid "File/Quit"
+msgstr "Έξοδος"
+
+#: fltk/native/main.cpp:2251
+#, fuzzy
+#| msgid "Search"
+msgid "Edit/Search"
+msgstr "Αναζήτηση"
+
+#: fltk/native/main.cpp:2253
+#, fuzzy
+#| msgid "View"
+msgid "View/Mail"
+msgstr "Προβολή"
+
+#: fltk/native/main.cpp:2258
+#, fuzzy
+#| msgid "Refresh"
+msgid "View/Refresh"
+msgstr "Ανανέωση"
+
+#: fltk/native/main.cpp:2265
+#, fuzzy
+#| msgid "View Source"
+msgid "View/Load More"
+msgstr "Προβολή πηγαίου κώδικα"
+
+#: fltk/native/main.cpp:2293
 #, fuzzy
 #| msgid "Keyboard Shortcuts"
 msgid "Help/Keyboard Shortcuts"
 msgstr "Συντομεύσεις πληκτρολογίου"
 
-#: fltk/native/main.cpp:1971
+#: fltk/native/main.cpp:2295
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12882,13 +12960,13 @@ msgid ""
 "DomeD owns Super shortcuts."
 msgstr ""
 
-#: fltk/native/main.cpp:1978
+#: fltk/native/main.cpp:2302
 #, fuzzy
 #| msgid "About Penguin Mail"
 msgid "Help/About Penguin Mail"
 msgstr "Σχετικά με το Penguin Mail"
 
-#: fltk/native/main.cpp:1981
+#: fltk/native/main.cpp:2305
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12897,184 +12975,21 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2109
+#: fltk/native/main.cpp:2448
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 
-#: fltk/native/misfin.h:36
-#, fuzzy
-#| msgid "This Message"
-msgid "Misfin Messaging"
-msgstr "Αυτό το μήνυμα"
-
-#: fltk/native/misfin.h:38
-#, fuzzy
-#| msgid "Import…"
-msgid "Create Misfin Identity…"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:39
-#, fuzzy
-#| msgid "Import…"
-msgid "Import Misfin Identity…"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:40
-msgid "Identity"
-msgstr ""
-
-#: fltk/native/misfin.h:41
-#, fuzzy
-#| msgid "Recipients"
-msgid "Misfin Recipient"
-msgstr "Παραλήπτες"
-
-#: fltk/native/misfin.h:43
-msgid "One mailbox@hostname address; Misfin(C), port 1958 by default"
-msgstr ""
-
-#: fltk/native/misfin.h:45
-#, fuzzy
-#| msgid "New Message"
-msgid "Gemtext Message"
-msgstr "Νέο μήνυμα"
-
-#: fltk/native/misfin.h:49
-msgid "Send Misfin"
-msgstr ""
-
-#: fltk/native/misfin.h:51
-#, fuzzy
-#| msgid "Import…"
-msgid "Import Gemmail Archive…"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:52
-msgid "Refresh Local History"
-msgstr ""
-
-#: fltk/native/misfin.h:53
-msgid "Gemini Mailbox URL"
-msgstr ""
-
-#: fltk/native/misfin.h:55
-msgid ""
-"Optional server-provided gemini:// URL for a Misfin(C) gemmail or gembox "
-"archive"
-msgstr ""
-
-#: fltk/native/misfin.h:57
-#, fuzzy
-#| msgid "New Smart Mailbox"
-msgid "Fetch Mailbox"
-msgstr "Νέο έξυπνο γραμματοκιβώτιο"
-
-#: fltk/native/misfin.h:59
-msgid "Local Misfin History"
-msgstr ""
-
-#: fltk/native/misfin.h:62
-msgid "Gemmail Text"
-msgstr ""
-
-#: fltk/native/misfin.h:68
-msgid ""
-"Misfin(C) uses certificate identities. Attachments and SMTP are not used."
-msgstr ""
-
-#: fltk/native/misfin.h:100
-#, fuzzy
-#| msgid "Receive Mail"
-msgid "Received: "
-msgstr "Λήψη αλληλογραφίας"
-
-#: fltk/native/misfin.h:100
-#, fuzzy
-#| msgid "Sent"
-msgid "Sent: "
-msgstr "Απεσταλμένα"
-
-#: fltk/native/misfin.h:132
-msgid "Misfin Identity Certificate (PEM)"
-msgstr ""
-
-#: fltk/native/misfin.h:136
-msgid "Misfin Private Key (PEM)"
-msgstr ""
-
-#: fltk/native/misfin.h:158
-#, fuzzy
-#| msgid "Import…"
-msgid "Create Misfin Identity"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:160
-#, fuzzy
-#| msgid "{recipient}, not an address"
-msgid "Misfin Address"
-msgstr "{recipient}, δεν είναι διεύθυνση"
-
-#: fltk/native/misfin.h:162
-msgid "Mailbox and DNS hostname assigned by your Misfin provider"
-msgstr ""
-
-#: fltk/native/misfin.h:163
-msgid "Identity Name"
-msgstr ""
-
-#: fltk/native/misfin.h:166
-msgid ""
-"Creates a local certificate valid for five years.\n"
-"Register its public certificate with your provider to receive mail.\n"
-"This does not create a server mailbox."
-msgstr ""
-
-#: fltk/native/misfin.h:172
-#, fuzzy
-#| msgid "Create Address"
-msgid "Create Identity"
-msgstr "Δημιουργία διεύθυνσης"
-
-#: fltk/native/misfin.h:182
-#, fuzzy
-#| msgid "Import…"
-msgid "Creating Misfin identity…"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:200
-msgid ""
-"Identity created. Copy its public certificate from File to register with "
-"your provider."
-msgstr ""
-
-#: fltk/native/misfin.h:208
-#, fuzzy
-#| msgid "Import…"
-msgid "File/Create Identity"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:234
-msgid ""
-"Public identity certificate copied. The private key stays in Penguin Mail."
-msgstr ""
-
-#: fltk/native/misfin.h:260
-#, fuzzy
-#| msgid "Checking for Updates…"
-msgid "Checking server certificate…"
-msgstr "Έλεγχος για ενημερώσεις…"
-
-#: fltk/native/misfin.h:272
+#: fltk/native/misfin.h:19
 #, fuzzy
 #| msgid "The server did not take the rules."
 msgid "This server is not trusted yet."
 msgstr "Ο διακομιστής δεν δέχτηκε τους κανόνες."
 
-#: fltk/native/misfin.h:273
+#: fltk/native/misfin.h:20
 msgid "The server certificate has changed."
 msgstr ""
 
-#: fltk/native/misfin.h:274
+#: fltk/native/misfin.h:22
 #, c-format
 msgid ""
 "%s\n"
@@ -13084,61 +12999,76 @@ msgid ""
 "Trust this fingerprint and continue?"
 msgstr ""
 
-#: fltk/native/misfin.h:276
+#: fltk/native/misfin.h:23
 #, fuzzy
 #| msgid "Continue"
 msgid "Trust and Continue"
 msgstr "Συνέχεια"
 
-#: fltk/native/misfin.h:280
+#: fltk/native/misfin.h:26
 #, fuzzy
 #| msgid "Canceled."
 msgid "Canceled"
 msgstr "Ακυρώθηκε."
 
-#: fltk/native/misfin.h:285
-msgid "Contacting Misfin server…"
+#: fltk/native/misfin.h:45
+msgid ""
+"Set a provider-supplied Gemini mailbox URL in Account Settings, or import a "
+"Gemmail archive."
 msgstr ""
 
-#: fltk/native/misfin.h:298
-msgid "Misfin message accepted by the server"
-msgstr ""
+#: fltk/native/misfin.h:50
+#, fuzzy
+#| msgid "New Smart Mailbox"
+msgid "Fetching Misfin mailbox…"
+msgstr "Νέο έξυπνο γραμματοκιβώτιο"
 
-#: fltk/native/misfin.h:299
+#: fltk/native/misfin.h:56
 msgid "Misfin mailbox fetched"
 msgstr ""
 
-#: fltk/native/misfin.h:318
+#: fltk/native/misfin.h:67
+#, fuzzy
+#| msgid "Account options"
+msgid "Account Settings"
+msgstr "Επιλογές λογαριασμού"
+
+#: fltk/native/misfin.h:75
+msgid ""
+"Misfin(C) receives mail through a provider-supplied Gemini archive or a "
+"local Gemmail import.\n"
+"Refresh fetches the configured archive with your certificate. There is no "
+"background polling.\n"
+"Creating an identity does not register a server mailbox. Copy the public "
+"certificate for your provider."
+msgstr ""
+
+#: fltk/native/misfin.h:87
+msgid ""
+"Public identity certificate copied. The private key stays in Penguin Mail."
+msgstr ""
+
+#: fltk/native/misfin.h:94
 msgid "Misfin(C) Gemmail or Gembox Archive"
 msgstr ""
 
-#: fltk/native/misfin.h:337
+#: fltk/native/misfin.h:102
 #, fuzzy
-#| msgid "Send"
-msgid "File/Send Misfin"
-msgstr "Αποστολή"
+#| msgid "a certificate gpgsm would not name"
+msgid "Copy Identity Certificate"
+msgstr "ένα πιστοποιητικό που το gpgsm δεν κατονόμασε"
 
-#: fltk/native/misfin.h:339
-#, fuzzy
-#| msgid "Import…"
-msgid "File/Create Misfin Identity…"
-msgstr "Εισαγωγή…"
-
-#: fltk/native/misfin.h:340
+#: fltk/native/misfin.h:103
 #, fuzzy
 #| msgid "Import…"
-msgid "File/Import Misfin Identity…"
+msgid "Import Gemmail Archive…"
 msgstr "Εισαγωγή…"
 
-#: fltk/native/misfin.h:341
+#: fltk/native/misfin.h:114
 msgid "File/Copy Identity Certificate"
 msgstr ""
 
-#: fltk/native/misfin.h:342
-msgid "File/Fetch Mailbox"
-msgstr ""
-
-#: fltk/native/misfin.h:343
+#: fltk/native/misfin.h:115
 msgid "File/Import Gemmail Archive…"
 msgstr ""
 
@@ -13568,73 +13498,103 @@ msgstr ""
 msgid "Mailbox archive exceeds 4 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:57
+#: sync/src/misfin/mod.rs:59
 msgid "Misfin storage exceeds 8 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:78 sync/src/misfin/mod.rs:111
+#: sync/src/misfin/mod.rs:97 sync/src/misfin/mod.rs:140
 msgid "At most 16 Misfin identities can be imported"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:95
+#: sync/src/misfin/mod.rs:114
 msgid ""
 "An identity for this address already exists. Import its certificate instead."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:128
+#: sync/src/misfin/mod.rs:158
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Misfin account identifiers conflict"
+msgstr "Η σύνδεση διακόπηκε"
+
+#: sync/src/misfin/mod.rs:172
+#, fuzzy
+#| msgid "Mailbox storage is not available through this connection."
+msgid "This mailbox is not available for Misfin"
+msgstr ""
+"Ο χώρος αποθήκευσης του γραμματοκιβωτίου δεν είναι διαθέσιμος μέσω αυτής της "
+"σύνδεσης."
+
+#: sync/src/misfin/mod.rs:225
 msgid "Choose a Misfin identity first"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:153
+#: sync/src/misfin/mod.rs:249
+#, fuzzy
+#| msgid "This Message"
+msgid "Misfin message not found"
+msgstr "Αυτό το μήνυμα"
+
+#: sync/src/misfin/mod.rs:282
 msgid "Invalid server fingerprint"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:162
+#: sync/src/misfin/mod.rs:291
 msgid ""
 "Delivery was not confirmed. The message may have arrived; check before "
 "sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:166
+#: sync/src/misfin/mod.rs:295
 #, fuzzy
 #| msgid "The server had already sent this message."
 msgid "Misfin server declined the message"
 msgstr "Ο διακομιστής είχε ήδη στείλει αυτό το μήνυμα."
 
-#: sync/src/misfin/mod.rs:194
+#: sync/src/misfin/mod.rs:323
 msgid "Message accepted, but the local copy could not be saved."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:198
+#: sync/src/misfin/mod.rs:327
 msgid ""
 "Message accepted, but the recipient fingerprint is invalid. Do not resend."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:204
+#: sync/src/misfin/mod.rs:333
 msgid ""
 "Message accepted, but the recipient's certificate fingerprint changed. "
 "Verify it before sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:222
+#: sync/src/misfin/mod.rs:351
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown Misfin request"
 msgstr "Άγνωστος αποστολέας"
 
-#: sync/src/misfin/mod.rs:252
+#: sync/src/misfin/mod.rs:381
 msgid "Expected a regular file"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:259
+#: sync/src/misfin/mod.rs:388
 msgid "File exceeds size limit"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:266
+#: sync/src/misfin/mod.rs:395
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Misfin connection timed out"
 msgstr "Η σύνδεση διακόπηκε"
+
+#: sync/src/misfin/mod.rs:413
+msgid "Select Misfin when sending from a Misfin account"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:427
+msgid ""
+"Misfin supports one recipient and plain Gemtext, up to 16384 UTF-8 bytes. "
+"Cc, Bcc, attachments, drafts, scheduled sending and OpenPGP are unavailable."
+msgstr ""
 
 #: sync/src/misfin/wire.rs:21 sync/src/misfin/wire.rs:32
 #, fuzzy
@@ -14241,6 +14201,71 @@ msgstr "Σήμανση ως μη ανεπιθύμητο"
 #: sync/src/triage.rs:70
 msgid "Move to {folder}"
 msgstr "Μετακίνηση σε {folder}"
+
+#, fuzzy
+#~| msgid "New Message"
+#~ msgid "File/Misfin Messaging…"
+#~ msgstr "Νέο μήνυμα"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Create Misfin Identity…"
+#~ msgstr "Εισαγωγή…"
+
+#, fuzzy
+#~| msgid "Recipients"
+#~ msgid "Misfin Recipient"
+#~ msgstr "Παραλήπτες"
+
+#, fuzzy
+#~| msgid "New Message"
+#~ msgid "Gemtext Message"
+#~ msgstr "Νέο μήνυμα"
+
+#, fuzzy
+#~| msgid "Receive Mail"
+#~ msgid "Received: "
+#~ msgstr "Λήψη αλληλογραφίας"
+
+#, fuzzy
+#~| msgid "Sent"
+#~ msgid "Sent: "
+#~ msgstr "Απεσταλμένα"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Create Misfin Identity"
+#~ msgstr "Εισαγωγή…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "Creating Misfin identity…"
+#~ msgstr "Εισαγωγή…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Create Identity"
+#~ msgstr "Εισαγωγή…"
+
+#, fuzzy
+#~| msgid "Checking for Updates…"
+#~ msgid "Checking server certificate…"
+#~ msgstr "Έλεγχος για ενημερώσεις…"
+
+#, fuzzy
+#~| msgid "Send"
+#~ msgid "File/Send Misfin"
+#~ msgstr "Αποστολή"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Create Misfin Identity…"
+#~ msgstr "Εισαγωγή…"
+
+#, fuzzy
+#~| msgid "Import…"
+#~ msgid "File/Import Misfin Identity…"
+#~ msgstr "Εισαγωγή…"
 
 #, fuzzy
 #~| msgid "New message"

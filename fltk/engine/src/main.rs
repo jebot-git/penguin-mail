@@ -278,8 +278,38 @@ impl Engine {
         let op = string(r, "op");
         #[cfg(feature = "misfin")]
         if op.starts_with("misfin-") {
-            if self.demo { bail!("{}", gettext("Demo mode cannot use Misfin identities")); }
+            if self.demo {
+                bail!("{}", gettext("Demo mode cannot use Misfin identities"));
+            }
             return self.misfin.request(r).await;
+        }
+        #[cfg(feature = "misfin")]
+        if account(r) < 0 {
+            if self.demo {
+                bail!("{}", gettext("Demo mode cannot use Misfin identities"));
+            }
+            let mapped = match op {
+                "list" => "misfin-list",
+                "thread" => "misfin-thread",
+                "compose" => "compose",
+                _ => bail!("{}", gettext("This action is not available for Misfin")),
+            };
+            let mut request = r.clone();
+            request["op"] = json!(mapped);
+            return self.misfin.request(&request).await;
+        }
+        if op == "compose" && r["misfin"].as_bool() == Some(true) {
+            bail!(
+                "{}",
+                gettext("Choose a Misfin account to send a Misfin message")
+            );
+        }
+        if op == "action"
+            && r["targets"]
+                .as_array()
+                .is_some_and(|targets| targets.iter().any(|t| account(t) < 0))
+        {
+            bail!("{}", gettext("This action is not available for Misfin"));
         }
         match op {
             "notification-settings" | "notification-delivered" | "notification-action" => {
@@ -294,6 +324,14 @@ impl Engine {
                     items.push(
                         json!({"account":a,"labels":labels, "connected":self.sync.is_running(id)}),
                     );
+                }
+                #[cfg(feature = "misfin")]
+                if !self.demo {
+                    let extra = self
+                        .misfin
+                        .request(&json!({"op":"misfin-accounts"}))
+                        .await?;
+                    items.extend(extra["items"].as_array().cloned().unwrap_or_default());
                 }
                 let unread = self
                     .db
@@ -323,9 +361,28 @@ impl Engine {
                     .boxes
                     .list(&mailbox, &scope, &view, Loaded::nothing())
                     .await?;
-                Ok(
-                    json!({"rows":listing.rows,"title":listing.title,"subtitle":listing.subtitle,"unread":listing.unread,"more":listing.more,"notices":listing.notices}),
-                )
+                #[allow(unused_mut)]
+                let mut result = json!({"rows":listing.rows,"title":listing.title,"subtitle":listing.subtitle,"unread":listing.unread,"more":listing.more,"notices":listing.notices});
+                #[cfg(feature = "misfin")]
+                if !self.demo
+                    && account(r) == 0
+                    && matches!(string(r, "mailbox"), "inbox" | "sent" | "all" | "search")
+                {
+                    let mut request = r.clone();
+                    request["op"] = json!("misfin-list");
+                    let extra = self.misfin.request(&request).await?;
+                    let rows = result["rows"].as_array_mut().unwrap();
+                    rows.extend(extra["rows"].as_array().cloned().unwrap_or_default());
+                    rows.sort_by_key(|row| {
+                        std::cmp::Reverse(row["last_message_at"].as_i64().unwrap_or(0))
+                    });
+                    let more = result["more"].as_bool().unwrap_or(false)
+                        || extra["more"].as_bool().unwrap_or(false)
+                        || result["rows"].as_array().unwrap().len() > limit;
+                    result["rows"].as_array_mut().unwrap().truncate(limit);
+                    result["more"] = json!(more);
+                }
+                Ok(result)
             }
             "thread" => {
                 let id = account(r);
