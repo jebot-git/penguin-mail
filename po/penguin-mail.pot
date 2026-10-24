@@ -11323,7 +11323,7 @@ msgstr ""
 msgid "File/Save Draft"
 msgstr ""
 
-#: fltk/native/main.cpp:1195 fltk/native/misfin.h:248
+#: fltk/native/main.cpp:1195 fltk/native/misfin.h:209 fltk/native/misfin.h:344
 msgid "File/Close"
 msgstr ""
 
@@ -11331,19 +11331,23 @@ msgstr ""
 msgid "Edit/Undo"
 msgstr ""
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:249
+#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:211
+#: fltk/native/misfin.h:345
 msgid "Edit/Cut"
 msgstr ""
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:250
+#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:212
+#: fltk/native/misfin.h:346
 msgid "Edit/Copy"
 msgstr ""
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:251
+#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:213
+#: fltk/native/misfin.h:347
 msgid "Edit/Paste"
 msgstr ""
 
-#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:252
+#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:214
+#: fltk/native/misfin.h:348
 msgid "Edit/Select All"
 msgstr ""
 
@@ -11784,98 +11788,148 @@ msgstr ""
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 
-#: fltk/native/misfin.h:35
+#: fltk/native/misfin.h:36
 msgid "Misfin Messaging"
 msgstr ""
 
-#: fltk/native/misfin.h:37
-msgid "Import Misfin Identity…"
-msgstr ""
-
 #: fltk/native/misfin.h:38
-msgid "Identity"
+msgid "Create Misfin Identity…"
 msgstr ""
 
 #: fltk/native/misfin.h:39
-msgid "Misfin Recipient"
+msgid "Import Misfin Identity…"
 msgstr ""
 
 #: fltk/native/misfin.h:40
+msgid "Identity"
+msgstr ""
+
+#: fltk/native/misfin.h:41
+msgid "Misfin Recipient"
+msgstr ""
+
+#: fltk/native/misfin.h:43
 msgid "One mailbox@hostname address; Misfin(C), port 1958 by default"
 msgstr ""
 
-#: fltk/native/misfin.h:42
+#: fltk/native/misfin.h:45
 msgid "Gemtext Message"
 msgstr ""
 
-#: fltk/native/misfin.h:46
+#: fltk/native/misfin.h:49
 msgid "Send Misfin"
 msgstr ""
 
-#: fltk/native/misfin.h:47
+#: fltk/native/misfin.h:51
 msgid "Import Gemmail Archive…"
 msgstr ""
 
-#: fltk/native/misfin.h:48
+#: fltk/native/misfin.h:52
 msgid "Refresh Local History"
 msgstr ""
 
-#: fltk/native/misfin.h:49
+#: fltk/native/misfin.h:53
 msgid "Gemini Mailbox URL"
 msgstr ""
 
-#: fltk/native/misfin.h:50
+#: fltk/native/misfin.h:55
 msgid ""
 "Optional server-provided gemini:// URL for a Misfin(C) gemmail or gembox "
 "archive"
 msgstr ""
 
-#: fltk/native/misfin.h:52
+#: fltk/native/misfin.h:57
 msgid "Fetch Mailbox"
 msgstr ""
 
-#: fltk/native/misfin.h:53
+#: fltk/native/misfin.h:59
 msgid "Local Misfin History"
 msgstr ""
 
-#: fltk/native/misfin.h:56
+#: fltk/native/misfin.h:62
 msgid "Gemmail Text"
 msgstr ""
 
-#: fltk/native/misfin.h:63
+#: fltk/native/misfin.h:68
 msgid ""
 "Misfin(C) uses certificate identities. Attachments and SMTP are not used."
 msgstr ""
 
-#: fltk/native/misfin.h:94
+#: fltk/native/misfin.h:100
 msgid "Received: "
 msgstr ""
 
-#: fltk/native/misfin.h:94
+#: fltk/native/misfin.h:100
 msgid "Sent: "
 msgstr ""
 
-#: fltk/native/misfin.h:126
+#: fltk/native/misfin.h:132
 msgid "Misfin Identity Certificate (PEM)"
 msgstr ""
 
-#: fltk/native/misfin.h:130
+#: fltk/native/misfin.h:136
 msgid "Misfin Private Key (PEM)"
 msgstr ""
 
-#: fltk/native/misfin.h:170
-msgid "Checking server certificate…"
+#: fltk/native/misfin.h:158
+msgid "Create Misfin Identity"
+msgstr ""
+
+#: fltk/native/misfin.h:160
+msgid "Misfin Address"
+msgstr ""
+
+#: fltk/native/misfin.h:162
+msgid "Mailbox and DNS hostname assigned by your Misfin provider"
+msgstr ""
+
+#: fltk/native/misfin.h:163
+msgid "Identity Name"
+msgstr ""
+
+#: fltk/native/misfin.h:166
+msgid ""
+"Creates a local certificate valid for five years.\n"
+"Register its public certificate with your provider to receive mail.\n"
+"This does not create a server mailbox."
+msgstr ""
+
+#: fltk/native/misfin.h:172
+msgid "Create Identity"
 msgstr ""
 
 #: fltk/native/misfin.h:182
+msgid "Creating Misfin identity…"
+msgstr ""
+
+#: fltk/native/misfin.h:200
+msgid ""
+"Identity created. Copy its public certificate from File to register with "
+"your provider."
+msgstr ""
+
+#: fltk/native/misfin.h:208
+msgid "File/Create Identity"
+msgstr ""
+
+#: fltk/native/misfin.h:234
+msgid ""
+"Public identity certificate copied. The private key stays in Penguin Mail."
+msgstr ""
+
+#: fltk/native/misfin.h:260
+msgid "Checking server certificate…"
+msgstr ""
+
+#: fltk/native/misfin.h:272
 msgid "This server is not trusted yet."
 msgstr ""
 
-#: fltk/native/misfin.h:183
+#: fltk/native/misfin.h:273
 msgid "The server certificate has changed."
 msgstr ""
 
-#: fltk/native/misfin.h:184
+#: fltk/native/misfin.h:274
 #, c-format
 msgid ""
 "%s\n"
@@ -11885,43 +11939,51 @@ msgid ""
 "Trust this fingerprint and continue?"
 msgstr ""
 
-#: fltk/native/misfin.h:185
+#: fltk/native/misfin.h:276
 msgid "Trust and Continue"
 msgstr ""
 
-#: fltk/native/misfin.h:188
+#: fltk/native/misfin.h:280
 msgid "Canceled"
 msgstr ""
 
-#: fltk/native/misfin.h:193
+#: fltk/native/misfin.h:285
 msgid "Contacting Misfin server…"
 msgstr ""
 
-#: fltk/native/misfin.h:206
+#: fltk/native/misfin.h:298
 msgid "Misfin message accepted by the server"
 msgstr ""
 
-#: fltk/native/misfin.h:207
+#: fltk/native/misfin.h:299
 msgid "Misfin mailbox fetched"
 msgstr ""
 
-#: fltk/native/misfin.h:225
+#: fltk/native/misfin.h:318
 msgid "Misfin(C) Gemmail or Gembox Archive"
 msgstr ""
 
-#: fltk/native/misfin.h:244
+#: fltk/native/misfin.h:337
 msgid "File/Send Misfin"
 msgstr ""
 
-#: fltk/native/misfin.h:245
+#: fltk/native/misfin.h:339
+msgid "File/Create Misfin Identity…"
+msgstr ""
+
+#: fltk/native/misfin.h:340
 msgid "File/Import Misfin Identity…"
 msgstr ""
 
-#: fltk/native/misfin.h:246
+#: fltk/native/misfin.h:341
+msgid "File/Copy Identity Certificate"
+msgstr ""
+
+#: fltk/native/misfin.h:342
 msgid "File/Fetch Mailbox"
 msgstr ""
 
-#: fltk/native/misfin.h:247
+#: fltk/native/misfin.h:343
 msgid "File/Import Gemmail Archive…"
 msgstr ""
 
@@ -12248,47 +12310,63 @@ msgstr ""
 msgid "Identity certificate has no DNS name"
 msgstr ""
 
-#: sync/src/misfin/client.rs:73
+#: sync/src/misfin/client.rs:64
+msgid "Enter a mailbox@hostname address"
+msgstr ""
+
+#: sync/src/misfin/client.rs:67 sync/src/misfin/client.rs:79
+msgid "Identity requires a DNS hostname"
+msgstr ""
+
+#: sync/src/misfin/client.rs:88
+msgid "Invalid mailbox name"
+msgstr ""
+
+#: sync/src/misfin/client.rs:94
+msgid "Enter an identity name of 1 to 64 characters"
+msgstr ""
+
+#: sync/src/misfin/client.rs:152
 msgid "Server supplied no certificate"
 msgstr ""
 
-#: sync/src/misfin/client.rs:80
+#: sync/src/misfin/client.rs:159
 msgid "Server certificate is not currently valid"
 msgstr ""
 
-#: sync/src/misfin/client.rs:84
+#: sync/src/misfin/client.rs:163
 msgid "Server certificate has no DNS name"
 msgstr ""
 
-#: sync/src/misfin/client.rs:90
+#: sync/src/misfin/client.rs:169
 msgid "Server certificate does not name this host"
 msgstr ""
 
-#: sync/src/misfin/client.rs:97
+#: sync/src/misfin/client.rs:176
 msgid "Server fingerprint changed; no request was sent"
 msgstr ""
 
-#: sync/src/misfin/client.rs:112
+#: sync/src/misfin/client.rs:191
 msgid "Response exceeds protocol limit"
 msgstr ""
 
-#: sync/src/misfin/client.rs:125
+#: sync/src/misfin/client.rs:204
 msgid "Invalid response status"
 msgstr ""
 
-#: sync/src/misfin/client.rs:130
+#: sync/src/misfin/client.rs:209
 msgid "Invalid response separator"
 msgstr ""
 
-#: sync/src/misfin/client.rs:153
+#: sync/src/misfin/client.rs:232
 msgid "Gemini server declined the mailbox request"
 msgstr ""
 
-#: sync/src/misfin/client.rs:166
+#: sync/src/misfin/client.rs:245
 msgid "Server did not return a text mailbox archive"
 msgstr ""
 
-#: sync/src/misfin/client.rs:176
+#: sync/src/misfin/client.rs:255
 msgid "Mailbox archive exceeds 4 MiB"
 msgstr ""
 
@@ -12296,56 +12374,61 @@ msgstr ""
 msgid "Misfin storage exceeds 8 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:85
+#: sync/src/misfin/mod.rs:78 sync/src/misfin/mod.rs:111
 msgid "At most 16 Misfin identities can be imported"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:101
+#: sync/src/misfin/mod.rs:95
+msgid ""
+"An identity for this address already exists. Import its certificate instead."
+msgstr ""
+
+#: sync/src/misfin/mod.rs:128
 msgid "Choose a Misfin identity first"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:121
+#: sync/src/misfin/mod.rs:153
 msgid "Invalid server fingerprint"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:130
+#: sync/src/misfin/mod.rs:162
 msgid ""
 "Delivery was not confirmed. The message may have arrived; check before "
 "sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:134
+#: sync/src/misfin/mod.rs:166
 msgid "Misfin server declined the message"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:162
+#: sync/src/misfin/mod.rs:194
 msgid "Message accepted, but the local copy could not be saved."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:166
+#: sync/src/misfin/mod.rs:198
 msgid ""
 "Message accepted, but the recipient fingerprint is invalid. Do not resend."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:172
+#: sync/src/misfin/mod.rs:204
 msgid ""
 "Message accepted, but the recipient's certificate fingerprint changed. "
 "Verify it before sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:190
+#: sync/src/misfin/mod.rs:222
 msgid "Unknown Misfin request"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:220
+#: sync/src/misfin/mod.rs:252
 msgid "Expected a regular file"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:227
+#: sync/src/misfin/mod.rs:259
 msgid "File exceeds size limit"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:234
+#: sync/src/misfin/mod.rs:266
 msgid "Misfin connection timed out"
 msgstr ""
 
@@ -12363,10 +12446,6 @@ msgstr ""
 
 #: sync/src/misfin/wire.rs:58
 msgid "Invalid Misfin address"
-msgstr ""
-
-#: sync/src/misfin/wire.rs:65
-msgid "Invalid mailbox name"
 msgstr ""
 
 #: sync/src/misfin/wire.rs:71

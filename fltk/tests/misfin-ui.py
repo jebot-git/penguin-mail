@@ -54,7 +54,7 @@ try:
             main=win('Penguin Mail');time.sleep(.5)
             action(main,'Misfin Messaging…');form=win('Misfin Messaging');time.sleep(.6)
             layout=call(form,'GetLayout','0','-1','[]')
-            check(all(word in layout for word in ['Send Misfin','Fetch Mailbox','Import Misfin Identity','Import Gemmail Archive']),'Misfin window exports its actual commands to the universal menu')
+            check(all(word in layout for word in ['Send Misfin','Fetch Mailbox','Import Misfin Identity','Import Gemmail Archive','Create Misfin Identity','Copy Identity Certificate']),'Misfin window exports its actual commands to the universal menu')
             form.set_input_focus(X.RevertToParent,X.CurrentTime);form.configure(stack_mode=X.Above);xd.sync()
             g=form.get_geometry();xtest.fake_input(xd,X.MotionNotify,x=g.x+100,y=g.y+530);xtest.fake_input(xd,X.ButtonPress,1);xtest.fake_input(xd,X.ButtonRelease,1);xd.sync();time.sleep(.4)
             raw=form.get_image(0,0,g.width,g.height,X.ZPixmap,0xffffffff)
@@ -80,6 +80,38 @@ try:
                 return None
             text=wait(copied)
             check('Žluťoučký 世界' in text,'Gemmail reader supports Unicode text selection and clipboard copy')
+            action(form,'Create Misfin Identity…');creation=win('Create Misfin Identity')
+            creation.set_input_focus(X.RevertToParent,X.CurrentTime);creation.configure(stack_mode=X.Above);xd.sync();time.sleep(.3)
+            cg=creation.get_geometry()
+            def type_at(x,y,text):
+                xtest.fake_input(xd,X.MotionNotify,x=cg.x+x,y=cg.y+y)
+                xtest.fake_input(xd,X.ButtonPress,1);xtest.fake_input(xd,X.ButtonRelease,1)
+                shift=xd.keysym_to_keycode(XK.string_to_keysym('Shift_L'))
+                for c in text:
+                    if c=='@':xtest.fake_input(xd,X.KeyPress,shift)
+                    code=xd.keysym_to_keycode(XK.string_to_keysym('2' if c=='@' else 'space' if c==' ' else c))
+                    xtest.fake_input(xd,X.KeyPress,code);xtest.fake_input(xd,X.KeyRelease,code)
+                    if c=='@':xtest.fake_input(xd,X.KeyRelease,shift)
+                xd.sync()
+            type_at(250,65,'new@localhost');type_at(250,115,'new identity');time.sleep(.2)
+            raw=creation.get_image(0,0,cg.width,cg.height,X.ZPixmap,0xffffffff)
+            Image.frombytes('RGB',(cg.width,cg.height),raw.data,'raw','BGRX').save(art/'create-identity.png')
+            action(creation,'Create Identity')
+            saved=root/'mail/misfin/state.json'
+            wait(lambda: len(json.loads(saved.read_text())['identities'])==2)
+            check(any(i['address']=='new@localhost' for i in json.loads(saved.read_text())['identities']),
+                  'Creation form generates and saves the requested identity')
+            def creation_hidden():
+                try:return creation.get_attributes().map_state!=X.IsViewable
+                except error.BadWindow:return True
+            wait(creation_hidden);time.sleep(.3)
+            action(form,'Copy Identity Certificate');time.sleep(.3)
+            requestor.convert_selection(xd.intern_atom('CLIPBOARD'),target,prop,X.CurrentTime);xd.flush()
+            certificate=wait(copied)
+            check('BEGIN CERTIFICATE' in certificate and 'PRIVATE KEY' not in certificate,
+                  'Created identity is selected and its public certificate can be copied')
+            check('UID=new' in subprocess.check_output(['openssl','x509','-noout','-subject','-nameopt','RFC2253'],input=certificate,text=True),
+                  'Copied certificate belongs to the newly created identity')
             requestor.destroy()
             # Close through the exported window action and leave normal mail alive.
             def hidden():

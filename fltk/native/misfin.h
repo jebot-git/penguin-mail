@@ -14,7 +14,7 @@ void misfinDialog() {
     Fl_Text_Display *reader;
     Fl_Hold_Browser *history;
     Fl_Box *status;
-    Fl_Button *send, *fetch, *import;
+    Fl_Button *send, *fetch, *import, *create;
     std::shared_ptr<Fl_Text_Buffer> body = std::make_shared<Fl_Text_Buffer>();
     std::shared_ptr<Fl_Text_Buffer> viewed = std::make_shared<Fl_Text_Buffer>();
     Json identities = Json::array(), messages = Json::array();
@@ -22,7 +22,8 @@ void misfinDialog() {
     bool busy = false;
     void wait(bool value) {
       busy = value;
-      Fl_Widget *controls[] = {identity, to, subject, editor, send, fetch, import, inbox};
+      Fl_Widget *controls[] = {identity, to,     subject, editor, send,
+                               fetch,    import, create,  inbox};
       for (Fl_Widget *w : controls) {
         if (value)
           w->deactivate();
@@ -34,23 +35,28 @@ void misfinDialog() {
   auto f = std::make_shared<Form>();
   f->window = dialog(1000, 800, _("Misfin Messaging"));
   auto bar = new DesktopMenuBar(0, 0, 1000, 26);
-  f->import = new Fl_Button(20, 42, 230, 32, _("Import Misfin Identity…"));
-  f->identity = new Fl_Choice(390, 42, 580, 32, _("Identity"));
+  f->create = new Fl_Button(20, 42, 230, 32, _("Create Misfin Identity…"));
+  f->import = new Fl_Button(265, 42, 230, 32, _("Import Misfin Identity…"));
+  f->identity = new Fl_Choice(590, 42, 380, 32, _("Identity"));
   f->to = new Fl_Input(180, 90, 790, 30, _("Misfin Recipient"));
-  f->to->tooltip(_("One mailbox@hostname address; Misfin(C), port 1958 by default"));
+  f->to->tooltip(
+      _("One mailbox@hostname address; Misfin(C), port 1958 by default"));
   f->subject = new Fl_Input(180, 132, 790, 30, _("Subject"));
   f->editor = new Fl_Text_Editor(20, 198, 950, 180, _("Gemtext Message"));
   f->editor->align(FL_ALIGN_TOP_LEFT);
   f->editor->buffer(f->body.get());
   f->editor->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
   f->send = new Fl_Button(20, 392, 145, 32, _("Send Misfin"));
-  auto importMail = new Fl_Button(180, 392, 210, 32, _("Import Gemmail Archive…"));
+  auto importMail =
+      new Fl_Button(180, 392, 210, 32, _("Import Gemmail Archive…"));
   auto refresh = new Fl_Button(405, 392, 200, 32, _("Refresh Local History"));
   f->inbox = new Fl_Input(180, 444, 600, 30, _("Gemini Mailbox URL"));
-  f->inbox->tooltip(_("Optional server-provided gemini:// URL for a Misfin(C) gemmail or "
-                      "gembox archive"));
+  f->inbox->tooltip(
+      _("Optional server-provided gemini:// URL for a Misfin(C) gemmail or "
+        "gembox archive"));
   f->fetch = new Fl_Button(800, 444, 170, 30, _("Fetch Mailbox"));
-  f->history = new Fl_Hold_Browser(20, 520, 330, 210, _("Local Misfin History"));
+  f->history =
+      new Fl_Hold_Browser(20, 520, 330, 210, _("Local Misfin History"));
   f->history->align(FL_ALIGN_TOP_LEFT);
   f->history->format_char(0);
   f->reader = new Fl_Text_Display(370, 520, 600, 210, _("Gemmail Text"));
@@ -59,8 +65,8 @@ void misfinDialog() {
   f->reader->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
   f->status = new Fl_Box(20, 750, 950, 28);
   f->status->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE);
-  f->status->copy_label(
-      _("Misfin(C) uses certificate identities. Attachments and SMTP are not used."));
+  f->status->copy_label(_("Misfin(C) uses certificate identities. Attachments "
+                          "and SMTP are not used."));
   auto load = std::make_shared<std::function<void()>>();
   *load = [this, f] {
     engine->request({{"op", "misfin-state"}}, [this, f](const Json &reply) {
@@ -114,8 +120,8 @@ void misfinDialog() {
     if (n < 0 || n >= int(f->messages.size()))
       return;
     const auto &m = f->messages[n];
-    auto text = str(m, "from") + "\n" + str(m, "to") + "\n" + str(m, "timestamp") +
-                "\n\n" + str(m, "body");
+    auto text = str(m, "from") + "\n" + str(m, "to") + "\n" +
+                str(m, "timestamp") + "\n\n" + str(m, "body");
     f->viewed->text(text.c_str());
   });
   auto identity = [this, f, load] {
@@ -146,6 +152,89 @@ void misfinDialog() {
                       (*load)();
                     });
   };
+  auto createIdentity = [this, f, load] {
+    if (f->busy)
+      return;
+    auto window = dialog(650, 300, _("Create Misfin Identity"));
+    auto menu = new DesktopMenuBar(0, 0, 650, 26);
+    auto address = new Fl_Input(180, 50, 440, 32, _("Misfin Address"));
+    address->tooltip(
+        _("Mailbox and DNS hostname assigned by your Misfin provider"));
+    auto name = new Fl_Input(180, 100, 440, 32, _("Identity Name"));
+    auto help =
+        new Fl_Box(20, 150, 610, 68,
+                   _("Creates a local certificate valid for five years.\n"
+                     "Register its public certificate with your provider to "
+                     "receive mail.\n"
+                     "This does not create a server mailbox."));
+    help->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE);
+    auto cancel = new Fl_Button(350, 240, 120, 32, _("Cancel"));
+    auto create = new Fl_Button(490, 240, 130, 32, _("Create Identity"));
+    create->shortcut(FL_Enter);
+    auto submit = [this, f, load, window, address, name, create, cancel] {
+      if (f->busy)
+        return;
+      f->wait(true);
+      address->deactivate();
+      name->deactivate();
+      create->deactivate();
+      cancel->deactivate();
+      f->status->copy_label(_("Creating Misfin identity…"));
+      engine->request({{"op", "misfin-create-identity"},
+                       {"address", address->value()},
+                       {"name", name->value()}},
+                      [this, f, load, window, address, name, create,
+                       cancel](const Json &reply) {
+                        f->wait(false);
+                        if (!accepted(reply)) {
+                          address->activate();
+                          name->activate();
+                          create->activate();
+                          cancel->activate();
+                          fl_alert("%s", str(reply, "error").c_str());
+                          return;
+                        }
+                        window->hide();
+                        f->chosen = str(reply["result"], "identity");
+                        f->status->copy_label(
+                            _("Identity created. Copy its public certificate "
+                              "from File to register with your provider."));
+                        if (f->window->shown())
+                          (*load)();
+                      });
+    };
+    bind(create, submit);
+    bind(cancel, [window] { window->hide(); });
+    addMenu(*menu, _("File/Create Identity"), FL_CTRL | FL_Enter, submit);
+    addMenu(*menu, _("File/Close"), FL_CTRL | 'w',
+            [window] { window->hide(); });
+    addMenu(*menu, _("Edit/Cut"), FL_CTRL | 'x', [this] { edit('x'); });
+    addMenu(*menu, _("Edit/Copy"), FL_CTRL | 'c', [this] { edit('c'); });
+    addMenu(*menu, _("Edit/Paste"), FL_CTRL | 'v', [this] { edit('v'); });
+    addMenu(*menu, _("Edit/Select All"), FL_CTRL | 'a', [this] { edit('a'); });
+    window->set_modal();
+    showDialog(window);
+    dialogMenus.push_back(std::make_unique<DesktopMenu>(*window, *menu));
+    address->take_focus();
+  };
+  auto copyCertificate = [this, f] {
+    if (f->busy)
+      return;
+    engine->request({{"op", "misfin-certificate"}, {"identity", f->chosen}},
+                    [this, f](const Json &reply) {
+                      if (!f->window->shown())
+                        return;
+                      if (!accepted(reply)) {
+                        fl_alert("%s", str(reply, "error").c_str());
+                        return;
+                      }
+                      auto certificate = str(reply["result"], "certificate");
+                      Fl::copy(certificate.c_str(), int(certificate.size()), 1);
+                      f->status->copy_label(
+                          _("Public identity certificate copied. The private "
+                            "key stays in Penguin Mail."));
+                    });
+  };
   auto deliver = [this, f, load](bool fetch) {
     if (f->busy)
       return;
@@ -153,9 +242,10 @@ void misfinDialog() {
       fl_alert("%s", _("Choose a Misfin identity first"));
       return;
     }
-    Json request = {{"op", fetch ? "misfin-fetch" : "misfin-send"},
-                    {"identity", f->chosen},
-                    {"destination", fetch ? f->inbox->value() : f->to->value()}};
+    Json request = {
+        {"op", fetch ? "misfin-fetch" : "misfin-send"},
+        {"identity", f->chosen},
+        {"destination", fetch ? f->inbox->value() : f->to->value()}};
     if (!fetch) {
       char *body = f->body->text();
       request["body"] = body;
@@ -181,9 +271,11 @@ void misfinDialog() {
         const char *warning = peer["previous"].is_null()
                                   ? _("This server is not trusted yet.")
                                   : _("The server certificate has changed.");
-        if (fl_choice(_("%s\n%s\nSHA-256: %s\n\nTrust this fingerprint and continue?"),
+        if (fl_choice(_("%s\n%s\nSHA-256: %s\n\nTrust this fingerprint and "
+                        "continue?"),
                       _("Cancel"), _("Trust and Continue"), nullptr, warning,
-                      str(peer, "peer").c_str(), str(peer, "fingerprint").c_str()) != 1) {
+                      str(peer, "peer").c_str(),
+                      str(peer, "fingerprint").c_str()) != 1) {
           f->wait(false);
           f->status->copy_label(_("Canceled"));
           return;
@@ -210,6 +302,7 @@ void misfinDialog() {
     });
   };
   bind(f->import, identity);
+  bind(f->create, createIdentity);
   bind(f->send, [deliver] { deliver(false); });
   bind(f->fetch, [deliver] { deliver(true); });
   bind(refresh, [load] { (*load)(); });
@@ -241,8 +334,11 @@ void misfinDialog() {
                     });
   };
   bind(importMail, importArchive);
-  addMenu(*bar, _("File/Send Misfin"), FL_CTRL | FL_Enter, [deliver] { deliver(false); });
+  addMenu(*bar, _("File/Send Misfin"), FL_CTRL | FL_Enter,
+          [deliver] { deliver(false); });
+  addMenu(*bar, _("File/Create Misfin Identity…"), 0, createIdentity);
   addMenu(*bar, _("File/Import Misfin Identity…"), 0, identity);
+  addMenu(*bar, _("File/Copy Identity Certificate"), 0, copyCertificate);
   addMenu(*bar, _("File/Fetch Mailbox"), 0, [deliver] { deliver(true); });
   addMenu(*bar, _("File/Import Gemmail Archive…"), 0, importArchive);
   addMenu(*bar, _("File/Close"), FL_CTRL | 'w', [f] { f->window->hide(); });

@@ -48,6 +48,85 @@ pub fn identity(certificate: &[u8], key: &[u8]) -> Result<(String, String, Vec<u
         private.private_key_to_pem_pkcs8()?,
     ))
 }
+/// Generate a self-signed mailbox certificate without writing a loose key file.
+pub fn create_identity(address: &str, name: &str) -> Result<(Vec<u8>, Vec<u8>)> {
+    use openssl::{
+        bn::{BigNum, MsbOption},
+        rsa::Rsa,
+        x509::{
+            X509NameBuilder,
+            extension::{BasicConstraints, ExtendedKeyUsage, KeyUsage, SubjectAlternativeName},
+        },
+    };
+    let (mailbox, host) = address
+        .trim()
+        .split_once('@')
+        .context(gettext("Enter a mailbox@hostname address"))?;
+    let host = match url::Host::parse(host)? {
+        url::Host::Domain(host) => host.to_ascii_lowercase(),
+        _ => bail!("{}", gettext("Identity requires a DNS hostname")),
+    };
+    ensure!(
+        host.len() <= 253
+            && host.split('.').all(|label| !label.is_empty()
+                && label.len() <= 63
+                && !label.starts_with('-')
+                && !label.ends_with('-')
+                && label
+                    .bytes()
+                    .all(|b| b.is_ascii_alphanumeric() || b == b'-')),
+        "{}",
+        gettext("Identity requires a DNS hostname")
+    );
+    ensure!(
+        !mailbox.is_empty()
+            && mailbox.len() <= 64
+            && mailbox
+                .bytes()
+                .all(|b| b.is_ascii_alphanumeric() || b"._+-".contains(&b)),
+        "{}",
+        gettext("Invalid mailbox name")
+    );
+    let name = name.trim();
+    ensure!(
+        !name.is_empty() && name.chars().count() <= 64 && !name.chars().any(char::is_control),
+        "{}",
+        gettext("Enter an identity name of 1 to 64 characters")
+    );
+    let key = PKey::from_rsa(Rsa::generate(2048)?)?;
+    let mut subject = X509NameBuilder::new()?;
+    subject.append_entry_by_nid(Nid::USERID, mailbox)?;
+    subject.append_entry_by_nid(Nid::COMMONNAME, name)?;
+    let subject = subject.build();
+    let mut certificate = X509::builder()?;
+    certificate.set_version(2)?;
+    let mut serial = BigNum::new()?;
+    serial.rand(128, MsbOption::ONE, false)?;
+    certificate.set_serial_number(serial.to_asn1_integer()?.as_ref())?;
+    certificate.set_subject_name(&subject)?;
+    certificate.set_issuer_name(&subject)?;
+    certificate.set_pubkey(&key)?;
+    certificate.set_not_before(Asn1Time::days_from_now(0)?.as_ref())?;
+    certificate.set_not_after(Asn1Time::days_from_now(1825)?.as_ref())?;
+    certificate.append_extension(BasicConstraints::new().critical().build()?)?;
+    certificate.append_extension(
+        KeyUsage::new()
+            .critical()
+            .digital_signature()
+            .key_encipherment()
+            .build()?,
+    )?;
+    certificate.append_extension(ExtendedKeyUsage::new().client_auth().build()?)?;
+    let san = SubjectAlternativeName::new()
+        .dns(&host)
+        .build(&certificate.x509v3_context(None, None))?;
+    certificate.append_extension(san)?;
+    certificate.sign(&key, MessageDigest::sha256())?;
+    Ok((
+        certificate.build().to_pem()?,
+        key.private_key_to_pem_pkcs8()?,
+    ))
+}
 pub(super) async fn connect(
     record: &Identity,
     d: &wire::Destination,

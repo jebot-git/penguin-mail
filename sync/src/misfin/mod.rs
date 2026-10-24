@@ -20,7 +20,7 @@ struct Identity {
     certificate: String,
     key: String,
 }
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Clone, Default, Serialize, Deserialize)]
 struct State {
     identities: Vec<Identity>,
     pins: BTreeMap<String, String>,
@@ -66,17 +66,43 @@ impl Misfin {
         use serde_json::json;
         let mut state = self.state.lock().await;
         let text = |key: &str| r[key].as_str().unwrap_or("");
-        if text("op") == "misfin-import-identity" {
-            let certificate = read(Path::new(text("certificate")), 65536)?;
-            let key = read(Path::new(text("key")), 65536)?;
+        if matches!(
+            text("op"),
+            "misfin-import-identity" | "misfin-create-identity"
+        ) {
+            let creating = text("op") == "misfin-create-identity";
+            let (certificate, key) = if creating {
+                ensure!(
+                    state.identities.len() < 16,
+                    "{}",
+                    gettext("At most 16 Misfin identities can be imported")
+                );
+                let address = text("address").to_owned();
+                let name = text("name").to_owned();
+                tokio::task::spawn_blocking(move || client::create_identity(&address, &name))
+                    .await??
+            } else {
+                (
+                    read(Path::new(text("certificate")), 65536)?,
+                    read(Path::new(text("key")), 65536)?,
+                )
+            };
             let (address, id, key) = client::identity(&certificate, &key)?;
+            ensure!(
+                !creating || !state.identities.iter().any(|i| i.address == address),
+                "{}",
+                gettext(
+                    "An identity for this address already exists. Import its certificate instead."
+                )
+            );
+            let mut next = state.clone();
             let record = Identity {
                 id: id.clone(),
                 address,
                 certificate: String::from_utf8(certificate)?,
                 key: String::from_utf8(key)?,
             };
-            if let Some(old) = state.identities.iter_mut().find(|i| i.id == id) {
+            if let Some(old) = next.identities.iter_mut().find(|i| i.id == id) {
                 *old = record;
             } else {
                 ensure!(
@@ -84,9 +110,10 @@ impl Misfin {
                     "{}",
                     gettext("At most 16 Misfin identities can be imported")
                 );
-                state.identities.push(record);
+                next.identities.push(record);
             }
-            self.save(&state)?;
+            self.save(&next)?;
+            *state = next;
             return Ok(json!({"identity":id}));
         }
         if text("op") == "misfin-state" {
@@ -100,6 +127,11 @@ impl Misfin {
             .find(|i| i.id == text("identity"))
             .context(gettext("Choose a Misfin identity first"))?
             .clone();
+        if text("op") == "misfin-certificate" {
+            return Ok(
+                json!({"certificate":record.certificate,"fingerprint":record.id,"address":record.address}),
+            );
+        }
         if text("op") == "misfin-import-mail" {
             let bytes = read(Path::new(text("path")), wire::MAX_ARCHIVE)?;
             merge(&mut state.messages, wire::archive(&bytes, &record.id)?);

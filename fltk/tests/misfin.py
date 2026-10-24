@@ -114,9 +114,34 @@ with tempfile.TemporaryDirectory(prefix='penguin-misfin-') as name:
         context.load_cert_chain(changed,changed_key)
         request('misfin-send',identity=ident,destination=dest,fingerprint=fp,subject='Changed',body='Secret',fail=True)
         check(len(request('misfin-state')['messages'])==3,'Changed certificate cannot silently replace trusted peer')
+        original=request('misfin-state')['identities']
+        for address,name in [('bad/name@localhost','Alice'),('alice@localhost:1958','Alice'),
+                             ('alice@127.0.0.1','Alice'),('alice@-invalid.test','Alice'),
+                             ('alice@localhost',''),('alice@localhost','Bad\nName')]:
+            request('misfin-create-identity',address=address,name=name,fail=True)
+        check(request('misfin-state')['identities']==original,'Rejected creation leaves existing identities unchanged')
+        request('misfin-create-identity',address='alice@LOCALHOST',name='Duplicate',fail=True)
+        created=request('misfin-create-identity',address='new@LOCALHOST',name='Žluťoučký 世界')['identity']
+        public=request('misfin-certificate',identity=created)
+        check(public['address']=='new@localhost' and public['fingerprint']==created and 'PRIVATE KEY' not in json.dumps(public),
+              'Created identity exposes only its public certificate and normalized address')
+        generated=root/'generated.crt';generated.write_text(public['certificate'])
+        check(hashlib.sha256(ssl.PEM_cert_to_DER_cert(public['certificate'])).hexdigest()==created,
+              'Created identity fingerprint matches its certificate')
+        subprocess.run(['openssl','verify','-CAfile',str(generated),'-purpose','sslclient',str(generated)],check=True,stdout=subprocess.DEVNULL)
+        details=subprocess.check_output(['openssl','x509','-in',str(generated),'-text','-noout'],text=True)
+        check('DNS:localhost' in details and 'CA:FALSE' in details and '2048 bit' in details,
+              'Generated certificate is a self-signed RSA client identity with DNS SAN')
+        context.load_cert_chain(server,server_key);context.load_verify_locations(generated)
+        check(request('misfin-probe',identity=created,destination=dest)['fingerprint']==fp,
+              'Generated private key authenticates with mutual TLS')
+        state=request('misfin-state')
+        check(len(state['identities'])==2 and 'PRIVATE KEY' not in json.dumps(state),
+              'New identity preserves existing mail and keeps its key private')
         p.stdin.close();p.wait(timeout=10)
         p,request=engine()
         check(len(request('misfin-state')['messages'])==3,'Identity and local history survive engine restart')
+        check(any(i['id']==created for i in request('misfin-state')['identities']),'Created identity survives engine restart')
         check(not errors,'TLS fixture completed without internal errors')
     finally:
         if p.poll() is None:p.terminate();p.wait(timeout=5)

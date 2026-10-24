@@ -208,7 +208,16 @@ otherwise activation goes to the existing application.
 existing Misfin PEM certificate and its unencrypted PEM private key. The
 certificate must have a USER_ID mailbox and a DNS subject alternative name;
 Penguin Mail reads the address from those fields and checks the key matches.
-Importing an identity does not register a mailbox on a server.
+Alternatively, choose **Create Misfin Identity**, enter the mailbox address
+assigned by your provider and a display name. Penguin Mail generates an RSA-2048
+key and self-signed SHA-256 certificate valid for five years, with a random serial,
+USER_ID mailbox, CN display name and DNS SAN. The private key goes straight into
+the owner-only identity store. Creating another identity for an address already
+stored is refused so an existing mailbox identity is not replaced by accident.
+**File > Copy Identity Certificate** copies only the public PEM certificate for
+registration with your provider. Creating or importing an identity does not
+register a mailbox on a server. Keep a secure backup of the private identity store;
+losing the private key can prevent access to the mailbox.
 
 This first implementation supports Misfin(C) delivery to one recipient, with
 Gemtext, Unicode subjects and text, local sent history, and manual incoming
@@ -219,7 +228,7 @@ never interpreted as HTML. Misfin(B), SMTP bridging, attachments, automatic
 polling, GMAP tag management, server hosting and account provisioning are not
 implemented. Redirects and temporary failures are reported without resending.
 
-The TLS connection uses the imported client identity and TLS 1.2 or newer.
+The TLS connection uses the selected client identity and TLS 1.2 or newer.
 Self-signed servers use explicit fingerprint trust: before the first operation,
 and when a certificate changes, the window shows the endpoint and SHA-256
 fingerprint for approval. Verify that fingerprint with your provider. The
