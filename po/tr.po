@@ -11741,329 +11741,329 @@ msgstr "Penguin Mail {version} mevcut"
 msgid "Too many pending requests"
 msgstr "Çok fazla bağlantı"
 
-#: fltk/native/main.cpp:346
+#: fltk/native/main.cpp:347
 #, fuzzy
 #| msgid "Month"
 msgid "Mon"
 msgstr "Ay"
 
-#: fltk/native/main.cpp:346
+#: fltk/native/main.cpp:347
 msgid "Thu"
 msgstr ""
 
-#: fltk/native/main.cpp:346
+#: fltk/native/main.cpp:347
 #, fuzzy
 #| msgid "Tuesday"
 msgid "Tue"
 msgstr "Salı"
 
-#: fltk/native/main.cpp:346
+#: fltk/native/main.cpp:347
 #, fuzzy
 #| msgid "Red"
 msgid "Wed"
 msgstr "Kırmızı"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:348
 #, fuzzy
 #| msgid "Friday"
 msgid "Fri"
 msgstr "Cuma"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:348
 #, fuzzy
 #| msgid "Slate"
 msgid "Sat"
 msgstr "Arduvaz"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:348
 #, fuzzy
 #| msgid "Sunday"
 msgid "Sun"
 msgstr "Pazar"
 
-#: fltk/native/main.cpp:486
+#: fltk/native/main.cpp:487
 msgid "The request failed."
 msgstr ""
 
-#: fltk/native/main.cpp:491
+#: fltk/native/main.cpp:492
 #, fuzzy
 #| msgid "Changing a setting"
 msgid "The mail engine is starting."
 msgstr "Bir ayar değiştiriliyor"
 
-#: fltk/native/main.cpp:566
+#: fltk/native/main.cpp:567
 #, fuzzy
 #| msgid "Undo"
 msgid "Undone"
 msgstr "Geri Al"
 
-#: fltk/native/main.cpp:575
+#: fltk/native/main.cpp:576
 #, fuzzy
 #| msgid "Open a conversation first"
 msgid "Select a conversation first."
 msgstr "Önce bir yazışma açın"
 
-#: fltk/native/main.cpp:580
+#: fltk/native/main.cpp:581
 #, fuzzy
 #| msgid "Labels changed"
 msgid "Label name"
 msgstr "Etiketler değiştirildi"
 
-#: fltk/native/main.cpp:587
+#: fltk/native/main.cpp:588
 msgid "Remind at (YYYY-MM-DD HH:MM)"
 msgstr ""
 
-#: fltk/native/main.cpp:592 fltk/native/main.cpp:1113
+#: fltk/native/main.cpp:593 fltk/native/main.cpp:1114
 msgid "Choose a future date and time."
 msgstr ""
 
-#: fltk/native/main.cpp:597
+#: fltk/native/main.cpp:598
 #, fuzzy
 #| msgid "Matching your mail…"
 msgid "Updating mail…"
 msgstr "Postalarınız eşleştiriliyor…"
 
-#: fltk/native/main.cpp:599
+#: fltk/native/main.cpp:600
 msgid "Mail updated. Use Undo to reverse the action."
 msgstr ""
 
-#: fltk/native/main.cpp:734
+#: fltk/native/main.cpp:735
 #, fuzzy
 #| msgid "Conversation"
 msgid "conversations"
 msgstr "Yazışma"
 
-#: fltk/native/main.cpp:736
+#: fltk/native/main.cpp:737
 msgid "Load More is available in View."
 msgstr ""
 
-#: fltk/native/main.cpp:781
+#: fltk/native/main.cpp:782
 #, fuzzy
 #| msgid "Reading a conversation"
 msgid "Loading conversation…"
 msgstr "Yazışma okunuyor"
 
-#: fltk/native/main.cpp:818 fltk/native/main.cpp:837
+#: fltk/native/main.cpp:819 fltk/native/main.cpp:838
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment"
 msgstr "Ekler"
 
-#: fltk/native/main.cpp:821
+#: fltk/native/main.cpp:822
 msgid "S/MIME message. Export the original to inspect its protection."
 msgstr ""
 
-#: fltk/native/main.cpp:825
+#: fltk/native/main.cpp:826
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversation loaded"
 msgstr "Yazışma"
 
-#: fltk/native/main.cpp:836 fltk/native/main.cpp:1840
+#: fltk/native/main.cpp:837 fltk/native/main.cpp:1853
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Save Attachment"
 msgstr "Ekleri Kaydet"
 
-#: fltk/native/main.cpp:846
+#: fltk/native/main.cpp:847
 #, fuzzy
 #| msgid "Attachments"
 msgid "Attachment saved"
 msgstr "Ekler"
 
-#: fltk/native/main.cpp:859
+#: fltk/native/main.cpp:860
 msgid "Select an outgoing message first."
 msgstr ""
 
-#: fltk/native/main.cpp:863
+#: fltk/native/main.cpp:864
 #, fuzzy
 #| msgid "Delete This Message Forever?"
 msgid "Delete this queued message?"
 msgstr "Bu İleti Kalıcı Olarak Silinsin mi?"
 
-#: fltk/native/main.cpp:874
+#: fltk/native/main.cpp:875
 #, fuzzy
 #| msgid "Conversation"
 msgid "Export Conversation"
 msgstr "Yazışma"
 
-#: fltk/native/main.cpp:882
+#: fltk/native/main.cpp:883
 #, fuzzy
 #| msgid "No Conversation Selected"
 msgid "Conversation exported"
 msgstr "Yazışma Seçilmedi"
 
-#: fltk/native/main.cpp:922
+#: fltk/native/main.cpp:923
 #, fuzzy
 #| msgid "Reminders"
 msgid "Reminder snoozed"
 msgstr "Hatırlatıcılar"
 
-#: fltk/native/main.cpp:980
+#: fltk/native/main.cpp:981
 #, fuzzy
 #| msgid "Add an account first"
 msgid "Add an account before composing mail."
 msgstr "Önce bir hesap ekleyin"
 
-#: fltk/native/main.cpp:985 fltk/native/main.cpp:2122
+#: fltk/native/main.cpp:986 fltk/native/main.cpp:2135
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
 msgstr "Yeni İleti"
 
-#: fltk/native/main.cpp:997
+#: fltk/native/main.cpp:998
 msgid "Sign (OpenPGP)"
 msgstr ""
 
-#: fltk/native/main.cpp:998
+#: fltk/native/main.cpp:999
 #, fuzzy
 #| msgid "Encrypted"
 msgid "Encrypt (OpenPGP)"
 msgstr "Şifreli"
 
-#: fltk/native/main.cpp:1020
+#: fltk/native/main.cpp:1021
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Remove Attachment"
 msgstr "Ekleri Kaydet"
 
-#: fltk/native/main.cpp:1030
+#: fltk/native/main.cpp:1031
 #, fuzzy
 #| msgid "Checking for Updates…"
 msgid "Checking local OpenPGP keys…"
 msgstr "Güncellemeler Kontrol Ediliyor…"
 
-#: fltk/native/main.cpp:1092
+#: fltk/native/main.cpp:1093
 #, fuzzy
 #| msgid "Signed and encrypted"
 msgid "Send Unencrypted"
 msgstr "İmzalı ve şifreli"
 
-#: fltk/native/main.cpp:1093
+#: fltk/native/main.cpp:1094
 msgid "This message quotes decrypted mail. Send that text without encryption?"
 msgstr ""
 
-#: fltk/native/main.cpp:1108
+#: fltk/native/main.cpp:1109
 msgid "Send at (YYYY-MM-DD HH:MM)"
 msgstr ""
 
-#: fltk/native/main.cpp:1120
+#: fltk/native/main.cpp:1121
 #, fuzzy
 #| msgid "Send Without Encryption?"
 msgid "Send without a subject?"
 msgstr "Şifrelemeden Gönderilsin mi?"
 
-#: fltk/native/main.cpp:1125
+#: fltk/native/main.cpp:1126
 #, fuzzy
 #| msgid "Working"
 msgid "Working…"
 msgstr "Çalışıyor"
 
-#: fltk/native/main.cpp:1142
+#: fltk/native/main.cpp:1143
 msgid "Message queued in Outbox or Send Later."
 msgstr ""
 
-#: fltk/native/main.cpp:1163
+#: fltk/native/main.cpp:1164
 msgid "A secret key is available for signing."
 msgstr ""
 
-#: fltk/native/main.cpp:1163
+#: fltk/native/main.cpp:1164
 msgid "No secret signing key for this sender."
 msgstr ""
 
-#: fltk/native/main.cpp:1166
+#: fltk/native/main.cpp:1167
 msgid "All recipients and your Sent copy have encryption keys."
 msgstr ""
 
-#: fltk/native/main.cpp:1172
+#: fltk/native/main.cpp:1173
 msgid "Key identity is not fully trusted:"
 msgstr ""
 
-#: fltk/native/main.cpp:1185
+#: fltk/native/main.cpp:1186
 #, fuzzy
 #| msgid "Checked"
 msgid "Check Keys"
 msgstr "Kontrol edildi"
 
-#: fltk/native/main.cpp:1188
+#: fltk/native/main.cpp:1189
 #, fuzzy
 #| msgid "Send"
 msgid "File/Send"
 msgstr "Gönder"
 
-#: fltk/native/main.cpp:1190
+#: fltk/native/main.cpp:1191
 #, fuzzy
 #| msgid "Send Later"
 msgid "File/Send Later…"
 msgstr "Daha Sonra Gönder"
 
-#: fltk/native/main.cpp:1192
+#: fltk/native/main.cpp:1193
 #, fuzzy
 #| msgid "Save Draft"
 msgid "File/Save Draft"
 msgstr "Taslağı Kaydet"
 
-#: fltk/native/main.cpp:1194
+#: fltk/native/main.cpp:1195
 #, fuzzy
 #| msgid "Close"
 msgid "File/Close"
 msgstr "Kapat"
 
-#: fltk/native/main.cpp:1197 fltk/native/main.cpp:1907
+#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1920
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Undo"
 msgstr "Düzenle"
 
-#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1908
+#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1921
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Cut"
 msgstr "Düzenle"
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1909
+#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1922
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Copy"
 msgstr "Düzenle"
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1910
+#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1923
 #, fuzzy
 #| msgid "Edit Template"
 msgid "Edit/Paste"
 msgstr "Şablonu Düzenle"
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1911
+#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1924
 #, fuzzy
 #| msgid "Select all"
 msgid "Edit/Select All"
 msgstr "Tümünü seç"
 
-#: fltk/native/main.cpp:1206
+#: fltk/native/main.cpp:1207
 msgid "Wait for the current request to finish."
 msgstr ""
 
-#: fltk/native/main.cpp:1211
+#: fltk/native/main.cpp:1212
 msgid "Close this message? Save a draft to keep your changes."
 msgstr ""
 
-#: fltk/native/main.cpp:1245
+#: fltk/native/main.cpp:1246
 #, fuzzy
 #| msgid "This copy of Penguin Mail was built without Microsoft sign-in."
 msgid "This build has no Microsoft sign-in client."
 msgstr "Penguin Mail'in bu derlemesinde Microsoft ile oturum açma yok."
 
-#: fltk/native/main.cpp:1247
+#: fltk/native/main.cpp:1248
 #, fuzzy
 #| msgid "Choose a Time…"
 msgid "Choose Client JSON…"
 msgstr "Zaman Seç…"
 
-#: fltk/native/main.cpp:1247
+#: fltk/native/main.cpp:1248
 msgid "Setup Instructions"
 msgstr ""
 
-#: fltk/native/main.cpp:1248
+#: fltk/native/main.cpp:1249
 msgid ""
 "This build has no Google sign-in client.\n"
 "Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
@@ -12071,496 +12071,508 @@ msgid ""
 "in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1254
+#: fltk/native/main.cpp:1255
 msgid "Google Desktop OAuth Client"
 msgstr ""
 
-#: fltk/native/main.cpp:1259
+#: fltk/native/main.cpp:1260
 #, fuzzy
 #| msgid "Continue in your browser"
 msgid "Complete sign-in in your browser."
 msgstr "Tarayıcınızda devam edin"
 
-#: fltk/native/main.cpp:1268
+#: fltk/native/main.cpp:1269
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
 msgstr ""
 
-#: fltk/native/main.cpp:1273
+#: fltk/native/main.cpp:1274
 #, fuzzy
 #| msgid "Google Meet"
 msgid "Google…"
 msgstr "Google Meet"
 
-#: fltk/native/main.cpp:1274
+#: fltk/native/main.cpp:1275
 #, fuzzy
 #| msgid "Microsoft Teams"
 msgid "Microsoft…"
 msgstr "Microsoft Teams"
 
-#: fltk/native/main.cpp:1276
+#: fltk/native/main.cpp:1277
 #, fuzzy
 #| msgid "Account"
 msgid "Account Type"
 msgstr "Hesap"
 
-#: fltk/native/main.cpp:1282 fltk/native/main.cpp:1335
+#: fltk/native/main.cpp:1283 fltk/native/main.cpp:1336
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "IMAP Server"
 msgstr "MCP Sunucuları"
 
-#: fltk/native/main.cpp:1285
+#: fltk/native/main.cpp:1286
 #, fuzzy
 #| msgid "Security"
 msgid "IMAP Security"
 msgstr "Güvenlik"
 
-#: fltk/native/main.cpp:1288
+#: fltk/native/main.cpp:1289
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "SMTP Server"
 msgstr "MCP Sunucuları"
 
-#: fltk/native/main.cpp:1291
+#: fltk/native/main.cpp:1292
 #, fuzzy
 #| msgid "Security"
 msgid "SMTP Security"
 msgstr "Güvenlik"
 
-#: fltk/native/main.cpp:1294
+#: fltk/native/main.cpp:1295
 #, fuzzy
 #| msgid "User Name"
 msgid "SMTP User Name"
 msgstr "Kullanıcı Adı"
 
-#: fltk/native/main.cpp:1295
+#: fltk/native/main.cpp:1296
 #, fuzzy
 #| msgid "Password"
 msgid "SMTP Password"
 msgstr "Parola"
 
-#: fltk/native/main.cpp:1298
+#: fltk/native/main.cpp:1299
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1302
+#: fltk/native/main.cpp:1303
 #, fuzzy
 #| msgid "Servers"
 msgid "Find Servers"
 msgstr "Sunucular"
 
-#: fltk/native/main.cpp:1309
+#: fltk/native/main.cpp:1310
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 
-#: fltk/native/main.cpp:1314
+#: fltk/native/main.cpp:1315
 #, fuzzy
 #| msgid "Use {server}"
 msgid "Use Servers"
 msgstr "{server} kullan"
 
-#: fltk/native/main.cpp:1315
+#: fltk/native/main.cpp:1316
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 
-#: fltk/native/main.cpp:1333
+#: fltk/native/main.cpp:1334
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "POP3 Server"
 msgstr "MCP Sunucuları"
 
-#: fltk/native/main.cpp:1334
+#: fltk/native/main.cpp:1335
 #, fuzzy
 #| msgid "Server"
 msgid "Server URL"
 msgstr "Sunucu"
 
-#: fltk/native/main.cpp:1350
+#: fltk/native/main.cpp:1351
 msgid "Authentication"
 msgstr ""
 
-#: fltk/native/main.cpp:1372
+#: fltk/native/main.cpp:1373
 msgid "Enter ports between 1 and 65535."
 msgstr ""
 
-#: fltk/native/main.cpp:1400
+#: fltk/native/main.cpp:1401
 msgid "Checking the incoming and outgoing servers…"
 msgstr ""
 
-#: fltk/native/main.cpp:1419
+#: fltk/native/main.cpp:1420
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
 msgstr ""
 
-#: fltk/native/main.cpp:1420
+#: fltk/native/main.cpp:1421
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
 "automatically."
 msgstr ""
 
-#: fltk/native/main.cpp:1422
+#: fltk/native/main.cpp:1423
 #, fuzzy
 #| msgid "Add Address"
 msgid "Addresses"
 msgstr "Adres Ekle"
 
-#: fltk/native/main.cpp:1438
+#: fltk/native/main.cpp:1439
 #, fuzzy
 #| msgid "Not encrypted in transit"
 msgid "No encryption key"
 msgstr "Aktarım sırasında şifrelenmemiş"
 
-#: fltk/native/main.cpp:1445
+#: fltk/native/main.cpp:1446
 #, fuzzy
 #| msgid "Check for Updates"
 msgid "Check Local Keys"
 msgstr "Güncellemeleri Kontrol Et"
 
-#: fltk/native/main.cpp:1446
+#: fltk/native/main.cpp:1447
 #, fuzzy
 #| msgid "Import…"
 msgid "Import Key File…"
 msgstr "İçe Aktar…"
 
-#: fltk/native/main.cpp:1448
+#: fltk/native/main.cpp:1449
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Import OpenPGP Key"
 msgstr "OpenPGP Anahtarlarını İçe Aktar"
 
-#: fltk/native/main.cpp:1451
+#: fltk/native/main.cpp:1452
 #, fuzzy
 #| msgid "Import…"
 msgid "Import"
 msgstr "İçe Aktar…"
 
-#: fltk/native/main.cpp:1452
+#: fltk/native/main.cpp:1453
 msgid "Import this file into your GnuPG keyring?"
 msgstr ""
 
-#: fltk/native/main.cpp:1453
+#: fltk/native/main.cpp:1454
 #, fuzzy
 #| msgid "Import…"
 msgid "Importing key…"
 msgstr "İçe Aktar…"
 
-#: fltk/native/main.cpp:1456
+#: fltk/native/main.cpp:1457
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Imported keys:"
 msgstr "OpenPGP Anahtarlarını İçe Aktar"
 
-#: fltk/native/main.cpp:1466
+#: fltk/native/main.cpp:1467
 #, fuzzy
 #| msgid "Conversation"
 msgid "GnuPG version:"
 msgstr "Yazışma"
 
 #: fltk/native/main.cpp:1473
+#, fuzzy
+#| msgid "Ask Penguin Mail…"
+msgid "Start Penguin Mail at login"
+msgstr "Penguin Mail'e Sor…"
+
+#: fltk/native/main.cpp:1477
 msgid "Keep syncing in the tray when the window closes"
 msgstr ""
 
-#: fltk/native/main.cpp:1476
+#: fltk/native/main.cpp:1480
 #, fuzzy
 #| msgid "Notifications"
 msgid "Show new mail notifications"
 msgstr "Bildirimler"
 
-#: fltk/native/main.cpp:1481
+#: fltk/native/main.cpp:1485
 #, fuzzy
 #| msgid "Group Messages into Conversations"
 msgid "Group messages into conversations"
 msgstr "İletileri Yazışmalarda Grupla"
 
-#: fltk/native/main.cpp:1484
+#: fltk/native/main.cpp:1488
 msgid "Sync Interval (seconds)"
 msgstr ""
 
-#: fltk/native/main.cpp:1487
+#: fltk/native/main.cpp:1491
 msgid "Local Mail Window (days)"
 msgstr ""
 
-#: fltk/native/main.cpp:1491
+#: fltk/native/main.cpp:1495
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
 msgstr ""
 
-#: fltk/native/main.cpp:1536
+#: fltk/native/main.cpp:1503
+#, fuzzy
+#| msgid "Could not paste the image"
+msgid "Could not update login startup"
+msgstr "Resim yapıştırılamadı"
+
+#: fltk/native/main.cpp:1547
 #, fuzzy
 #| msgid "Calendar to add to"
 msgid "Calendar loaded"
 msgstr "Eklenecek takvim"
 
-#: fltk/native/main.cpp:1585
+#: fltk/native/main.cpp:1596
 msgid "No writable calendar is available."
 msgstr ""
 
-#: fltk/native/main.cpp:1590
+#: fltk/native/main.cpp:1601
 #, fuzzy
 #| msgid "Starts"
 msgid "Start"
 msgstr "Başlangıç"
 
-#: fltk/native/main.cpp:1591
+#: fltk/native/main.cpp:1602
 #, fuzzy
 #| msgid "Ends"
 msgid "End"
 msgstr "Bitiş"
 
-#: fltk/native/main.cpp:1592
+#: fltk/native/main.cpp:1603
 #, fuzzy
 #| msgid "Notifications"
 msgid "Location"
 msgstr "Bildirimler"
 
-#: fltk/native/main.cpp:1596
+#: fltk/native/main.cpp:1607
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
 msgstr ""
 
-#: fltk/native/main.cpp:1617
+#: fltk/native/main.cpp:1628
 #, fuzzy
 #| msgid "New Event"
 msgid "Save Event"
 msgstr "Yeni Etkinlik"
 
-#: fltk/native/main.cpp:1623
+#: fltk/native/main.cpp:1634
 msgid "Enter a title and a valid start and end time."
 msgstr ""
 
-#: fltk/native/main.cpp:1648 fltk/native/main.cpp:1871
+#: fltk/native/main.cpp:1659 fltk/native/main.cpp:1884
 #, fuzzy
 #| msgid "Delete it"
 msgid "Delete Event"
 msgstr "Sil"
 
-#: fltk/native/main.cpp:1649
+#: fltk/native/main.cpp:1660
 msgid "Delete this event and notify its guests?"
 msgstr ""
 
-#: fltk/native/main.cpp:1660
+#: fltk/native/main.cpp:1671
 #, fuzzy
 #| msgid "Contacts"
 msgid "Contacts loaded"
 msgstr "Kişiler"
 
-#: fltk/native/main.cpp:1681 fltk/native/main.cpp:1879
+#: fltk/native/main.cpp:1692 fltk/native/main.cpp:1892
 #, fuzzy
 #| msgid "Contact"
 msgid "New Contact"
 msgstr "Kişi"
 
-#: fltk/native/main.cpp:1689
+#: fltk/native/main.cpp:1700
 #, fuzzy
 #| msgid "Contact"
 msgid "Save Contact"
 msgstr "Kişi"
 
-#: fltk/native/main.cpp:1730 fltk/native/main.cpp:1936
+#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1949
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Forward"
 msgstr "İleti"
 
-#: fltk/native/main.cpp:1730 fltk/native/main.cpp:1932
+#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1945
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Reply"
 msgstr "İleti"
 
-#: fltk/native/main.cpp:1730 fltk/native/main.cpp:1934
+#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1947
 #, fuzzy
 #| msgid "Reply All"
 msgid "Message/Reply All"
 msgstr "Tümünü Yanıtla"
 
-#: fltk/native/main.cpp:1731 fltk/native/main.cpp:1938
+#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1951
 #, fuzzy
 #| msgid "Message Cache"
 msgid "Message/Archive"
 msgstr "İleti Önbelleği"
 
-#: fltk/native/main.cpp:1731 fltk/native/main.cpp:1940
+#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1953
 #, fuzzy
 #| msgid "Move to Trash"
 msgid "Message/Move to Trash"
 msgstr "Çöp Kutusu'na Taşı"
 
-#: fltk/native/main.cpp:1732 fltk/native/main.cpp:1946
+#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1959
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Flag"
 msgstr "İleti"
 
-#: fltk/native/main.cpp:1732 fltk/native/main.cpp:1942
+#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1955
 #, fuzzy
 #| msgid "Message sent"
 msgid "Message/Mark Read"
 msgstr "İleti gönderildi"
 
-#: fltk/native/main.cpp:1732 fltk/native/main.cpp:1944
+#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1957
 #, fuzzy
 #| msgid "Mark as Unread"
 msgid "Message/Mark Unread"
 msgstr "Okunmadı İşaretle"
 
-#: fltk/native/main.cpp:1733 fltk/native/main.cpp:1948
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1961
 #, fuzzy
 #| msgid "New Label…"
 msgid "Message/Label…"
 msgstr "Yeni Etiket…"
 
-#: fltk/native/main.cpp:1733 fltk/native/main.cpp:1949
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1962
 #, fuzzy
 #| msgid "Remind Me"
 msgid "Message/Remind Me…"
 msgstr "Bana Hatırlat"
 
-#: fltk/native/main.cpp:1733 fltk/native/main.cpp:1947
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1960
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Unflag"
 msgstr "İleti"
 
-#: fltk/native/main.cpp:1734 fltk/native/main.cpp:1898
+#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1911
 #, fuzzy
 #| msgid "Conversation"
 msgid "File/Export Conversation…"
 msgstr "Yazışma"
 
-#: fltk/native/main.cpp:1822
+#: fltk/native/main.cpp:1835
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversations"
 msgstr "Yazışma"
 
-#: fltk/native/main.cpp:1867
+#: fltk/native/main.cpp:1880
 #, fuzzy
 #| msgid "Calendars"
 msgid "Calendar days"
 msgstr "Takvimler"
 
-#: fltk/native/main.cpp:1877
+#: fltk/native/main.cpp:1890
 #, fuzzy
 #| msgid "Contacts"
 msgid "Find Contacts"
 msgstr "Kişiler"
 
-#: fltk/native/main.cpp:1882
+#: fltk/native/main.cpp:1895
 msgid "Write to Selected Contact"
 msgstr ""
 
-#: fltk/native/main.cpp:1893
+#: fltk/native/main.cpp:1906
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Starting Penguin Mail…"
 msgstr "Penguin Mail'e Sor…"
 
-#: fltk/native/main.cpp:1895
+#: fltk/native/main.cpp:1908
 #, fuzzy
 #| msgid "New Message"
 msgid "File/New Message"
 msgstr "Yeni İleti"
 
-#: fltk/native/main.cpp:1897
+#: fltk/native/main.cpp:1910
 #, fuzzy
 #| msgid "Add Account…"
 msgid "File/Add Account…"
 msgstr "Hesap Ekle…"
 
-#: fltk/native/main.cpp:1900
+#: fltk/native/main.cpp:1913
 #, fuzzy
 #| msgid "OpenPGP Keys"
 msgid "File/OpenPGP Keys…"
 msgstr "OpenPGP Anahtarları"
 
-#: fltk/native/main.cpp:1901
+#: fltk/native/main.cpp:1914
 #, fuzzy
 #| msgid "Preferences"
 msgid "File/Preferences…"
 msgstr "Tercihler"
 
-#: fltk/native/main.cpp:1903
+#: fltk/native/main.cpp:1916
 msgid "File/Show Window"
 msgstr ""
 
-#: fltk/native/main.cpp:1904
+#: fltk/native/main.cpp:1917
 #, fuzzy
 #| msgid "Close window"
 msgid "File/Close Window"
 msgstr "Pencereyi kapat"
 
-#: fltk/native/main.cpp:1906
+#: fltk/native/main.cpp:1919
 #, fuzzy
 #| msgid "Quit"
 msgid "File/Quit"
 msgstr "Çık"
 
-#: fltk/native/main.cpp:1912
+#: fltk/native/main.cpp:1925
 #, fuzzy
 #| msgid "Search"
 msgid "Edit/Search"
 msgstr "Ara"
 
-#: fltk/native/main.cpp:1914
+#: fltk/native/main.cpp:1927
 #, fuzzy
 #| msgid "View"
 msgid "View/Mail"
 msgstr "Görünüm"
 
-#: fltk/native/main.cpp:1915
+#: fltk/native/main.cpp:1928
 #, fuzzy
 #| msgid "New Calendar"
 msgid "View/Calendar"
 msgstr "Yeni Takvim"
 
-#: fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:1930
 #, fuzzy
 #| msgid "Contacts"
 msgid "View/Contacts"
 msgstr "Kişiler"
 
-#: fltk/native/main.cpp:1919
+#: fltk/native/main.cpp:1932
 #, fuzzy
 #| msgid "Refresh"
 msgid "View/Refresh"
 msgstr "Yenile"
 
-#: fltk/native/main.cpp:1922
+#: fltk/native/main.cpp:1935
 #, fuzzy
 #| msgid "View Source"
 msgid "View/Load More"
 msgstr "Kaynağı Görüntüle"
 
-#: fltk/native/main.cpp:1927
+#: fltk/native/main.cpp:1940
 #, fuzzy
 #| msgid "Edit Draft"
 msgid "Message/Edit Draft"
 msgstr "Taslağı Düzenle"
 
-#: fltk/native/main.cpp:1928
+#: fltk/native/main.cpp:1941
 msgid "Message/Send Queued Message Now"
 msgstr ""
 
-#: fltk/native/main.cpp:1930
+#: fltk/native/main.cpp:1943
 msgid "Message/Delete Queued Message"
 msgstr ""
 
-#: fltk/native/main.cpp:1950
+#: fltk/native/main.cpp:1963
 #, fuzzy
 #| msgid "Keyboard Shortcuts"
 msgid "Help/Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: fltk/native/main.cpp:1952
+#: fltk/native/main.cpp:1965
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12579,13 +12591,13 @@ msgid ""
 "DomeD owns Super shortcuts."
 msgstr ""
 
-#: fltk/native/main.cpp:1959
+#: fltk/native/main.cpp:1972
 #, fuzzy
 #| msgid "About Penguin Mail"
 msgid "Help/About Penguin Mail"
 msgstr "Penguin Mail Hakkında"
 
-#: fltk/native/main.cpp:1962
+#: fltk/native/main.cpp:1975
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12594,7 +12606,7 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2090
+#: fltk/native/main.cpp:2103
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 

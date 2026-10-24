@@ -71,6 +71,7 @@ struct DesktopMenu::Impl {
   wl_surface *attachedSurface = nullptr;
   unsigned long attachedXid = 0;
   int nextId = 1;
+  std::vector<int> pendingClicks;
   Impl(Fl_Window &w, DesktopMenuBar &m) : window(w), menu(m) {
     static int count = 0;
     path = "/org/de_xr/FLTK/Menu" + std::to_string(++count);
@@ -99,10 +100,11 @@ struct DesktopMenu::Impl {
           self->updateVisibility();
         }, this, nullptr);
     rebuild();
-    Fl::add_timeout(.05, tick, this);
+    Fl::add_timeout(.01, tick, this);
   }
   ~Impl() {
     Fl::remove_timeout(tick, this);
+    Fl::remove_timeout(runClick, this);
     if (registrarWatch) g_bus_unwatch_name(registrarWatch);
     if (surface)
       org_kde_kwin_appmenu_release(surface);
@@ -129,7 +131,7 @@ struct DesktopMenu::Impl {
     self->attach();
     self->updateVisibility();
     self->rebuild();
-    Fl::repeat_timeout(.1, tick, p);
+    Fl::repeat_timeout(.02, tick, p);
   }
   void updateVisibility() {
     // A desktop name alone is insufficient: a working menu host and window
@@ -349,9 +351,20 @@ struct DesktopMenu::Impl {
     if (strcmp(event, "clicked") || it == nodes.end() || !it->second.item ||
         !it->second.children.empty())
       return;
-    auto item = it->second.item;
-    if (usable(id))
-      menu.picked(item);
+    if (usable(id)) {
+      pendingClicks.push_back(id);
+      if (pendingClicks.size() == 1) Fl::add_timeout(0, runClick, this);
+    }
+  }
+  static void runClick(void *data) {
+    auto self = static_cast<Impl *>(data);
+    auto clicks = std::move(self->pendingClicks);
+    self->pendingClicks.clear();
+    for (int id : clicks) {
+      auto item = self->nodes.find(id);
+      if (item != self->nodes.end() && item->second.item && self->usable(id))
+        self->menu.picked(item->second.item);
+    }
   }
   static GVariant *property(GDBusConnection *, const gchar *, const gchar *,
                             const gchar *, const gchar *name, GError **,

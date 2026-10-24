@@ -39,3 +39,14 @@ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.c9dev.PenguinMail.desktop" 
 install(DIRECTORY "${ENGINE_DIR}/app/data/icons/" DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor)
 
 install(DIRECTORY "${ENGINE_DIR}/target/locale/" DESTINATION ${CMAKE_INSTALL_DATADIR}/locale OPTIONAL)
+
+include(CTest)
+if(BUILD_TESTING)
+  find_package(Python3 REQUIRED COMPONENTS Interpreter)
+  add_executable(penguin-tray-test tests/tray.cpp)
+  target_compile_features(penguin-tray-test PRIVATE cxx_std_17)
+  target_include_directories(penguin-tray-test PRIVATE native)
+  target_link_libraries(penguin-tray-test PRIVATE fltk::fltk-shared fltk::gl-shared fltk::images-shared PkgConfig::FONTCONFIG)
+  de_xr_desktop_menu(penguin-tray-test)
+  add_test(NAME login-and-tray COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/tray.py $<TARGET_FILE:penguin-tray-test>)
+endif()

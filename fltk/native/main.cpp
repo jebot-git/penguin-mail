@@ -3,6 +3,7 @@
 #include "engine.h"
 #include "gpu-window.h"
 #include "status-icon.h"
+#include "autostart.h"
 #include "notifications.h"
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Check_Button.H>
@@ -1468,31 +1469,41 @@ class MailWindow : public dx::GpuWindow {
     });
   }
   void preferences() {
-    auto win = dialog(620, 400, _("Preferences"));
+    auto win = dialog(620, 440, _("Preferences"));
+    auto startup = new Fl_Check_Button(20, 20, 580, 30, _("Start Penguin Mail at login"));
+    startup->value(login_startup::enabled());
+    if (isDemo) startup->deactivate();
     auto hide = new Fl_Check_Button(
-        20, 20, 580, 30, _("Keep syncing in the tray when the window closes"));
+        20, 60, 580, 30, _("Keep syncing in the tray when the window closes"));
     hide->value(hideToTray);
     auto notices =
-        new Fl_Check_Button(20, 60, 580, 30, _("Show new mail notifications"));
+        new Fl_Check_Button(20, 100, 580, 30, _("Show new mail notifications"));
     notices->value(notifications);
-    auto reminders = new Fl_Check_Button(20, 100, 580, 30, _("Event Reminders"));
+    auto reminders = new Fl_Check_Button(20, 140, 580, 30, _("Event Reminders"));
     reminders->value(eventReminders);
-    auto grouped = new Fl_Check_Button(20, 140, 580, 30,
+    auto grouped = new Fl_Check_Button(20, 180, 580, 30,
                                        _("Group messages into conversations"));
     grouped->value(threading);
     auto poll =
-        new Fl_Int_Input(250, 185, 340, 28, _("Sync Interval (seconds)"));
+        new Fl_Int_Input(250, 225, 340, 28, _("Sync Interval (seconds)"));
     poll->value("30");
     auto days =
-        new Fl_Int_Input(250, 225, 340, 28, _("Local Mail Window (days)"));
+        new Fl_Int_Input(250, 265, 340, 28, _("Local Mail Window (days)"));
     days->value("30");
     auto info = new Fl_Box(
-        20, 265, 580, 60,
+        20, 305, 580, 60,
         _("Colors, accent, font and bitmap strike follow DomeD. Sync interval "
           "and mail window changes apply after restart."));
     info->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
-    new CommandButton(420, 340, 170, 34, _("Save"),
-                      [this, win, hide, notices, reminders, grouped, poll, days] {
+    new CommandButton(420, 380, 170, 34, _("Save"),
+                      [this, win, startup, hide, notices, reminders, grouped, poll, days] {
+                        if (!isDemo) {
+                          try { login_startup::apply(startup->value()); }
+                          catch (const std::exception &e) {
+                            fl_alert("%s\n%s", _("Could not update login startup"), e.what());
+                            return;
+                          }
+                        }
                         hideToTray = hide->value();
                         notifications = notices->value();
                         eventReminders = reminders->value();
@@ -1710,8 +1721,10 @@ class MailWindow : public dx::GpuWindow {
       title += " - " + std::string(_("Contacts"));
     title += " (" + std::to_string(std::max(0, unread)) + ")";
     copy_label(title.c_str());
-    if (tray)
+    if (tray) {
       tray->setTitle(title);
+      tray->setUnread(std::max(0, unread));
+    }
   }
   void changeSpace(int value) {
     shownSpace = value;

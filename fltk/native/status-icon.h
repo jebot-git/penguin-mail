@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 // StatusNotifierItem extension for FLTK. The real command menu is shared with
-// the global menubar; the core audio process does not depend on this companion.
+// the global menubar. Unread mail also changes its embedded pixmap.
 class StatusIcon {
   GDBusConnection *bus = nullptr;
   GDBusNodeInfo *info = nullptr;
@@ -17,6 +17,17 @@ class StatusIcon {
   DesktopMenu &menu;
   std::string title = "penguin-mail";
   bool present = false;
+  int unread = 0;
+  std::string pixmapKey;
+  std::vector<unsigned char> pixmap;
+  static void activateLater(void *data) {
+    auto self = static_cast<StatusIcon *>(data);
+    if (self->activate) self->activate();
+  }
+  void emit(const char *name, GVariant *value = nullptr) {
+    if (bus) g_dbus_connection_emit_signal(bus, nullptr, "/StatusNotifierItem",
+        "org.kde.StatusNotifierItem", name, value, nullptr);
+  }
   static GVariant *property(GDBusConnection *, const gchar *, const gchar *,
                             const gchar *, const gchar *name, GError **,
                             gpointer data) {
@@ -30,7 +41,7 @@ class StatusIcon {
     if (!strcmp(name, "Status"))
       return g_variant_new_string("Active");
     if (!strcmp(name, "IconName"))
-      return g_variant_new_string("penguin-mail");
+      return g_variant_new_string(s->unread > 0 ? "io.github.c9dev.PenguinMail-unread" : "io.github.c9dev.PenguinMail-symbolic");
     if (!strcmp(name, "WindowId"))
       return g_variant_new_uint32(0);
     if (!strcmp(name, "ItemIsMenu"))
@@ -42,30 +53,36 @@ class StatusIcon {
       Fl::get_color(FL_FOREGROUND_COLOR, r, g, b);
       char color[8];
       snprintf(color, sizeof(color), "#%02x%02x%02x", r, g, b);
-      auto svg = dx_icon::svg("mail", color);
-      Fl_SVG_Image image(nullptr, svg.c_str());
-      image.resize(24, 24);
-      image.normalize();
+      std::string key = std::string(color) + (s->unread > 0 ? "+unread" : "");
+      if (s->pixmapKey != key) {
+        auto svg = dx_icon::svg("mail", color);
+        if (s->unread > 0) svg.insert(svg.rfind("</svg>"),
+            "<circle cx='18' cy='6' r='5' fill='#e8660c' stroke='#2a2623' stroke-width='1.5'/>");
+        Fl_SVG_Image image(nullptr, svg.c_str());
+        image.resize(24, 24);
+        image.normalize();
+        if (!image.fail() && image.data() && image.data()[0]) {
+          std::vector<unsigned char> argb(24 * 24 * 4);
+          auto data = (const unsigned char *)image.data()[0];
+          int stride = image.ld() ? image.ld() : 24 * image.d();
+          for (int y = 0; y < 24; ++y)
+            for (int x = 0; x < 24; ++x) {
+              auto p = data + y * stride + x * image.d();
+              auto q = argb.data() + (y * 24 + x) * 4;
+              q[0] = image.d() == 4 ? p[3] : 255;
+              q[1] = p[0];
+              q[2] = p[1];
+              q[3] = p[2];
+            }
+          s->pixmap = std::move(argb);
+          s->pixmapKey = key;
+        }
+      }
       GVariantBuilder icons;
       g_variant_builder_init(&icons, G_VARIANT_TYPE("a(iiay)"));
-      if (!image.fail() && image.data() && image.data()[0]) {
-        std::vector<unsigned char> argb(24 * 24 * 4);
-        auto data = (const unsigned char *)image.data()[0];
-        int stride = image.ld() ? image.ld() : 24 * image.d();
-        for (int y = 0; y < 24; ++y)
-          for (int x = 0; x < 24; ++x) {
-            auto p = data + y * stride + x * image.d();
-            auto q = argb.data() + (y * 24 + x) * 4;
-            q[0] = image.d() == 4 ? p[3] : 255;
-            q[1] = p[0];
-            q[2] = p[1];
-            q[3] = p[2];
-          }
+      if (!s->pixmap.empty())
         g_variant_builder_add(&icons, "(ii@ay)", 24, 24,
-                              g_variant_new_fixed_array(G_VARIANT_TYPE_BYTE,
-                                                        argb.data(),
-                                                        argb.size(), 1));
-      }
+            g_variant_new_fixed_array(G_VARIANT_TYPE_BYTE, s->pixmap.data(), s->pixmap.size(), 1));
       return g_variant_builder_end(&icons);
     }
     return nullptr;
@@ -80,8 +97,9 @@ class StatusIcon {
       g_variant_get(parameters, "(i&s)", &delta, &axis);
       if (s->scroll && delta && !strcmp(axis, "vertical"))
         s->scroll(delta);
-    } else if (s->activate)
-      s->activate();
+    } else if (!strcmp(name, "Activate") || !strcmp(name, "SecondaryActivate")) {
+      Fl::add_timeout(0, activateLater, s);
+    }
     g_dbus_method_invocation_return_value(call, nullptr);
   }
   void registerItem() {
@@ -121,6 +139,7 @@ public:
         this, nullptr);
   }
   ~StatusIcon() {
+    Fl::remove_timeout(activateLater, this);
     if (watch)
       g_bus_unwatch_name(watch);
     if (bus) {
@@ -132,6 +151,11 @@ public:
       g_dbus_node_info_unref(info);
   }
   bool available() const { return present; }
+  void setUnread(int count) {
+    bool changed = (unread > 0) != (count > 0);
+    unread = count;
+    if (changed) emit("NewIcon");
+  }
   void setTitle(std::string value) {
     if (title == value)
       return;

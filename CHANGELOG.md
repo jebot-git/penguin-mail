@@ -9,6 +9,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### New
 
+- Start the native app in the tray at login from Preferences.
+
 - Build a native FLTK interface for DomeD with universal menus, live appearance, a tray icon and calendar date links.
 - Integrate OpenPGP signature checks, decryption, signing, encryption, encrypted drafts and key-file import into the native interface. Share the protected-message reader with GTK.
 - Deliver native mail and calendar notifications through DomeD’s notification server, with conversation/date actions, calendar join and persistent snooze.
@@ -19,6 +21,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 - Empty Trash from its mailbox menu, including older mail outside the local cache, with bounded memory use and a fresh check before each delete batch.
 
 ### Fixed
+
+- Show unread mail in the native tray icon and answer tray menus before running their actions.
 
 - Connect to POP3 servers that require RSA TLS 1.2 ciphers while keeping certificate and hostname checks.
 - Reload DomeD bitmap font exports and text textures when the session's font configuration changes.

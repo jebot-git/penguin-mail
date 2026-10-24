@@ -81,7 +81,14 @@ mutations are serialized. Pipe close shuts down sync and the child process.
   remain compositor-owned. Message and calendar lists also accept cursor keys.
 - StatusNotifierItem shares the actual command menu and unread title. Closing the
   main window keeps its event loop and engine alive when a tray host is available.
-  Losing the tray host restores the window.
+  Losing the tray host restores the window. Unread inbox mail adds an orange
+  dot to the tray icon; reading it clears the dot. The embedded pixmap and named
+  icon both change, with a `NewIcon` signal for the tray host. Menu requests are
+  dispatched at 20 ms intervals, and command callbacks run after the D-Bus reply.
+- **Preferences → Start Penguin Mail at login** manages the user login entry
+  in `$XDG_CONFIG_HOME/autostart/io.github.c9dev.PenguinMail.desktop`. It launches
+  the installed executable with `--tray`, restores the window if no tray host
+  exists, and leaves the choice off until enabled. Demo mode cannot change it.
 - Mail and calendar notifications go directly to DomeD's session-bus
   `org.freedesktop.Notifications` server, with the app's desktop identity.
   Mail uses private count-only text; clicking opens its conversation or inbox.
