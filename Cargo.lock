@@ -2739,6 +2739,7 @@ dependencies = [
 name = "mailrs-sync"
 version = "1.0.10"
 dependencies = [
+ "anyhow",
  "async-channel 2.5.0",
  "base64 0.23.1",
  "chrono",
@@ -2746,6 +2747,7 @@ dependencies = [
  "dirs",
  "futures",
  "keyring",
+ "libc",
  "mail-builder",
  "mail-parser",
  "mailrs-dav",
@@ -2760,6 +2762,8 @@ dependencies = [
  "mailrs-sieve",
  "mailrs-store",
  "mailrs-testmail",
+ "native-tls",
+ "openssl",
  "rand 0.10.3",
  "rusqlite",
  "serde",
@@ -2767,9 +2771,11 @@ dependencies = [
  "tempfile",
  "thiserror 2.0.21",
  "tokio",
+ "tokio-native-tls",
  "toml",
  "tracing",
  "tracing-subscriber",
+ "url",
  "wiremock",
 ]
 

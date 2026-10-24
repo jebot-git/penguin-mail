@@ -218,3 +218,8 @@ app/src/protection/common.rs
 fltk/engine/src/crypto.rs
 fltk/engine/src/oauth.rs
 fltk/engine/src/notifications.rs
+
+sync/src/misfin/mod.rs
+fltk/native/misfin.h
+sync/src/misfin/client.rs
+sync/src/misfin/wire.rs

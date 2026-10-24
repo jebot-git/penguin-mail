@@ -1264,6 +1264,9 @@ class MailWindow : public dx::GpuWindow {
       });
     });
   }
+  #ifdef PENGUIN_ENABLE_MISFIN
+  #include "misfin.h"
+  #endif
   void accountDialog() {
     if (isDemo) {
       fl_message("%s", _("Demo mode uses temporary sample accounts. Start "
@@ -1908,6 +1911,9 @@ public:
     addMenu(*menu, _("File/New Message"), FL_CTRL | 'n',
             [this] { composer(); });
     addMenu(*menu, _("File/Add Account…"), 0, [this] { accountDialog(); });
+#ifdef PENGUIN_ENABLE_MISFIN
+    addMenu(*menu, _("File/Misfin Messaging…"), 0, [this] { misfinDialog(); });
+#endif
     addMenu(*menu, _("File/Export Conversation…"), FL_CTRL | FL_SHIFT | 's',
             [this] { exportThread(); });
     addMenu(*menu, _("File/OpenPGP Keys…"), 0, [this] { openPgp(); });

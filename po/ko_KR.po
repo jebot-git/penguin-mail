@@ -11331,97 +11331,103 @@ msgstr "알 수 없는 발신자"
 msgid "Sign in again to grant permission."
 msgstr "{account}에 다시 로그인"
 
-#: fltk/engine/src/main.rs:182
+#: fltk/engine/src/main.rs:186
 #, fuzzy
 #| msgid "Sign In Again"
 msgid "Sign in again"
 msgstr "다시 로그인"
 
-#: fltk/engine/src/main.rs:266
+#: fltk/engine/src/main.rs:270
 #, fuzzy
 #| msgid "Account Added"
 msgid "Account required"
 msgstr "계정 추가됨"
 
-#: fltk/engine/src/main.rs:270
+#: fltk/engine/src/main.rs:274
 #, fuzzy
 #| msgid "Show Mailboxes"
 msgid "Unknown mailbox"
 msgstr "메일함 표시"
 
-#: fltk/engine/src/main.rs:329
+#: fltk/engine/src/main.rs:281
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Demo mode cannot use Misfin identities"
+msgstr "데모 모드에서는 실제 계정을 추가할 수 없습니다."
+
+#: fltk/engine/src/main.rs:338
 msgid "Queued message not found"
 msgstr ""
 
-#: fltk/engine/src/main.rs:358
+#: fltk/engine/src/main.rs:367
 msgid "This message is not cached. Reconnect the account to download it."
 msgstr ""
 
-#: fltk/engine/src/main.rs:367
+#: fltk/engine/src/main.rs:376
 msgid "Reconnect the account to read the original protected message."
 msgstr ""
 
-#: fltk/engine/src/main.rs:376
+#: fltk/engine/src/main.rs:385
 #, fuzzy
 #| msgid "gpg could not open this message"
 msgid "OpenPGP could not open this message"
 msgstr "gpg에서 이 메시지를 열 수 없습니다"
 
-#: fltk/engine/src/main.rs:398
+#: fltk/engine/src/main.rs:407
 msgid "Targets required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:408
+#: fltk/engine/src/main.rs:417
 msgid "Time required"
 msgstr ""
 
-#: fltk/engine/src/main.rs:460
+#: fltk/engine/src/main.rs:469
 #, fuzzy
 #| msgid "That message is no longer waiting."
 msgid "This message is no longer a draft"
 msgstr "해당 메시지는 더 이상 대기 중이 아닙니다."
 
-#: fltk/engine/src/main.rs:464
+#: fltk/engine/src/main.rs:473
 #, fuzzy
 #| msgid "Save draft"
 msgid "Unreadable draft"
 msgstr "임시 저장"
 
-#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#: fltk/engine/src/main.rs:524 fltk/engine/src/main.rs:536
 #, fuzzy
 #| msgid "Forwarded message removed"
 msgid "Queued message required"
 msgstr "전달 메시지 제거됨"
 
-#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#: fltk/engine/src/main.rs:579 fltk/engine/src/main.rs:613
 #, fuzzy
 #| msgid "Demo mode cannot add real accounts."
 msgid "Demo mode cannot add real accounts"
 msgstr "데모 모드에서는 실제 계정을 추가할 수 없습니다."
 
-#: fltk/engine/src/main.rs:575
+#: fltk/engine/src/main.rs:584
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown provider"
 msgstr "알 수 없는 발신자"
 
-#: fltk/engine/src/main.rs:598
+#: fltk/engine/src/main.rs:607
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Sign-in timed out"
 msgstr "로그인 중단됨"
 
-#: fltk/engine/src/main.rs:608
+#: fltk/engine/src/main.rs:617
 #, fuzzy
 #| msgid "Your email address"
 msgid "Invalid email address"
 msgstr "내 이메일 주소"
 
-#: fltk/engine/src/main.rs:700
+#: fltk/engine/src/main.rs:709
 msgid "Enter a title and an end after the start"
 msgstr ""
 
-#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/main.rs:757 fltk/engine/src/notifications.rs:161
 #: fltk/engine/src/notifications.rs:164
 #, fuzzy
 #| msgid "Unknown sender"
@@ -11600,7 +11606,7 @@ msgstr ""
 msgid "Conversation loaded"
 msgstr "대화"
 
-#: fltk/native/main.cpp:837 fltk/native/main.cpp:1853
+#: fltk/native/main.cpp:837 fltk/native/main.cpp:1856
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Save Attachment"
@@ -11646,7 +11652,7 @@ msgstr "알림"
 msgid "Add an account before composing mail."
 msgstr "먼저 계정을 추가하세요"
 
-#: fltk/native/main.cpp:986 fltk/native/main.cpp:2135
+#: fltk/native/main.cpp:986 fltk/native/main.cpp:2141
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
@@ -11744,37 +11750,37 @@ msgstr "예약 발송"
 msgid "File/Save Draft"
 msgstr "임시보관 메일 저장"
 
-#: fltk/native/main.cpp:1195
+#: fltk/native/main.cpp:1195 fltk/native/misfin.h:248
 #, fuzzy
 #| msgid "Close"
 msgid "File/Close"
 msgstr "닫기"
 
-#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1920
+#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1926
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Undo"
 msgstr "편집"
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1921
+#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:249
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Cut"
 msgstr "편집"
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1922
+#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:250
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Copy"
 msgstr "편집"
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1923
+#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:251
 #, fuzzy
 #| msgid "Edit Template"
 msgid "Edit/Paste"
 msgstr "템플릿 편집"
 
-#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1924
+#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:252
 #, fuzzy
 #| msgid "Select all"
 msgid "Edit/Select All"
@@ -11822,498 +11828,504 @@ msgstr ""
 msgid "Complete sign-in in your browser."
 msgstr "브라우저에서 계속"
 
-#: fltk/native/main.cpp:1269
+#: fltk/native/main.cpp:1272
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
 msgstr ""
 
-#: fltk/native/main.cpp:1274
+#: fltk/native/main.cpp:1277
 #, fuzzy
 #| msgid "Google Meet"
 msgid "Google…"
 msgstr "Google Meet"
 
-#: fltk/native/main.cpp:1275
+#: fltk/native/main.cpp:1278
 #, fuzzy
 #| msgid "Microsoft Teams"
 msgid "Microsoft…"
 msgstr "Microsoft Teams"
 
-#: fltk/native/main.cpp:1277
+#: fltk/native/main.cpp:1280
 #, fuzzy
 #| msgid "Account"
 msgid "Account Type"
 msgstr "계정"
 
-#: fltk/native/main.cpp:1283 fltk/native/main.cpp:1336
+#: fltk/native/main.cpp:1286 fltk/native/main.cpp:1339
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "IMAP Server"
 msgstr "MCP 서버"
 
-#: fltk/native/main.cpp:1286
+#: fltk/native/main.cpp:1289
 #, fuzzy
 #| msgid "Security"
 msgid "IMAP Security"
 msgstr "보안"
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1292
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "SMTP Server"
 msgstr "MCP 서버"
 
-#: fltk/native/main.cpp:1292
+#: fltk/native/main.cpp:1295
 #, fuzzy
 #| msgid "Security"
 msgid "SMTP Security"
 msgstr "보안"
 
-#: fltk/native/main.cpp:1295
+#: fltk/native/main.cpp:1298
 #, fuzzy
 #| msgid "User Name"
 msgid "SMTP User Name"
 msgstr "사용자 이름"
 
-#: fltk/native/main.cpp:1296
+#: fltk/native/main.cpp:1299
 #, fuzzy
 #| msgid "Password"
 msgid "SMTP Password"
 msgstr "비밀번호"
 
-#: fltk/native/main.cpp:1299
+#: fltk/native/main.cpp:1302
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
 msgstr ""
 
-#: fltk/native/main.cpp:1303
+#: fltk/native/main.cpp:1306
 #, fuzzy
 #| msgid "Servers"
 msgid "Find Servers"
 msgstr "서버"
 
-#: fltk/native/main.cpp:1310
+#: fltk/native/main.cpp:1313
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 
-#: fltk/native/main.cpp:1315
+#: fltk/native/main.cpp:1318
 #, fuzzy
 #| msgid "Use {server}"
 msgid "Use Servers"
 msgstr "{server} 사용"
 
-#: fltk/native/main.cpp:1316
+#: fltk/native/main.cpp:1319
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 
-#: fltk/native/main.cpp:1334
+#: fltk/native/main.cpp:1337
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "POP3 Server"
 msgstr "MCP 서버"
 
-#: fltk/native/main.cpp:1335
+#: fltk/native/main.cpp:1338
 #, fuzzy
 #| msgid "Server"
 msgid "Server URL"
 msgstr "서버"
 
-#: fltk/native/main.cpp:1351
+#: fltk/native/main.cpp:1354
 msgid "Authentication"
 msgstr ""
 
-#: fltk/native/main.cpp:1373
+#: fltk/native/main.cpp:1376
 msgid "Enter ports between 1 and 65535."
 msgstr ""
 
-#: fltk/native/main.cpp:1401
+#: fltk/native/main.cpp:1404
 msgid "Checking the incoming and outgoing servers…"
 msgstr ""
 
-#: fltk/native/main.cpp:1420
+#: fltk/native/main.cpp:1423
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
 msgstr ""
 
-#: fltk/native/main.cpp:1421
+#: fltk/native/main.cpp:1424
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
 "automatically."
 msgstr ""
 
-#: fltk/native/main.cpp:1423
+#: fltk/native/main.cpp:1426
 #, fuzzy
 #| msgid "Add Address"
 msgid "Addresses"
 msgstr "주소 추가"
 
-#: fltk/native/main.cpp:1439
+#: fltk/native/main.cpp:1442
 #, fuzzy
 #| msgid "Not encrypted in transit"
 msgid "No encryption key"
 msgstr "전송 중 암호화되지 않음"
 
-#: fltk/native/main.cpp:1446
+#: fltk/native/main.cpp:1449
 #, fuzzy
 #| msgid "Check for Updates"
 msgid "Check Local Keys"
 msgstr "업데이트 확인"
 
-#: fltk/native/main.cpp:1447
+#: fltk/native/main.cpp:1450
 #, fuzzy
 #| msgid "Import…"
 msgid "Import Key File…"
 msgstr "가져오기…"
 
-#: fltk/native/main.cpp:1449
+#: fltk/native/main.cpp:1452
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Import OpenPGP Key"
 msgstr "OpenPGP 키 가져오기"
 
-#: fltk/native/main.cpp:1452
+#: fltk/native/main.cpp:1455
 #, fuzzy
 #| msgid "Import…"
 msgid "Import"
 msgstr "가져오기…"
 
-#: fltk/native/main.cpp:1453
+#: fltk/native/main.cpp:1456
 msgid "Import this file into your GnuPG keyring?"
 msgstr ""
 
-#: fltk/native/main.cpp:1454
+#: fltk/native/main.cpp:1457
 #, fuzzy
 #| msgid "Import…"
 msgid "Importing key…"
 msgstr "가져오기…"
 
-#: fltk/native/main.cpp:1457
+#: fltk/native/main.cpp:1460
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Imported keys:"
 msgstr "OpenPGP 키 가져오기"
 
-#: fltk/native/main.cpp:1467
+#: fltk/native/main.cpp:1470
 #, fuzzy
 #| msgid "Conversation"
 msgid "GnuPG version:"
 msgstr "대화"
 
-#: fltk/native/main.cpp:1473
+#: fltk/native/main.cpp:1476
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Start Penguin Mail at login"
 msgstr "Penguin Mail에 질문…"
 
-#: fltk/native/main.cpp:1477
+#: fltk/native/main.cpp:1480
 msgid "Keep syncing in the tray when the window closes"
 msgstr ""
 
-#: fltk/native/main.cpp:1480
+#: fltk/native/main.cpp:1483
 #, fuzzy
 #| msgid "Notifications"
 msgid "Show new mail notifications"
 msgstr "알림"
 
-#: fltk/native/main.cpp:1485
+#: fltk/native/main.cpp:1488
 #, fuzzy
 #| msgid "Group Messages into Conversations"
 msgid "Group messages into conversations"
 msgstr "메시지를 대화로 묶기"
 
-#: fltk/native/main.cpp:1488
+#: fltk/native/main.cpp:1491
 msgid "Sync Interval (seconds)"
 msgstr ""
 
-#: fltk/native/main.cpp:1491
+#: fltk/native/main.cpp:1494
 msgid "Local Mail Window (days)"
 msgstr ""
 
-#: fltk/native/main.cpp:1495
+#: fltk/native/main.cpp:1498
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
 msgstr ""
 
-#: fltk/native/main.cpp:1503
+#: fltk/native/main.cpp:1506
 #, fuzzy
 #| msgid "Could not paste the image"
 msgid "Could not update login startup"
 msgstr "이미지를 붙여넣을 수 없습니다"
 
-#: fltk/native/main.cpp:1547
+#: fltk/native/main.cpp:1550
 #, fuzzy
 #| msgid "Calendar to add to"
 msgid "Calendar loaded"
 msgstr "추가할 캘린더"
 
-#: fltk/native/main.cpp:1596
+#: fltk/native/main.cpp:1599
 msgid "No writable calendar is available."
 msgstr ""
 
-#: fltk/native/main.cpp:1601
+#: fltk/native/main.cpp:1604
 #, fuzzy
 #| msgid "Starts"
 msgid "Start"
 msgstr "시작"
 
-#: fltk/native/main.cpp:1602
+#: fltk/native/main.cpp:1605
 #, fuzzy
 #| msgid "Ends"
 msgid "End"
 msgstr "종료"
 
-#: fltk/native/main.cpp:1603
+#: fltk/native/main.cpp:1606
 #, fuzzy
 #| msgid "Notifications"
 msgid "Location"
 msgstr "알림"
 
-#: fltk/native/main.cpp:1607
+#: fltk/native/main.cpp:1610
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
 msgstr ""
 
-#: fltk/native/main.cpp:1628
+#: fltk/native/main.cpp:1631
 #, fuzzy
 #| msgid "New Event"
 msgid "Save Event"
 msgstr "새 일정"
 
-#: fltk/native/main.cpp:1634
+#: fltk/native/main.cpp:1637
 msgid "Enter a title and a valid start and end time."
 msgstr ""
 
-#: fltk/native/main.cpp:1659 fltk/native/main.cpp:1884
+#: fltk/native/main.cpp:1662 fltk/native/main.cpp:1887
 #, fuzzy
 #| msgid "Delete it"
 msgid "Delete Event"
 msgstr "삭제"
 
-#: fltk/native/main.cpp:1660
+#: fltk/native/main.cpp:1663
 msgid "Delete this event and notify its guests?"
 msgstr ""
 
-#: fltk/native/main.cpp:1671
+#: fltk/native/main.cpp:1674
 #, fuzzy
 #| msgid "Contacts"
 msgid "Contacts loaded"
 msgstr "연락처"
 
-#: fltk/native/main.cpp:1692 fltk/native/main.cpp:1892
+#: fltk/native/main.cpp:1695 fltk/native/main.cpp:1895
 #, fuzzy
 #| msgid "Contact"
 msgid "New Contact"
 msgstr "연락처"
 
-#: fltk/native/main.cpp:1700
+#: fltk/native/main.cpp:1703
 #, fuzzy
 #| msgid "Contact"
 msgid "Save Contact"
 msgstr "연락처"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1949
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1955
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Forward"
 msgstr "메시지"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1945
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1951
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Reply"
 msgstr "메시지"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1947
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1953
 #, fuzzy
 #| msgid "Reply All"
 msgid "Message/Reply All"
 msgstr "전체 답장"
 
-#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1951
+#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1957
 #, fuzzy
 #| msgid "Message Cache"
 msgid "Message/Archive"
 msgstr "메시지 캐시"
 
-#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1953
+#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1959
 #, fuzzy
 #| msgid "Move to Trash"
 msgid "Message/Move to Trash"
 msgstr "휴지통으로 이동"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1959
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1965
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Flag"
 msgstr "메시지"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1955
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1961
 #, fuzzy
 #| msgid "Message sent"
 msgid "Message/Mark Read"
 msgstr "메시지를 보냈습니다"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1957
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1963
 #, fuzzy
 #| msgid "Mark as Unread"
 msgid "Message/Mark Unread"
 msgstr "읽지 않음으로 표시"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1961
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1967
 #, fuzzy
 #| msgid "New Label…"
 msgid "Message/Label…"
 msgstr "새 라벨…"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1962
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1968
 #, fuzzy
 #| msgid "Remind Me"
 msgid "Message/Remind Me…"
 msgstr "나중에 알림"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1960
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1966
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Unflag"
 msgstr "메시지"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1911
+#: fltk/native/main.cpp:1750 fltk/native/main.cpp:1917
 #, fuzzy
 #| msgid "Conversation"
 msgid "File/Export Conversation…"
 msgstr "대화"
 
-#: fltk/native/main.cpp:1835
+#: fltk/native/main.cpp:1838
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversations"
 msgstr "대화"
 
-#: fltk/native/main.cpp:1880
+#: fltk/native/main.cpp:1883
 #, fuzzy
 #| msgid "Calendars"
 msgid "Calendar days"
 msgstr "캘린더"
 
-#: fltk/native/main.cpp:1890
+#: fltk/native/main.cpp:1893
 #, fuzzy
 #| msgid "Contacts"
 msgid "Find Contacts"
 msgstr "연락처"
 
-#: fltk/native/main.cpp:1895
+#: fltk/native/main.cpp:1898
 msgid "Write to Selected Contact"
 msgstr ""
 
-#: fltk/native/main.cpp:1906
+#: fltk/native/main.cpp:1909
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Starting Penguin Mail…"
 msgstr "Penguin Mail에 질문…"
 
-#: fltk/native/main.cpp:1908
+#: fltk/native/main.cpp:1911
 #, fuzzy
 #| msgid "New Message"
 msgid "File/New Message"
 msgstr "새 메시지"
 
-#: fltk/native/main.cpp:1910
+#: fltk/native/main.cpp:1913
 #, fuzzy
 #| msgid "Add Account…"
 msgid "File/Add Account…"
 msgstr "계정 추가…"
 
-#: fltk/native/main.cpp:1913
+#: fltk/native/main.cpp:1915
+#, fuzzy
+#| msgid "New Message"
+msgid "File/Misfin Messaging…"
+msgstr "새 메시지"
+
+#: fltk/native/main.cpp:1919
 #, fuzzy
 #| msgid "OpenPGP Keys"
 msgid "File/OpenPGP Keys…"
 msgstr "OpenPGP 키"
 
-#: fltk/native/main.cpp:1914
+#: fltk/native/main.cpp:1920
 #, fuzzy
 #| msgid "Preferences"
 msgid "File/Preferences…"
 msgstr "환경설정"
 
-#: fltk/native/main.cpp:1916
+#: fltk/native/main.cpp:1922
 msgid "File/Show Window"
 msgstr ""
 
-#: fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:1923
 #, fuzzy
 #| msgid "Close window"
 msgid "File/Close Window"
 msgstr "창 닫기"
 
-#: fltk/native/main.cpp:1919
+#: fltk/native/main.cpp:1925
 #, fuzzy
 #| msgid "Quit"
 msgid "File/Quit"
 msgstr "종료"
 
-#: fltk/native/main.cpp:1925
+#: fltk/native/main.cpp:1931
 #, fuzzy
 #| msgid "Search"
 msgid "Edit/Search"
 msgstr "검색"
 
-#: fltk/native/main.cpp:1927
+#: fltk/native/main.cpp:1933
 #, fuzzy
 #| msgid "View"
 msgid "View/Mail"
 msgstr "보기"
 
-#: fltk/native/main.cpp:1928
+#: fltk/native/main.cpp:1934
 #, fuzzy
 #| msgid "New Calendar"
 msgid "View/Calendar"
 msgstr "새 캘린더"
 
-#: fltk/native/main.cpp:1930
+#: fltk/native/main.cpp:1936
 #, fuzzy
 #| msgid "Contacts"
 msgid "View/Contacts"
 msgstr "연락처"
 
-#: fltk/native/main.cpp:1932
+#: fltk/native/main.cpp:1938
 #, fuzzy
 #| msgid "Refresh"
 msgid "View/Refresh"
 msgstr "새로 고침"
 
-#: fltk/native/main.cpp:1935
+#: fltk/native/main.cpp:1941
 #, fuzzy
 #| msgid "View Source"
 msgid "View/Load More"
 msgstr "원본 보기"
 
-#: fltk/native/main.cpp:1940
+#: fltk/native/main.cpp:1946
 #, fuzzy
 #| msgid "Edit Draft"
 msgid "Message/Edit Draft"
 msgstr "임시보관 메일 편집"
 
-#: fltk/native/main.cpp:1941
+#: fltk/native/main.cpp:1947
 msgid "Message/Send Queued Message Now"
 msgstr ""
 
-#: fltk/native/main.cpp:1943
+#: fltk/native/main.cpp:1949
 msgid "Message/Delete Queued Message"
 msgstr ""
 
-#: fltk/native/main.cpp:1963
+#: fltk/native/main.cpp:1969
 #, fuzzy
 #| msgid "Keyboard Shortcuts"
 msgid "Help/Keyboard Shortcuts"
 msgstr "키보드 단축키"
 
-#: fltk/native/main.cpp:1965
+#: fltk/native/main.cpp:1971
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12332,13 +12344,13 @@ msgid ""
 "DomeD owns Super shortcuts."
 msgstr ""
 
-#: fltk/native/main.cpp:1972
+#: fltk/native/main.cpp:1978
 #, fuzzy
 #| msgid "About Penguin Mail"
 msgid "Help/About Penguin Mail"
 msgstr "Penguin Mail 정보"
 
-#: fltk/native/main.cpp:1975
+#: fltk/native/main.cpp:1981
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12347,8 +12359,177 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2103
+#: fltk/native/main.cpp:2109
 msgid "Invalid calendar date. Use YYYY-MM-DD."
+msgstr ""
+
+#: fltk/native/misfin.h:35
+#, fuzzy
+#| msgid "This Message"
+msgid "Misfin Messaging"
+msgstr "이 메시지"
+
+#: fltk/native/misfin.h:37
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Misfin Identity…"
+msgstr "가져오기…"
+
+#: fltk/native/misfin.h:38
+msgid "Identity"
+msgstr ""
+
+#: fltk/native/misfin.h:39
+#, fuzzy
+#| msgid "Recipients"
+msgid "Misfin Recipient"
+msgstr "받는 사람"
+
+#: fltk/native/misfin.h:40
+msgid "One mailbox@hostname address; Misfin(C), port 1958 by default"
+msgstr ""
+
+#: fltk/native/misfin.h:42
+#, fuzzy
+#| msgid "New Message"
+msgid "Gemtext Message"
+msgstr "새 메시지"
+
+#: fltk/native/misfin.h:46
+msgid "Send Misfin"
+msgstr ""
+
+#: fltk/native/misfin.h:47
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Gemmail Archive…"
+msgstr "가져오기…"
+
+#: fltk/native/misfin.h:48
+msgid "Refresh Local History"
+msgstr ""
+
+#: fltk/native/misfin.h:49
+msgid "Gemini Mailbox URL"
+msgstr ""
+
+#: fltk/native/misfin.h:50
+msgid ""
+"Optional server-provided gemini:// URL for a Misfin(C) gemmail or gembox "
+"archive"
+msgstr ""
+
+#: fltk/native/misfin.h:52
+#, fuzzy
+#| msgid "New Smart Mailbox"
+msgid "Fetch Mailbox"
+msgstr "새 스마트 메일함"
+
+#: fltk/native/misfin.h:53
+msgid "Local Misfin History"
+msgstr ""
+
+#: fltk/native/misfin.h:56
+msgid "Gemmail Text"
+msgstr ""
+
+#: fltk/native/misfin.h:63
+msgid ""
+"Misfin(C) uses certificate identities. Attachments and SMTP are not used."
+msgstr ""
+
+#: fltk/native/misfin.h:94
+#, fuzzy
+#| msgid "Receive Mail"
+msgid "Received: "
+msgstr "메일 받기"
+
+#: fltk/native/misfin.h:94
+#, fuzzy
+#| msgid "Sent"
+msgid "Sent: "
+msgstr "보낸편지함"
+
+#: fltk/native/misfin.h:126
+msgid "Misfin Identity Certificate (PEM)"
+msgstr ""
+
+#: fltk/native/misfin.h:130
+msgid "Misfin Private Key (PEM)"
+msgstr ""
+
+#: fltk/native/misfin.h:170
+#, fuzzy
+#| msgid "Checking for Updates…"
+msgid "Checking server certificate…"
+msgstr "업데이트 확인 중…"
+
+#: fltk/native/misfin.h:182
+#, fuzzy
+#| msgid "The server did not take the rules."
+msgid "This server is not trusted yet."
+msgstr "서버가 규칙을 받지 않았습니다."
+
+#: fltk/native/misfin.h:183
+msgid "The server certificate has changed."
+msgstr ""
+
+#: fltk/native/misfin.h:184
+#, c-format
+msgid ""
+"%s\n"
+"%s\n"
+"SHA-256: %s\n"
+"\n"
+"Trust this fingerprint and continue?"
+msgstr ""
+
+#: fltk/native/misfin.h:185
+#, fuzzy
+#| msgid "Continue"
+msgid "Trust and Continue"
+msgstr "계속"
+
+#: fltk/native/misfin.h:188
+#, fuzzy
+#| msgid "Canceled."
+msgid "Canceled"
+msgstr "취소했습니다."
+
+#: fltk/native/misfin.h:193
+msgid "Contacting Misfin server…"
+msgstr ""
+
+#: fltk/native/misfin.h:206
+msgid "Misfin message accepted by the server"
+msgstr ""
+
+#: fltk/native/misfin.h:207
+msgid "Misfin mailbox fetched"
+msgstr ""
+
+#: fltk/native/misfin.h:225
+msgid "Misfin(C) Gemmail or Gembox Archive"
+msgstr ""
+
+#: fltk/native/misfin.h:244
+#, fuzzy
+#| msgid "Send"
+msgid "File/Send Misfin"
+msgstr "보내기"
+
+#: fltk/native/misfin.h:245
+#, fuzzy
+#| msgid "Import…"
+msgid "File/Import Misfin Identity…"
+msgstr "가져오기…"
+
+#: fltk/native/misfin.h:246
+msgid "File/Fetch Mailbox"
+msgstr ""
+
+#: fltk/native/misfin.h:247
+msgid "File/Import Gemmail Archive…"
 msgstr ""
 
 #: sync/src/account/outbox.rs:97
@@ -12666,6 +12847,227 @@ msgstr "{problem}. {when}에 다시 시도"
 #: sync/src/mailbox.rs:1883
 msgid "{problem}. Penguin Mail stopped trying"
 msgstr "{problem}. Penguin Mail이 재시도를 중지했습니다"
+
+#: sync/src/misfin/client.rs:17
+msgid "Identity file exceeds limit"
+msgstr ""
+
+#: sync/src/misfin/client.rs:25
+msgid "Certificate and private key do not match"
+msgstr ""
+
+#: sync/src/misfin/client.rs:31
+msgid "Identity certificate has no USER_ID mailbox"
+msgstr ""
+
+#: sync/src/misfin/client.rs:36 sync/src/misfin/client.rs:40
+#, fuzzy
+#| msgid "a certificate gpgsm would not name"
+msgid "Identity certificate has no DNS name"
+msgstr "gpgsm에서 이름을 확인하지 못한 인증서"
+
+#: sync/src/misfin/client.rs:73
+#, fuzzy
+#| msgid "This file holds no certificate."
+msgid "Server supplied no certificate"
+msgstr "이 파일에는 인증서가 없습니다."
+
+#: sync/src/misfin/client.rs:80
+msgid "Server certificate is not currently valid"
+msgstr ""
+
+#: sync/src/misfin/client.rs:84
+#, fuzzy
+#| msgid "a certificate gpgsm would not name"
+msgid "Server certificate has no DNS name"
+msgstr "gpgsm에서 이름을 확인하지 못한 인증서"
+
+#: sync/src/misfin/client.rs:90
+#, fuzzy
+#| msgid "a certificate gpgsm would not name"
+msgid "Server certificate does not name this host"
+msgstr "gpgsm에서 이름을 확인하지 못한 인증서"
+
+#: sync/src/misfin/client.rs:97
+msgid "Server fingerprint changed; no request was sent"
+msgstr ""
+
+#: sync/src/misfin/client.rs:112
+msgid "Response exceeds protocol limit"
+msgstr ""
+
+#: sync/src/misfin/client.rs:125
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid response status"
+msgstr "{recipient}, 이메일 주소가 아님"
+
+#: sync/src/misfin/client.rs:130
+msgid "Invalid response separator"
+msgstr ""
+
+#: sync/src/misfin/client.rs:153
+#, fuzzy
+#| msgid "The server refused this request."
+msgid "Gemini server declined the mailbox request"
+msgstr "서버가 이 요청을 거부했습니다."
+
+#: sync/src/misfin/client.rs:166
+msgid "Server did not return a text mailbox archive"
+msgstr ""
+
+#: sync/src/misfin/client.rs:176
+msgid "Mailbox archive exceeds 4 MiB"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:57
+msgid "Misfin storage exceeds 8 MiB"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:85
+msgid "At most 16 Misfin identities can be imported"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:101
+msgid "Choose a Misfin identity first"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:121
+msgid "Invalid server fingerprint"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:130
+msgid ""
+"Delivery was not confirmed. The message may have arrived; check before "
+"sending again."
+msgstr ""
+
+#: sync/src/misfin/mod.rs:134
+#, fuzzy
+#| msgid "The server had already sent this message."
+msgid "Misfin server declined the message"
+msgstr "서버가 이미 이 메시지를 보냈습니다."
+
+#: sync/src/misfin/mod.rs:162
+msgid "Message accepted, but the local copy could not be saved."
+msgstr ""
+
+#: sync/src/misfin/mod.rs:166
+msgid ""
+"Message accepted, but the recipient fingerprint is invalid. Do not resend."
+msgstr ""
+
+#: sync/src/misfin/mod.rs:172
+msgid ""
+"Message accepted, but the recipient's certificate fingerprint changed. "
+"Verify it before sending again."
+msgstr ""
+
+#: sync/src/misfin/mod.rs:190
+#, fuzzy
+#| msgid "Unknown sender"
+msgid "Unknown Misfin request"
+msgstr "알 수 없는 발신자"
+
+#: sync/src/misfin/mod.rs:220
+msgid "Expected a regular file"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:227
+msgid "File exceeds size limit"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:234
+#, fuzzy
+#| msgid "Sign-in stopped"
+msgid "Misfin connection timed out"
+msgstr "로그인 중단됨"
+
+#: sync/src/misfin/wire.rs:21 sync/src/misfin/wire.rs:32
+#, fuzzy
+#| msgid "Invitation"
+msgid "Invalid destination"
+msgstr "초대"
+
+#: sync/src/misfin/wire.rs:36 sync/src/misfin/wire.rs:49
+#, fuzzy
+#| msgid "Another server has that name"
+msgid "Missing server hostname"
+msgstr "같은 이름의 서버가 있습니다"
+
+#: sync/src/misfin/wire.rs:51
+msgid "Invalid port"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:58
+#, fuzzy
+#| msgid "{recipient}, not an address"
+msgid "Invalid Misfin address"
+msgstr "{recipient}, 이메일 주소가 아님"
+
+#: sync/src/misfin/wire.rs:65
+#, fuzzy
+#| msgid "Your email address"
+msgid "Invalid mailbox name"
+msgstr "내 이메일 주소"
+
+#: sync/src/misfin/wire.rs:71
+msgid "Gemini URL must not contain a user name"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:97
+msgid "Destination exceeds protocol limit"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:111
+msgid "Subject must occupy one line"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:116
+#, fuzzy
+#| msgid "Message contains"
+msgid "Message contains a null byte"
+msgstr "메시지에 포함"
+
+#: sync/src/misfin/wire.rs:128
+msgid "Misfin(C) messages cannot exceed 16384 UTF-8 bytes"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:136
+msgid "Message exceeds protocol limit"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:142
+msgid "Request header exceeds protocol limit"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:171
+msgid "Gemmail entry exceeds limit"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:174
+#, fuzzy
+#| msgid "Sorting a sender"
+msgid "Missing senders"
+msgstr "발신자 분류 중"
+
+#: sync/src/misfin/wire.rs:175
+#, fuzzy
+#| msgid "No recipients"
+msgid "Missing recipients"
+msgstr "수신자 없음"
+
+#: sync/src/misfin/wire.rs:176
+msgid "Missing timestamp"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:179
+msgid "Expected Misfin(C) gemmail metadata"
+msgstr ""
+
+#: sync/src/misfin/wire.rs:197
+msgid "Mailbox archive contains too many messages"
+msgstr ""
 
 #: sync/src/outbox.rs:110
 msgid ""

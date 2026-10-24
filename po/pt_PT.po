@@ -11636,76 +11636,80 @@ msgstr "Pedido OpenPGP desconhecido"
 msgid "Sign in again to grant permission."
 msgstr "Inicie sessão novamente para conceder permissão."
 
-#: fltk/engine/src/main.rs:182
+#: fltk/engine/src/main.rs:186
 msgid "Sign in again"
 msgstr "Iniciar sessão novamente"
 
-#: fltk/engine/src/main.rs:266
+#: fltk/engine/src/main.rs:270
 msgid "Account required"
 msgstr "É necessária uma conta"
 
-#: fltk/engine/src/main.rs:270
+#: fltk/engine/src/main.rs:274
 msgid "Unknown mailbox"
 msgstr "Caixa de correio desconhecida"
 
-#: fltk/engine/src/main.rs:329
+#: fltk/engine/src/main.rs:281
+msgid "Demo mode cannot use Misfin identities"
+msgstr "O modo de demonstração não pode usar identidades Misfin"
+
+#: fltk/engine/src/main.rs:338
 msgid "Queued message not found"
 msgstr "Mensagem em espera não encontrada"
 
-#: fltk/engine/src/main.rs:358
+#: fltk/engine/src/main.rs:367
 msgid "This message is not cached. Reconnect the account to download it."
 msgstr ""
 "Esta mensagem não está guardada. Volte a ligar a conta para a transferir."
 
-#: fltk/engine/src/main.rs:367
+#: fltk/engine/src/main.rs:376
 msgid "Reconnect the account to read the original protected message."
 msgstr "Volte a ligar a conta para ler a mensagem protegida original."
 
-#: fltk/engine/src/main.rs:376
+#: fltk/engine/src/main.rs:385
 msgid "OpenPGP could not open this message"
 msgstr "O OpenPGP não conseguiu abrir esta mensagem"
 
-#: fltk/engine/src/main.rs:398
+#: fltk/engine/src/main.rs:407
 msgid "Targets required"
 msgstr "É necessário selecionar mensagens"
 
-#: fltk/engine/src/main.rs:408
+#: fltk/engine/src/main.rs:417
 msgid "Time required"
 msgstr "É necessária uma hora"
 
-#: fltk/engine/src/main.rs:460
+#: fltk/engine/src/main.rs:469
 msgid "This message is no longer a draft"
 msgstr "Esta mensagem já não é um rascunho"
 
-#: fltk/engine/src/main.rs:464
+#: fltk/engine/src/main.rs:473
 msgid "Unreadable draft"
 msgstr "Não é possível ler o rascunho"
 
-#: fltk/engine/src/main.rs:515 fltk/engine/src/main.rs:527
+#: fltk/engine/src/main.rs:524 fltk/engine/src/main.rs:536
 msgid "Queued message required"
 msgstr "É necessária uma mensagem em espera"
 
-#: fltk/engine/src/main.rs:570 fltk/engine/src/main.rs:604
+#: fltk/engine/src/main.rs:579 fltk/engine/src/main.rs:613
 msgid "Demo mode cannot add real accounts"
 msgstr "O modo de demonstração não pode adicionar contas reais"
 
-#: fltk/engine/src/main.rs:575
+#: fltk/engine/src/main.rs:584
 msgid "Unknown provider"
 msgstr "Fornecedor desconhecido"
 
-#: fltk/engine/src/main.rs:598
+#: fltk/engine/src/main.rs:607
 msgid "Sign-in timed out"
 msgstr "O início de sessão excedeu o tempo limite"
 
-#: fltk/engine/src/main.rs:608
+#: fltk/engine/src/main.rs:617
 msgid "Invalid email address"
 msgstr "Endereço de correio eletrónico inválido"
 
-#: fltk/engine/src/main.rs:700
+#: fltk/engine/src/main.rs:709
 msgid "Enter a title and an end after the start"
 msgstr "Introduza um título e um fim posterior ao início"
 
-#: fltk/engine/src/main.rs:748 fltk/engine/src/notifications.rs:161
+#: fltk/engine/src/main.rs:757 fltk/engine/src/notifications.rs:161
 #: fltk/engine/src/notifications.rs:164
 msgid "Unknown request"
 msgstr "Pedido desconhecido"
@@ -11843,7 +11847,7 @@ msgstr "Mensagem S/MIME. Exporte o original para inspecionar a sua proteção."
 msgid "Conversation loaded"
 msgstr "Conversa carregada"
 
-#: fltk/native/main.cpp:837 fltk/native/main.cpp:1853
+#: fltk/native/main.cpp:837 fltk/native/main.cpp:1856
 msgid "Save Attachment"
 msgstr "Guardar anexo"
 
@@ -11875,7 +11879,7 @@ msgstr "Lembrete adiado"
 msgid "Add an account before composing mail."
 msgstr "Adicione uma conta antes de escrever uma mensagem."
 
-#: fltk/native/main.cpp:986 fltk/native/main.cpp:2135
+#: fltk/native/main.cpp:986 fltk/native/main.cpp:2141
 msgid "Compose Message"
 msgstr "Escrever mensagem"
 
@@ -11951,27 +11955,27 @@ msgstr "Ficheiro/Enviar mais tarde…"
 msgid "File/Save Draft"
 msgstr "Ficheiro/Guardar rascunho"
 
-#: fltk/native/main.cpp:1195
+#: fltk/native/main.cpp:1195 fltk/native/misfin.h:248
 msgid "File/Close"
 msgstr "Ficheiro/Fechar"
 
-#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1920
+#: fltk/native/main.cpp:1198 fltk/native/main.cpp:1926
 msgid "Edit/Undo"
 msgstr "Editar/Desfazer"
 
-#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1921
+#: fltk/native/main.cpp:1199 fltk/native/main.cpp:1927 fltk/native/misfin.h:249
 msgid "Edit/Cut"
 msgstr "Editar/Cortar"
 
-#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1922
+#: fltk/native/main.cpp:1200 fltk/native/main.cpp:1928 fltk/native/misfin.h:250
 msgid "Edit/Copy"
 msgstr "Editar/Copiar"
 
-#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1923
+#: fltk/native/main.cpp:1201 fltk/native/main.cpp:1929 fltk/native/misfin.h:251
 msgid "Edit/Paste"
 msgstr "Editar/Colar"
 
-#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1924
+#: fltk/native/main.cpp:1202 fltk/native/main.cpp:1930 fltk/native/misfin.h:252
 msgid "Edit/Select All"
 msgstr "Editar/Selecionar tudo"
 
@@ -12015,7 +12019,7 @@ msgstr "Cliente OAuth da Google para computador"
 msgid "Complete sign-in in your browser."
 msgstr "Conclua o início de sessão no navegador."
 
-#: fltk/native/main.cpp:1269
+#: fltk/native/main.cpp:1272
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
@@ -12023,43 +12027,43 @@ msgstr ""
 "O modo de demonstração usa contas de exemplo temporárias. Inicie sem --demo "
 "para adicionar uma conta."
 
-#: fltk/native/main.cpp:1274
+#: fltk/native/main.cpp:1277
 msgid "Google…"
 msgstr "Google…"
 
-#: fltk/native/main.cpp:1275
+#: fltk/native/main.cpp:1278
 msgid "Microsoft…"
 msgstr "Microsoft…"
 
-#: fltk/native/main.cpp:1277
+#: fltk/native/main.cpp:1280
 msgid "Account Type"
 msgstr "Tipo de conta"
 
-#: fltk/native/main.cpp:1283 fltk/native/main.cpp:1336
+#: fltk/native/main.cpp:1286 fltk/native/main.cpp:1339
 msgid "IMAP Server"
 msgstr "Servidor IMAP"
 
-#: fltk/native/main.cpp:1286
+#: fltk/native/main.cpp:1289
 msgid "IMAP Security"
 msgstr "Segurança IMAP"
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1292
 msgid "SMTP Server"
 msgstr "Servidor SMTP"
 
-#: fltk/native/main.cpp:1292
+#: fltk/native/main.cpp:1295
 msgid "SMTP Security"
 msgstr "Segurança SMTP"
 
-#: fltk/native/main.cpp:1295
+#: fltk/native/main.cpp:1298
 msgid "SMTP User Name"
 msgstr "Nome de utilizador SMTP"
 
-#: fltk/native/main.cpp:1296
+#: fltk/native/main.cpp:1299
 msgid "SMTP Password"
 msgstr "Palavra-passe SMTP"
 
-#: fltk/native/main.cpp:1299
+#: fltk/native/main.cpp:1302
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
@@ -12068,46 +12072,46 @@ msgstr ""
 "dados da conta de entrada. As palavras-passe são guardadas no porta-chaves "
 "do ambiente de trabalho."
 
-#: fltk/native/main.cpp:1303
+#: fltk/native/main.cpp:1306
 msgid "Find Servers"
 msgstr "Procurar servidores"
 
-#: fltk/native/main.cpp:1310
+#: fltk/native/main.cpp:1313
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 "Não foram encontrados servidores. Introduza os dados dos servidores "
 "manualmente."
 
-#: fltk/native/main.cpp:1315
+#: fltk/native/main.cpp:1318
 msgid "Use Servers"
 msgstr "Usar servidores"
 
-#: fltk/native/main.cpp:1316
+#: fltk/native/main.cpp:1319
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 "Estes servidores foram encontrados fora do domínio do seu endereço. Usá-los?"
 
-#: fltk/native/main.cpp:1334
+#: fltk/native/main.cpp:1337
 msgid "POP3 Server"
 msgstr "Servidor POP3"
 
-#: fltk/native/main.cpp:1335
+#: fltk/native/main.cpp:1338
 msgid "Server URL"
 msgstr "URL do servidor"
 
-#: fltk/native/main.cpp:1351
+#: fltk/native/main.cpp:1354
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: fltk/native/main.cpp:1373
+#: fltk/native/main.cpp:1376
 msgid "Enter ports between 1 and 65535."
 msgstr "Introduza portas entre 1 e 65535."
 
-#: fltk/native/main.cpp:1401
+#: fltk/native/main.cpp:1404
 msgid "Checking the incoming and outgoing servers…"
 msgstr "A verificar os servidores de entrada e de saída…"
 
-#: fltk/native/main.cpp:1420
+#: fltk/native/main.cpp:1423
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
@@ -12115,7 +12119,7 @@ msgstr ""
 "O modo de demonstração utiliza um chaveiro GnuPG temporário. As chaves "
 "importadas são eliminadas ao fechar a pré-visualização."
 
-#: fltk/native/main.cpp:1421
+#: fltk/native/main.cpp:1424
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
@@ -12125,71 +12129,71 @@ msgstr ""
 "chave pública ou secreta, ou faça a gestão das chaves com as suas "
 "ferramentas GnuPG habituais. As chaves nunca são obtidas automaticamente."
 
-#: fltk/native/main.cpp:1423
+#: fltk/native/main.cpp:1426
 msgid "Addresses"
 msgstr "Endereços"
 
-#: fltk/native/main.cpp:1439
+#: fltk/native/main.cpp:1442
 msgid "No encryption key"
 msgstr "Sem chave de cifra"
 
-#: fltk/native/main.cpp:1446
+#: fltk/native/main.cpp:1449
 msgid "Check Local Keys"
 msgstr "Verificar chaves locais"
 
-#: fltk/native/main.cpp:1447
+#: fltk/native/main.cpp:1450
 msgid "Import Key File…"
 msgstr "Importar ficheiro de chaves…"
 
-#: fltk/native/main.cpp:1449
+#: fltk/native/main.cpp:1452
 msgid "Import OpenPGP Key"
 msgstr "Importar chave OpenPGP"
 
-#: fltk/native/main.cpp:1452
+#: fltk/native/main.cpp:1455
 msgid "Import"
 msgstr "Importar"
 
-#: fltk/native/main.cpp:1453
+#: fltk/native/main.cpp:1456
 msgid "Import this file into your GnuPG keyring?"
 msgstr "Importar este ficheiro para o seu chaveiro GnuPG?"
 
-#: fltk/native/main.cpp:1454
+#: fltk/native/main.cpp:1457
 msgid "Importing key…"
 msgstr "A importar chave…"
 
-#: fltk/native/main.cpp:1457
+#: fltk/native/main.cpp:1460
 msgid "Imported keys:"
 msgstr "Chaves importadas:"
 
-#: fltk/native/main.cpp:1467
+#: fltk/native/main.cpp:1470
 msgid "GnuPG version:"
 msgstr "Versão do GnuPG:"
 
-#: fltk/native/main.cpp:1473
+#: fltk/native/main.cpp:1476
 msgid "Start Penguin Mail at login"
 msgstr "Iniciar o Penguin Mail ao entrar na sessão"
 
-#: fltk/native/main.cpp:1477
+#: fltk/native/main.cpp:1480
 msgid "Keep syncing in the tray when the window closes"
 msgstr "Continuar a sincronizar na área de notificação quando a janela fechar"
 
-#: fltk/native/main.cpp:1480
+#: fltk/native/main.cpp:1483
 msgid "Show new mail notifications"
 msgstr "Mostrar notificações de correio novo"
 
-#: fltk/native/main.cpp:1485
+#: fltk/native/main.cpp:1488
 msgid "Group messages into conversations"
 msgstr "Agrupar mensagens em conversas"
 
-#: fltk/native/main.cpp:1488
+#: fltk/native/main.cpp:1491
 msgid "Sync Interval (seconds)"
 msgstr "Intervalo de sincronização (segundos)"
 
-#: fltk/native/main.cpp:1491
+#: fltk/native/main.cpp:1494
 msgid "Local Mail Window (days)"
 msgstr "Período de correio local (dias)"
 
-#: fltk/native/main.cpp:1495
+#: fltk/native/main.cpp:1498
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
@@ -12197,31 +12201,31 @@ msgstr ""
 "As cores, o realce e o tipo e tamanho de letra seguem o DomeD. As alterações "
 "ao intervalo e ao período de correio são aplicadas após reiniciar."
 
-#: fltk/native/main.cpp:1503
+#: fltk/native/main.cpp:1506
 msgid "Could not update login startup"
 msgstr "Não foi possível atualizar o arranque ao entrar na sessão"
 
-#: fltk/native/main.cpp:1547
+#: fltk/native/main.cpp:1550
 msgid "Calendar loaded"
 msgstr "Calendário carregado"
 
-#: fltk/native/main.cpp:1596
+#: fltk/native/main.cpp:1599
 msgid "No writable calendar is available."
 msgstr "Não está disponível nenhum calendário que possa alterar."
 
-#: fltk/native/main.cpp:1601
+#: fltk/native/main.cpp:1604
 msgid "Start"
 msgstr "Início"
 
-#: fltk/native/main.cpp:1602
+#: fltk/native/main.cpp:1605
 msgid "End"
 msgstr "Fim"
 
-#: fltk/native/main.cpp:1603
+#: fltk/native/main.cpp:1606
 msgid "Location"
 msgstr "Local"
 
-#: fltk/native/main.cpp:1607
+#: fltk/native/main.cpp:1610
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
@@ -12229,171 +12233,175 @@ msgstr ""
 "Introduza datas locais no formato AAAA-MM-DD HH:MM. As alterações são "
 "enviadas ao fornecedor do calendário."
 
-#: fltk/native/main.cpp:1628
+#: fltk/native/main.cpp:1631
 msgid "Save Event"
 msgstr "Guardar evento"
 
-#: fltk/native/main.cpp:1634
+#: fltk/native/main.cpp:1637
 msgid "Enter a title and a valid start and end time."
 msgstr "Introduza um título e horas de início e fim válidas."
 
-#: fltk/native/main.cpp:1659 fltk/native/main.cpp:1884
+#: fltk/native/main.cpp:1662 fltk/native/main.cpp:1887
 msgid "Delete Event"
 msgstr "Eliminar evento"
 
-#: fltk/native/main.cpp:1660
+#: fltk/native/main.cpp:1663
 msgid "Delete this event and notify its guests?"
 msgstr "Eliminar este evento e notificar os convidados?"
 
-#: fltk/native/main.cpp:1671
+#: fltk/native/main.cpp:1674
 msgid "Contacts loaded"
 msgstr "Contactos carregados"
 
-#: fltk/native/main.cpp:1692 fltk/native/main.cpp:1892
+#: fltk/native/main.cpp:1695 fltk/native/main.cpp:1895
 msgid "New Contact"
 msgstr "Novo contacto"
 
-#: fltk/native/main.cpp:1700
+#: fltk/native/main.cpp:1703
 msgid "Save Contact"
 msgstr "Guardar contacto"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1949
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1955
 msgid "Message/Forward"
 msgstr "Mensagem/Reencaminhar"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1945
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1951
 msgid "Message/Reply"
 msgstr "Mensagem/Responder"
 
-#: fltk/native/main.cpp:1743 fltk/native/main.cpp:1947
+#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1953
 msgid "Message/Reply All"
 msgstr "Mensagem/Responder a todos"
 
-#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1951
+#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1957
 msgid "Message/Archive"
 msgstr "Mensagem/Arquivar"
 
-#: fltk/native/main.cpp:1744 fltk/native/main.cpp:1953
+#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1959
 msgid "Message/Move to Trash"
 msgstr "Mensagem/Mover para o lixo"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1959
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1965
 msgid "Message/Flag"
 msgstr "Mensagem/Assinalar"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1955
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1961
 msgid "Message/Mark Read"
 msgstr "Mensagem/Marcar como lido"
 
-#: fltk/native/main.cpp:1745 fltk/native/main.cpp:1957
+#: fltk/native/main.cpp:1748 fltk/native/main.cpp:1963
 msgid "Message/Mark Unread"
 msgstr "Mensagem/Marcar como não lido"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1961
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1967
 msgid "Message/Label…"
 msgstr "Mensagem/Etiqueta…"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1962
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1968
 msgid "Message/Remind Me…"
 msgstr "Mensagem/Lembrar-me…"
 
-#: fltk/native/main.cpp:1746 fltk/native/main.cpp:1960
+#: fltk/native/main.cpp:1749 fltk/native/main.cpp:1966
 msgid "Message/Unflag"
 msgstr "Mensagem/Retirar sinalizador"
 
-#: fltk/native/main.cpp:1747 fltk/native/main.cpp:1911
+#: fltk/native/main.cpp:1750 fltk/native/main.cpp:1917
 msgid "File/Export Conversation…"
 msgstr "Ficheiro/Exportar conversa…"
 
-#: fltk/native/main.cpp:1835
+#: fltk/native/main.cpp:1838
 msgid "Conversations"
 msgstr "Conversas"
 
-#: fltk/native/main.cpp:1880
+#: fltk/native/main.cpp:1883
 msgid "Calendar days"
 msgstr "Dias do calendário"
 
-#: fltk/native/main.cpp:1890
+#: fltk/native/main.cpp:1893
 msgid "Find Contacts"
 msgstr "Procurar contactos"
 
-#: fltk/native/main.cpp:1895
+#: fltk/native/main.cpp:1898
 msgid "Write to Selected Contact"
 msgstr "Escrever ao contacto selecionado"
 
-#: fltk/native/main.cpp:1906
+#: fltk/native/main.cpp:1909
 msgid "Starting Penguin Mail…"
 msgstr "A iniciar o Penguin Mail…"
 
-#: fltk/native/main.cpp:1908
+#: fltk/native/main.cpp:1911
 msgid "File/New Message"
 msgstr "Ficheiro/Nova mensagem"
 
-#: fltk/native/main.cpp:1910
+#: fltk/native/main.cpp:1913
 msgid "File/Add Account…"
 msgstr "Ficheiro/Adicionar conta…"
 
-#: fltk/native/main.cpp:1913
+#: fltk/native/main.cpp:1915
+msgid "File/Misfin Messaging…"
+msgstr "Ficheiro/Mensagens Misfin…"
+
+#: fltk/native/main.cpp:1919
 msgid "File/OpenPGP Keys…"
 msgstr "Ficheiro/Chaves OpenPGP…"
 
-#: fltk/native/main.cpp:1914
+#: fltk/native/main.cpp:1920
 msgid "File/Preferences…"
 msgstr "Ficheiro/Preferências…"
 
-#: fltk/native/main.cpp:1916
+#: fltk/native/main.cpp:1922
 msgid "File/Show Window"
 msgstr "Ficheiro/Mostrar janela"
 
-#: fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:1923
 msgid "File/Close Window"
 msgstr "Ficheiro/Fechar janela"
 
-#: fltk/native/main.cpp:1919
+#: fltk/native/main.cpp:1925
 msgid "File/Quit"
 msgstr "Ficheiro/Sair"
 
-#: fltk/native/main.cpp:1925
+#: fltk/native/main.cpp:1931
 msgid "Edit/Search"
 msgstr "Editar/Procurar"
 
-#: fltk/native/main.cpp:1927
+#: fltk/native/main.cpp:1933
 msgid "View/Mail"
 msgstr "Ver/Correio"
 
-#: fltk/native/main.cpp:1928
+#: fltk/native/main.cpp:1934
 msgid "View/Calendar"
 msgstr "Ver/Calendário"
 
-#: fltk/native/main.cpp:1930
+#: fltk/native/main.cpp:1936
 msgid "View/Contacts"
 msgstr "Ver/Contactos"
 
-#: fltk/native/main.cpp:1932
+#: fltk/native/main.cpp:1938
 msgid "View/Refresh"
 msgstr "Ver/Atualizar"
 
-#: fltk/native/main.cpp:1935
+#: fltk/native/main.cpp:1941
 msgid "View/Load More"
 msgstr "Ver/Carregar mais"
 
-#: fltk/native/main.cpp:1940
+#: fltk/native/main.cpp:1946
 msgid "Message/Edit Draft"
 msgstr "Mensagem/Editar rascunho"
 
-#: fltk/native/main.cpp:1941
+#: fltk/native/main.cpp:1947
 msgid "Message/Send Queued Message Now"
 msgstr "Mensagem/Enviar mensagem em espera agora"
 
-#: fltk/native/main.cpp:1943
+#: fltk/native/main.cpp:1949
 msgid "Message/Delete Queued Message"
 msgstr "Mensagem/Eliminar mensagem em espera"
 
-#: fltk/native/main.cpp:1963
+#: fltk/native/main.cpp:1969
 msgid "Help/Keyboard Shortcuts"
 msgstr "Ajuda/Atalhos de teclado"
 
-#: fltk/native/main.cpp:1965
+#: fltk/native/main.cpp:1971
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12427,11 +12435,11 @@ msgstr ""
 "Ao escrever: Ctrl+Enter envia, Ctrl+S guarda um rascunho.\n"
 "Os atalhos Super pertencem ao DomeD."
 
-#: fltk/native/main.cpp:1972
+#: fltk/native/main.cpp:1978
 msgid "Help/About Penguin Mail"
 msgstr "Ajuda/Sobre o Penguin Mail"
 
-#: fltk/native/main.cpp:1975
+#: fltk/native/main.cpp:1981
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12445,9 +12453,158 @@ msgstr ""
 "Serviços de correio originais: c9dev/penguin-mail\n"
 "Licença: GPL-3.0-or-later"
 
-#: fltk/native/main.cpp:2103
+#: fltk/native/main.cpp:2109
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr "Data do calendário inválida. Use AAAA-MM-DD."
+
+#: fltk/native/misfin.h:35
+msgid "Misfin Messaging"
+msgstr "Mensagens Misfin"
+
+#: fltk/native/misfin.h:37
+msgid "Import Misfin Identity…"
+msgstr "Importar identidade Misfin…"
+
+#: fltk/native/misfin.h:38
+msgid "Identity"
+msgstr "Identidade"
+
+#: fltk/native/misfin.h:39
+msgid "Misfin Recipient"
+msgstr "Destinatário Misfin"
+
+#: fltk/native/misfin.h:40
+msgid "One mailbox@hostname address; Misfin(C), port 1958 by default"
+msgstr "Um endereço caixa@servidor; Misfin(C), porta 1958 por predefinição"
+
+#: fltk/native/misfin.h:42
+msgid "Gemtext Message"
+msgstr "Mensagem Gemtext"
+
+#: fltk/native/misfin.h:46
+msgid "Send Misfin"
+msgstr "Enviar por Misfin"
+
+#: fltk/native/misfin.h:47
+msgid "Import Gemmail Archive…"
+msgstr "Importar arquivo Gemmail…"
+
+#: fltk/native/misfin.h:48
+msgid "Refresh Local History"
+msgstr "Atualizar histórico local"
+
+#: fltk/native/misfin.h:49
+msgid "Gemini Mailbox URL"
+msgstr "URL Gemini da caixa de correio"
+
+#: fltk/native/misfin.h:50
+msgid ""
+"Optional server-provided gemini:// URL for a Misfin(C) gemmail or gembox "
+"archive"
+msgstr ""
+"URL gemini:// opcional, fornecido pelo servidor, para um arquivo gemmail ou "
+"gembox de Misfin(C)"
+
+#: fltk/native/misfin.h:52
+msgid "Fetch Mailbox"
+msgstr "Obter caixa de correio"
+
+#: fltk/native/misfin.h:53
+msgid "Local Misfin History"
+msgstr "Histórico Misfin local"
+
+#: fltk/native/misfin.h:56
+msgid "Gemmail Text"
+msgstr "Texto Gemmail"
+
+#: fltk/native/misfin.h:63
+msgid ""
+"Misfin(C) uses certificate identities. Attachments and SMTP are not used."
+msgstr ""
+"Misfin(C) usa identidades de certificado. Não são usados anexos nem SMTP."
+
+#: fltk/native/misfin.h:94
+msgid "Received: "
+msgstr "Recebida: "
+
+#: fltk/native/misfin.h:94
+msgid "Sent: "
+msgstr "Enviada: "
+
+#: fltk/native/misfin.h:126
+msgid "Misfin Identity Certificate (PEM)"
+msgstr "Certificado de identidade Misfin (PEM)"
+
+#: fltk/native/misfin.h:130
+msgid "Misfin Private Key (PEM)"
+msgstr "Chave privada Misfin (PEM)"
+
+#: fltk/native/misfin.h:170
+msgid "Checking server certificate…"
+msgstr "A verificar o certificado do servidor…"
+
+#: fltk/native/misfin.h:182
+msgid "This server is not trusted yet."
+msgstr "Este servidor ainda não é de confiança."
+
+#: fltk/native/misfin.h:183
+msgid "The server certificate has changed."
+msgstr "O certificado do servidor mudou."
+
+#: fltk/native/misfin.h:184
+#, c-format
+msgid ""
+"%s\n"
+"%s\n"
+"SHA-256: %s\n"
+"\n"
+"Trust this fingerprint and continue?"
+msgstr ""
+"%s\n"
+"%s\n"
+"SHA-256: %s\n"
+"\n"
+"Confiar nesta impressão digital e continuar?"
+
+#: fltk/native/misfin.h:185
+msgid "Trust and Continue"
+msgstr "Confiar e continuar"
+
+#: fltk/native/misfin.h:188
+msgid "Canceled"
+msgstr "Cancelado"
+
+#: fltk/native/misfin.h:193
+msgid "Contacting Misfin server…"
+msgstr "A contactar o servidor Misfin…"
+
+#: fltk/native/misfin.h:206
+msgid "Misfin message accepted by the server"
+msgstr "Mensagem Misfin aceite pelo servidor"
+
+#: fltk/native/misfin.h:207
+msgid "Misfin mailbox fetched"
+msgstr "Caixa de correio Misfin obtida"
+
+#: fltk/native/misfin.h:225
+msgid "Misfin(C) Gemmail or Gembox Archive"
+msgstr "Arquivo Gemmail ou Gembox de Misfin(C)"
+
+#: fltk/native/misfin.h:244
+msgid "File/Send Misfin"
+msgstr "Ficheiro/Enviar por Misfin"
+
+#: fltk/native/misfin.h:245
+msgid "File/Import Misfin Identity…"
+msgstr "Ficheiro/Importar identidade Misfin…"
+
+#: fltk/native/misfin.h:246
+msgid "File/Fetch Mailbox"
+msgstr "Ficheiro/Obter caixa de correio"
+
+#: fltk/native/misfin.h:247
+msgid "File/Import Gemmail Archive…"
+msgstr "Ficheiro/Importar arquivo Gemmail…"
 
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
@@ -12774,6 +12931,201 @@ msgstr "{problem}. Nova tentativa {when}"
 #: sync/src/mailbox.rs:1883
 msgid "{problem}. Penguin Mail stopped trying"
 msgstr "{problem}. O Penguin Mail deixou de tentar"
+
+#: sync/src/misfin/client.rs:17
+msgid "Identity file exceeds limit"
+msgstr "O ficheiro de identidade excede o limite"
+
+#: sync/src/misfin/client.rs:25
+msgid "Certificate and private key do not match"
+msgstr "O certificado e a chave privada não correspondem"
+
+#: sync/src/misfin/client.rs:31
+msgid "Identity certificate has no USER_ID mailbox"
+msgstr "O certificado de identidade não tem caixa de correio USER_ID"
+
+#: sync/src/misfin/client.rs:36 sync/src/misfin/client.rs:40
+msgid "Identity certificate has no DNS name"
+msgstr "O certificado de identidade não tem nome DNS"
+
+#: sync/src/misfin/client.rs:73
+msgid "Server supplied no certificate"
+msgstr "O servidor não forneceu um certificado"
+
+#: sync/src/misfin/client.rs:80
+msgid "Server certificate is not currently valid"
+msgstr "O certificado do servidor não é válido neste momento"
+
+#: sync/src/misfin/client.rs:84
+msgid "Server certificate has no DNS name"
+msgstr "O certificado do servidor não tem nome DNS"
+
+#: sync/src/misfin/client.rs:90
+msgid "Server certificate does not name this host"
+msgstr "O certificado do servidor não identifica este servidor"
+
+#: sync/src/misfin/client.rs:97
+msgid "Server fingerprint changed; no request was sent"
+msgstr "A impressão digital do servidor mudou; não foi enviado nenhum pedido"
+
+#: sync/src/misfin/client.rs:112
+msgid "Response exceeds protocol limit"
+msgstr "A resposta excede o limite do protocolo"
+
+#: sync/src/misfin/client.rs:125
+msgid "Invalid response status"
+msgstr "Estado da resposta inválido"
+
+#: sync/src/misfin/client.rs:130
+msgid "Invalid response separator"
+msgstr "Separador de resposta inválido"
+
+#: sync/src/misfin/client.rs:153
+msgid "Gemini server declined the mailbox request"
+msgstr "O servidor Gemini recusou o pedido da caixa de correio"
+
+#: sync/src/misfin/client.rs:166
+msgid "Server did not return a text mailbox archive"
+msgstr "O servidor não devolveu um arquivo de caixa de correio em texto"
+
+#: sync/src/misfin/client.rs:176
+msgid "Mailbox archive exceeds 4 MiB"
+msgstr "O arquivo da caixa de correio excede 4 MiB"
+
+#: sync/src/misfin/mod.rs:57
+msgid "Misfin storage exceeds 8 MiB"
+msgstr "O armazenamento Misfin excede 8 MiB"
+
+#: sync/src/misfin/mod.rs:85
+msgid "At most 16 Misfin identities can be imported"
+msgstr "Podem ser importadas, no máximo, 16 identidades Misfin"
+
+#: sync/src/misfin/mod.rs:101
+msgid "Choose a Misfin identity first"
+msgstr "Escolha primeiro uma identidade Misfin"
+
+#: sync/src/misfin/mod.rs:121
+msgid "Invalid server fingerprint"
+msgstr "Impressão digital do servidor inválida"
+
+#: sync/src/misfin/mod.rs:130
+msgid ""
+"Delivery was not confirmed. The message may have arrived; check before "
+"sending again."
+msgstr ""
+"A entrega não foi confirmada. A mensagem pode ter chegado; verifique antes "
+"de voltar a enviar."
+
+#: sync/src/misfin/mod.rs:134
+msgid "Misfin server declined the message"
+msgstr "O servidor Misfin recusou a mensagem"
+
+#: sync/src/misfin/mod.rs:162
+msgid "Message accepted, but the local copy could not be saved."
+msgstr "Mensagem aceite, mas não foi possível guardar a cópia local."
+
+#: sync/src/misfin/mod.rs:166
+msgid ""
+"Message accepted, but the recipient fingerprint is invalid. Do not resend."
+msgstr ""
+"Mensagem aceite, mas a impressão digital do destinatário é inválida. Não "
+"volte a enviar."
+
+#: sync/src/misfin/mod.rs:172
+msgid ""
+"Message accepted, but the recipient's certificate fingerprint changed. "
+"Verify it before sending again."
+msgstr ""
+"Mensagem aceite, mas a impressão digital do certificado do destinatário "
+"mudou. Verifique-a antes de voltar a enviar."
+
+#: sync/src/misfin/mod.rs:190
+msgid "Unknown Misfin request"
+msgstr "Pedido Misfin desconhecido"
+
+#: sync/src/misfin/mod.rs:220
+msgid "Expected a regular file"
+msgstr "Era esperado um ficheiro normal"
+
+#: sync/src/misfin/mod.rs:227
+msgid "File exceeds size limit"
+msgstr "O ficheiro excede o limite de tamanho"
+
+#: sync/src/misfin/mod.rs:234
+msgid "Misfin connection timed out"
+msgstr "A ligação Misfin excedeu o tempo limite"
+
+#: sync/src/misfin/wire.rs:21 sync/src/misfin/wire.rs:32
+msgid "Invalid destination"
+msgstr "Destino inválido"
+
+#: sync/src/misfin/wire.rs:36 sync/src/misfin/wire.rs:49
+msgid "Missing server hostname"
+msgstr "Falta o nome do servidor"
+
+#: sync/src/misfin/wire.rs:51
+msgid "Invalid port"
+msgstr "Porta inválida"
+
+#: sync/src/misfin/wire.rs:58
+msgid "Invalid Misfin address"
+msgstr "Endereço Misfin inválido"
+
+#: sync/src/misfin/wire.rs:65
+msgid "Invalid mailbox name"
+msgstr "Nome de caixa de correio inválido"
+
+#: sync/src/misfin/wire.rs:71
+msgid "Gemini URL must not contain a user name"
+msgstr "O URL Gemini não pode conter um nome de utilizador"
+
+#: sync/src/misfin/wire.rs:97
+msgid "Destination exceeds protocol limit"
+msgstr "O destino excede o limite do protocolo"
+
+#: sync/src/misfin/wire.rs:111
+msgid "Subject must occupy one line"
+msgstr "O assunto tem de ocupar uma única linha"
+
+#: sync/src/misfin/wire.rs:116
+msgid "Message contains a null byte"
+msgstr "A mensagem contém um byte nulo"
+
+#: sync/src/misfin/wire.rs:128
+msgid "Misfin(C) messages cannot exceed 16384 UTF-8 bytes"
+msgstr "As mensagens Misfin(C) não podem exceder 16384 bytes UTF-8"
+
+#: sync/src/misfin/wire.rs:136
+msgid "Message exceeds protocol limit"
+msgstr "A mensagem excede o limite do protocolo"
+
+#: sync/src/misfin/wire.rs:142
+msgid "Request header exceeds protocol limit"
+msgstr "O cabeçalho do pedido excede o limite do protocolo"
+
+#: sync/src/misfin/wire.rs:171
+msgid "Gemmail entry exceeds limit"
+msgstr "A mensagem Gemmail excede o limite"
+
+#: sync/src/misfin/wire.rs:174
+msgid "Missing senders"
+msgstr "Faltam remetentes"
+
+#: sync/src/misfin/wire.rs:175
+msgid "Missing recipients"
+msgstr "Faltam destinatários"
+
+#: sync/src/misfin/wire.rs:176
+msgid "Missing timestamp"
+msgstr "Falta a data e hora"
+
+#: sync/src/misfin/wire.rs:179
+msgid "Expected Misfin(C) gemmail metadata"
+msgstr "Eram esperados metadados gemmail de Misfin(C)"
+
+#: sync/src/misfin/wire.rs:197
+msgid "Mailbox archive contains too many messages"
+msgstr "O arquivo da caixa de correio contém demasiadas mensagens"
 
 #: sync/src/outbox.rs:110
 msgid ""
@@ -13329,12 +13681,6 @@ msgstr "Mover para {folder}"
 
 #~ msgid "No account to send from."
 #~ msgstr "Não há conta de onde enviar."
-
-#~ msgid "The server's certificate does not match {host}."
-#~ msgstr "O certificado do servidor não corresponde a {host}."
-
-#~ msgid "The certificate does not match"
-#~ msgstr "O certificado não corresponde"
 
 #~ msgid ""
 #~ "Gmail's rules, automatic replies and plus addresses, changed from the app"

@@ -33,3 +33,5 @@ packaging/flatpak/local-signin-test.yml
 __pycache__/
 
 /test-artifacts/
+
+/build-fltk-misfin/

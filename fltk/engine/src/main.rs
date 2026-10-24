@@ -66,6 +66,8 @@ fn permitted<T>(v: Permitted<T>) -> Result<T> {
     }
 }
 struct Engine {
+    #[cfg(feature = "misfin")]
+    misfin: mailrs_sync::misfin::Misfin,
     db: Db,
     sync: Arc<SyncEngine>,
     connector: Connector,
@@ -131,6 +133,8 @@ impl Engine {
             config::private_dir(&dir.join("gnupg"))?;
         }
         let engine = Arc::new(Self {
+            #[cfg(feature = "misfin")]
+            misfin: mailrs_sync::misfin::Misfin::open(dir.join("misfin"))?,
             actions: MailActions::new(sync.clone(), db.clone(), OneClick::Web),
             boxes: Mailboxes::new(sync.clone(), db.clone()),
             outbox: Outbox::new(sync.clone(), db.clone()),
@@ -272,6 +276,11 @@ impl Engine {
     }
     async fn request(&self, r: &Value) -> Result<Value> {
         let op = string(r, "op");
+        #[cfg(feature = "misfin")]
+        if op.starts_with("misfin-") {
+            if self.demo { bail!("{}", gettext("Demo mode cannot use Misfin identities")); }
+            return self.misfin.request(r).await;
+        }
         match op {
             "notification-settings" | "notification-delivered" | "notification-action" => {
                 self.notification_request(r).await

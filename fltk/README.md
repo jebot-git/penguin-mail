@@ -195,3 +195,60 @@ Google, granting consent or storing a token. Logs and screenshots are in `test-a
 have not been tested. Full upstream workspace tests and its AT-SPI script also
 require GTK/Pango/WebKit development packages; use the separate native core test
 results where those packages are unavailable.
+
+## Optional Misfin messaging
+
+Build with `python3 fltk/build.py --prefix /opt/fltk-vr/toolkit --build-dir build-fltk-misfin --misfin`
+(or CMake `-DPENGUIN_ENABLE_MISFIN=ON`). Without that option, the Rust feature
+and the native Misfin menu are absent. GTK is unchanged.
+Close any running copy before launching `build-fltk-misfin/penguin-mail`;
+otherwise activation goes to the existing application.
+
+**File > Misfin Messaging** opens a separate messaging window. Import an
+existing Misfin PEM certificate and its unencrypted PEM private key. The
+certificate must have a USER_ID mailbox and a DNS subject alternative name;
+Penguin Mail reads the address from those fields and checks the key matches.
+Importing an identity does not register a mailbox on a server.
+
+This first implementation supports Misfin(C) delivery to one recipient, with
+Gemtext, Unicode subjects and text, local sent history, and manual incoming
+mail. If your provider exposes a gemmail/gembox archive over Gemini, enter its
+`gemini://` URL and choose Fetch Mailbox. You can also import a local Misfin(C)
+archive. Incoming entries are deduplicated. Received text is selectable and is
+never interpreted as HTML. Misfin(B), SMTP bridging, attachments, automatic
+polling, GMAP tag management, server hosting and account provisioning are not
+implemented. Redirects and temporary failures are reported without resending.
+
+The TLS connection uses the imported client identity and TLS 1.2 or newer.
+Self-signed servers use explicit fingerprint trust: before the first operation,
+and when a certificate changes, the window shows the endpoint and SHA-256
+fingerprint for approval. Verify that fingerprint with your provider. The
+request connection checks it again before transmitting the message or archive
+URL. Certificate dates and DNS names are checked independently. A changed recipient
+fingerprint in a success receipt is reported after delivery and is not silently
+accepted as the new trusted identity. A timeout after
+transmission reports that delivery is unconfirmed; check before retrying.
+
+Identity keys, trusted endpoint fingerprints and up to 500 local messages
+(4 MiB of retained history) live in `misfin/state.json` below the normal mail
+data directory. The directory is mode 0700 and atomic state files are mode
+0600. The engine never returns private keys to the frontend. Its state is
+separate from the email account schema, sync jobs and normal Outbox.
+
+The adapter uses the existing OpenSSL/native-TLS dependencies for PEM key
+formats, X.509 USER_ID/SAN fields and TLS client identities; no new external
+crate was added to Cargo.lock. Protocol framing follows the
+[Titlani Misfin(C) implementation](https://github.com/alanbato/titlani/blob/main/src/titlani/protocol/request.py)
+and [Gemmail parser](https://github.com/alanbato/titlani/blob/main/src/titlani/content/gemmail.py).
+The 16,384-byte limit applies to UTF-8 bytes including the three metadata lines.
+
+Checks for the opt-in build:
+
+```sh
+cargo test -p mailrs-sync --features misfin --lib misfin
+python3 fltk/tests/misfin.py build-fltk-misfin/penguin-mail-engine
+```
+
+The integration test uses disposable local mutual-TLS servers, not a public
+mailbox or your accounts. Public-server interoperability needs a registered
+identity and a provider's mailbox URL.

@@ -49,7 +49,7 @@ xgettext --from-code=UTF-8 \
 
 # The native FLTK adapter uses the same text domain through libintl.
 xgettext --from-code=UTF-8 -L C++ -k_ -kgettext \
-    -o "$work/3-fltk.pot" fltk/native/main.cpp fltk/native/engine.h
+    -o "$work/3-fltk.pot" fltk/native/main.cpp fltk/native/engine.h fltk/native/misfin.h
 
 msgcat --use-first --sort-by-file -o "$work/joined.pot" "$work"/[123]-*.pot
 # msgcat needs a header on its inputs; ours replaces it, so drop theirs.

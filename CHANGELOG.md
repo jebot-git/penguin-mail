@@ -9,6 +9,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### New
 
+- Optionally build Misfin(C) messaging in the native app, with imported certificate identities, explicit server trust, local history and manual Gemini mailbox archives.
+
 - Start the native app in the tray at login from Preferences.
 
 - Build a native FLTK interface for DomeD with universal menus, live appearance, a tray icon and calendar date links.

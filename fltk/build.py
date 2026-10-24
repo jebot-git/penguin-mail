@@ -7,6 +7,7 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--prefix',type=Path,default=root.parent/'_toolkit')
 p.add_argument('--build-dir',type=Path,default=root/'build-fltk')
 p.add_argument('--jobs',type=int,default=3)
+p.add_argument('--misfin',action='store_true',help='Build optional Misfin(C) messaging')
 a=p.parse_args();env=dict(os.environ)
 # Match upstream's source-build configuration without executing a shell file.
 secrets=root/'packaging/secrets.env'
@@ -32,5 +33,5 @@ if version('rustc') < (1,98):
     if not available:raise SystemExit('Rust 1.98 or newer is required. Put its rustc and cargo on PATH.')
     env['PATH']=str(available[0])+os.pathsep+env.get('PATH','')
 env['CARGO_BUILD_JOBS']=str(max(1,a.jobs))
-subprocess.run(['cmake','-S',str(root/'fltk'),'-B',str(a.build_dir),'-G','Ninja','-DCMAKE_BUILD_TYPE=Release',f'-DCMAKE_PREFIX_PATH={a.prefix.resolve()}'],env=env,check=True)
+subprocess.run(['cmake','-S',str(root/'fltk'),'-B',str(a.build_dir),'-G','Ninja','-DCMAKE_BUILD_TYPE=Release',f'-DCMAKE_PREFIX_PATH={a.prefix.resolve()}',f'-DPENGUIN_ENABLE_MISFIN={"ON" if a.misfin else "OFF"}'],env=env,check=True)
 subprocess.run(['cmake','--build',str(a.build_dir),'--parallel',str(max(1,a.jobs))],env=env,check=True)

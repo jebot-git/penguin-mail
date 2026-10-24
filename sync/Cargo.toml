@@ -8,6 +8,7 @@ rust-version.workspace = true
 publish.workspace = true
 
 [features]
+misfin = ["dep:anyhow", "dep:native-tls", "dep:tokio-native-tls", "dep:openssl", "dep:url", "dep:tempfile", "dep:libc"]
 # Ships `fake::FakeGmail`, the in-memory Gmail, to other crates. Sync's own
 # tests always have it; `penguin-mail` turns it on for `--demo`.
 fake = ["dep:base64", "dep:mail-parser", "mailrs-dav/fake", "mailrs-sieve/fake"]
@@ -16,6 +17,13 @@ fake = ["dep:base64", "dep:mail-parser", "mailrs-dav/fake", "mailrs-sieve/fake"]
 packaging-flatpak = ["mailrs-gmail/packaging-flatpak"]
 
 [dependencies]
+anyhow = { workspace = true, optional = true }
+native-tls = { workspace = true, optional = true }
+tokio-native-tls = { workspace = true, optional = true }
+openssl = { workspace = true, optional = true }
+url = { workspace = true, optional = true }
+tempfile = { workspace = true, optional = true }
+libc = { workspace = true, optional = true }
 # Only the fake encodes or decodes base64 outside a test.
 base64 = { workspace = true, optional = true }
 mailrs-dav.workspace = true
