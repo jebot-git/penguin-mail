@@ -1496,32 +1496,18 @@ class MailWindow : public dx::GpuWindow {
                             picker.filename() }};
           if (strlen(ih->value()))
             request["inbox_url"] = ih->value();
-          engine->request(request, [this, win, info](const Json &reply) {
-            if (!accepted(reply)) {
-              copyLabel(info, str(reply, "error").c_str());
-              return;
-            }
-            selectedAccount = reply["result"].value("account", int64_t(0));
-            currentBox = {{"mailbox", "inbox"}};
-            currentKey.clear();
-            currentTarget = nullptr;
-            opened = Json::array();
-            readerBuffer.text("");
-            attachments->clear();
-            ++threadGeneration;
-            win->hide();
-            ++listGeneration;
-            reloadAccounts();
-            changeSpace(0);
-          });
+          importMisfinIdentity(request, win, info);
         });
     import->hide();
+    auto shared = new CommandButton(20, 585, 200, 34, _("Shared Identity…"),
+        [this, win, info, ih] { sharedMisfinIdentity(win, info, ih->value()); });
+    shared->hide();
 #endif
     bind(kind, [kind, address, username, password, ih, ip, itls, sh, sp, stls,
                 su, pw, info, discover, connect
 #ifdef PENGUIN_ENABLE_MISFIN
                 ,
-                import
+                import, shared
 #endif
     ] {
       int type = kind->value();
@@ -1584,10 +1570,11 @@ class MailWindow : public dx::GpuWindow {
                   "incoming account's details. Passwords are stored in your "
                   "desktop keyring."));
 #ifdef PENGUIN_ENABLE_MISFIN
-      if (misfin)
-        import->show();
-      else
-        import->hide();
+      if (misfin) {
+        import->show(); shared->show(); discover->hide();
+      } else {
+        import->hide(); shared->hide(); discover->show();
+      }
 #endif
       ih->window()->redraw();
     });

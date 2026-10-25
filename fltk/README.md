@@ -214,6 +214,15 @@ PEM certificate and matching unencrypted PEM private key instead. Certificates
 identify the mailbox through USER_ID and DNS SAN; CN holds the identity name.
 Creating another identity for an address already stored is refused.
 
+**Shared Identity…** lists compatible certificates published by Servo Dome or
+Dome Identities in `$XDG_DATA_HOME/de-xr/identities/index.json` (fallback
+`~/.local/share/de-xr/identities/index.json`). Select an identity and Import to
+copy its matching private key into the existing private Penguin store. The
+catalog and source key must be owned by you with owner-only permissions. The
+certificate fingerprint is rechecked at import. Generic Gemini certificates
+without Misfin USER_ID and DNS SAN are filtered out. Imported addresses come
+from certificates, never catalog labels. Importing does not register a mailbox.
+
 Existing identities and sent/received history appear automatically in the normal
 account selector, Inbox, Sent and All Mail. No key or history migration is needed.
 All Accounts includes Misfin messages in these views and local text searches.
@@ -272,6 +281,7 @@ Checks for the opt-in build:
 ```sh
 cargo test -p mailrs-sync --features misfin --lib misfin
 python3 fltk/tests/misfin.py build-fltk-misfin/penguin-mail-engine
+python3 fltk/tests/shared-identities.py build-fltk-misfin/penguin-mail-engine
 ```
 
 The integration test uses disposable local mutual-TLS servers, not a public

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Check the opt-in native window, real history, text selection and exported menu."""
-import json,os,pathlib,queue,re,signal,sqlite3,subprocess,sys,tempfile,time
+import hashlib,json,os,pathlib,queue,re,signal,sqlite3,ssl,subprocess,sys,tempfile,time
 from Xlib import X,XK,display,error
 from Xlib.ext import xtest
 from PIL import Image
@@ -28,6 +28,12 @@ try:
         env.pop('WAYLAND_DISPLAY',None)
         cert=root/'id.crt';key=root/'id.key'
         subprocess.run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','1','-subj','/UID=alice/CN=Misfin UI Fixture','-addext','subjectAltName=DNS:localhost','-keyout',str(key),'-out',str(cert)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,check=True)
+        shared_cert=root/'browser.crt';shared_key=root/'browser.key'
+        subprocess.run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','1','-subj','/UID=browser/CN=Servo fixture','-addext','subjectAltName=DNS:localhost','-keyout',str(shared_key),'-out',str(shared_cert)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,check=True)
+        os.chmod(shared_key,0o600);shared_original=shared_key.read_bytes()
+        shared_id=hashlib.sha256(ssl.PEM_cert_to_DER_cert(shared_cert.read_text())).hexdigest()
+        catalog=root/'data/de-xr/identities/index.json';catalog.parent.mkdir(parents=True,mode=0o700)
+        catalog.write_text(json.dumps({'version':1,'identities':[{'id':shared_id,'name':'Servo fixture','certificate':str(shared_cert),'key':str(shared_key)}]}));os.chmod(catalog,0o600)
         archive=root/'inbox.gembox';archive.write_text('bob@localhost Bob\nalice@localhost\n2026-10-24T12:00:00Z\n# Misfin UI Fixture\nSelectable Unicode: Žluťoučký 世界\n')
         engine=subprocess.Popen([str(binary.parent/'penguin-mail-engine')],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,env=env);children.append(engine)
         def request(index,op,**values):
@@ -164,6 +170,17 @@ try:
             check(any(i['address']=='new@localhost' for i in json.loads(saved.read_text())['identities']),
                   'Add Account creates and selects a Misfin identity through the normal account form')
             check(enabled(main,'Account Settings…'),'New Misfin accounts retain their normal account settings action')
+            action(main,'Add Account…');shared_form=win('Add Account');time.sleep(.3)
+            click(shared_form,600,36)
+            for _ in range(4):key('Down')
+            key('Return');time.sleep(.3)
+            click(shared_form,120,602);shared_dialog=win('Import Shared Misfin Identity');time.sleep(.3)
+            shot(shared_dialog,'shared-identity.png');click(shared_dialog,510,242)
+            wait(lambda:len(json.loads(saved.read_text())['identities'])==3)
+            wait(lambda:hidden(shared_form));time.sleep(.3)
+            imported=next(i for i in json.loads(saved.read_text())['identities'] if i['id']==shared_id)
+            check(imported['address']=='browser@localhost' and shared_key.read_bytes()==shared_original,
+                  'Native shared identity chooser imports the browser certificate and preserves its source key')
             requestor.destroy()
             action(main,'Quit');app.wait(timeout=10);check(app.returncode==0,'Native application shuts down cleanly')
             xd.close()

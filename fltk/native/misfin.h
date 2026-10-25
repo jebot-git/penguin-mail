@@ -124,3 +124,49 @@ void misfinSettings() {
   showDialog(win);
   dialogMenus.push_back(std::make_unique<DesktopMenu>(*win, *bar));
 }
+
+void importMisfinIdentity(const Json &request, dx::GpuWindow *win, Fl_Box *info) {
+  engine->request(request, [this, win, info](const Json &reply) {
+    if (!accepted(reply)) {
+      copyLabel(info, str(reply, "error").c_str());
+      return;
+    }
+    selectedAccount = reply["result"].value("account", int64_t(0));
+    currentBox = {{"mailbox", "inbox"}};
+    currentKey.clear(); currentTarget = nullptr; opened = Json::array();
+    readerBuffer.text(""); attachments->clear(); ++threadGeneration;
+    win->hide(); ++listGeneration; reloadAccounts(); changeSpace(0);
+  });
+}
+void sharedMisfinIdentity(dx::GpuWindow *parent, Fl_Box *info, std::string inbox) {
+  engine->request({{"op", "misfin-shared-identities"}},
+      [this, parent, info, inbox](const Json &reply) {
+    if (!accepted(reply)) return;
+    auto entries = reply["result"]["identities"];
+    if (entries.empty()) {
+      copyLabel(info, _("No shared Misfin identities are available. Create one in Dome Identities or Servo Dome, or import PEM files."));
+      return;
+    }
+    auto win = dialog(760, 285, _("Import Shared Misfin Identity"));
+    auto choice = new Fl_Choice(155, 30, 580, 34, _("Identity"));
+    for (const auto &entry : entries)
+      addChoice(choice, str(entry, "name") + " <" + str(entry, "address") + ">");
+    choice->value(0);
+    auto fingerprint = new Fl_Box(20, 85, 715, 60);
+    fingerprint->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
+    auto update = [choice, fingerprint, entries] {
+      copyLabel(fingerprint, (std::string("SHA-256: ") + str(entries[choice->value()], "id")).c_str());
+    };
+    bind(choice, update); update();
+    auto help = new Fl_Box(20, 150, 715, 55,
+        _("Import copies this certificate and key into Penguin Mail. It does not register a server mailbox."));
+    help->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
+    new CommandButton(440, 225, 140, 34, _("Import"), [this, win, parent, info, inbox, choice, entries] {
+      Json request = {{"op", "misfin-import-shared-identity"}, {"shared_id", entries[choice->value()]["id"]}};
+      if (!inbox.empty()) request["inbox_url"] = inbox;
+      win->hide(); importMisfinIdentity(request, parent, info);
+    });
+    new CommandButton(595, 225, 140, 34, _("Cancel"), [win] { win->hide(); });
+    showDialog(win);
+  });
+}

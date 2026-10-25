@@ -475,3 +475,10 @@ Native mail and calendar notifications call DomeD’s `org.freedesktop.Notificat
 **Misfin identity**: a locally generated or imported certificate and matching private key identifying a mailbox by its USER_ID and DNS SAN. The optional native Misfin(C) account type projects these into the normal account selector and mailboxes while keeping keys and history in their existing owner-only store. Its stable negative native account number is derived from the certificate fingerprint and does not enter SQLite email account tables. `mailrs_sync::misfin::Misfin` handles delivery, explicit server fingerprint trust, manual Gemini archive retrieval and local history. It does not create a mailbox or start a receiving server.
 
 **Gemmail archive**: selectable plain Gemtext with three Misfin(C) metadata lines, either as one message or a gembox separated by `<=====` lines. Misfin account settings import a local archive, and Refresh on that account fetches its saved provider-supplied Gemini URL, deduplicates entries and keeps at most 500 messages within 4 MiB. It does not treat the archive as MIME or HTML.
+
+**Shared PEM identity catalog**: the version 1 `de-xr/identities/index.json` file
+below the XDG data directory lists names, certificate SHA-256 fingerprints and
+absolute PEM certificate/key paths. Servo Dome and Dome Identities publish it.
+Native Misfin imports a chosen compatible certificate and matching key into its
+existing private store after validating fingerprint, ownership and permissions.
+Catalog metadata never establishes a mailbox address or server registration.

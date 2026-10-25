@@ -1177,7 +1177,7 @@ cargo build --quiet -p mailrs
 # home and runtime directory keep the settings of the copy you use out of
 # it, and a memory backend keeps this run's out of yours.
 sandbox=$(mktemp -d)
-trap 'rm -f "$walk"; take_down; rm -rf "$sandbox"' EXIT
+trap cleanup EXIT
 
 # The registry forks and leaves the pid it was started under behind, so
 # killing that pid kills nothing and an orphan lives on against a display
@@ -1194,6 +1194,22 @@ take_down() {
             kill "$pid" 2>/dev/null
         fi
     done
+}
+cleanup() {
+    result=$?
+    rm -f "$walk"
+    take_down
+    # Session services can finish writing their private settings after SIGTERM.
+    # Wait for that work instead of racing it with the directory removal.
+    gpgconf --homedir "$sandbox/gnupg" --kill all 2>/dev/null || true
+    for attempt in {1..30}; do
+        if rm -rf -- "$sandbox" 2>/dev/null; then
+            exit "$result"
+        fi
+        sleep 0.1
+    done
+    echo "Could not remove the accessibility fixture directory." >&2
+    exit 1
 }
 export HOME="$sandbox/home"
 export XDG_RUNTIME_DIR="$sandbox/run"

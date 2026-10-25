@@ -11974,7 +11974,7 @@ msgstr ""
 msgid "Conversation loaded"
 msgstr "Conversazione"
 
-#: fltk/native/main.cpp:891 fltk/native/main.cpp:2175
+#: fltk/native/main.cpp:891 fltk/native/main.cpp:2162
 #, fuzzy
 #| msgid "Save Attachments"
 msgid "Save Attachment"
@@ -12020,7 +12020,7 @@ msgstr "Promemoria"
 msgid "Add an account before composing mail."
 msgstr "Aggiungi prima un account"
 
-#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2480
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2467
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
@@ -12140,32 +12140,32 @@ msgstr "Invia"
 msgid "File/Close"
 msgstr "Chiudi"
 
-#: fltk/native/main.cpp:1334 fltk/native/main.cpp:2041
-#: fltk/native/main.cpp:2246
+#: fltk/native/main.cpp:1334 fltk/native/main.cpp:2028
+#: fltk/native/main.cpp:2233
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Undo"
 msgstr "Modifica"
 
-#: fltk/native/main.cpp:1335 fltk/native/main.cpp:2247 fltk/native/misfin.h:118
+#: fltk/native/main.cpp:1335 fltk/native/main.cpp:2234 fltk/native/misfin.h:118
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Cut"
 msgstr "Modifica"
 
-#: fltk/native/main.cpp:1336 fltk/native/main.cpp:2248 fltk/native/misfin.h:119
+#: fltk/native/main.cpp:1336 fltk/native/main.cpp:2235 fltk/native/misfin.h:119
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit/Copy"
 msgstr "Modifica"
 
-#: fltk/native/main.cpp:1337 fltk/native/main.cpp:2249 fltk/native/misfin.h:120
+#: fltk/native/main.cpp:1337 fltk/native/main.cpp:2236 fltk/native/misfin.h:120
 #, fuzzy
 #| msgid "Edit Template"
 msgid "Edit/Paste"
 msgstr "Modifica modello"
 
-#: fltk/native/main.cpp:1338 fltk/native/main.cpp:2250 fltk/native/misfin.h:121
+#: fltk/native/main.cpp:1338 fltk/native/main.cpp:2237 fltk/native/misfin.h:121
 #, fuzzy
 #| msgid "Select all"
 msgid "Edit/Select All"
@@ -12242,7 +12242,7 @@ msgstr "Microsoft Teams"
 msgid "Account Type"
 msgstr "Account"
 
-#: fltk/native/main.cpp:1430 fltk/native/main.cpp:1530
+#: fltk/native/main.cpp:1430 fltk/native/main.cpp:1516
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "IMAP Server"
@@ -12278,7 +12278,7 @@ msgstr "Nome utente"
 msgid "SMTP Password"
 msgstr "Password"
 
-#: fltk/native/main.cpp:1446 fltk/native/main.cpp:1583
+#: fltk/native/main.cpp:1446 fltk/native/main.cpp:1569
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
@@ -12318,43 +12318,49 @@ msgstr ""
 msgid "Misfin Private Key (PEM)"
 msgstr ""
 
-#: fltk/native/main.cpp:1528
+#: fltk/native/main.cpp:1502
+#, fuzzy
+#| msgid "Create Address"
+msgid "Shared Identity…"
+msgstr "Crea indirizzo"
+
+#: fltk/native/main.cpp:1514
 #, fuzzy
 #| msgid "MCP Servers"
 msgid "POP3 Server"
 msgstr "Server MCP"
 
-#: fltk/native/main.cpp:1529
+#: fltk/native/main.cpp:1515
 #, fuzzy
 #| msgid "Server"
 msgid "Server URL"
 msgstr "Server"
 
-#: fltk/native/main.cpp:1545
+#: fltk/native/main.cpp:1531
 msgid "Authentication"
 msgstr ""
 
-#: fltk/native/main.cpp:1561
+#: fltk/native/main.cpp:1547
 #, fuzzy
 #| msgid "{recipient}, not an address"
 msgid "Misfin Address"
 msgstr "{recipient}, non è un indirizzo"
 
-#: fltk/native/main.cpp:1562
+#: fltk/native/main.cpp:1548
 msgid "Identity Name"
 msgstr ""
 
-#: fltk/native/main.cpp:1564 fltk/native/misfin.h:69
+#: fltk/native/main.cpp:1550 fltk/native/misfin.h:69
 msgid "Gemini Mailbox URL"
 msgstr ""
 
-#: fltk/native/main.cpp:1573
+#: fltk/native/main.cpp:1559
 #, fuzzy
 #| msgid "Create Address"
 msgid "Create Identity"
 msgstr "Crea indirizzo"
 
-#: fltk/native/main.cpp:1577
+#: fltk/native/main.cpp:1563
 msgid ""
 "Misfin(C): one recipient, plain Gemtext, up to 16384 UTF-8 bytes. No "
 "attachments, Cc/Bcc, drafts, scheduled sending or OpenPGP. Receive through "
@@ -12363,412 +12369,412 @@ msgid ""
 "registration is still required."
 msgstr ""
 
-#: fltk/native/main.cpp:1630
+#: fltk/native/main.cpp:1617
 msgid "Enter ports between 1 and 65535."
 msgstr ""
 
-#: fltk/native/main.cpp:1658
+#: fltk/native/main.cpp:1645
 msgid "Checking the incoming and outgoing servers…"
 msgstr ""
 
-#: fltk/native/main.cpp:1677
+#: fltk/native/main.cpp:1664
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
 msgstr ""
 
-#: fltk/native/main.cpp:1678
+#: fltk/native/main.cpp:1665
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
 "automatically."
 msgstr ""
 
-#: fltk/native/main.cpp:1680
+#: fltk/native/main.cpp:1667
 #, fuzzy
 #| msgid "Add Address"
 msgid "Addresses"
 msgstr "Aggiungi indirizzo"
 
-#: fltk/native/main.cpp:1696
+#: fltk/native/main.cpp:1683
 #, fuzzy
 #| msgid "Not encrypted in transit"
 msgid "No encryption key"
 msgstr "Non crittografato durante il transito"
 
-#: fltk/native/main.cpp:1703
+#: fltk/native/main.cpp:1690
 #, fuzzy
 #| msgid "Check for Updates"
 msgid "Check Local Keys"
 msgstr "Controlla aggiornamenti"
 
-#: fltk/native/main.cpp:1704
+#: fltk/native/main.cpp:1691
 #, fuzzy
 #| msgid "Import…"
 msgid "Import Key File…"
 msgstr "Importa…"
 
-#: fltk/native/main.cpp:1706
+#: fltk/native/main.cpp:1693
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Import OpenPGP Key"
 msgstr "Importa chiavi OpenPGP"
 
-#: fltk/native/main.cpp:1709
+#: fltk/native/main.cpp:1696 fltk/native/misfin.h:164
 #, fuzzy
 #| msgid "Import…"
 msgid "Import"
 msgstr "Importa…"
 
-#: fltk/native/main.cpp:1710
+#: fltk/native/main.cpp:1697
 msgid "Import this file into your GnuPG keyring?"
 msgstr ""
 
-#: fltk/native/main.cpp:1711
+#: fltk/native/main.cpp:1698
 #, fuzzy
 #| msgid "Import…"
 msgid "Importing key…"
 msgstr "Importa…"
 
-#: fltk/native/main.cpp:1714
+#: fltk/native/main.cpp:1701
 #, fuzzy
 #| msgid "Import OpenPGP Keys"
 msgid "Imported keys:"
 msgstr "Importa chiavi OpenPGP"
 
-#: fltk/native/main.cpp:1724
+#: fltk/native/main.cpp:1711
 #, fuzzy
 #| msgid "Conversation"
 msgid "GnuPG version:"
 msgstr "Conversazione"
 
-#: fltk/native/main.cpp:1730
+#: fltk/native/main.cpp:1717
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Start Penguin Mail at login"
 msgstr "Chiedi a Penguin Mail…"
 
-#: fltk/native/main.cpp:1734
+#: fltk/native/main.cpp:1721
 msgid "Keep syncing in the tray when the window closes"
 msgstr ""
 
-#: fltk/native/main.cpp:1737
+#: fltk/native/main.cpp:1724
 #, fuzzy
 #| msgid "Notifications"
 msgid "Show new mail notifications"
 msgstr "Notifiche"
 
-#: fltk/native/main.cpp:1742
+#: fltk/native/main.cpp:1729
 #, fuzzy
 #| msgid "Group Messages into Conversations"
 msgid "Group messages into conversations"
 msgstr "Raggruppa i messaggi in conversazioni"
 
-#: fltk/native/main.cpp:1745
+#: fltk/native/main.cpp:1732
 msgid "Sync Interval (seconds)"
 msgstr ""
 
-#: fltk/native/main.cpp:1748
+#: fltk/native/main.cpp:1735
 msgid "Local Mail Window (days)"
 msgstr ""
 
-#: fltk/native/main.cpp:1752
+#: fltk/native/main.cpp:1739
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
 msgstr ""
 
-#: fltk/native/main.cpp:1760
+#: fltk/native/main.cpp:1747
 #, fuzzy
 #| msgid "Could not paste the image"
 msgid "Could not update login startup"
 msgstr "Impossibile incollare l'immagine"
 
-#: fltk/native/main.cpp:1804
+#: fltk/native/main.cpp:1791
 #, fuzzy
 #| msgid "Calendar to add to"
 msgid "Calendar loaded"
 msgstr "Calendario a cui aggiungere"
 
-#: fltk/native/main.cpp:1853
+#: fltk/native/main.cpp:1840
 msgid "No writable calendar is available."
 msgstr ""
 
-#: fltk/native/main.cpp:1858
+#: fltk/native/main.cpp:1845
 #, fuzzy
 #| msgid "Starts"
 msgid "Start"
 msgstr "Inizio"
 
-#: fltk/native/main.cpp:1859
+#: fltk/native/main.cpp:1846
 #, fuzzy
 #| msgid "Ends"
 msgid "End"
 msgstr "Fine"
 
-#: fltk/native/main.cpp:1860
+#: fltk/native/main.cpp:1847
 #, fuzzy
 #| msgid "Notifications"
 msgid "Location"
 msgstr "Notifiche"
 
-#: fltk/native/main.cpp:1864
+#: fltk/native/main.cpp:1851
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
 msgstr ""
 
-#: fltk/native/main.cpp:1885
+#: fltk/native/main.cpp:1872
 #, fuzzy
 #| msgid "New Event"
 msgid "Save Event"
 msgstr "Nuovo evento"
 
-#: fltk/native/main.cpp:1891
+#: fltk/native/main.cpp:1878
 msgid "Enter a title and a valid start and end time."
 msgstr ""
 
-#: fltk/native/main.cpp:1916 fltk/native/main.cpp:2206
+#: fltk/native/main.cpp:1903 fltk/native/main.cpp:2193
 #, fuzzy
 #| msgid "Delete it"
 msgid "Delete Event"
 msgstr "Elimina"
 
-#: fltk/native/main.cpp:1917
+#: fltk/native/main.cpp:1904
 msgid "Delete this event and notify its guests?"
 msgstr ""
 
-#: fltk/native/main.cpp:1928
+#: fltk/native/main.cpp:1915
 #, fuzzy
 #| msgid "Contacts"
 msgid "Contacts loaded"
 msgstr "Contatti"
 
-#: fltk/native/main.cpp:1953 fltk/native/main.cpp:2214
+#: fltk/native/main.cpp:1940 fltk/native/main.cpp:2201
 #, fuzzy
 #| msgid "Contact"
 msgid "New Contact"
 msgstr "Contatto"
 
-#: fltk/native/main.cpp:1961
+#: fltk/native/main.cpp:1948
 #, fuzzy
 #| msgid "Contact"
 msgid "Save Contact"
 msgstr "Contatto"
 
-#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2279
+#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2266
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Forward"
 msgstr "Messaggio"
 
-#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2275
+#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2262
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Reply"
 msgstr "Messaggio"
 
-#: fltk/native/main.cpp:2006 fltk/native/main.cpp:2031
-#: fltk/native/main.cpp:2277
+#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2018
+#: fltk/native/main.cpp:2264
 #, fuzzy
 #| msgid "Reply All"
 msgid "Message/Reply All"
 msgstr "Rispondi a tutti"
 
-#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2031
-#: fltk/native/main.cpp:2281
+#: fltk/native/main.cpp:1994 fltk/native/main.cpp:2018
+#: fltk/native/main.cpp:2268
 #, fuzzy
 #| msgid "Message Cache"
 msgid "Message/Archive"
 msgstr "Cache dei messaggi"
 
-#: fltk/native/main.cpp:2007 fltk/native/main.cpp:2032
-#: fltk/native/main.cpp:2283
+#: fltk/native/main.cpp:1994 fltk/native/main.cpp:2019
+#: fltk/native/main.cpp:2270
 #, fuzzy
 #| msgid "Move to Trash"
 msgid "Message/Move to Trash"
 msgstr "Sposta nel Cestino"
 
-#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
-#: fltk/native/main.cpp:2289
+#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2020
+#: fltk/native/main.cpp:2276
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Flag"
 msgstr "Messaggio"
 
-#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2032
-#: fltk/native/main.cpp:2285
+#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2019
+#: fltk/native/main.cpp:2272
 #, fuzzy
 #| msgid "Message sent"
 msgid "Message/Mark Read"
 msgstr "Messaggio inviato"
 
-#: fltk/native/main.cpp:2008 fltk/native/main.cpp:2033
-#: fltk/native/main.cpp:2287
+#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2020
+#: fltk/native/main.cpp:2274
 #, fuzzy
 #| msgid "Mark as Unread"
 msgid "Message/Mark Unread"
 msgstr "Segna come da leggere"
 
-#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
-#: fltk/native/main.cpp:2291
+#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2021
+#: fltk/native/main.cpp:2278
 #, fuzzy
 #| msgid "New Label…"
 msgid "Message/Label…"
 msgstr "Nuova etichetta…"
 
-#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2034
-#: fltk/native/main.cpp:2292
+#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2021
+#: fltk/native/main.cpp:2279
 #, fuzzy
 #| msgid "Remind Me"
 msgid "Message/Remind Me…"
 msgstr "Ricordamelo"
 
-#: fltk/native/main.cpp:2009 fltk/native/main.cpp:2033
-#: fltk/native/main.cpp:2290
+#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2020
+#: fltk/native/main.cpp:2277
 #, fuzzy
 #| msgid "Message"
 msgid "Message/Unflag"
 msgstr "Messaggio"
 
-#: fltk/native/main.cpp:2010 fltk/native/main.cpp:2035
-#: fltk/native/main.cpp:2237
+#: fltk/native/main.cpp:1997 fltk/native/main.cpp:2022
+#: fltk/native/main.cpp:2224
 #, fuzzy
 #| msgid "Conversation"
 msgid "File/Export Conversation…"
 msgstr "Conversazione"
 
-#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2270
+#: fltk/native/main.cpp:2025 fltk/native/main.cpp:2257
 #, fuzzy
 #| msgid "Edit Draft"
 msgid "Message/Edit Draft"
 msgstr "Modifica bozza"
 
-#: fltk/native/main.cpp:2038 fltk/native/main.cpp:2271
+#: fltk/native/main.cpp:2025 fltk/native/main.cpp:2258
 msgid "Message/Send Queued Message Now"
 msgstr ""
 
-#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2239
+#: fltk/native/main.cpp:2026 fltk/native/main.cpp:2226
 #, fuzzy
 #| msgid "OpenPGP Keys"
 msgid "File/OpenPGP Keys…"
 msgstr "Chiavi OpenPGP"
 
-#: fltk/native/main.cpp:2039 fltk/native/main.cpp:2273
+#: fltk/native/main.cpp:2026 fltk/native/main.cpp:2260
 msgid "Message/Delete Queued Message"
 msgstr ""
 
-#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2234
+#: fltk/native/main.cpp:2029 fltk/native/main.cpp:2221
 #, fuzzy
 #| msgid "Add Account…"
 msgid "File/Account Settings…"
 msgstr "Aggiungi account…"
 
-#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2254
+#: fltk/native/main.cpp:2030 fltk/native/main.cpp:2241
 #, fuzzy
 #| msgid "New Calendar"
 msgid "View/Calendar"
 msgstr "Nuovo calendario"
 
-#: fltk/native/main.cpp:2044 fltk/native/main.cpp:2256
+#: fltk/native/main.cpp:2031 fltk/native/main.cpp:2243
 #, fuzzy
 #| msgid "Contacts"
 msgid "View/Contacts"
 msgstr "Contatti"
 
-#: fltk/native/main.cpp:2156
+#: fltk/native/main.cpp:2143
 #, fuzzy
 #| msgid "Conversation"
 msgid "Conversations"
 msgstr "Conversazione"
 
-#: fltk/native/main.cpp:2202
+#: fltk/native/main.cpp:2189
 #, fuzzy
 #| msgid "Calendars"
 msgid "Calendar days"
 msgstr "Calendari"
 
-#: fltk/native/main.cpp:2212
+#: fltk/native/main.cpp:2199
 #, fuzzy
 #| msgid "Contacts"
 msgid "Find Contacts"
 msgstr "Contatti"
 
-#: fltk/native/main.cpp:2217
+#: fltk/native/main.cpp:2204
 msgid "Write to Selected Contact"
 msgstr ""
 
-#: fltk/native/main.cpp:2228
+#: fltk/native/main.cpp:2215
 #, fuzzy
 #| msgid "Ask Penguin Mail…"
 msgid "Starting Penguin Mail…"
 msgstr "Chiedi a Penguin Mail…"
 
-#: fltk/native/main.cpp:2230
+#: fltk/native/main.cpp:2217
 #, fuzzy
 #| msgid "New Message"
 msgid "File/New Message"
 msgstr "Nuovo messaggio"
 
-#: fltk/native/main.cpp:2232
+#: fltk/native/main.cpp:2219
 #, fuzzy
 #| msgid "Add Account…"
 msgid "File/Add Account…"
 msgstr "Aggiungi account…"
 
-#: fltk/native/main.cpp:2240
+#: fltk/native/main.cpp:2227
 #, fuzzy
 #| msgid "Preferences"
 msgid "File/Preferences…"
 msgstr "Preferenze"
 
-#: fltk/native/main.cpp:2242
+#: fltk/native/main.cpp:2229
 msgid "File/Show Window"
 msgstr ""
 
-#: fltk/native/main.cpp:2243
+#: fltk/native/main.cpp:2230
 #, fuzzy
 #| msgid "Close window"
 msgid "File/Close Window"
 msgstr "Chiudi finestra"
 
-#: fltk/native/main.cpp:2245
+#: fltk/native/main.cpp:2232
 #, fuzzy
 #| msgid "Quit"
 msgid "File/Quit"
 msgstr "Esci"
 
-#: fltk/native/main.cpp:2251
+#: fltk/native/main.cpp:2238
 #, fuzzy
 #| msgid "Search"
 msgid "Edit/Search"
 msgstr "Cerca"
 
-#: fltk/native/main.cpp:2253
+#: fltk/native/main.cpp:2240
 #, fuzzy
 #| msgid "View"
 msgid "View/Mail"
 msgstr "Vista"
 
-#: fltk/native/main.cpp:2258
+#: fltk/native/main.cpp:2245
 #, fuzzy
 #| msgid "Refresh"
 msgid "View/Refresh"
 msgstr "Aggiorna"
 
-#: fltk/native/main.cpp:2265
+#: fltk/native/main.cpp:2252
 #, fuzzy
 #| msgid "View Source"
 msgid "View/Load More"
 msgstr "Visualizza sorgente"
 
-#: fltk/native/main.cpp:2293
+#: fltk/native/main.cpp:2280
 #, fuzzy
 #| msgid "Keyboard Shortcuts"
 msgid "Help/Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
 
-#: fltk/native/main.cpp:2295
+#: fltk/native/main.cpp:2282
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12787,13 +12793,13 @@ msgid ""
 "DomeD owns Super shortcuts."
 msgstr ""
 
-#: fltk/native/main.cpp:2302
+#: fltk/native/main.cpp:2289
 #, fuzzy
 #| msgid "About Penguin Mail"
 msgid "Help/About Penguin Mail"
 msgstr "Informazioni su Penguin Mail"
 
-#: fltk/native/main.cpp:2305
+#: fltk/native/main.cpp:2292
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12802,7 +12808,7 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2448
+#: fltk/native/main.cpp:2435
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 
@@ -12897,6 +12903,30 @@ msgstr ""
 
 #: fltk/native/misfin.h:115
 msgid "File/Import Gemmail Archive…"
+msgstr ""
+
+#: fltk/native/misfin.h:147
+msgid ""
+"No shared Misfin identities are available. Create one in Dome Identities or "
+"Servo Dome, or import PEM files."
+msgstr ""
+
+#: fltk/native/misfin.h:150
+#, fuzzy
+#| msgid "Import…"
+msgid "Import Shared Misfin Identity"
+msgstr "Importa…"
+
+#: fltk/native/misfin.h:151
+#, fuzzy
+#| msgid "Create Address"
+msgid "Identity"
+msgstr "Crea indirizzo"
+
+#: fltk/native/misfin.h:162
+msgid ""
+"Import copies this certificate and key into Penguin Mail. It does not "
+"register a server mailbox."
 msgstr ""
 
 #: sync/src/account/outbox.rs:97
@@ -13236,110 +13266,110 @@ msgstr ""
 msgid "Certificate and private key do not match"
 msgstr ""
 
-#: sync/src/misfin/client.rs:31
+#: sync/src/misfin/client.rs:36
 msgid "Identity certificate has no USER_ID mailbox"
 msgstr ""
 
-#: sync/src/misfin/client.rs:36 sync/src/misfin/client.rs:40
+#: sync/src/misfin/client.rs:41 sync/src/misfin/client.rs:45
 #, fuzzy
 #| msgid "a certificate gpgsm would not name"
 msgid "Identity certificate has no DNS name"
 msgstr "un certificato che gpgsm non ha identificato"
 
-#: sync/src/misfin/client.rs:64
+#: sync/src/misfin/client.rs:66
 msgid "Enter a mailbox@hostname address"
 msgstr ""
 
-#: sync/src/misfin/client.rs:67 sync/src/misfin/client.rs:79
+#: sync/src/misfin/client.rs:69 sync/src/misfin/client.rs:81
 #, fuzzy
 #| msgid "a certificate gpgsm would not name"
 msgid "Identity requires a DNS hostname"
 msgstr "un certificato che gpgsm non ha identificato"
 
-#: sync/src/misfin/client.rs:88
+#: sync/src/misfin/client.rs:90
 #, fuzzy
 #| msgid "Your email address"
 msgid "Invalid mailbox name"
 msgstr "Il tuo indirizzo email"
 
-#: sync/src/misfin/client.rs:94
+#: sync/src/misfin/client.rs:96
 msgid "Enter an identity name of 1 to 64 characters"
 msgstr ""
 
-#: sync/src/misfin/client.rs:152
+#: sync/src/misfin/client.rs:154
 #, fuzzy
 #| msgid "This file holds no certificate."
 msgid "Server supplied no certificate"
 msgstr "Questo file non contiene un certificato."
 
-#: sync/src/misfin/client.rs:159
+#: sync/src/misfin/client.rs:161
 msgid "Server certificate is not currently valid"
 msgstr ""
 
-#: sync/src/misfin/client.rs:163
+#: sync/src/misfin/client.rs:165
 #, fuzzy
 #| msgid "a certificate gpgsm would not name"
 msgid "Server certificate has no DNS name"
 msgstr "un certificato che gpgsm non ha identificato"
 
-#: sync/src/misfin/client.rs:169
+#: sync/src/misfin/client.rs:171
 #, fuzzy
 #| msgid "a certificate gpgsm would not name"
 msgid "Server certificate does not name this host"
 msgstr "un certificato che gpgsm non ha identificato"
 
-#: sync/src/misfin/client.rs:176
+#: sync/src/misfin/client.rs:178
 msgid "Server fingerprint changed; no request was sent"
 msgstr ""
 
-#: sync/src/misfin/client.rs:191
+#: sync/src/misfin/client.rs:193
 msgid "Response exceeds protocol limit"
 msgstr ""
 
-#: sync/src/misfin/client.rs:204
+#: sync/src/misfin/client.rs:206
 #, fuzzy
 #| msgid "{recipient}, not an address"
 msgid "Invalid response status"
 msgstr "{recipient}, non è un indirizzo"
 
-#: sync/src/misfin/client.rs:209
+#: sync/src/misfin/client.rs:211
 msgid "Invalid response separator"
 msgstr ""
 
-#: sync/src/misfin/client.rs:232
+#: sync/src/misfin/client.rs:234
 #, fuzzy
 #| msgid "The server refused this request."
 msgid "Gemini server declined the mailbox request"
 msgstr "Il server ha rifiutato questa richiesta."
 
-#: sync/src/misfin/client.rs:245
+#: sync/src/misfin/client.rs:247
 msgid "Server did not return a text mailbox archive"
 msgstr ""
 
-#: sync/src/misfin/client.rs:255
+#: sync/src/misfin/client.rs:257
 msgid "Mailbox archive exceeds 4 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:59
+#: sync/src/misfin/mod.rs:60
 msgid "Misfin storage exceeds 8 MiB"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:97 sync/src/misfin/mod.rs:140
+#: sync/src/misfin/mod.rs:101 sync/src/misfin/mod.rs:146
 msgid "At most 16 Misfin identities can be imported"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:114
+#: sync/src/misfin/mod.rs:120
 msgid ""
 "An identity for this address already exists. Import its certificate instead."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:158
+#: sync/src/misfin/mod.rs:164
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Misfin account identifiers conflict"
 msgstr "Accesso interrotto"
 
-#: sync/src/misfin/mod.rs:172
+#: sync/src/misfin/mod.rs:178
 #, fuzzy
 #| msgid "Mailbox storage is not available through this connection."
 msgid "This mailbox is not available for Misfin"
@@ -13347,75 +13377,100 @@ msgstr ""
 "Lo spazio della casella di posta non è disponibile tramite questa "
 "connessione."
 
-#: sync/src/misfin/mod.rs:225
+#: sync/src/misfin/mod.rs:231
 msgid "Choose a Misfin identity first"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:249
+#: sync/src/misfin/mod.rs:255
 #, fuzzy
 #| msgid "This Message"
 msgid "Misfin message not found"
 msgstr "Questo messaggio"
 
-#: sync/src/misfin/mod.rs:282
+#: sync/src/misfin/mod.rs:288
 msgid "Invalid server fingerprint"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:291
+#: sync/src/misfin/mod.rs:297
 msgid ""
 "Delivery was not confirmed. The message may have arrived; check before "
 "sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:295
+#: sync/src/misfin/mod.rs:301
 #, fuzzy
 #| msgid "The server had already sent this message."
 msgid "Misfin server declined the message"
 msgstr "Il server aveva già inviato questo messaggio."
 
-#: sync/src/misfin/mod.rs:323
+#: sync/src/misfin/mod.rs:329
 msgid "Message accepted, but the local copy could not be saved."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:327
+#: sync/src/misfin/mod.rs:333
 msgid ""
 "Message accepted, but the recipient fingerprint is invalid. Do not resend."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:333
+#: sync/src/misfin/mod.rs:339
 msgid ""
 "Message accepted, but the recipient's certificate fingerprint changed. "
 "Verify it before sending again."
 msgstr ""
 
-#: sync/src/misfin/mod.rs:351
+#: sync/src/misfin/mod.rs:357
 #, fuzzy
 #| msgid "Unknown sender"
 msgid "Unknown Misfin request"
 msgstr "Mittente sconosciuto"
 
-#: sync/src/misfin/mod.rs:381
+#: sync/src/misfin/mod.rs:393
 msgid "Expected a regular file"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:388
+#: sync/src/misfin/mod.rs:400
+msgid "Shared identity files must be owned by you with owner-only permissions"
+msgstr ""
+
+#: sync/src/misfin/mod.rs:408
 msgid "File exceeds size limit"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:395
+#: sync/src/misfin/mod.rs:415
 #, fuzzy
 #| msgid "Sign-in stopped"
 msgid "Misfin connection timed out"
 msgstr "Accesso interrotto"
 
-#: sync/src/misfin/mod.rs:413
+#: sync/src/misfin/mod.rs:433
 msgid "Select Misfin when sending from a Misfin account"
 msgstr ""
 
-#: sync/src/misfin/mod.rs:427
+#: sync/src/misfin/mod.rs:447
 msgid ""
 "Misfin supports one recipient and plain Gemtext, up to 16384 UTF-8 bytes. "
 "Cc, Bcc, attachments, drafts, scheduled sending and OpenPGP are unavailable."
+msgstr ""
+
+#: sync/src/misfin/shared.rs:24
+msgid "Cannot find the shared identity catalog"
+msgstr ""
+
+#: sync/src/misfin/shared.rs:34 sync/src/misfin/shared.rs:36
+#: sync/src/misfin/shared.rs:45
+#, fuzzy
+#| msgid "Invitation"
+msgid "Invalid shared identity catalog"
+msgstr "Invito"
+
+#: sync/src/misfin/shared.rs:64
+#, fuzzy
+#| msgid "Demo mode cannot add real accounts."
+msgid "Choose an available shared Misfin identity"
+msgstr "La modalità demo non può aggiungere account reali."
+
+#: sync/src/misfin/shared.rs:68
+msgid "Shared identity certificate fingerprint changed"
 msgstr ""
 
 #: sync/src/misfin/wire.rs:21 sync/src/misfin/wire.rs:32

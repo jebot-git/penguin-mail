@@ -24,6 +24,11 @@ pub fn identity(certificate: &[u8], key: &[u8]) -> Result<(String, String, Vec<u
         "{}",
         gettext("Certificate and private key do not match")
     );
+    let (address, id) = certificate_identity(certificate)?;
+    Ok((address, id, private.private_key_to_pem_pkcs8()?))
+}
+pub fn certificate_identity(certificate: &[u8]) -> Result<(String, String)> {
+    let cert = X509::from_pem(certificate)?;
     let mailbox = cert
         .subject_name()
         .entries_by_nid(Nid::USERID)
@@ -42,12 +47,9 @@ pub fn identity(certificate: &[u8], key: &[u8]) -> Result<(String, String, Vec<u
         .uri
         .trim_start_matches("misfin://")
         .to_string();
-    Ok((
-        address,
-        hash(&cert.to_der()?)?,
-        private.private_key_to_pem_pkcs8()?,
-    ))
+    Ok((address, hash(&cert.to_der()?)?))
 }
+
 /// Generate a self-signed mailbox certificate without writing a loose key file.
 pub fn create_identity(address: &str, name: &str) -> Result<(Vec<u8>, Vec<u8>)> {
     use openssl::{

@@ -1,5 +1,6 @@
 //! Optional Misfin(C) identities, explicit TLS trust, delivery and local history.
 mod client;
+mod shared;
 mod wire;
 use anyhow::{Context, Result, bail, ensure};
 use client::hash;
@@ -85,9 +86,12 @@ impl Misfin {
         let r = &request;
         let mut state = self.state.lock().await;
         let text = |key: &str| r[key].as_str().unwrap_or("");
+        if text("op") == "misfin-shared-identities" {
+            return Ok(json!({"identities": shared::available(&shared::catalog_path()?)?}));
+        }
         if matches!(
             text("op"),
-            "misfin-import-identity" | "misfin-create-identity"
+            "misfin-import-identity" | "misfin-create-identity" | "misfin-import-shared-identity"
         ) {
             let creating = text("op") == "misfin-create-identity";
             let (certificate, key) = if creating {
@@ -100,6 +104,8 @@ impl Misfin {
                 let name = text("name").to_owned();
                 tokio::task::spawn_blocking(move || client::create_identity(&address, &name))
                     .await??
+            } else if text("op") == "misfin-import-shared-identity" {
+                shared::selected(&shared::catalog_path()?, text("shared_id"))?
             } else {
                 (
                     read(Path::new(text("certificate")), 65536)?,
@@ -370,7 +376,13 @@ fn message_size(m: &Message) -> usize {
     m.body.len() + m.subject.len() + m.from.len() + m.to.len() + m.timestamp.len() + 256
 }
 fn read(path: &Path, limit: usize) -> Result<Vec<u8>> {
-    use std::os::unix::fs::OpenOptionsExt;
+    read_file(path, limit, false)
+}
+fn read_private(path: &Path, limit: usize) -> Result<Vec<u8>> {
+    read_file(path, limit, true)
+}
+fn read_file(path: &Path, limit: usize, private: bool) -> Result<Vec<u8>> {
+    use std::os::unix::fs::{MetadataExt, OpenOptionsExt};
     let file = std::fs::OpenOptions::new()
         .read(true)
         .custom_flags(libc::O_NOFOLLOW | libc::O_NONBLOCK)
@@ -380,6 +392,14 @@ fn read(path: &Path, limit: usize) -> Result<Vec<u8>> {
         "{}",
         gettext("Expected a regular file")
     );
+    if private {
+        let metadata = file.metadata()?;
+        ensure!(
+            metadata.uid() == unsafe { libc::geteuid() } && metadata.mode() & 0o077 == 0,
+            "{}",
+            gettext("Shared identity files must be owned by you with owner-only permissions")
+        );
+    }
     let mut bytes = vec![];
     file.take(limit as u64 + 1).read_to_end(&mut bytes)?;
     ensure!(
