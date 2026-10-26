@@ -30,6 +30,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### Fixed
 
+- Open mail and calendar notifications on the desktop where they were clicked, including expired notification history entries.
+
 - Show unread mail in the native tray icon and answer tray menus before running their actions.
 
 - Connect to POP3 servers that require RSA TLS 1.2 ciphers while keeping certificate and hostname checks.

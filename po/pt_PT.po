@@ -11887,7 +11887,7 @@ msgstr "Lembrete adiado"
 msgid "Add an account before composing mail."
 msgstr "Adicione uma conta antes de escrever uma mensagem."
 
-#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2467
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2468
 msgid "Compose Message"
 msgstr "Escrever mensagem"
 
@@ -12539,7 +12539,7 @@ msgstr ""
 "Serviços de correio originais: c9dev/penguin-mail\n"
 "Licença: GPL-3.0-or-later"
 
-#: fltk/native/main.cpp:2435
+#: fltk/native/main.cpp:2436
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr "Data do calendário inválida. Use AAAA-MM-DD."
 
@@ -12641,7 +12641,9 @@ msgstr "Ficheiro/Importar arquivo Gemmail…"
 msgid ""
 "No shared Misfin identities are available. Create one in Dome Identities or "
 "Servo Dome, or import PEM files."
-msgstr "Não há identidades Misfin partilhadas disponíveis. Crie uma no Dome Identities ou no Servo Dome, ou importe ficheiros PEM."
+msgstr ""
+"Não há identidades Misfin partilhadas disponíveis. Crie uma no Dome "
+"Identities ou no Servo Dome, ou importe ficheiros PEM."
 
 #: fltk/native/misfin.h:150
 msgid "Import Shared Misfin Identity"
@@ -12655,7 +12657,9 @@ msgstr "Identidade"
 msgid ""
 "Import copies this certificate and key into Penguin Mail. It does not "
 "register a server mailbox."
-msgstr "A importação copia este certificado e a chave para o Penguin Mail. Não regista uma caixa de correio no servidor."
+msgstr ""
+"A importação copia este certificado e a chave para o Penguin Mail. Não "
+"regista uma caixa de correio no servidor."
 
 #: sync/src/account/outbox.rs:97
 msgid "The message was sent, but Penguin Mail could not keep a copy in Sent."
@@ -13134,7 +13138,9 @@ msgstr "Era esperado um ficheiro normal"
 
 #: sync/src/misfin/mod.rs:400
 msgid "Shared identity files must be owned by you with owner-only permissions"
-msgstr "Os ficheiros de identidade partilhados têm de lhe pertencer e ter permissões apenas para o proprietário"
+msgstr ""
+"Os ficheiros de identidade partilhados têm de lhe pertencer e ter permissões "
+"apenas para o proprietário"
 
 #: sync/src/misfin/mod.rs:408
 msgid "File exceeds size limit"

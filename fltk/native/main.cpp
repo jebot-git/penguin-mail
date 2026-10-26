@@ -2366,8 +2366,9 @@ public:
       [this](const Json &n, const std::string &action) { notificationChosen(n, action); },
       [this](const Json &n) {
         if (str(n,"kind") == "calendar")
-          send({{"op","notification-delivered"},{"key",n["key"]}});
-      });
+          send({{"op","notification-delivered"},{"key",n["key"]}},
+            [this, key = str(n,"key")](const Json &) { desktopNotifications->acknowledge(key); });
+      }, desktop->objectPath());
     engine = std::make_unique<MailEngine>(binary, demo);
     engine->event = [this](const Json &e) {
       auto type = str(e, "event");

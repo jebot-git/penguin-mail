@@ -12193,7 +12193,7 @@ msgstr "Mementouri"
 msgid "Add an account before composing mail."
 msgstr "Adăugați mai întâi un cont"
 
-#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2467
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2468
 #, fuzzy
 #| msgid "New Message"
 msgid "Compose Message"
@@ -12981,7 +12981,7 @@ msgid ""
 "License: GPL-3.0-or-later"
 msgstr ""
 
-#: fltk/native/main.cpp:2435
+#: fltk/native/main.cpp:2436
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr ""
 

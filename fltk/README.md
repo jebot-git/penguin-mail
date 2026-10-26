@@ -94,7 +94,14 @@ mutations are serialized. Pipe close shuts down sync and the child process.
   Mail uses private count-only text; clicking opens its conversation or inbox.
   Calendar reminders share upstream recurrence and snooze policy, work from the
   tray, open the event's date, and offer Join and Snooze 5 Minutes. Delivery is
-  recorded only after the server accepts it; failed deliveries retry. Disabling
+  recorded only after the server accepts it; failed deliveries retry.
+  DomeD's notification history keeps expired reminders and mail entries
+  clickable. Activation targets Penguin Mail's main window, selects the stored
+  conversation or calendar occurrence, and brings it to the workspace, display
+  and desktop/XR realm where the notification was clicked. Other open windows,
+  including composers, retain their locations. Notifications use the caller's
+  unique bus name and per-window menu identity rather than matching titles.
+  Disabling
   Event Reminders in Preferences consumes due reminders without a later backlog.
   Reminder times follow `dome/clock.json`. The LauncherEntry unread badge also
   uses desktop D-Bus.

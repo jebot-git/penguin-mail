@@ -18,6 +18,8 @@ class DesktopNotifications {
     bool pending = false;
     uint64_t attempt = 0;
     gint64 retryAt = 0;
+    bool closed = false;
+    bool acknowledged = false;
   };
   struct State {
     GDBusConnection *bus = nullptr;
@@ -25,6 +27,7 @@ class DesktopNotifications {
     guint watch = 0, actionSignal = 0, closedSignal = 0;
     uint64_t generation = 0, nextAttempt = 0;
     std::string owner;
+    std::string activationMenu;
     std::map<std::string, Notice> notices;
     std::function<void(const Json &, const std::string &)> chosen;
     std::function<void(const Json &)> delivered;
@@ -58,6 +61,9 @@ class DesktopNotifications {
     g_variant_builder_add(&hints, "{sv}", "category", g_variant_new_string(
         n.data.value("kind", "") == "calendar" ? "x-penguin-mail.calendar" : "email.arrived"));
     g_variant_builder_add(&hints, "{sv}", "urgency", g_variant_new_byte(1));
+    if (!s->activationMenu.empty())
+      g_variant_builder_add(&hints, "{sv}", "x-dome-activation-menu",
+                           g_variant_new_string(s->activationMenu.c_str()));
     n.pending = true;
     n.retryAt = g_get_monotonic_time() + 3 * G_USEC_PER_SEC;
     n.attempt = ++s->nextAttempt;
@@ -107,9 +113,11 @@ class DesktopNotifications {
   }
 public:
   DesktopNotifications(std::function<void(const Json &, const std::string &)> chosen,
-                       std::function<void(const Json &)> delivered) {
+                       std::function<void(const Json &)> delivered,
+                       const std::string &activationMenu = {}) {
     auto s = state;
     s->chosen = std::move(chosen); s->delivered = std::move(delivered);
+    s->activationMenu = activationMenu;
     s->bus = g_bus_get_sync(G_BUS_TYPE_SESSION, nullptr, nullptr);
     if (!s->bus) return;
     Fl::add_timeout(3, retry, this);
@@ -139,7 +147,13 @@ public:
         if (s->owner != sender || !g_variant_is_of_type(v, G_VARIANT_TYPE("(uu)"))) return;
         guint id, reason; g_variant_get(v, "(uu)", &id, &reason);
         for (auto it = s->notices.begin(); it != s->notices.end(); ++it)
-          if (it->second.id == id) { s->notices.erase(it); break; }
+          if (it->second.id == id) {
+            // Expired/dismissed popups remain actionable from DomeD history.
+            // Explicit withdrawal removes their target; IDs never cross owners.
+            if (reason == 3) s->notices.erase(it);
+            else it->second.closed = true;
+            break;
+          }
       }, s.get(), nullptr);
     s->watch = g_bus_watch_name_on_connection(s->bus, service, G_BUS_NAME_WATCHER_FLAGS_NONE,
       [](GDBusConnection *, const gchar *, const gchar *owner, gpointer data) {
@@ -183,11 +197,22 @@ public:
       if (n.second.data.value("kind", "") == kind) keys.push_back(n.first);
     for (const auto &key : keys) withdraw(key);
   }
+  void acknowledge(const std::string &key) {
+    auto found = state->notices.find(key);
+    if (found != state->notices.end()) found->second.acknowledged = true;
+  }
   void post(const Json &notice) {
     auto key = notice.value("key", "");
     if (key.empty() || !notice.contains("actions")) return;
     auto &s = state;
     auto f = s->notices.find(key);
+    if (f != s->notices.end() && f->second.closed && f->second.acknowledged) {
+      // A new due/snoozed occurrence may reuse its logical key after the
+      // previous delivery was persisted. Retire its old history action before
+      // accepting the fresh delivery; scheduler retries before ACK still dedupe.
+      withdraw(key);
+      f = s->notices.end();
+    }
     if (f != s->notices.end()) {
       // Repeated scheduler checks retry failed delivery, never repost an
       // accepted reminder while its persistence acknowledgement is in flight.
@@ -195,7 +220,16 @@ public:
       else if (s->delivered) s->delivered(f->second.data);
       return;
     }
-    if (s->notices.size() >= 128) return;
+    if (s->notices.size() >= 128) {
+      auto old = std::find_if(s->notices.begin(), s->notices.end(),
+                             [](const auto &n) { return n.second.closed; });
+      if (old == s->notices.end()) return;
+      if (old->second.id && !s->owner.empty())
+        g_dbus_connection_call(s->bus, s->owner.c_str(), path, service, "CloseNotification",
+          g_variant_new("(u)", old->second.id), nullptr, G_DBUS_CALL_FLAGS_NONE, 2000,
+          s->cancel, nullptr, nullptr);
+      s->notices.erase(old);
+    }
     s->notices.emplace(key, Notice{notice});
     send(s, key);
   }

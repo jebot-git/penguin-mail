@@ -10883,7 +10883,7 @@ msgstr "Reminder snoozed"
 msgid "Add an account before composing mail."
 msgstr "Add an account before composing mail."
 
-#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2467
+#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2468
 msgid "Compose Message"
 msgstr "Compose Message"
 
@@ -11490,7 +11490,7 @@ msgstr ""
 "Original mail engines: c9dev/penguin-mail\n"
 "Licence: GPL-3.0-or-later"
 
-#: fltk/native/main.cpp:2435
+#: fltk/native/main.cpp:2436
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr "Invalid calendar date. Use YYYY-MM-DD."
 
