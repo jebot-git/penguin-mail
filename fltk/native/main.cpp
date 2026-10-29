@@ -16,6 +16,7 @@
 #include <FL/Fl_Table_Row.H>
 #include <FL/Fl_Text_Editor.H>
 #include <FL/Fl_Tile.H>
+#include <algorithm>
 #include <array>
 #include <chrono>
 #include <cmath>
@@ -26,6 +27,33 @@
 #include <set>
 #include <sstream>
 #define _(s) gettext(s)
+static bool isMisfinAddress(const std::string &text) {
+  return g_ascii_strncasecmp(text.c_str(), "misfin:", 7) == 0;
+}
+static bool validMisfinAddress(const std::string &text) {
+  if (text.size() > 1008 || !isMisfinAddress(text))
+    return false;
+  auto uri = g_uri_parse(text.c_str(),
+                        GUriFlags(G_URI_FLAGS_ENCODED | G_URI_FLAGS_HAS_PASSWORD),
+                        nullptr);
+  if (!uri)
+    return false;
+  auto user = g_uri_get_user(uri);
+  auto host = g_uri_get_host(uri);
+  auto path = g_uri_get_path(uri);
+  bool valid = user && *user && host && *host &&
+               !g_uri_get_password(uri) && !g_uri_get_query(uri) &&
+               !g_uri_get_fragment(uri) && g_uri_get_port(uri) != 0 &&
+               (!path || !*path || !strcmp(path, "/"));
+  for (const unsigned char c : text)
+    valid = valid && c > 32 && c != 127;
+  if (user)
+    for (const unsigned char *p = reinterpret_cast<const unsigned char *>(user);
+         *p; ++p)
+      valid = valid && (g_ascii_isalnum(*p) || strchr("._+-", *p));
+  g_uri_unref(uri);
+  return valid;
+}
 static std::string str(const Json &j, const char *k,
                        const std::string &fallback = "") {
   auto i = j.find(k);
@@ -723,7 +751,7 @@ class MailWindow : public dx::GpuWindow {
         updateTitle();
         dockBadge(count);
       }
-      if (pendingCompose && !accounts.empty()) {
+      if (pendingCompose) {
         pendingCompose = false;
         composer("new", pendingRecipient);
         pendingRecipient.clear();
@@ -1010,6 +1038,19 @@ class MailWindow : public dx::GpuWindow {
   }
   void composer(const std::string &mode = "new",
                 const std::string &recipient = "", Json saved = Json()) {
+    const bool misfinAddress = isMisfinAddress(recipient);
+    if (misfinAddress && !validMisfinAddress(recipient)) {
+      say(_("Invalid Misfin address"));
+      return;
+    }
+    if (misfinAddress && std::none_of(accounts.begin(), accounts.end(),
+          [](const Json &item) {
+            return item["account"].value("id", int64_t(0)) < 0;
+          })) {
+      fl_message_title(_("Misfin"));
+      fl_alert("%s", _("Add a Misfin account before opening this address."));
+      return;
+    }
     struct Form {
       dx::GpuWindow *window;
       Fl_Choice *from;
@@ -1054,6 +1095,12 @@ class MailWindow : public dx::GpuWindow {
       if (accounts[i]["account"].value("id", int64_t(0)) == selectedAccount)
         selected = i;
     }
+    if (misfinAddress && accounts[selected]["account"].value("id", int64_t(0)) >= 0)
+      for (int i = 0; i < int(accounts.size()); ++i)
+        if (accounts[i]["account"].value("id", int64_t(0)) < 0) {
+          selected = i;
+          break;
+        }
     f->from->value(selected);
     f->sign = new Fl_Check_Button(285, 40, 150, 32, _("Sign (OpenPGP)"));
     f->encrypt = new Fl_Check_Button(440, 40, 170, 32, _("Encrypt (OpenPGP)"));
@@ -2442,7 +2489,7 @@ public:
   }
   void composeTo(const std::string &to) {
     activate();
-    if (!ready || accountsPending || accounts.empty()) {
+    if (!ready || accountsPending) {
       pendingCompose = true;
       pendingRecipient = to;
       return;
@@ -2629,7 +2676,7 @@ int main(int argc, char **argv) {
     }
     if (arg == "--help") {
       puts("Usage: penguin-mail [--demo] [--tray] [--calendar YYYY-MM-DD] "
-           "[--compose ADDRESS] [mailto:ADDRESS]\n       penguin-mail "
+           "[--compose ADDRESS] [mailto:ADDRESS] [misfin://MAILBOX@HOST]\n       penguin-mail "
            "--smoke-test OUTPUT.ppm --demo");
       return 0;
     }
@@ -2647,6 +2694,9 @@ int main(int argc, char **argv) {
       compose = true;
       if (i + 1 < argc && std::string(argv[i + 1]).rfind("--", 0) != 0)
         to = argv[++i];
+    } else if (isMisfinAddress(arg)) {
+      compose = true;
+      to = arg;
     } else if (arg.rfind("mailto:", 0) == 0) {
       compose = true;
       auto raw = arg.substr(7);
@@ -2658,6 +2708,17 @@ int main(int argc, char **argv) {
       }
     } else {
       fprintf(stderr, "Unknown or incomplete option: %s\n", arg.c_str());
+      return 2;
+    }
+  }
+  if (compose && isMisfinAddress(to)) {
+#ifdef PENGUIN_ENABLE_MISFIN
+    const bool valid = validMisfinAddress(to);
+#else
+    const bool valid = false;
+#endif
+    if (!valid) {
+      fprintf(stderr, "%s\n", _("Invalid Misfin address"));
       return 2;
     }
   }

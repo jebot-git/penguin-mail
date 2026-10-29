@@ -11767,163 +11767,167 @@ msgstr "Serviço de correio indisponível"
 msgid "Too many pending requests"
 msgstr "Demasiados pedidos pendentes"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:375
 msgid "Mon"
 msgstr "Seg"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:375
 msgid "Thu"
 msgstr "Qui"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:375
 msgid "Tue"
 msgstr "Ter"
 
-#: fltk/native/main.cpp:347
+#: fltk/native/main.cpp:375
 msgid "Wed"
 msgstr "Qua"
 
-#: fltk/native/main.cpp:348
+#: fltk/native/main.cpp:376
 msgid "Fri"
 msgstr "Sex"
 
-#: fltk/native/main.cpp:348
+#: fltk/native/main.cpp:376
 msgid "Sat"
 msgstr "Sáb"
 
-#: fltk/native/main.cpp:348
+#: fltk/native/main.cpp:376
 msgid "Sun"
 msgstr "Dom"
 
-#: fltk/native/main.cpp:517
+#: fltk/native/main.cpp:545
 msgid "The request failed."
 msgstr "O pedido falhou."
 
-#: fltk/native/main.cpp:522
+#: fltk/native/main.cpp:550
 msgid "The mail engine is starting."
 msgstr "O serviço de correio está a iniciar."
 
-#: fltk/native/main.cpp:599
+#: fltk/native/main.cpp:627
 msgid "Undone"
 msgstr "Anulado"
 
-#: fltk/native/main.cpp:614
+#: fltk/native/main.cpp:642
 msgid "Select a conversation first."
 msgstr "Selecione primeiro uma conversa."
 
-#: fltk/native/main.cpp:619
+#: fltk/native/main.cpp:647
 msgid "Label name"
 msgstr "Nome da etiqueta"
 
-#: fltk/native/main.cpp:626
+#: fltk/native/main.cpp:654
 msgid "Remind at (YYYY-MM-DD HH:MM)"
 msgstr "Lembrar em (AAAA-MM-DD HH:MM)"
 
-#: fltk/native/main.cpp:631 fltk/native/main.cpp:1220
+#: fltk/native/main.cpp:659 fltk/native/main.cpp:1267
 msgid "Choose a future date and time."
 msgstr "Escolha uma data e hora futuras."
 
-#: fltk/native/main.cpp:636
+#: fltk/native/main.cpp:664
 msgid "Updating mail…"
 msgstr "A atualizar o correio…"
 
-#: fltk/native/main.cpp:638
+#: fltk/native/main.cpp:666
 msgid "Mail updated. Use Undo to reverse the action."
 msgstr "Correio atualizado. Use Desfazer para reverter a ação."
 
-#: fltk/native/main.cpp:789
+#: fltk/native/main.cpp:817
 msgid "conversations"
 msgstr "conversas"
 
-#: fltk/native/main.cpp:791
+#: fltk/native/main.cpp:819
 msgid "Load More is available in View."
 msgstr "Carregar mais está disponível em Ver."
 
-#: fltk/native/main.cpp:836
+#: fltk/native/main.cpp:864
 msgid "Loading conversation…"
 msgstr "A carregar a conversa…"
 
-#: fltk/native/main.cpp:873 fltk/native/main.cpp:892
+#: fltk/native/main.cpp:901 fltk/native/main.cpp:920
 msgid "Attachment"
 msgstr "Anexo"
 
-#: fltk/native/main.cpp:876
+#: fltk/native/main.cpp:904
 msgid "S/MIME message. Export the original to inspect its protection."
 msgstr "Mensagem S/MIME. Exporte o original para inspecionar a sua proteção."
 
-#: fltk/native/main.cpp:880
+#: fltk/native/main.cpp:908
 msgid "Conversation loaded"
 msgstr "Conversa carregada"
 
-#: fltk/native/main.cpp:891 fltk/native/main.cpp:2162
+#: fltk/native/main.cpp:919 fltk/native/main.cpp:2209
 msgid "Save Attachment"
 msgstr "Guardar anexo"
 
-#: fltk/native/main.cpp:901
+#: fltk/native/main.cpp:929
 msgid "Attachment saved"
 msgstr "Anexo guardado"
 
-#: fltk/native/main.cpp:914
+#: fltk/native/main.cpp:942
 msgid "Select an outgoing message first."
 msgstr "Selecione primeiro uma mensagem de saída."
 
-#: fltk/native/main.cpp:918
+#: fltk/native/main.cpp:946
 msgid "Delete this queued message?"
 msgstr "Eliminar esta mensagem em espera?"
 
-#: fltk/native/main.cpp:929
+#: fltk/native/main.cpp:957
 msgid "Export Conversation"
 msgstr "Exportar conversa"
 
-#: fltk/native/main.cpp:937
+#: fltk/native/main.cpp:965
 msgid "Conversation exported"
 msgstr "Conversa exportada"
 
-#: fltk/native/main.cpp:977
+#: fltk/native/main.cpp:1005
 msgid "Reminder snoozed"
 msgstr "Lembrete adiado"
 
-#: fltk/native/main.cpp:1038
-msgid "Add an account before composing mail."
-msgstr "Adicione uma conta antes de escrever uma mensagem."
-
-#: fltk/native/main.cpp:1043 fltk/native/main.cpp:2468
-msgid "Compose Message"
-msgstr "Escrever mensagem"
-
-#: fltk/native/main.cpp:1058
-msgid "Sign (OpenPGP)"
-msgstr "Assinar (OpenPGP)"
-
-#: fltk/native/main.cpp:1059
-msgid "Encrypt (OpenPGP)"
-msgstr "Cifrar (OpenPGP)"
-
-#: fltk/native/main.cpp:1061
+#: fltk/native/main.cpp:1050 fltk/native/main.cpp:1108
 msgid "Misfin"
 msgstr "Misfin"
 
-#: fltk/native/main.cpp:1063
+#: fltk/native/main.cpp:1051
+msgid "Add a Misfin account before opening this address."
+msgstr "Adicione uma conta Misfin antes de abrir este endereço."
+
+#: fltk/native/main.cpp:1079
+msgid "Add an account before composing mail."
+msgstr "Adicione uma conta antes de escrever uma mensagem."
+
+#: fltk/native/main.cpp:1084 fltk/native/main.cpp:2515
+msgid "Compose Message"
+msgstr "Escrever mensagem"
+
+#: fltk/native/main.cpp:1105
+msgid "Sign (OpenPGP)"
+msgstr "Assinar (OpenPGP)"
+
+#: fltk/native/main.cpp:1106
+msgid "Encrypt (OpenPGP)"
+msgstr "Cifrar (OpenPGP)"
+
+#: fltk/native/main.cpp:1110
 msgid "Send a Misfin(C) message using a configured Misfin account"
 msgstr "Enviar uma mensagem Misfin(C) através de uma conta Misfin configurada"
 
-#: fltk/native/main.cpp:1088
+#: fltk/native/main.cpp:1135
 msgid "Remove Attachment"
 msgstr "Remover anexo"
 
-#: fltk/native/main.cpp:1098
+#: fltk/native/main.cpp:1145
 msgid "Checking local OpenPGP keys…"
 msgstr "A verificar as chaves OpenPGP locais…"
 
-#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1329
+#: fltk/native/main.cpp:1218 fltk/native/main.cpp:1376
 msgid "File/Save Draft"
 msgstr "Ficheiro/Guardar rascunho"
 
-#: fltk/native/main.cpp:1171 fltk/native/main.cpp:1327
+#: fltk/native/main.cpp:1218 fltk/native/main.cpp:1374
 msgid "File/Send Later…"
 msgstr "Ficheiro/Enviar mais tarde…"
 
-#: fltk/native/main.cpp:1181
+#: fltk/native/main.cpp:1228
 msgid ""
 "Misfin(C): one recipient, plain Gemtext, 16384 UTF-8 bytes including "
 "metadata. No attachments, drafts, scheduling or OpenPGP."
@@ -11931,105 +11935,105 @@ msgstr ""
 "Misfin(C): um destinatário, Gemtext simples, 16384 bytes UTF-8 incluindo "
 "metadados. Sem anexos, rascunhos, agendamento ou OpenPGP."
 
-#: fltk/native/main.cpp:1199
+#: fltk/native/main.cpp:1246
 msgid "Send Unencrypted"
 msgstr "Enviar sem cifrar"
 
-#: fltk/native/main.cpp:1200
+#: fltk/native/main.cpp:1247
 msgid "This message quotes decrypted mail. Send that text without encryption?"
 msgstr "Esta mensagem cita correio decifrado. Enviar esse texto sem cifra?"
 
-#: fltk/native/main.cpp:1215
+#: fltk/native/main.cpp:1262
 msgid "Send at (YYYY-MM-DD HH:MM)"
 msgstr "Enviar em (AAAA-MM-DD HH:MM)"
 
-#: fltk/native/main.cpp:1227
+#: fltk/native/main.cpp:1274
 msgid "Send without a subject?"
 msgstr "Enviar sem assunto?"
 
-#: fltk/native/main.cpp:1231
+#: fltk/native/main.cpp:1278
 msgid "Working…"
 msgstr "A processar…"
 
-#: fltk/native/main.cpp:1250
+#: fltk/native/main.cpp:1297
 msgid "Message queued in Outbox or Send Later."
 msgstr "Mensagem em espera na Caixa de saída ou em Enviar mais tarde."
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1336
 msgid "A secret key is available for signing."
 msgstr "Está disponível uma chave secreta para assinar."
 
-#: fltk/native/main.cpp:1289
+#: fltk/native/main.cpp:1336
 msgid "No secret signing key for this sender."
 msgstr "Não há chave secreta de assinatura para este remetente."
 
-#: fltk/native/main.cpp:1292
+#: fltk/native/main.cpp:1339
 msgid "All recipients and your Sent copy have encryption keys."
 msgstr "Todos os destinatários e a sua cópia em Enviados têm chaves de cifra."
 
-#: fltk/native/main.cpp:1298
+#: fltk/native/main.cpp:1345
 msgid "Key identity is not fully trusted:"
 msgstr "A identidade da chave não é totalmente fiável:"
 
-#: fltk/native/main.cpp:1312
+#: fltk/native/main.cpp:1359
 msgid "Check Keys"
 msgstr "Verificar chaves"
 
-#: fltk/native/main.cpp:1325
+#: fltk/native/main.cpp:1372
 msgid "File/Send"
 msgstr "Ficheiro/Enviar"
 
-#: fltk/native/main.cpp:1331 fltk/native/misfin.h:116
+#: fltk/native/main.cpp:1378 fltk/native/misfin.h:116
 msgid "File/Close"
 msgstr "Ficheiro/Fechar"
 
-#: fltk/native/main.cpp:1334 fltk/native/main.cpp:2028
-#: fltk/native/main.cpp:2233
+#: fltk/native/main.cpp:1381 fltk/native/main.cpp:2075
+#: fltk/native/main.cpp:2280
 msgid "Edit/Undo"
 msgstr "Editar/Desfazer"
 
-#: fltk/native/main.cpp:1335 fltk/native/main.cpp:2234 fltk/native/misfin.h:118
+#: fltk/native/main.cpp:1382 fltk/native/main.cpp:2281 fltk/native/misfin.h:118
 msgid "Edit/Cut"
 msgstr "Editar/Cortar"
 
-#: fltk/native/main.cpp:1336 fltk/native/main.cpp:2235 fltk/native/misfin.h:119
+#: fltk/native/main.cpp:1383 fltk/native/main.cpp:2282 fltk/native/misfin.h:119
 msgid "Edit/Copy"
 msgstr "Editar/Copiar"
 
-#: fltk/native/main.cpp:1337 fltk/native/main.cpp:2236 fltk/native/misfin.h:120
+#: fltk/native/main.cpp:1384 fltk/native/main.cpp:2283 fltk/native/misfin.h:120
 msgid "Edit/Paste"
 msgstr "Editar/Colar"
 
-#: fltk/native/main.cpp:1338 fltk/native/main.cpp:2237 fltk/native/misfin.h:121
+#: fltk/native/main.cpp:1385 fltk/native/main.cpp:2284 fltk/native/misfin.h:121
 msgid "Edit/Select All"
 msgstr "Editar/Selecionar tudo"
 
-#: fltk/native/main.cpp:1343
+#: fltk/native/main.cpp:1390
 msgid "Wait for the current request to finish."
 msgstr "Aguarde até o pedido atual terminar."
 
-#: fltk/native/main.cpp:1349
+#: fltk/native/main.cpp:1396
 msgid "Discard this Misfin message? Misfin drafts are unavailable."
 msgstr ""
 "Descartar esta mensagem Misfin? Os rascunhos Misfin não estão disponíveis."
 
-#: fltk/native/main.cpp:1352
+#: fltk/native/main.cpp:1399
 msgid "Close this message? Save a draft to keep your changes."
 msgstr "Fechar esta mensagem? Guarde um rascunho para manter as alterações."
 
-#: fltk/native/main.cpp:1387
+#: fltk/native/main.cpp:1434
 msgid "This build has no Microsoft sign-in client."
 msgstr "Esta compilação não tem um cliente de início de sessão da Microsoft."
 
-#: fltk/native/main.cpp:1389
+#: fltk/native/main.cpp:1436
 msgid "Choose Client JSON…"
 msgstr "Escolher JSON do cliente…"
 
-#: fltk/native/main.cpp:1389
+#: fltk/native/main.cpp:1436
 msgid "Setup Instructions"
 msgstr "Instruções de configuração"
 
-#: fltk/native/main.cpp:1390
+#: fltk/native/main.cpp:1437
 msgid ""
 "This build has no Google sign-in client.\n"
 "Choose the Desktop app OAuth client JSON from your Google Cloud project.\n"
@@ -12041,15 +12045,15 @@ msgstr ""
 "do seu projeto Google Cloud. Após iniciar sessão, o cliente da conta\n"
 "e o token de atualização serão guardados no chaveiro do ambiente de trabalho."
 
-#: fltk/native/main.cpp:1396
+#: fltk/native/main.cpp:1443
 msgid "Google Desktop OAuth Client"
 msgstr "Cliente OAuth da Google para computador"
 
-#: fltk/native/main.cpp:1401
+#: fltk/native/main.cpp:1448
 msgid "Complete sign-in in your browser."
 msgstr "Conclua o início de sessão no navegador."
 
-#: fltk/native/main.cpp:1413
+#: fltk/native/main.cpp:1460
 msgid ""
 "Demo mode uses temporary sample accounts. Start without --demo to add an "
 "account."
@@ -12057,43 +12061,43 @@ msgstr ""
 "O modo de demonstração usa contas de exemplo temporárias. Inicie sem --demo "
 "para adicionar uma conta."
 
-#: fltk/native/main.cpp:1418
+#: fltk/native/main.cpp:1465
 msgid "Google…"
 msgstr "Google…"
 
-#: fltk/native/main.cpp:1419
+#: fltk/native/main.cpp:1466
 msgid "Microsoft…"
 msgstr "Microsoft…"
 
-#: fltk/native/main.cpp:1421
+#: fltk/native/main.cpp:1468
 msgid "Account Type"
 msgstr "Tipo de conta"
 
-#: fltk/native/main.cpp:1430 fltk/native/main.cpp:1516
+#: fltk/native/main.cpp:1477 fltk/native/main.cpp:1563
 msgid "IMAP Server"
 msgstr "Servidor IMAP"
 
-#: fltk/native/main.cpp:1433
+#: fltk/native/main.cpp:1480
 msgid "IMAP Security"
 msgstr "Segurança IMAP"
 
-#: fltk/native/main.cpp:1436
+#: fltk/native/main.cpp:1483
 msgid "SMTP Server"
 msgstr "Servidor SMTP"
 
-#: fltk/native/main.cpp:1439
+#: fltk/native/main.cpp:1486
 msgid "SMTP Security"
 msgstr "Segurança SMTP"
 
-#: fltk/native/main.cpp:1442
+#: fltk/native/main.cpp:1489
 msgid "SMTP User Name"
 msgstr "Nome de utilizador SMTP"
 
-#: fltk/native/main.cpp:1443
+#: fltk/native/main.cpp:1490
 msgid "SMTP Password"
 msgstr "Palavra-passe SMTP"
 
-#: fltk/native/main.cpp:1446 fltk/native/main.cpp:1569
+#: fltk/native/main.cpp:1493 fltk/native/main.cpp:1616
 msgid ""
 "Leave user names and the SMTP password empty to use the incoming account's "
 "details. Passwords are stored in your desktop keyring."
@@ -12102,70 +12106,70 @@ msgstr ""
 "dados da conta de entrada. As palavras-passe são guardadas no porta-chaves "
 "do ambiente de trabalho."
 
-#: fltk/native/main.cpp:1450
+#: fltk/native/main.cpp:1497
 msgid "Find Servers"
 msgstr "Procurar servidores"
 
-#: fltk/native/main.cpp:1457
+#: fltk/native/main.cpp:1504
 msgid "No servers found. Enter the server details manually."
 msgstr ""
 "Não foram encontrados servidores. Introduza os dados dos servidores "
 "manualmente."
 
-#: fltk/native/main.cpp:1462
+#: fltk/native/main.cpp:1509
 msgid "Use Servers"
 msgstr "Usar servidores"
 
-#: fltk/native/main.cpp:1463
+#: fltk/native/main.cpp:1510
 msgid "These servers were discovered outside your email domain. Use them?"
 msgstr ""
 "Estes servidores foram encontrados fora do domínio do seu endereço. Usá-los?"
 
-#: fltk/native/main.cpp:1483
+#: fltk/native/main.cpp:1530
 msgid "Import Misfin Identity…"
 msgstr "Importar identidade Misfin…"
 
-#: fltk/native/main.cpp:1486
+#: fltk/native/main.cpp:1533
 msgid "Misfin Identity Certificate (PEM)"
 msgstr "Certificado de identidade Misfin (PEM)"
 
-#: fltk/native/main.cpp:1490
+#: fltk/native/main.cpp:1537
 msgid "Misfin Private Key (PEM)"
 msgstr "Chave privada Misfin (PEM)"
 
-#: fltk/native/main.cpp:1502
+#: fltk/native/main.cpp:1549
 msgid "Shared Identity…"
 msgstr "Identidade partilhada…"
 
-#: fltk/native/main.cpp:1514
+#: fltk/native/main.cpp:1561
 msgid "POP3 Server"
 msgstr "Servidor POP3"
 
-#: fltk/native/main.cpp:1515
+#: fltk/native/main.cpp:1562
 msgid "Server URL"
 msgstr "URL do servidor"
 
-#: fltk/native/main.cpp:1531
+#: fltk/native/main.cpp:1578
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: fltk/native/main.cpp:1547
+#: fltk/native/main.cpp:1594
 msgid "Misfin Address"
 msgstr "Endereço Misfin"
 
-#: fltk/native/main.cpp:1548
+#: fltk/native/main.cpp:1595
 msgid "Identity Name"
 msgstr "Nome da identidade"
 
-#: fltk/native/main.cpp:1550 fltk/native/misfin.h:69
+#: fltk/native/main.cpp:1597 fltk/native/misfin.h:69
 msgid "Gemini Mailbox URL"
 msgstr "URL Gemini da caixa de correio"
 
-#: fltk/native/main.cpp:1559
+#: fltk/native/main.cpp:1606
 msgid "Create Identity"
 msgstr "Criar identidade"
 
-#: fltk/native/main.cpp:1563
+#: fltk/native/main.cpp:1610
 msgid ""
 "Misfin(C): one recipient, plain Gemtext, up to 16384 UTF-8 bytes. No "
 "attachments, Cc/Bcc, drafts, scheduled sending or OpenPGP. Receive through "
@@ -12179,15 +12183,15 @@ msgstr ""
 "certificado válido por cinco anos ou importe uma identidade existente; é "
 "necessário registar a identidade junto do fornecedor."
 
-#: fltk/native/main.cpp:1617
+#: fltk/native/main.cpp:1664
 msgid "Enter ports between 1 and 65535."
 msgstr "Introduza portas entre 1 e 65535."
 
-#: fltk/native/main.cpp:1645
+#: fltk/native/main.cpp:1692
 msgid "Checking the incoming and outgoing servers…"
 msgstr "A verificar os servidores de entrada e de saída…"
 
-#: fltk/native/main.cpp:1664
+#: fltk/native/main.cpp:1711
 msgid ""
 "Demo mode uses a temporary GnuPG keyring. Imported keys are discarded when "
 "the preview closes."
@@ -12195,7 +12199,7 @@ msgstr ""
 "O modo de demonstração utiliza um chaveiro GnuPG temporário. As chaves "
 "importadas são eliminadas ao fechar a pré-visualização."
 
-#: fltk/native/main.cpp:1665
+#: fltk/native/main.cpp:1712
 msgid ""
 "OpenPGP uses your GnuPG keyring and pinentry. Import a public or secret key "
 "file, or manage keys with your usual GnuPG tools. Keys are never fetched "
@@ -12205,71 +12209,71 @@ msgstr ""
 "chave pública ou secreta, ou faça a gestão das chaves com as suas "
 "ferramentas GnuPG habituais. As chaves nunca são obtidas automaticamente."
 
-#: fltk/native/main.cpp:1667
+#: fltk/native/main.cpp:1714
 msgid "Addresses"
 msgstr "Endereços"
 
-#: fltk/native/main.cpp:1683
+#: fltk/native/main.cpp:1730
 msgid "No encryption key"
 msgstr "Sem chave de cifra"
 
-#: fltk/native/main.cpp:1690
+#: fltk/native/main.cpp:1737
 msgid "Check Local Keys"
 msgstr "Verificar chaves locais"
 
-#: fltk/native/main.cpp:1691
+#: fltk/native/main.cpp:1738
 msgid "Import Key File…"
 msgstr "Importar ficheiro de chaves…"
 
-#: fltk/native/main.cpp:1693
+#: fltk/native/main.cpp:1740
 msgid "Import OpenPGP Key"
 msgstr "Importar chave OpenPGP"
 
-#: fltk/native/main.cpp:1696 fltk/native/misfin.h:164
+#: fltk/native/main.cpp:1743 fltk/native/misfin.h:164
 msgid "Import"
 msgstr "Importar"
 
-#: fltk/native/main.cpp:1697
+#: fltk/native/main.cpp:1744
 msgid "Import this file into your GnuPG keyring?"
 msgstr "Importar este ficheiro para o seu chaveiro GnuPG?"
 
-#: fltk/native/main.cpp:1698
+#: fltk/native/main.cpp:1745
 msgid "Importing key…"
 msgstr "A importar chave…"
 
-#: fltk/native/main.cpp:1701
+#: fltk/native/main.cpp:1748
 msgid "Imported keys:"
 msgstr "Chaves importadas:"
 
-#: fltk/native/main.cpp:1711
+#: fltk/native/main.cpp:1758
 msgid "GnuPG version:"
 msgstr "Versão do GnuPG:"
 
-#: fltk/native/main.cpp:1717
+#: fltk/native/main.cpp:1764
 msgid "Start Penguin Mail at login"
 msgstr "Iniciar o Penguin Mail ao entrar na sessão"
 
-#: fltk/native/main.cpp:1721
+#: fltk/native/main.cpp:1768
 msgid "Keep syncing in the tray when the window closes"
 msgstr "Continuar a sincronizar na área de notificação quando a janela fechar"
 
-#: fltk/native/main.cpp:1724
+#: fltk/native/main.cpp:1771
 msgid "Show new mail notifications"
 msgstr "Mostrar notificações de correio novo"
 
-#: fltk/native/main.cpp:1729
+#: fltk/native/main.cpp:1776
 msgid "Group messages into conversations"
 msgstr "Agrupar mensagens em conversas"
 
-#: fltk/native/main.cpp:1732
+#: fltk/native/main.cpp:1779
 msgid "Sync Interval (seconds)"
 msgstr "Intervalo de sincronização (segundos)"
 
-#: fltk/native/main.cpp:1735
+#: fltk/native/main.cpp:1782
 msgid "Local Mail Window (days)"
 msgstr "Período de correio local (dias)"
 
-#: fltk/native/main.cpp:1739
+#: fltk/native/main.cpp:1786
 msgid ""
 "Colors, accent, font and bitmap strike follow DomeD. Sync interval and mail "
 "window changes apply after restart."
@@ -12277,31 +12281,31 @@ msgstr ""
 "As cores, o realce e o tipo e tamanho de letra seguem o DomeD. As alterações "
 "ao intervalo e ao período de correio são aplicadas após reiniciar."
 
-#: fltk/native/main.cpp:1747
+#: fltk/native/main.cpp:1794
 msgid "Could not update login startup"
 msgstr "Não foi possível atualizar o arranque ao entrar na sessão"
 
-#: fltk/native/main.cpp:1791
+#: fltk/native/main.cpp:1838
 msgid "Calendar loaded"
 msgstr "Calendário carregado"
 
-#: fltk/native/main.cpp:1840
+#: fltk/native/main.cpp:1887
 msgid "No writable calendar is available."
 msgstr "Não está disponível nenhum calendário que possa alterar."
 
-#: fltk/native/main.cpp:1845
+#: fltk/native/main.cpp:1892
 msgid "Start"
 msgstr "Início"
 
-#: fltk/native/main.cpp:1846
+#: fltk/native/main.cpp:1893
 msgid "End"
 msgstr "Fim"
 
-#: fltk/native/main.cpp:1847
+#: fltk/native/main.cpp:1894
 msgid "Location"
 msgstr "Local"
 
-#: fltk/native/main.cpp:1851
+#: fltk/native/main.cpp:1898
 msgid ""
 "Enter local dates as YYYY-MM-DD HH:MM. Changes are sent to the calendar "
 "provider."
@@ -12309,185 +12313,185 @@ msgstr ""
 "Introduza datas locais no formato AAAA-MM-DD HH:MM. As alterações são "
 "enviadas ao fornecedor do calendário."
 
-#: fltk/native/main.cpp:1872
+#: fltk/native/main.cpp:1919
 msgid "Save Event"
 msgstr "Guardar evento"
 
-#: fltk/native/main.cpp:1878
+#: fltk/native/main.cpp:1925
 msgid "Enter a title and a valid start and end time."
 msgstr "Introduza um título e horas de início e fim válidas."
 
-#: fltk/native/main.cpp:1903 fltk/native/main.cpp:2193
+#: fltk/native/main.cpp:1950 fltk/native/main.cpp:2240
 msgid "Delete Event"
 msgstr "Eliminar evento"
 
-#: fltk/native/main.cpp:1904
+#: fltk/native/main.cpp:1951
 msgid "Delete this event and notify its guests?"
 msgstr "Eliminar este evento e notificar os convidados?"
 
-#: fltk/native/main.cpp:1915
+#: fltk/native/main.cpp:1962
 msgid "Contacts loaded"
 msgstr "Contactos carregados"
 
-#: fltk/native/main.cpp:1940 fltk/native/main.cpp:2201
+#: fltk/native/main.cpp:1987 fltk/native/main.cpp:2248
 msgid "New Contact"
 msgstr "Novo contacto"
 
-#: fltk/native/main.cpp:1948
+#: fltk/native/main.cpp:1995
 msgid "Save Contact"
 msgstr "Guardar contacto"
 
-#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2266
+#: fltk/native/main.cpp:2040 fltk/native/main.cpp:2313
 msgid "Message/Forward"
 msgstr "Mensagem/Reencaminhar"
 
-#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2262
+#: fltk/native/main.cpp:2040 fltk/native/main.cpp:2309
 msgid "Message/Reply"
 msgstr "Mensagem/Responder"
 
-#: fltk/native/main.cpp:1993 fltk/native/main.cpp:2018
-#: fltk/native/main.cpp:2264
+#: fltk/native/main.cpp:2040 fltk/native/main.cpp:2065
+#: fltk/native/main.cpp:2311
 msgid "Message/Reply All"
 msgstr "Mensagem/Responder a todos"
 
-#: fltk/native/main.cpp:1994 fltk/native/main.cpp:2018
-#: fltk/native/main.cpp:2268
+#: fltk/native/main.cpp:2041 fltk/native/main.cpp:2065
+#: fltk/native/main.cpp:2315
 msgid "Message/Archive"
 msgstr "Mensagem/Arquivar"
 
-#: fltk/native/main.cpp:1994 fltk/native/main.cpp:2019
-#: fltk/native/main.cpp:2270
+#: fltk/native/main.cpp:2041 fltk/native/main.cpp:2066
+#: fltk/native/main.cpp:2317
 msgid "Message/Move to Trash"
 msgstr "Mensagem/Mover para o lixo"
 
-#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2020
-#: fltk/native/main.cpp:2276
+#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2067
+#: fltk/native/main.cpp:2323
 msgid "Message/Flag"
 msgstr "Mensagem/Assinalar"
 
-#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2019
-#: fltk/native/main.cpp:2272
+#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2066
+#: fltk/native/main.cpp:2319
 msgid "Message/Mark Read"
 msgstr "Mensagem/Marcar como lido"
 
-#: fltk/native/main.cpp:1995 fltk/native/main.cpp:2020
-#: fltk/native/main.cpp:2274
+#: fltk/native/main.cpp:2042 fltk/native/main.cpp:2067
+#: fltk/native/main.cpp:2321
 msgid "Message/Mark Unread"
 msgstr "Mensagem/Marcar como não lido"
 
-#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2021
-#: fltk/native/main.cpp:2278
+#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2068
+#: fltk/native/main.cpp:2325
 msgid "Message/Label…"
 msgstr "Mensagem/Etiqueta…"
 
-#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2021
-#: fltk/native/main.cpp:2279
+#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2068
+#: fltk/native/main.cpp:2326
 msgid "Message/Remind Me…"
 msgstr "Mensagem/Lembrar-me…"
 
-#: fltk/native/main.cpp:1996 fltk/native/main.cpp:2020
-#: fltk/native/main.cpp:2277
+#: fltk/native/main.cpp:2043 fltk/native/main.cpp:2067
+#: fltk/native/main.cpp:2324
 msgid "Message/Unflag"
 msgstr "Mensagem/Retirar sinalizador"
 
-#: fltk/native/main.cpp:1997 fltk/native/main.cpp:2022
-#: fltk/native/main.cpp:2224
+#: fltk/native/main.cpp:2044 fltk/native/main.cpp:2069
+#: fltk/native/main.cpp:2271
 msgid "File/Export Conversation…"
 msgstr "Ficheiro/Exportar conversa…"
 
-#: fltk/native/main.cpp:2025 fltk/native/main.cpp:2257
+#: fltk/native/main.cpp:2072 fltk/native/main.cpp:2304
 msgid "Message/Edit Draft"
 msgstr "Mensagem/Editar rascunho"
 
-#: fltk/native/main.cpp:2025 fltk/native/main.cpp:2258
+#: fltk/native/main.cpp:2072 fltk/native/main.cpp:2305
 msgid "Message/Send Queued Message Now"
 msgstr "Mensagem/Enviar mensagem em espera agora"
 
-#: fltk/native/main.cpp:2026 fltk/native/main.cpp:2226
+#: fltk/native/main.cpp:2073 fltk/native/main.cpp:2273
 msgid "File/OpenPGP Keys…"
 msgstr "Ficheiro/Chaves OpenPGP…"
 
-#: fltk/native/main.cpp:2026 fltk/native/main.cpp:2260
+#: fltk/native/main.cpp:2073 fltk/native/main.cpp:2307
 msgid "Message/Delete Queued Message"
 msgstr "Mensagem/Eliminar mensagem em espera"
 
-#: fltk/native/main.cpp:2029 fltk/native/main.cpp:2221
+#: fltk/native/main.cpp:2076 fltk/native/main.cpp:2268
 msgid "File/Account Settings…"
 msgstr "Ficheiro/Definições da conta…"
 
-#: fltk/native/main.cpp:2030 fltk/native/main.cpp:2241
+#: fltk/native/main.cpp:2077 fltk/native/main.cpp:2288
 msgid "View/Calendar"
 msgstr "Ver/Calendário"
 
-#: fltk/native/main.cpp:2031 fltk/native/main.cpp:2243
+#: fltk/native/main.cpp:2078 fltk/native/main.cpp:2290
 msgid "View/Contacts"
 msgstr "Ver/Contactos"
 
-#: fltk/native/main.cpp:2143
+#: fltk/native/main.cpp:2190
 msgid "Conversations"
 msgstr "Conversas"
 
-#: fltk/native/main.cpp:2189
+#: fltk/native/main.cpp:2236
 msgid "Calendar days"
 msgstr "Dias do calendário"
 
-#: fltk/native/main.cpp:2199
+#: fltk/native/main.cpp:2246
 msgid "Find Contacts"
 msgstr "Procurar contactos"
 
-#: fltk/native/main.cpp:2204
+#: fltk/native/main.cpp:2251
 msgid "Write to Selected Contact"
 msgstr "Escrever ao contacto selecionado"
 
-#: fltk/native/main.cpp:2215
+#: fltk/native/main.cpp:2262
 msgid "Starting Penguin Mail…"
 msgstr "A iniciar o Penguin Mail…"
 
-#: fltk/native/main.cpp:2217
+#: fltk/native/main.cpp:2264
 msgid "File/New Message"
 msgstr "Ficheiro/Nova mensagem"
 
-#: fltk/native/main.cpp:2219
+#: fltk/native/main.cpp:2266
 msgid "File/Add Account…"
 msgstr "Ficheiro/Adicionar conta…"
 
-#: fltk/native/main.cpp:2227
+#: fltk/native/main.cpp:2274
 msgid "File/Preferences…"
 msgstr "Ficheiro/Preferências…"
 
-#: fltk/native/main.cpp:2229
+#: fltk/native/main.cpp:2276
 msgid "File/Show Window"
 msgstr "Ficheiro/Mostrar janela"
 
-#: fltk/native/main.cpp:2230
+#: fltk/native/main.cpp:2277
 msgid "File/Close Window"
 msgstr "Ficheiro/Fechar janela"
 
-#: fltk/native/main.cpp:2232
+#: fltk/native/main.cpp:2279
 msgid "File/Quit"
 msgstr "Ficheiro/Sair"
 
-#: fltk/native/main.cpp:2238
+#: fltk/native/main.cpp:2285
 msgid "Edit/Search"
 msgstr "Editar/Procurar"
 
-#: fltk/native/main.cpp:2240
+#: fltk/native/main.cpp:2287
 msgid "View/Mail"
 msgstr "Ver/Correio"
 
-#: fltk/native/main.cpp:2245
+#: fltk/native/main.cpp:2292
 msgid "View/Refresh"
 msgstr "Ver/Atualizar"
 
-#: fltk/native/main.cpp:2252
+#: fltk/native/main.cpp:2299
 msgid "View/Load More"
 msgstr "Ver/Carregar mais"
 
-#: fltk/native/main.cpp:2280
+#: fltk/native/main.cpp:2327
 msgid "Help/Keyboard Shortcuts"
 msgstr "Ajuda/Atalhos de teclado"
 
-#: fltk/native/main.cpp:2282
+#: fltk/native/main.cpp:2329
 msgid ""
 "Ctrl+N: New Message\n"
 "Ctrl+R: Reply\n"
@@ -12521,11 +12525,11 @@ msgstr ""
 "Ao escrever: Ctrl+Enter envia, Ctrl+S guarda um rascunho.\n"
 "Os atalhos Super pertencem ao DomeD."
 
-#: fltk/native/main.cpp:2289
+#: fltk/native/main.cpp:2336
 msgid "Help/About Penguin Mail"
 msgstr "Ajuda/Sobre o Penguin Mail"
 
-#: fltk/native/main.cpp:2292
+#: fltk/native/main.cpp:2339
 msgid ""
 "Penguin Mail 1.0.10\n"
 "FLTK edition for DomeD\n"
@@ -12539,7 +12543,7 @@ msgstr ""
 "Serviços de correio originais: c9dev/penguin-mail\n"
 "Licença: GPL-3.0-or-later"
 
-#: fltk/native/main.cpp:2436
+#: fltk/native/main.cpp:2483
 msgid "Invalid calendar date. Use YYYY-MM-DD."
 msgstr "Data do calendário inválida. Use AAAA-MM-DD."
 

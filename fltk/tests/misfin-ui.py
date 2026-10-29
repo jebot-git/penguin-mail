@@ -9,7 +9,7 @@ if os.environ.get('MISFIN_UI_BUS')!='1':
     os.execvpe('dbus-run-session',['dbus-run-session','--',sys.executable,*sys.argv],{**os.environ,'MISFIN_UI_BUS':'1'})
 repo=pathlib.Path(__file__).resolve().parents[2]
 binary=pathlib.Path(sys.argv[1] if len(sys.argv)>1 else repo/'build-fltk-misfin/penguin-mail').resolve()
-art=repo/'test-artifacts/misfin';art.mkdir(parents=True,exist_ok=True)
+art=pathlib.Path(os.environ.get('MISFIN_UI_OUTPUT',repo/'test-artifacts/misfin'));art.mkdir(parents=True,exist_ok=True)
 children=[];checks=[]
 def check(value,name):
     assert value,name
@@ -56,6 +56,10 @@ try:
         with os.fdopen(rd) as f:env['DISPLAY']=':'+f.readline().strip()
         xd=display.Display(env['DISPLAY'])
         with (art/'ui.log').open('w') as log:
+            uri='misfin://Mailbox@localhost:1959'
+            for invalid in ['misfin:alice@localhost','misfin://localhost','misfin://alice:secret@localhost','misfin://alice@localhost/path','misfin://alice@localhost?body=Hello','misfin://alice@localhost#fragment']:
+                result=subprocess.run([str(binary),invalid],env=env,capture_output=True,timeout=5)
+                check(result.returncode==2,'Malformed Misfin address is rejected before activation: '+invalid)
             app=subprocess.Popen([str(binary)],env=env,stdout=log,stderr=log);children.append(app)
             def windows():return xd.screen().root.query_tree().children
             def win(title):return wait(lambda:next((w for w in windows() if title in str(w.get_wm_name() or '')),None))
@@ -124,6 +128,43 @@ try:
                 requestor.convert_selection(xd.intern_atom('CLIPBOARD'),target,prop,X.CurrentTime);xd.flush()
                 return wait(copied)
             check('Žluťoučký 世界' in clipboard(),'Existing Misfin mail opens with Unicode selection in the normal reader')
+            def dismiss(compose):
+                action(compose,'Close');time.sleep(.2);key('Right');key('Return');time.sleep(.2)
+                if not hidden(compose):key('d');key('Return')
+                wait(lambda:hidden(compose))
+            click(main,520,54);key('Up');key('Return');time.sleep(.3)
+            check(enabled(main,'Calendar'),'URI test begins with an email account selected')
+            result=subprocess.run([str(binary),uri],env=env,capture_output=True,timeout=8)
+            check(result.returncode==0,'Misfin URI activates the existing application')
+            compose=win('Compose Message');time.sleep(.3)
+            check(not enabled(compose,'Save Draft') and not enabled(compose,'Send Later…'),
+                  'Misfin URI selects its protocol despite an email account being first')
+            click(compose,240,144);action(compose,'Select All');action(compose,'Copy');time.sleep(.2)
+            check(clipboard()==uri,'URI launch preserves mailbox case and explicit server port')
+            shot(compose,'uri-forwarded-compose.png');dismiss(compose)
+            result=subprocess.run([str(binary),uri],env=env,capture_output=True,timeout=8)
+            check(result.returncode==0,'Second Misfin URI launch forwards to the existing application')
+            compose=win('Compose Message');time.sleep(.3)
+            check(not enabled(compose,'Save Draft'),'Forwarded Misfin URI retains Misfin composer restrictions')
+            click(compose,240,144);action(compose,'Select All');action(compose,'Copy');time.sleep(.2)
+            check(clipboard()==uri,'Forwarded URI preserves the recipient');dismiss(compose)
+            browser_binary=os.environ.get('DOME_BROWSER_TEST_BINARY')
+            if browser_binary:
+                applications=root/'data/applications';applications.mkdir(parents=True,exist_ok=True)
+                entry=next(p for p in [binary.parent/'io.github.c9dev.PenguinMail.desktop',binary.parent.parent/'share/applications/io.github.c9dev.PenguinMail.desktop'] if p.is_file()).read_text()
+                check('x-scheme-handler/misfin;' in entry,'Enabled native build advertises the Misfin scheme')
+                entry=entry.replace('Exec=penguin-mail %u','Exec="'+str(binary)+'" %u')
+                (applications/'io.github.c9dev.PenguinMail.desktop').write_text(entry)
+                config=root/'config';config.mkdir(exist_ok=True)
+                (config/'dome-mimeapps.list').write_text('[Default Applications]\nx-scheme-handler/misfin=io.github.c9dev.PenguinMail.desktop;\n')
+                result=subprocess.run([browser_binary,uri],env=env,capture_output=True,timeout=10)
+                check(result.returncode==0,'Servo Dome hands the URI to Penguin Mail through DomeD default preferences')
+                compose=win('Compose Message');time.sleep(.3)
+                check(not enabled(compose,'Save Draft'),'Browser handoff selects the Misfin composer')
+                click(compose,240,144);action(compose,'Select All');action(compose,'Copy');time.sleep(.2)
+                check(clipboard()==uri,'Browser-to-mail handoff preserves the complete recipient');dismiss(compose)
+            click(main,520,54);key('Down');key('Return');time.sleep(.3)
+            click(main,300,115);time.sleep(.3)
             action(main,'Reply');compose=win('Compose Message');time.sleep(.4)
             check(not enabled(compose,'Save Draft') and not enabled(compose,'Send Later…') and enabled(compose,'Send'),
                   'Standard Misfin composer disables drafts and scheduling while allowing Send')
@@ -181,9 +222,28 @@ try:
             imported=next(i for i in json.loads(saved.read_text())['identities'] if i['id']==shared_id)
             check(imported['address']=='browser@localhost' and shared_key.read_bytes()==shared_original,
                   'Native shared identity chooser imports the browser certificate and preserves its source key')
-            requestor.destroy()
             action(main,'Quit');app.wait(timeout=10);check(app.returncode==0,'Native application shuts down cleanly')
-            xd.close()
+            before_messages=json.loads(saved.read_text())['messages']
+            app=subprocess.Popen([str(binary),uri],env=env,stdout=log,stderr=log);children.append(app)
+            main=win('Penguin Mail');compose=win('Compose Message');time.sleep(.4)
+            check(not enabled(compose,'Save Draft'),'Cold Misfin URI launch opens the existing Misfin composer')
+            click(compose,240,144);action(compose,'Select All');action(compose,'Copy');time.sleep(.2)
+            check(clipboard()==uri,'Cold launch preserves the complete Misfin recipient')
+            shot(compose,'uri-cold-compose.png');dismiss(compose)
+            action(main,'Quit');app.wait(timeout=10);check(app.returncode==0,'Cold URI launch closes cleanly')
+            check(json.loads(saved.read_text())['messages']==before_messages,'URI launches do not send messages or add local delivery history')
+            identity_store=saved.read_bytes()
+            empty=json.loads(identity_store);empty['identities']=[];empty['messages']=[]
+            saved.write_text(json.dumps(empty))
+            app=subprocess.Popen([str(binary),uri],env=env,stdout=log,stderr=log);children.append(app)
+            main=win('Penguin Mail');notice=wait(lambda:next((w for w in windows() if w.get_wm_name()=='Misfin'),None));time.sleep(.3)
+            check(notice is not None,'Missing identity has a persistent native explanation')
+            check(not any('Compose Message' in str(w.get_wm_name() or '') and not hidden(w) for w in windows()),
+                  'Missing Misfin identity does not open an email composer')
+            shot(notice,'uri-missing-identity.png');notice.set_input_focus(X.RevertToParent,X.CurrentTime);key('Return');wait(lambda:hidden(notice))
+            action(main,'Quit');app.wait(timeout=10);check(app.returncode==0,'Missing-identity URI launch closes cleanly')
+            saved.write_bytes(identity_store)
+            requestor.destroy();xd.close()
         (art/'ui-report.json').write_text(json.dumps(checks,indent=2)+'\n')
 finally:
     for p in reversed(children):

@@ -9,6 +9,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### New
 
+- Open Misfin address links in the native composer with a configured Misfin identity.
+
 - Import shared Misfin identities created in Servo Dome or Dome Identities from the native Add Account dialog.
 
 - Use Misfin as an account in the normal Inbox, reader and composer, with a protocol checkbox, receiving settings and disabled unsupported actions; retain existing identities and history.
