@@ -32,6 +32,8 @@ the [releases page](https://github.com/c9dev/penguin-mail/releases).
 
 ### Fixed
 
+- Register Misfin-enabled native builds as link handlers while preserving DomeD launch routing.
+
 - Open mail and calendar notifications on the desktop where they were clicked, including expired notification history entries.
 
 - Show unread mail in the native tray icon and answer tray menus before running their actions.
