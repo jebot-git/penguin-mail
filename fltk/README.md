@@ -27,6 +27,14 @@ LD_LIBRARY_PATH=../_toolkit/lib build-fltk/penguin-mail --calendar 2028-02-29
 The suite runner also provides `./run penguin-mail`. `--tray` starts in the
 tray when a StatusNotifier host is present. Without one the window stays
 available. `--compose [ADDRESS]` and `mailto:ADDRESS` open the composer.
+With `--misfin` enabled at build time, `misfin://MAILBOX@HOST` links open
+the existing Misfin composer and select a configured Misfin identity. They
+never select an email account or send a message automatically. The installed
+desktop entry advertises the Misfin scheme only for an enabled build.
+`tests/misfin-ui.py` checks cold and forwarded URI launches and missing identities.
+`tests/misfin-uri-wayland.py` checks browser handoff on a private native Wayland
+desktop; pass `--browser-tests` pointing to Servo Dome’s `ports/dome-fltk/tests`
+to use its private compositor fixture. Neither test delivers mail.
 `--calendar-today` and `--calendar YYYY-MM-DD` select a local calendar date;
 invalid dates fail before launching an engine. A second launch activates the
 existing instance through D-Bus. Demo and real stores have separate bus names.
